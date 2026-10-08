@@ -285,3 +285,54 @@ Use 3–5 per post. Put them at the end, not inline.
 | Post engagement rate (organic) | ≥ 3% |
 
 **Weekly optimization:** Drop the lowest-engagement post format. Re-boost the best post. Tighten the job title or screening questions if the quality ratio falls below 20%.
+
+---
+
+## 10. Engager Follow-Up Playbook (comments, reactions, DMs)
+
+**Check engagement 3 times a day for the first 72 hours** (about 9 AM, 1 PM and 6 PM IST). Reply to every comment within 2 hours. Fast replies keep the post in more feeds.
+
+**Sort every engager into one of four groups first:**
+| Group | How to spot them | Action |
+|---|---|---|
+| A: Strong fit | IT services or QE sales, 8–18 yrs, title like Client Partner / Account Director / Sales Director | Reply to comment + connect + DM within 24 hrs |
+| B: Possible fit | Sales but product/SaaS, or under 8 yrs, or a farmer-only profile | Reply + connect, then ask the 5 screening questions |
+| C: Referrer | Tagged someone, recruiter, or not in sales | Thank them + DM the person they tagged |
+| D: Not relevant | Freshers, unrelated roles | Polite reply only |
+
+### Comment replies (post publicly, under their comment)
+- **"Interested" from a strong fit:** `Thanks {FirstName}! Sending you a connection request and a DM now with the details.`
+- **"Interested" from an unclear profile:** `Thanks {FirstName}! I'll DM you. Could you share one enterprise logo you opened yourself, and the deal size?`
+- **Someone tagged a friend:** `Thank you {FirstName} for the referral 🙏 @{Tagged}, I'd love to chat. I'll reach out.`
+- **General question (salary, remote, etc.):** `Great question, {FirstName}. I'll DM you so we can go into specifics.`
+
+### Connection notes (under 300 characters)
+- **Commented:** `Hi {FirstName}, thanks for your interest in the IGS Client Partner role. Connecting so I can share the details and set up a quick call.`
+- **Only reacted:** `Hi {FirstName}, I noticed you engaged with my IGS Client Partner post. Your background at {Company} looks relevant. Would love to connect.`
+- **Was tagged:** `Hi {FirstName}, {Referrer} tagged you on my post for a Client Partner (enterprise new-logo sales) role at IGS Bengaluru. Open to a quick chat?`
+
+### First DM after they accept
+> Hi {FirstName}, thanks for connecting!
+>
+> Quick context: IGS is a Quality Engineering and Digital Engineering company (QE, test automation, DevSecOps, AI-led QE, managed services). We're hiring a **Client Partner** in Bengaluru (hybrid) to open new enterprise logos and grow them, with direct access to leadership and a path to build the sales team.
+>
+> To see if it's a fit, could you share:
+> 1. One or two enterprise logos you personally opened
+> 2. Your first executive contact there (title)
+> 3. Initial contract value and sales-cycle length
+>
+> If it lines up, I'd like to set up a 15-minute call this week. A CV or LinkedIn summary is fine too.
+>
+> Pravin
+
+**Follow-up after 3 days with no reply:**
+> Hi {FirstName}, just following up on the Client Partner role at IGS. If the timing isn't right, no problem. I'd still welcome a referral to the strongest services sales hunter you know.
+
+**Strong fit who replied with good answers:**
+> Thanks {FirstName}, that's exactly the experience we're looking for. Are you free for a 15-minute call on {Day} at {Time} or {Day} at {Time}? Happy to share scope and comp range on the call.
+
+**Not a fit (be kind, keep them warm):**
+> Thanks for sharing, {FirstName}. This role needs a lot of new-logo hunting, so it's not the closest match right now. I'll keep you in mind for account-management roles, and referrals are always welcome.
+
+### Tracking sheet columns
+`Name · Profile URL · Group (A–D) · Engagement (comment/react/tag) · Comment replied? · Connect sent · Accepted · DM sent · Replied · Logos / TCV / cycle · Next step · Date`
