@@ -336,3 +336,30 @@ Use 3–5 per post. Put them at the end, not inline.
 
 ### Tracking sheet columns
 `Name · Profile URL · Group (A–D) · Engagement (comment/react/tag) · Comment replied? · Connect sent · Accepted · DM sent · Replied · Logos / TCV / cycle · Next step · Date`
+
+---
+
+## 11. Reaching 1st, 2nd and 3rd-Degree Connections (India + Global)
+
+LinkedIn shows a post to your 1st-degree connections first. It reaches 2nd and 3rd-degree people only when 1st-degree connections like, comment or reshare it. So reach depends on early engagement, not on any setting.
+
+**Already done (via Publora)**
+- Launch post published publicly ("Anyone" visibility) on Pravin's profile.
+- A first comment added, aimed at candidates across India and Indian professionals abroad, with extra hashtags.
+- 3 posts scheduled over the next week:
+
+| Date (IST) | Post | Audience |
+|---|---|---|
+| Mon 12 Oct, 9:00 AM | "The 5 questions we'll ask" | India, morning feed |
+| Tue 13 Oct, 7:30 PM | Global / move-back-to-India post | US morning + India evening |
+| Thu 15 Oct, 9:00 AM | Referral ask | India, morning feed |
+
+**Do manually (needs the LinkedIn app or a paid feature)**
+1. **First 60 minutes after each post:** ask 10–15 colleagues to comment (not just like). Comments carry the post to their 2nd-degree networks.
+2. **Reshares with a note:** the CEO, sales head and delivery leads reshare with one personal line. Each reshare opens a new 1st/2nd/3rd network.
+3. **#Hiring photo frame:** Profile → Open to → Hiring → add the Client Partner role. This adds the green #Hiring frame and shows the job on your profile.
+4. **Post the official LinkedIn Job** (Section 2). Then set Promote → Budget, with **India** as the job location. To reach people abroad, reshare the job link with a note like "Open to professionals relocating from the US, the Middle East and APAC."
+5. **Boost the best organic post** (Post menu → Boost) after 24 hrs. Target: Job titles = Sales Director, Client Partner, Account Director, Business Development Director. Industries = IT Services & Consulting. Locations = India, United States, UAE, Saudi Arabia, Singapore, UK. Seniority = Director / Senior.
+6. **Groups:** share in QE/testing and IT services sales groups (Software Testing & QA, Indian IT Sales Professionals, GCC India, Enterprise Sales Leaders).
+7. **Send 20–30 connection requests a day** to profiles found with the Boolean search in Section 6, using the notes in Section 10. Every new 1st-degree connection widens the next post's reach.
+8. **Reply to every comment within 2 hours.** Each reply counts as new activity and keeps the post in feeds longer.
