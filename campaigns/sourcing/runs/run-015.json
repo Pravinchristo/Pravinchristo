@@ -1,0 +1,28 @@
+{
+ "profiles": [
+  {"name": "Damanjit Singh", "url": "https://linkedin.com/in/damanjit-aurora", "head": "Director Sales – BFSI, Coforge (ex SunTec, HCLTech, Polaris)", "loc": "Bengaluru", "company": "Coforge", "years": 13, "tier": "B", "score": 64,
+   "strengths": ["Has won new logos in Europe and India (SunTec) and hunted new clients across India (Reverie)", "Earlier handled strategic deals at HCLTech FS (Chennai) and BD/presales at Polaris", "About 13 yrs, in range; Bengaluru"], "gaps": ["BFSI product-heavy background", "Not QE-specific"], "next": "Reach out"},
+  {"name": "Tanmay Nahar", "url": "https://www.linkedin.com/in/tanmaynahar", "head": "VP Sales, Coforge (ex Director Sales India/ME Apexon, ex Wipro Client Partner Europe)", "loc": "Pune", "company": "Coforge", "years": 24, "tier": "B", "score": 60,
+   "strengths": ["Was Director Sales India/ME at Apexon, a digital engineering firm with a strong QE practice", "8 yrs as Wipro Client Partner, Europe Telecom, owning the full sales cycle; earlier BD at Tech Mahindra"], "gaps": ["Very senior", "Joined Coforge Dec 2024 to sell to a strategic Fortune 50 account"], "next": "Senior option"},
+  {"name": "Krishna Chaitanya", "url": "https://in.linkedin.com/in/krishna-chaitanya-2b0ab326", "head": "Sales Director – GCC BFSI & Hi-Tech, HCLTech (ex Tech Mahindra GCC Hi-Tech)", "loc": "India (Hyderabad earlier)", "company": "HCLTech", "years": null, "tier": "B", "score": 58,
+   "strengths": ["A dedicated GCC sales director — exactly the 'GCC Sales Manager' title Pravin is mapping", "Signed new GCC logos for managed services at Tech Mahindra"], "gaps": ["Probably Hyderabad-based", "Infra/managed-services tilt"], "next": "Confirm city; open to relocation?"},
+  {"name": "Gangadhar Basavalingappa", "url": "https://linkedin.com/in/gangab", "head": "Ex Sr Director & Global Client Partner – CPG & Retail; ex Director Sales TAO", "loc": "Bengaluru", "company": "—", "years": null, "tier": "B", "score": 56,
+   "strengths": ["Won the first ideal-customer logo at an automation start-up, with MSAs signed at both the GCC and the US HQ", "Global Client Partner for CPG/Retail in Bengaluru"], "gaps": ["Current role not visible", "Automation/RPA focus"], "next": "Check status"},
+  {"name": "Amit Kumar Chiripal", "url": "https://linkedin.com/in/amitchiripal", "head": "Sr Director – Global Sales BD (Product Engineering & Security), Tech Mahindra", "loc": "Bengaluru", "company": "Tech Mahindra", "years": 22, "tier": "B", "score": 54,
+   "strengths": ["12 yrs in Tech Mahindra global sales/BD for product engineering", "Deep relationships with networking OEMs (ex Broadcom, Cisco)"], "gaps": ["12 yrs at one firm", "Networking/semiconductor niche"], "next": "Low priority"},
+  {"name": "Arun Rajagopal", "url": "https://www.linkedin.com/in/arun-rajagopal-06224115", "head": "Client Partner – Retail & CPG, LTIMindtree", "loc": "Unconfirmed (ex Bengaluru)", "company": "LTIMindtree", "years": 20, "tier": "B", "score": 54,
+   "strengths": ["Says he has a hunter mindset; opened 2 new large-logo accounts", "Moves accounts from staffing to strategic relationships"], "gaps": ["Probably US-based (North America retail)", "20 yrs"], "next": "Confirm city"},
+  {"name": "Vinod Prabhakar", "url": "https://linkedin.com/in/vinod-prabhakar-6309ab37", "head": "Associate Director – Inside Sales (GCC & Captives), LTIMindtree", "loc": "Bengaluru", "company": "LTIMindtree", "years": 20, "tier": "C", "score": 46,
+   "strengths": ["Leads GCC and captive pipeline generation in India for healthcare and hospitality"], "gaps": ["Inside sales, not field closing"], "next": "Referral source"},
+  {"name": "Rahul Bedmutha", "url": "https://linkedin.com/in/rahulbedmutha", "head": "Global Delivery Head – OSS Transformation, Tech Mahindra (ex VP Sales)", "loc": "Pune", "company": "Tech Mahindra", "years": 24, "tier": "C", "score": 44,
+   "strengths": ["Testing engagement head who also owned sales; built a new LATAM market"], "gaps": ["Delivery now; telecom"], "next": "Low priority"},
+  {"name": "Sitaram Mohan", "url": "https://linkedin.com/in/sitaram-mohan", "head": "Global Client Partner – Data & AI, LTIMindtree", "loc": "Unconfirmed", "company": "LTIMindtree", "years": 20, "tier": "C", "score": 44,
+   "strengths": ["Sold $10M+ transformation deals; set up CoEs inside GCCs"], "gaps": ["Mostly farming; city unknown"], "next": "Low priority"}
+ ],
+ "skipped": [
+  "https://linkedin.com/in/nitin-arora-20a4a6158", "https://linkedin.com/in/vikas-chandra", "https://linkedin.com/in/jaspreet-bhasin-28253515", "https://linkedin.com/in/sanjay-dhingra-b2ab8a8a",
+  "https://linkedin.com/in/pradeep-kollana-9917546a", "https://linkedin.com/in/raghavark", "https://linkedin.com/in/ashishbushan", "https://linkedin.com/in/rkswamy",
+  "https://linkedin.com/in/anjan-sarkar-50282521", "https://www.linkedin.com/in/arun-sahu-75bb52a", "https://linkedin.com/in/harshal-asare-86b198bb", "https://linkedin.com/in/kiran-gulve-a6163817",
+  "https://linkedin.com/in/niteshpujari", "https://linkedin.com/in/jijoe-varghese-330064a0"
+ ]
+}
