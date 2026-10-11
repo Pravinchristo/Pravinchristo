@@ -1,6 +1,6 @@
 {
- "next_company": 104,
- "runs": 26,
+ "next_company": 108,
+ "runs": 27,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -299,6 +299,11 @@
   "linkedin.com/in/anirudha-deshpande": {
    "run": 9,
    "status": "skipped"
+  },
+  "linkedin.com/in/anisha--patel": {
+   "run": 27,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/anjan-sarkar-50282521": {
    "run": 15,
@@ -848,6 +853,11 @@
    "run": 2,
    "status": "skipped"
   },
+  "linkedin.com/in/harsha-bopanna-0528aa45": {
+   "run": 27,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/harsha172": {
    "run": 8,
    "status": "delivered",
@@ -893,6 +903,11 @@
   "linkedin.com/in/indraniilthippeswamy": {
    "run": 11,
    "status": "skipped"
+  },
+  "linkedin.com/in/indranil-karal-1b95a88": {
+   "run": 27,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/isaac-asirvatham-39a7b717": {
    "run": 3,
@@ -1516,6 +1531,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/nikhilpathak14": {
+   "run": 27,
+   "status": "skipped"
+  },
   "linkedin.com/in/nikhilsnarkhede": {
    "run": 13,
    "status": "skipped"
@@ -1558,6 +1577,10 @@
   },
   "linkedin.com/in/niteshpujari": {
    "run": 15,
+   "status": "skipped"
+  },
+  "linkedin.com/in/niti-saravagi-a9b58a99": {
+   "run": 27,
    "status": "skipped"
   },
   "linkedin.com/in/nitin-arora-20a4a6158": {
@@ -1760,6 +1783,11 @@
    "run": 9,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/prasanna-santharam": {
+   "run": 27,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/prasath-parivallal-0b80bb32": {
    "run": 14,
