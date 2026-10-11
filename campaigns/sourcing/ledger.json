@@ -1,6 +1,6 @@
 {
- "next_company": 100,
- "runs": 25,
+ "next_company": 104,
+ "runs": 26,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -574,6 +574,11 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/chandrashekharsjoshi": {
+   "run": 26,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/charu-sridar-298a62b7": {
    "run": 2,
    "status": "skipped"
@@ -690,6 +695,10 @@
   },
   "linkedin.com/in/dushyantkumarkhale": {
    "run": 24,
+   "status": "skipped"
+  },
+  "linkedin.com/in/dwivedi-praveen": {
+   "run": 26,
    "status": "skipped"
   },
   "linkedin.com/in/edwin-furtado-b592b95": {
@@ -987,6 +996,10 @@
    "run": 17,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/jprestonsmith": {
+   "run": 26,
+   "status": "skipped"
   },
   "linkedin.com/in/jyothidasari": {
    "run": 10,
@@ -1627,6 +1640,11 @@
    "run": 16,
    "status": "skipped"
   },
+  "linkedin.com/in/pcthomas7": {
+   "run": 26,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/piyushtaori": {
    "run": 1,
    "status": "delivered",
@@ -1855,6 +1873,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/raghavshetty": {
+   "run": 26,
+   "status": "skipped"
+  },
   "linkedin.com/in/raghul-e-63b51b222": {
    "run": 2,
    "status": "skipped"
@@ -1930,6 +1952,10 @@
    "run": 10,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/rajesh-sawant-1061a38": {
+   "run": 26,
+   "status": "skipped"
   },
   "linkedin.com/in/rajesh-talloo-796133181": {
    "run": 1,
@@ -2627,6 +2653,10 @@
    "run": 5,
    "status": "skipped"
   },
+  "linkedin.com/in/shridharn": {
+   "run": 26,
+   "status": "skipped"
+  },
   "linkedin.com/in/shrijit-bhuvanadasan-a635266": {
    "run": 7,
    "status": "delivered",
@@ -3219,6 +3249,11 @@
   "linkedin.com/in/vinay-goel-71bb4113a": {
    "run": 4,
    "status": "skipped"
+  },
+  "linkedin.com/in/vinayanand-krishnapuram-05738732": {
+   "run": 26,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/vinaynaik": {
    "run": 4,
