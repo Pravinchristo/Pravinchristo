@@ -1,6 +1,6 @@
 {
- "next_company": 76,
- "runs": 19,
+ "next_company": 80,
+ "runs": 20,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -127,6 +127,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/alex2016": {
+   "run": 20,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/allan-david-b1076540": {
    "run": 5,
    "status": "skipped"
@@ -193,6 +198,10 @@
    "run": 11,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/anandveeramani": {
+   "run": 20,
+   "status": "skipped"
   },
   "linkedin.com/in/ananthraman-ramaswamy-704a8b25": {
    "run": 19,
@@ -709,6 +718,10 @@
    "run": 6,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/gokul-purushothaman-359b0a33": {
+   "run": 20,
+   "status": "skipped"
   },
   "linkedin.com/in/gokulakrishnanrajan": {
    "run": 8,
@@ -1350,8 +1363,17 @@
    "run": 2,
    "status": "skipped"
   },
+  "linkedin.com/in/naveensrini": {
+   "run": 20,
+   "status": "delivered",
+   "tier": "C"
+  },
   "linkedin.com/in/naveenss": {
    "run": 2,
+   "status": "skipped"
+  },
+  "linkedin.com/in/nazimkhan": {
+   "run": 20,
    "status": "skipped"
   },
   "linkedin.com/in/nehadhanuka": {
@@ -1699,6 +1721,11 @@
   "linkedin.com/in/raees-p-sales-specialist": {
    "run": 6,
    "status": "skipped"
+  },
+  "linkedin.com/in/ragavenderkoushik": {
+   "run": 20,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/raghav-paramesh-81020876": {
    "run": 9,
@@ -2236,6 +2263,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/saravanan1810": {
+   "run": 20,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/sarunachalam": {
    "run": 10,
    "status": "skipped"
@@ -2648,6 +2680,10 @@
    "run": 2,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/stewartshyam": {
+   "run": 20,
+   "status": "skipped"
   },
   "linkedin.com/in/subbuatmaveric": {
    "run": 2,
