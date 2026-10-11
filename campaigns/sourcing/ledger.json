@@ -1,6 +1,6 @@
 {
- "next_company": 92,
- "runs": 23,
+ "next_company": 96,
+ "runs": 24,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -84,6 +84,10 @@
    "run": 4,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/abisht-iyengar": {
+   "run": 24,
+   "status": "skipped"
   },
   "linkedin.com/in/abrar-ahmed-c": {
    "run": 8,
@@ -305,6 +309,10 @@
    "run": 16,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/ansar-sulaiman-93a817140": {
+   "run": 24,
+   "status": "skipped"
   },
   "linkedin.com/in/anurag-mohanty-90834893": {
    "run": 6,
@@ -672,6 +680,10 @@
    "run": 2,
    "status": "skipped"
   },
+  "linkedin.com/in/dushyantkumarkhale": {
+   "run": 24,
+   "status": "skipped"
+  },
   "linkedin.com/in/edwin-furtado-b592b95": {
    "run": 3,
    "status": "delivered",
@@ -782,6 +794,11 @@
   "linkedin.com/in/guptaraunaq": {
    "run": 0,
    "status": "pre-campaign"
+  },
+  "linkedin.com/in/gurumahalinghan": {
+   "run": 24,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/guruprasad-sreeramadasu-9aa0561a7": {
    "run": 0,
@@ -2372,6 +2389,11 @@
    "run": 12,
    "status": "skipped"
   },
+  "linkedin.com/in/sathishkp20": {
+   "run": 24,
+   "status": "delivered",
+   "tier": "C"
+  },
   "linkedin.com/in/sathyanathan": {
    "run": 2,
    "status": "delivered",
@@ -2427,6 +2449,11 @@
   },
   "linkedin.com/in/shaijuthomas": {
    "run": 2,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/shailesh-gosavi-2b52738": {
+   "run": 24,
    "status": "delivered",
    "tier": "B"
   },
@@ -2610,6 +2637,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/shyam-tyagi": {
+   "run": 24,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/siddharth-mathur": {
    "run": 8,
    "status": "delivered",
@@ -2756,6 +2788,11 @@
   "linkedin.com/in/sriramgsm": {
    "run": 2,
    "status": "skipped"
+  },
+  "linkedin.com/in/sriramnarasimhan1": {
+   "run": 24,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/sriramramamurthy": {
    "run": 6,
