@@ -1,6 +1,6 @@
 {
- "next_company": 112,
- "runs": 28,
+ "next_company": 116,
+ "runs": 29,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -385,6 +385,11 @@
   "linkedin.com/in/arjayaraman": {
    "run": 3,
    "status": "skipped"
+  },
+  "linkedin.com/in/arjun-a-s-403a72112": {
+   "run": 29,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/arjun-jayaraman-7137999": {
    "run": 7,
@@ -902,6 +907,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/iammayanknigam": {
+   "run": 29,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/iinspiredcareer": {
    "run": 8,
    "status": "delivered",
@@ -1163,6 +1173,10 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/kirtiranjanthatoi": {
+   "run": 29,
+   "status": "skipped"
+  },
   "linkedin.com/in/kishan-tiwari": {
    "run": 21,
    "status": "delivered",
@@ -1277,6 +1291,11 @@
    "run": 2,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/mahesh-ashture-b667ba9": {
+   "run": 29,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/mandeep-singh-a808b122": {
    "run": 18,
@@ -1563,6 +1582,11 @@
    "run": 13,
    "status": "skipped"
   },
+  "linkedin.com/in/nilesh-bhammar-704a3b8": {
+   "run": 29,
+   "status": "delivered",
+   "tier": "C"
+  },
   "linkedin.com/in/nileshsales": {
    "run": 0,
    "status": "pre-campaign"
@@ -1785,6 +1809,10 @@
   },
   "linkedin.com/in/prakash-gnanasekaran-5848923b": {
    "run": 13,
+   "status": "skipped"
+  },
+  "linkedin.com/in/prakash-pradhan-70587933": {
+   "run": 29,
    "status": "skipped"
   },
   "linkedin.com/in/pramath-bharadwaj": {
@@ -2265,6 +2293,10 @@
    "run": 12,
    "status": "skipped"
   },
+  "linkedin.com/in/saikatsen22": {
+   "run": 29,
+   "status": "skipped"
+  },
   "linkedin.com/in/saikiranramaraju": {
    "run": 1,
    "status": "skipped"
@@ -2593,6 +2625,10 @@
    "run": 5,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/shanmukh-bangaru-612447105": {
+   "run": 29,
+   "status": "skipped"
   },
   "linkedin.com/in/shantanukute960": {
    "run": 18,
