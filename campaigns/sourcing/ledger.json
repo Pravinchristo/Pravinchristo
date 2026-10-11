@@ -1,6 +1,6 @@
 {
- "next_company": 80,
- "runs": 20,
+ "next_company": 84,
+ "runs": 21,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -63,6 +63,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/abhishekswarup": {
+   "run": 21,
+   "status": "skipped"
+  },
   "linkedin.com/in/abhitej-choudarapu-6a056b246": {
    "run": 0,
    "status": "pre-campaign"
@@ -99,6 +103,11 @@
    "run": 2,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/advait-yatin-gunjikar-98206a70": {
+   "run": 21,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/agrawalgirish17": {
    "run": 13,
@@ -1040,6 +1049,11 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/kishan-tiwari": {
+   "run": 21,
+   "status": "delivered",
+   "tier": "C"
+  },
   "linkedin.com/in/kishoredhawade": {
    "run": 16,
    "status": "skipped"
@@ -1432,6 +1446,10 @@
    "run": 7,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/nishadvani": {
+   "run": 21,
+   "status": "skipped"
   },
   "linkedin.com/in/nishant-rao-366bb77": {
    "run": 4,
@@ -2234,6 +2252,11 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/sapnamahaldar": {
+   "run": 21,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/saptarshi-bhattacharjee-4648931": {
    "run": 3,
    "status": "delivered",
@@ -2421,6 +2444,11 @@
   "linkedin.com/in/shivam-verma-8669a8a6": {
    "run": 3,
    "status": "skipped"
+  },
+  "linkedin.com/in/shivamparashar": {
+   "run": 21,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/shivangi-sharma-bba36858": {
    "run": 10,
@@ -2615,6 +2643,11 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/srijita-sinha-41001317": {
+   "run": 21,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/srikanteshwar-k-3b25612a": {
    "run": 7,
    "status": "delivered",
@@ -2756,6 +2789,11 @@
    "run": 8,
    "status": "skipped"
   },
+  "linkedin.com/in/supriya-dev-8bb640a8": {
+   "run": 21,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/suraj-rajan-menon": {
    "run": 6,
    "status": "delivered",
@@ -2824,6 +2862,10 @@
   },
   "linkedin.com/in/tulasiravichandra": {
    "run": 16,
+   "status": "skipped"
+  },
+  "linkedin.com/in/tusharkhurana": {
+   "run": 21,
    "status": "skipped"
   },
   "linkedin.com/in/uday-eswaran": {
@@ -3064,6 +3106,10 @@
   },
   "linkedin.com/in/vipan-kapoor": {
    "run": 3,
+   "status": "skipped"
+  },
+  "linkedin.com/in/vipin-kant-shrotriya-91a5423": {
+   "run": 21,
    "status": "skipped"
   },
   "linkedin.com/in/vipulagarkar89": {
