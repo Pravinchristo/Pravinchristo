@@ -1,6 +1,6 @@
 {
- "next_company": 116,
- "runs": 29,
+ "next_company": 120,
+ "runs": 30,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -395,6 +395,11 @@
    "run": 7,
    "status": "skipped"
   },
+  "linkedin.com/in/arjun-mahajan-509a2828a": {
+   "run": 30,
+   "status": "delivered",
+   "tier": "C"
+  },
   "linkedin.com/in/arjun-prashant-venkataraman-0b60b45": {
    "run": 5,
    "status": "skipped"
@@ -608,6 +613,10 @@
   },
   "linkedin.com/in/chethan-jagadeesh-cj-463a68122": {
    "run": 6,
+   "status": "skipped"
+  },
+  "linkedin.com/in/cirveshadaga": {
+   "run": 30,
    "status": "skipped"
   },
   "linkedin.com/in/cnkr": {
@@ -995,6 +1004,10 @@
    "run": 17,
    "status": "skipped"
   },
+  "linkedin.com/in/jitender-kumar-sharma-b04118119": {
+   "run": 30,
+   "status": "skipped"
+  },
   "linkedin.com/in/jitesh-amritkar-04981875": {
    "run": 5,
    "status": "delivered",
@@ -1296,6 +1309,11 @@
    "run": 29,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/mahimasudhakaran": {
+   "run": 30,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/mandeep-singh-a808b122": {
    "run": 18,
@@ -1730,6 +1748,10 @@
    "run": 17,
    "status": "skipped"
   },
+  "linkedin.com/in/pooja-hurpade-047a10147": {
+   "run": 30,
+   "status": "skipped"
+  },
   "linkedin.com/in/poojagundewar": {
    "run": 28,
    "status": "delivered",
@@ -1834,6 +1856,10 @@
   },
   "linkedin.com/in/prasad-kodukulla-8558a823": {
    "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/prasaddongare1991": {
+   "run": 30,
    "status": "skipped"
   },
   "linkedin.com/in/prasanna-jothiraman-1a442623": {
@@ -2271,6 +2297,10 @@
    "run": 5,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/saad-shaikh-7478a51b4": {
+   "run": 30,
+   "status": "skipped"
   },
   "linkedin.com/in/sachinkarwa": {
    "run": 5,
@@ -2809,6 +2839,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/siddhantkarkare": {
+   "run": 30,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/siddharth-mathur": {
    "run": 8,
    "status": "delivered",
@@ -3092,6 +3127,11 @@
    "run": 11,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/suresh-narayanan-334b511b5": {
+   "run": 30,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/sureshpandian-in": {
    "run": 12,
