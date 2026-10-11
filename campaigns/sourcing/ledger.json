@@ -1,6 +1,6 @@
 {
- "next_company": 84,
- "runs": 21,
+ "next_company": 88,
+ "runs": 22,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -50,8 +50,17 @@
    "run": 16,
    "status": "skipped"
   },
+  "linkedin.com/in/abhishek-chintawar": {
+   "run": 22,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/abhishek-dwivedi1": {
    "run": 16,
+   "status": "skipped"
+  },
+  "linkedin.com/in/abhishek-kumar-8357169": {
+   "run": 22,
    "status": "skipped"
   },
   "linkedin.com/in/abhishekbanerje": {
@@ -104,6 +113,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/adityajayaraman-cloud": {
+   "run": 22,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/advait-yatin-gunjikar-98206a70": {
    "run": 21,
    "status": "delivered",
@@ -123,9 +137,19 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/ajitvsathe": {
+   "run": 22,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/akhilesh-m-547a4914": {
    "run": 4,
    "status": "skipped"
+  },
+  "linkedin.com/in/akshay-kamra-063874b": {
+   "run": 22,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/alay-shah-56b86b123": {
    "run": 8,
@@ -1231,6 +1255,10 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/mehraz-parakh-05b95827": {
+   "run": 22,
+   "status": "skipped"
+  },
   "linkedin.com/in/meriljacob": {
    "run": 0,
    "status": "pre-campaign"
@@ -1588,6 +1616,10 @@
    "run": 9,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/pradeepillai": {
+   "run": 22,
+   "status": "skipped"
   },
   "linkedin.com/in/pradeeptonpe": {
    "run": 5,
@@ -1965,6 +1997,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/reverseformula": {
+   "run": 22,
+   "status": "delivered",
+   "tier": "C"
+  },
   "linkedin.com/in/richa-mishra-0915049a": {
    "run": 14,
    "status": "delivered",
@@ -2145,6 +2182,11 @@
    "run": 12,
    "status": "skipped"
   },
+  "linkedin.com/in/samuel-joy-4a346731": {
+   "run": 22,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/sanal-menon-9445b42": {
    "run": 0,
    "status": "pre-campaign"
@@ -2308,6 +2350,10 @@
    "run": 2,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/satish-k-jha-5b9754175": {
+   "run": 22,
+   "status": "skipped"
   },
   "linkedin.com/in/satish-rao-8632263": {
    "run": 8,
