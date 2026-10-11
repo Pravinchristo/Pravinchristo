@@ -1,6 +1,6 @@
 {
- "next_company": 88,
- "runs": 22,
+ "next_company": 92,
+ "runs": 23,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -1056,6 +1056,10 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/khalidmohammed1": {
+   "run": 23,
+   "status": "skipped"
+  },
   "linkedin.com/in/kiran-gulve-a6163817": {
    "run": 15,
    "status": "skipped"
@@ -1096,6 +1100,11 @@
   },
   "linkedin.com/in/krishna-chaitanya-2b0ab326": {
    "run": 15,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/krishna-seshadri-93205519": {
+   "run": 23,
    "status": "delivered",
    "tier": "B"
   },
@@ -1169,6 +1178,11 @@
    "run": 13,
    "status": "skipped"
   },
+  "linkedin.com/in/madhura-veeraiah-32576a1b": {
+   "run": 23,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/maha-v-7b695810": {
    "run": 2,
    "status": "delivered",
@@ -1228,6 +1242,10 @@
   },
   "linkedin.com/in/manpreet301285": {
    "run": 13,
+   "status": "skipped"
+  },
+  "linkedin.com/in/manumahendran": {
+   "run": 23,
    "status": "skipped"
   },
   "linkedin.com/in/maruthish-ck-97540630": {
@@ -1541,6 +1559,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/parveen-singh-gulia": {
+   "run": 23,
+   "status": "skipped"
+  },
   "linkedin.com/in/parvezal": {
    "run": 3,
    "status": "delivered",
@@ -1844,6 +1866,10 @@
    "run": 17,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/rajan-akhaury-64277b182": {
+   "run": 23,
+   "status": "skipped"
   },
   "linkedin.com/in/rajbakthavachalam": {
    "run": 3,
@@ -3167,6 +3193,10 @@
    "run": 7,
    "status": "skipped"
   },
+  "linkedin.com/in/vishnuprasad-kundhu-73846029": {
+   "run": 23,
+   "status": "skipped"
+  },
   "linkedin.com/in/vishwanatha-shivaramaiah": {
    "run": 18,
    "status": "delivered",
@@ -3209,6 +3239,11 @@
   "linkedin.com/in/zachfinn": {
    "run": 2,
    "status": "skipped"
+  },
+  "linkedin.com/in/zuber-ismail-aa897b34": {
+   "run": 23,
+   "status": "delivered",
+   "tier": "B"
   }
  }
 }
