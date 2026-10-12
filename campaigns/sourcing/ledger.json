@@ -1,6 +1,6 @@
 {
- "next_company": 152,
- "runs": 38,
+ "next_company": 156,
+ "runs": 39,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -262,6 +262,11 @@
   "linkedin.com/in/anaghapatil3b720015": {
    "run": 8,
    "status": "skipped"
+  },
+  "linkedin.com/in/anand-chordiya-98736116": {
+   "run": 39,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/anand-immanuel-jacob": {
    "run": 8,
@@ -634,8 +639,18 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/chaitanya-wajpe-79737389": {
+   "run": 39,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/chaitanyabhide": {
    "run": 7,
+   "status": "delivered",
+   "tier": "C"
+  },
+  "linkedin.com/in/chaitra-kp-5a2086192": {
+   "run": 39,
    "status": "delivered",
    "tier": "C"
   },
@@ -814,6 +829,10 @@
    "run": 12,
    "status": "skipped"
   },
+  "linkedin.com/in/ganesh-kende-b5955328": {
+   "run": 39,
+   "status": "skipped"
+  },
   "linkedin.com/in/ganeshram08": {
    "run": 14,
    "status": "skipped"
@@ -831,6 +850,11 @@
    "run": 5,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/gauribhasme": {
+   "run": 39,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/gayathri-diagarajan": {
    "run": 36,
@@ -1464,6 +1488,11 @@
    "run": 18,
    "status": "skipped"
   },
+  "linkedin.com/in/mangesh-gathoo-1622aa23": {
+   "run": 39,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/mani-tiwari-9694421a": {
    "run": 38,
    "status": "delivered",
@@ -1968,6 +1997,10 @@
    "run": 28,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/poornachandra-rao-6787a310": {
+   "run": 39,
+   "status": "skipped"
   },
   "linkedin.com/in/prabh3112": {
    "run": 6,
@@ -2609,6 +2642,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/sakshi-mohite-19a83515a": {
+   "run": 39,
+   "status": "skipped"
+  },
   "linkedin.com/in/saleha-sajid-sayyed": {
    "run": 1,
    "status": "delivered",
@@ -2883,6 +2920,10 @@
    "run": 7,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/sayalikhiraskar": {
+   "run": 39,
+   "status": "skipped"
   },
   "linkedin.com/in/sayan-kar-80788a9a": {
    "run": 10,
@@ -3578,6 +3619,11 @@
   "linkedin.com/in/upendra-kulkarni-a0337b3b": {
    "run": 12,
    "status": "skipped"
+  },
+  "linkedin.com/in/v-sowmya-pathivada-a796b5152": {
+   "run": 39,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/v20chan": {
    "run": 12,
