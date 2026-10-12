@@ -1,6 +1,6 @@
 {
- "next_company": 144,
- "runs": 36,
+ "next_company": 148,
+ "runs": 37,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -183,6 +183,10 @@
    "run": 35,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/alagusundaramsubbiah": {
+   "run": 37,
+   "status": "skipped"
   },
   "linkedin.com/in/alay-shah-56b86b123": {
    "run": 8,
@@ -976,6 +980,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/hsbhaskar": {
+   "run": 37,
+   "status": "skipped"
+  },
   "linkedin.com/in/hussainmk": {
    "run": 3,
    "status": "delivered",
@@ -1021,6 +1029,10 @@
    "run": 31,
    "status": "skipped"
   },
+  "linkedin.com/in/janakijayachandran": {
+   "run": 37,
+   "status": "skipped"
+  },
   "linkedin.com/in/janardhana-polisetty-12213046": {
    "run": 17,
    "status": "delivered",
@@ -1036,6 +1048,10 @@
   },
   "linkedin.com/in/jayada-pandit": {
    "run": 4,
+   "status": "skipped"
+  },
+  "linkedin.com/in/jayanth-krishnan-1b05736": {
+   "run": 37,
    "status": "skipped"
   },
   "linkedin.com/in/jayashreethandu": {
@@ -1863,6 +1879,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/parthiban-arumugam-384aa417": {
+   "run": 37,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/parveen-singh-gulia": {
    "run": 23,
    "status": "skipped"
@@ -2366,6 +2387,10 @@
    "run": 9,
    "status": "skipped"
   },
+  "linkedin.com/in/raviranjani": {
+   "run": 37,
+   "status": "skipped"
+  },
   "linkedin.com/in/ravitreddy": {
    "run": 8,
    "status": "skipped"
@@ -2564,6 +2589,11 @@
   },
   "linkedin.com/in/samarthkapur": {
    "run": 8,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/sambit-ganguly-b2b7518": {
+   "run": 37,
    "status": "delivered",
    "tier": "B"
   },
@@ -3080,6 +3110,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/sidhartha-singh-a305a318": {
+   "run": 37,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/silpa-santhosh-2637aa13b": {
    "run": 1,
    "status": "delivered",
@@ -3379,6 +3414,10 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/sureshbabu-dhanasekaran-a518961b": {
+   "run": 37,
+   "status": "skipped"
+  },
   "linkedin.com/in/sureshpandian-in": {
    "run": 12,
    "status": "skipped"
@@ -3422,6 +3461,11 @@
    "run": 6,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/tamil-bharathi-4b7b66133": {
+   "run": 37,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/tanmaynahar": {
    "run": 15,
@@ -3564,6 +3608,10 @@
   },
   "linkedin.com/in/venkata-subhan-652303100": {
    "run": 2,
+   "status": "skipped"
+  },
+  "linkedin.com/in/venkatesh-p-117757100": {
+   "run": 37,
    "status": "skipped"
   },
   "linkedin.com/in/venkatesh-sabharwal": {
@@ -3776,6 +3824,10 @@
   },
   "linkedin.com/in/yatinpwagh": {
    "run": 10,
+   "status": "skipped"
+  },
+  "linkedin.com/in/yesh0416": {
+   "run": 37,
    "status": "skipped"
   },
   "linkedin.com/in/ynithya": {
