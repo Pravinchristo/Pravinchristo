@@ -1,26 +1,26 @@
-date_found,name,current_company,location,headline_or_signal,exp_band_check,notice_signal,profile_url,status
-2026-10-12,Rahul Yadav,Tiger Analytics,Bengaluru,Sr Software Engineer (Data Engineering) – Databricks/PySpark/ADF since 2022,Verify (likely 4-6),Unknown,https://www.linkedin.com/in/rahul0810yadav/,To contact
-2026-10-12,Satya Prakash Dash,Tiger Analytics,Bengaluru (verify),Azure Data Engineer,Verify,Unknown,https://www.linkedin.com/in/satya-prakash-dash-65926b1a2/,To contact
-2026-10-12,Divya K,Tiger Analytics,Bengaluru (verify),Data Engineer – Azure Databricks/PySpark,Verify,Unknown,https://www.linkedin.com/in/divya-k-57984915a/,To contact
-2026-10-12,Vijai Dhanabalan,Tiger Analytics,South India (verify),Data Engineer – PySpark,Verify,Unknown,https://www.linkedin.com/in/vijai-dhanabalan/,To contact
-2026-10-12,Gowri Priyanka Bangaru,Accenture,Bengaluru (verify),Data Eng Mgmt & Governance Sr Analyst,Verify,Unknown,https://www.linkedin.com/in/gowripriyankabangaru/,To contact
-2026-10-12,Akash Dash,Accenture,Bengaluru (verify),Data Engineer – ETL on cloud,Verify,Unknown,https://www.linkedin.com/in/iamakashdash/,To contact
-2026-10-12,Shivansh S.,Infosys,Bengaluru (verify),Data Engineer @Infosys / Big Data Developer,Verify,Unknown,https://in.linkedin.com/in/shivansh-0430-s,To contact
-2026-10-12,Pritish Ranjan Nayak,Infosys BPM,Bengaluru,Data Engineer – 3+ yrs pipelines,Likely slightly below band,Unknown,https://www.linkedin.com/in/pritish-ranjan-nayak-9952071ab/,To contact
-2026-10-12,Pushpa K,Wipro,Bengaluru,Data Engineer,Verify,Unknown,https://www.linkedin.com/in/pushpa-k-ab0727173/,To contact
-2026-10-12,Adarsh R,Wipro,Bengaluru,Data Engineer,Verify,Unknown,https://www.linkedin.com/in/adarsh-r-a6b649125/,To contact
-2026-10-12,Sai Ainala,Fractal,Bengaluru (verify),Data Engineer – PySpark,Verify,Unknown,https://www.linkedin.com/in/saiainala/,To contact
-2026-10-12,Nithish Gowthaman,Fractal,Bengaluru (verify),Data Engineer – PySpark,Verify,Unknown,https://www.linkedin.com/in/nithish-gowthaman-995292162/,To contact
-2026-10-12,Kannikanti Madhuri,LatentView Analytics,South India (verify),Data Engineer,Verify,Unknown,https://www.linkedin.com/in/kannikanti-madhuri/,To contact
-2026-10-12,Shruti M Nashine,LatentView Analytics,South India (verify),Data Engineer,Verify,Unknown,https://www.linkedin.com/in/shruti-m-nashine-30b179182/,To contact
-2026-10-12,Sudhanya Gandhi,LTIMindtree,Bengaluru (verify),Senior Data Engineer,Verify,Unknown,https://in.linkedin.com/in/sudhanya-gandhi-7b0218138,To contact
-2026-10-12,Ankit Mandal,LTIMindtree,Bengaluru (verify),Sr Data Engineer – GCP/PySpark,Verify,Unknown,https://www.linkedin.com/in/ankit-mandal-3b958918a/,To contact
-2026-10-12,Srinidhi S,Capgemini Engineering,Bengaluru,Data Engineer – SQL/Snowflake/Python/AWS/PySpark,Verify,Unknown,https://www.linkedin.com/in/srinidhi47/,To contact
-2026-10-12,Yashavanth H R,Happiest Minds,Bengaluru,Data Engineer – PySpark,Verify,Unknown,https://www.linkedin.com/in/yashavanth-h-r-b8ab761a2/,To contact
-2026-10-12,Prasanth Kumar Ravuri,Happiest Minds,Bengaluru,Data Engineer – Python/PySpark,Verify,Possibly open to work – verify,https://www.linkedin.com/in/prasanth-kumar-ravuri-a6043826a/,To contact
-2026-10-12,Shubham Y.,Walmart Global Tech,Bengaluru,Data Engineer III – PySpark/Airflow/Databricks/Snowflake,Verify,Unknown,https://www.linkedin.com/in/shubhamyadav2012/,To contact
-2026-10-12,Abhilash Chhipa,Target,Bengaluru,Big Data Engineer,Verify,Unknown,https://www.linkedin.com/in/abhilash-chhipa-341abba8/,To contact
-2026-10-12,Mudit Joshi,PhonePe,Bengaluru,Spark/PySpark performance posts,Verify,Unknown,https://www.linkedin.com/in/mudit-joshi-a77637151/,To contact
-2026-10-12,Sai Preetham Yadav,Unknown,Hyderabad,Data Engineer – PySpark,Verify,Possibly open to work – verify,https://www.linkedin.com/in/sai-preetham-yadav-60999b206/,To contact
-2026-10-12,S. Sai Santhosh,Unknown,Chennai,Data Engineer,Verify,Unknown,https://www.linkedin.com/in/ssaisanthosh/,To contact
-2026-10-12,Shiva Kumar,Clarion Technologies,South India (verify),Data Engineer,Verify,Possibly open to work – verify,https://www.linkedin.com/in/shiva-kumar-dataengineer/,To contact
+date_found,name,current_company,company_bucket,city,headline,key_skills,exp_fit,notice_signal,priority,profile_url,status
+2026-10-12,Rahul Yadav,Tiger Analytics,Analytics firm,Bengaluru,Senior Software Engineer (Data Engineering) since 2022,PySpark; Spark SQL; Azure Databricks; ADF; ADLS,Likely 4-6 yrs,Not stated,High,https://www.linkedin.com/in/rahul0810yadav/,To contact
+2026-10-12,Shubham Y.,Walmart Global Tech,Product / GCC,Bengaluru,Data Engineer III; led Azure to AWS warehouse migration,PySpark; Airflow; Databricks; Snowflake; AWS,Verify,Not stated,High,https://www.linkedin.com/in/shubhamyadav2012/,To contact
+2026-10-12,Srinidhi S,Capgemini Engineering,IT services,Bengaluru,Data Engineer,PySpark; Python; SQL; Snowflake; AWS,Verify,Not stated,High,https://www.linkedin.com/in/srinidhi47/,To contact
+2026-10-12,Satya Prakash Dash,Tiger Analytics,Analytics firm,Bengaluru,Azure Data Engineer,PySpark; Azure Databricks; ADF,Verify,Not stated,Medium,https://www.linkedin.com/in/satya-prakash-dash-65926b1a2/,To contact
+2026-10-12,Divya K,Tiger Analytics,Analytics firm,Bengaluru,Data Engineer,PySpark; Azure Databricks,Verify,Not stated,Medium,https://www.linkedin.com/in/divya-k-57984915a/,To contact
+2026-10-12,Vijai Dhanabalan,Tiger Analytics,Analytics firm,Not stated,Data Engineer,PySpark; Azure,Verify,Not stated,Medium,https://www.linkedin.com/in/vijai-dhanabalan/,To contact
+2026-10-12,Gowri Priyanka Bangaru,Accenture,IT services,Bengaluru,Data Eng Mgmt & Governance Senior Analyst,PySpark; ETL; Cloud,Verify,Not stated,Medium,https://www.linkedin.com/in/gowripriyankabangaru/,To contact
+2026-10-12,Akash Dash,Accenture,IT services,Bengaluru,Data Engineer - ETL pipelines on cloud,Python; ETL; Cloud,Verify,Not stated,Medium,https://www.linkedin.com/in/iamakashdash/,To contact
+2026-10-12,Shivansh S.,Infosys,IT services,Bengaluru,Data Engineer / Big Data Developer,PySpark; Big Data,Verify,Not stated,Medium,https://in.linkedin.com/in/shivansh-0430-s,To contact
+2026-10-12,Pritish Ranjan Nayak,Infosys BPM,IT services,Bengaluru,Data Engineer - 3+ yrs pipelines,Python; Data pipelines,Likely below band,Not stated,Low,https://www.linkedin.com/in/pritish-ranjan-nayak-9952071ab/,To contact
+2026-10-12,Pushpa K,Wipro,IT services,Bengaluru,Data Engineer,PySpark; Python,Verify,Not stated,Medium,https://www.linkedin.com/in/pushpa-k-ab0727173/,To contact
+2026-10-12,Adarsh R,Wipro,IT services,Bengaluru,Data Engineer,PySpark; Python,Verify,Not stated,Medium,https://www.linkedin.com/in/adarsh-r-a6b649125/,To contact
+2026-10-12,Sai Ainala,Fractal,Analytics firm,Bengaluru,Data Engineer,PySpark,Verify,Not stated,Medium,https://www.linkedin.com/in/saiainala/,To contact
+2026-10-12,Nithish Gowthaman,Fractal,Analytics firm,Bengaluru,Data Engineer,PySpark,Verify,Not stated,Medium,https://www.linkedin.com/in/nithish-gowthaman-995292162/,To contact
+2026-10-12,Kannikanti Madhuri,LatentView Analytics,Analytics firm,Not stated,Data Engineer,PySpark; SQL,Verify,Not stated,Medium,https://www.linkedin.com/in/kannikanti-madhuri/,To contact
+2026-10-12,Shruti M Nashine,LatentView Analytics,Analytics firm,Not stated,Data Engineer,PySpark; SQL,Verify,Not stated,Medium,https://www.linkedin.com/in/shruti-m-nashine-30b179182/,To contact
+2026-10-12,Sudhanya Gandhi,LTIMindtree,IT services,Bengaluru,Senior Data Engineer,PySpark; Python,Verify,Not stated,Medium,https://in.linkedin.com/in/sudhanya-gandhi-7b0218138,To contact
+2026-10-12,Ankit Mandal,LTIMindtree,IT services,Bengaluru,Sr Data Engineer,PySpark; GCP; Big Data,Verify,Not stated,Medium,https://www.linkedin.com/in/ankit-mandal-3b958918a/,To contact
+2026-10-12,Yashavanth H R,Happiest Minds,IT services,Bengaluru,Data Engineer,PySpark,Verify,Not stated,Medium,https://www.linkedin.com/in/yashavanth-h-r-b8ab761a2/,To contact
+2026-10-12,Prasanth Kumar Ravuri,Happiest Minds,IT services,Bengaluru,Data Engineer,Python; PySpark,Verify,Possibly open to work,Medium,https://www.linkedin.com/in/prasanth-kumar-ravuri-a6043826a/,To contact
+2026-10-12,Abhilash Chhipa,Target,Product / GCC,Bengaluru,Big Data Engineer - ingestion to product lifecycle,PySpark; Big Data,Verify,Not stated,Medium,https://www.linkedin.com/in/abhilash-chhipa-341abba8/,To contact
+2026-10-12,Mudit Joshi,PhonePe,Product / GCC,Bengaluru,Posts on Spark / PySpark performance,PySpark; Spark tuning,Verify,Not stated,Medium,https://www.linkedin.com/in/mudit-joshi-a77637151/,To contact
+2026-10-12,Sai Preetham Yadav,Not stated,Other,Hyderabad,Data Engineer,PySpark,Verify,Possibly open to work,Medium,https://www.linkedin.com/in/sai-preetham-yadav-60999b206/,To contact
+2026-10-12,S. Sai Santhosh,Not stated,Other,Chennai,Data Engineer,Python; SQL,Verify,Not stated,Low,https://www.linkedin.com/in/ssaisanthosh/,To contact
+2026-10-12,Shiva Kumar,Clarion Technologies,Other,Not stated,Data Engineer,PySpark,Verify,Possibly open to work,Medium,https://www.linkedin.com/in/shiva-kumar-dataengineer/,To contact
