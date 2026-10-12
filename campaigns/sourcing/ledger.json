@@ -1,6 +1,6 @@
 {
- "next_company": 128,
- "runs": 32,
+ "next_company": 132,
+ "runs": 33,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -355,6 +355,11 @@
   "linkedin.com/in/apnarayanan": {
    "run": 11,
    "status": "skipped"
+  },
+  "linkedin.com/in/apoorva-shree-m-072407192": {
+   "run": 33,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/apoorvajha": {
    "run": 10,
@@ -1251,6 +1256,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/krishna-chaitanya-bandarupalli-24266819": {
+   "run": 33,
+   "status": "skipped"
+  },
   "linkedin.com/in/krishna-seshadri-93205519": {
    "run": 23,
    "status": "delivered",
@@ -1635,6 +1644,11 @@
   "linkedin.com/in/nethravathi-mn-785229b8": {
    "run": 1,
    "status": "skipped"
+  },
+  "linkedin.com/in/nihal-ahmed24": {
+   "run": 33,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/nikhil-bhatt-5330316a": {
    "run": 4,
@@ -2172,6 +2186,11 @@
   },
   "linkedin.com/in/ram-manishankar-ab694722": {
    "run": 11,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/ramachandran-raghavan": {
+   "run": 33,
    "status": "delivered",
    "tier": "B"
   },
@@ -2883,6 +2902,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/shrirang-kulkarni-a3268a8": {
+   "run": 33,
+   "status": "skipped"
+  },
   "linkedin.com/in/shubhangi-rathore": {
    "run": 12,
    "status": "skipped"
@@ -3037,6 +3060,10 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/srikanthbasavaraju": {
+   "run": 33,
+   "status": "skipped"
+  },
   "linkedin.com/in/srikrishnaramaswamy": {
    "run": 6,
    "status": "delivered",
@@ -3067,6 +3094,10 @@
   },
   "linkedin.com/in/sriramgsm": {
    "run": 2,
+   "status": "skipped"
+  },
+  "linkedin.com/in/sriramkrishna": {
+   "run": 33,
    "status": "skipped"
   },
   "linkedin.com/in/sriramnarasimhan1": {
