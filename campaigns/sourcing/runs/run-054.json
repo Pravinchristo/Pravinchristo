@@ -1,0 +1,47 @@
+{
+ "profiles": [
+  {
+   "name": "Bhavesh Gaur",
+   "url": "https://linkedin.com/in/bhavesh-gaur-40473836",
+   "head": "Senior Manager - Sales & Business Development, Indium",
+   "loc": "Bengaluru",
+   "company": "Indium",
+   "years": 12,
+   "tier": "B",
+   "score": 56,
+   "strengths": [
+    "12 yrs BD; runs one of Indium's top accounts and pursues new opportunities",
+    "Ex-Deloitte and EY; Indium also sells QE, so he is close to testing deals"
+   ],
+   "gaps": [
+    "Account he runs is data/AI, not QE",
+    "Some of the role is account management rather than new logos"
+   ],
+   "next": "Ask whether he has sold Indium's QE offerings"
+  },
+  {
+   "name": "Karthik Ramadoss",
+   "url": "https://linkedin.com/in/karthikramadoss",
+   "head": "Sr Vice President - Strategic Engagement, Indium",
+   "loc": "Chennai",
+   "company": "Indium",
+   "years": 18,
+   "tier": "C",
+   "score": 44,
+   "strengths": [
+    "Chennai-based; end-to-end BD and bid management; referenced as go-to for high-value deals"
+   ],
+   "gaps": [
+    "SVP and likely 18+ yrs, above band and budget",
+    "Leans bid/solution architecture"
+   ],
+   "next": "Low priority unless a senior hire is open"
+  }
+ ],
+ "skipped": [
+  "https://linkedin.com/in/sagar-pujara-8b0579134",
+  "https://linkedin.com/in/sai-gp-50b43b79",
+  "https://linkedin.com/in/liphimartin",
+  "https://linkedin.com/in/shridhar-shivam-515a84231"
+ ]
+}

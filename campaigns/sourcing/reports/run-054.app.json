@@ -1,0 +1,51 @@
+[
+ {
+  "id": "cfwhnaxo",
+  "name": "Bhavesh Gaur",
+  "url": "https://linkedin.com/in/bhavesh-gaur-40473836",
+  "head": "Senior Manager - Sales & Business Development, Indium",
+  "loc": "Bengaluru",
+  "text": "Senior Manager - Sales & Business Development, Indium",
+  "source": "Campaign run 54 · Indium",
+  "years": 12,
+  "added": "2026-10-13T20:39:40.000Z",
+  "screen": {
+   "score": 56,
+   "tier": "B",
+   "strengths": [
+    "12 yrs BD; runs one of Indium's top accounts and pursues new opportunities",
+    "Ex-Deloitte and EY; Indium also sells QE, so he is close to testing deals"
+   ],
+   "gaps": [
+    "Account he runs is data/AI, not QE",
+    "Some of the role is account management rather than new logos"
+   ],
+   "next": "Ask whether he has sold Indium's QE offerings",
+   "via": "campaign"
+  }
+ },
+ {
+  "id": "cfzwitu5",
+  "name": "Karthik Ramadoss",
+  "url": "https://linkedin.com/in/karthikramadoss",
+  "head": "Sr Vice President - Strategic Engagement, Indium",
+  "loc": "Chennai",
+  "text": "Sr Vice President - Strategic Engagement, Indium",
+  "source": "Campaign run 54 · Indium",
+  "years": 18,
+  "added": "2026-10-13T20:39:40.000Z",
+  "screen": {
+   "score": 44,
+   "tier": "C",
+   "strengths": [
+    "Chennai-based; end-to-end BD and bid management; referenced as go-to for high-value deals"
+   ],
+   "gaps": [
+    "SVP and likely 18+ yrs, above band and budget",
+    "Leans bid/solution architecture"
+   ],
+   "next": "Low priority unless a senior hire is open",
+   "via": "campaign"
+  }
+ }
+]
