@@ -1,6 +1,6 @@
 {
- "next_company": 184,
- "runs": 46,
+ "next_company": 188,
+ "runs": 47,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -205,6 +205,11 @@
   "linkedin.com/in/alagusundaramsubbiah": {
    "run": 37,
    "status": "skipped"
+  },
+  "linkedin.com/in/alan-praveen": {
+   "run": 47,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/alay-shah-56b86b123": {
    "run": 8,
@@ -699,8 +704,17 @@
    "run": 2,
    "status": "skipped"
   },
+  "linkedin.com/in/cassius-duarte-7b5004255": {
+   "run": 47,
+   "status": "delivered",
+   "tier": "C"
+  },
   "linkedin.com/in/chaandkraina": {
    "run": 6,
+   "status": "skipped"
+  },
+  "linkedin.com/in/chahat-khan-505800103": {
+   "run": 47,
    "status": "skipped"
   },
   "linkedin.com/in/chaitannya369": {
@@ -881,6 +895,10 @@
   "linkedin.com/in/dipanjansaha27": {
    "run": 0,
    "status": "pre-campaign"
+  },
+  "linkedin.com/in/dipti-ghai-2346a7b": {
+   "run": 47,
+   "status": "skipped"
   },
   "linkedin.com/in/divyasri-joddumahanti-b0121b94": {
    "run": 36,
@@ -1417,6 +1435,11 @@
    "run": 2,
    "status": "skipped"
   },
+  "linkedin.com/in/karthiknarayanan02": {
+   "run": 47,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/kartikmurthy": {
    "run": 9,
    "status": "skipped"
@@ -1479,6 +1502,10 @@
    "run": 15,
    "status": "skipped"
   },
+  "linkedin.com/in/kiran-singh-aa02a44": {
+   "run": 47,
+   "status": "skipped"
+  },
   "linkedin.com/in/kirananthony": {
    "run": 1,
    "status": "skipped"
@@ -1536,6 +1563,11 @@
   },
   "linkedin.com/in/krishna-seshadri-93205519": {
    "run": 23,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/krishnan-mishra-16211a165": {
+   "run": 47,
    "status": "delivered",
    "tier": "B"
   },
@@ -2167,6 +2199,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/parthasarathi-t-9a795b14": {
+   "run": 47,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/parthiban-arumugam-384aa417": {
    "run": 37,
    "status": "delivered",
@@ -2377,6 +2414,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/prasannarajadhyax": {
+   "run": 47,
+   "status": "skipped"
+  },
   "linkedin.com/in/prasath-parivallal-0b80bb32": {
    "run": 14,
    "status": "skipped"
@@ -2517,6 +2558,14 @@
   },
   "linkedin.com/in/raghul-e-63b51b222": {
    "run": 2,
+   "status": "skipped"
+  },
+  "linkedin.com/in/raghunandana-palle": {
+   "run": 47,
+   "status": "skipped"
+  },
+  "linkedin.com/in/rahul-anand-68944aa": {
+   "run": 47,
    "status": "skipped"
   },
   "linkedin.com/in/rahul-bandam-664b0647": {
@@ -4243,6 +4292,11 @@
    "run": 4,
    "status": "skipped"
   },
+  "linkedin.com/in/vinay-pantulwar-86059a10": {
+   "run": 47,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/vinayanand-krishnapuram-05738732": {
    "run": 26,
    "status": "delivered",
@@ -4352,6 +4406,11 @@
   "linkedin.com/in/ynithya": {
    "run": 7,
    "status": "skipped"
+  },
+  "linkedin.com/in/yogesh-jadhav-7766bb74": {
+   "run": 47,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/yogeswari-radha-901856293": {
    "run": 31,
