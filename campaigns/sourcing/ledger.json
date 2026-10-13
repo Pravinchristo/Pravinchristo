@@ -1,6 +1,6 @@
 {
- "next_company": 208,
- "runs": 52,
+ "next_company": 212,
+ "runs": 53,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -831,6 +831,10 @@
    "run": 46,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/chandrakanth-c-88293864": {
+   "run": 53,
+   "status": "skipped"
   },
   "linkedin.com/in/chandrakanth-cilvilla-919a1093": {
    "run": 1,
@@ -2607,6 +2611,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/pradip-pujaar-67563918": {
+   "run": 53,
+   "status": "skipped"
+  },
   "linkedin.com/in/pradipkc": {
    "run": 17,
    "status": "skipped"
@@ -2996,6 +3004,10 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/ram-krishnamurthi": {
+   "run": 53,
+   "status": "skipped"
+  },
   "linkedin.com/in/ram-manishankar-ab694722": {
    "run": 11,
    "status": "delivered",
@@ -3143,6 +3155,10 @@
   },
   "linkedin.com/in/rkswamy": {
    "run": 15,
+   "status": "skipped"
+  },
+  "linkedin.com/in/robert-smith-595067196": {
+   "run": 53,
    "status": "skipped"
   },
   "linkedin.com/in/rohanshah83": {
