@@ -1,6 +1,6 @@
 {
- "next_company": 192,
- "runs": 48,
+ "next_company": 196,
+ "runs": 49,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -187,6 +187,10 @@
    "run": 22,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/akash-jaganathan-kumar-0087211a7": {
+   "run": 49,
+   "status": "skipped"
   },
   "linkedin.com/in/akhilesh-m-547a4914": {
    "run": 4,
@@ -422,6 +426,11 @@
    "run": 36,
    "status": "skipped"
   },
+  "linkedin.com/in/anupam-singh-85b68611": {
+   "run": 49,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/anurag-mohanty-90834893": {
    "run": 6,
    "status": "skipped"
@@ -477,6 +486,10 @@
    "run": 4,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/aritra-hazra-ch1994": {
+   "run": 49,
+   "status": "skipped"
   },
   "linkedin.com/in/arjayaraman": {
    "run": 3,
@@ -705,6 +718,10 @@
    "run": 0,
    "status": "pre-campaign"
   },
+  "linkedin.com/in/brammaiah-k-r-453447190": {
+   "run": 49,
+   "status": "skipped"
+  },
   "linkedin.com/in/brijesh-singh-a547a64": {
    "run": 4,
    "status": "skipped"
@@ -800,6 +817,11 @@
    "run": 6,
    "status": "skipped"
   },
+  "linkedin.com/in/chinmay-upadhyaya-63048623": {
+   "run": 49,
+   "status": "delivered",
+   "tier": "C"
+  },
   "linkedin.com/in/christopherwallace11": {
    "run": 44,
    "status": "skipped"
@@ -859,6 +881,11 @@
   "linkedin.com/in/deepanwita-kar-09752112": {
    "run": 0,
    "status": "pre-campaign"
+  },
+  "linkedin.com/in/deepthy-belavadi-satish-786ba5b2": {
+   "run": 49,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/dejohnrobin": {
    "run": 14,
@@ -1131,6 +1158,11 @@
   "linkedin.com/in/hariharan-velmurugan": {
    "run": 28,
    "status": "skipped"
+  },
+  "linkedin.com/in/harikrishnan-meenakshi-sundaram-1a934b14": {
+   "run": 49,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/harishdoppalapudi": {
    "run": 0,
@@ -2985,8 +3017,16 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/s-s-kanagal-baa5457b": {
+   "run": 49,
+   "status": "skipped"
+  },
   "linkedin.com/in/saad-shaikh-7478a51b4": {
    "run": 30,
+   "status": "skipped"
+  },
+  "linkedin.com/in/sachin-nayak-2159a62a": {
+   "run": 49,
    "status": "skipped"
   },
   "linkedin.com/in/sachinbhatcloudsalessaas": {
