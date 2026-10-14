@@ -1,6 +1,6 @@
 {
- "next_company": 240,
- "runs": 60,
+ "next_company": 244,
+ "runs": 61,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -298,6 +298,11 @@
    "status": "delivered",
    "tier": "A"
   },
+  "linkedin.com/in/amitanand9": {
+   "run": 61,
+   "status": "delivered",
+   "tier": "C"
+  },
   "linkedin.com/in/amitchiripal": {
    "run": 15,
    "status": "delivered",
@@ -310,6 +315,11 @@
   "linkedin.com/in/amogh-varadpande-83135b12": {
    "run": 28,
    "status": "skipped"
+  },
+  "linkedin.com/in/amol-bhaiya": {
+   "run": 61,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/amvys": {
    "run": 41,
@@ -410,6 +420,11 @@
    "run": 6,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/anil-ronad-34a17673": {
+   "run": 61,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/animesh-singhai-anora": {
    "run": 0,
@@ -1161,6 +1176,10 @@
   },
   "linkedin.com/in/farzaanhabib": {
    "run": 12,
+   "status": "skipped"
+  },
+  "linkedin.com/in/fauzia-farooqui": {
+   "run": 61,
    "status": "skipped"
   },
   "linkedin.com/in/ganapathy-shankar-3542049": {
@@ -3151,6 +3170,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/rahulvijaypatil190797": {
+   "run": 61,
+   "status": "delivered",
+   "tier": "C"
+  },
   "linkedin.com/in/raj-kumar-k-s-1320a323": {
    "run": 10,
    "status": "skipped"
@@ -4460,6 +4484,10 @@
   },
   "linkedin.com/in/sreenivasareddygali": {
    "run": 14,
+   "status": "skipped"
+  },
+  "linkedin.com/in/sreenivasuluk": {
+   "run": 61,
    "status": "skipped"
   },
   "linkedin.com/in/sri-krishnakumar-2b6b59195": {
