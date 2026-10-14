@@ -1,6 +1,6 @@
 {
- "next_company": 256,
- "runs": 64,
+ "next_company": 260,
+ "runs": 65,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -703,6 +703,15 @@
    "run": 0,
    "status": "pre-campaign"
   },
+  "linkedin.com/in/ashishsoni": {
+   "run": 65,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/ashita-shah": {
+   "run": 65,
+   "status": "skipped"
+  },
   "linkedin.com/in/ashley-narcis-6249b842": {
    "run": 57,
    "status": "delivered",
@@ -1109,6 +1118,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/dibya-ranjan-mohini-390ab58": {
+   "run": 65,
+   "status": "skipped"
+  },
   "linkedin.com/in/dicy-varghese-198b8462": {
    "run": 45,
    "status": "skipped"
@@ -1434,6 +1447,11 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/harshit-maloo-iimc": {
+   "run": 65,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/hem-pottapati-6a01ab10": {
    "run": 9,
    "status": "skipped"
@@ -1737,6 +1755,11 @@
   },
   "linkedin.com/in/kapilthakker": {
    "run": 14,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/karjoydeep": {
+   "run": 65,
    "status": "delivered",
    "tier": "B"
   },
@@ -2271,6 +2294,10 @@
    "run": 22,
    "status": "skipped"
   },
+  "linkedin.com/in/meldx": {
+   "run": 65,
+   "status": "skipped"
+  },
   "linkedin.com/in/meriljacob": {
    "run": 0,
    "status": "pre-campaign"
@@ -2567,6 +2594,10 @@
    "run": 52,
    "status": "delivered",
    "tier": "C"
+  },
+  "linkedin.com/in/nikhil-vatsa-7500672b": {
+   "run": 65,
+   "status": "skipped"
   },
   "linkedin.com/in/nikhileshmahakur": {
    "run": 6,
@@ -3525,6 +3556,10 @@
   },
   "linkedin.com/in/robert-smith-595067196": {
    "run": 53,
+   "status": "skipped"
+  },
+  "linkedin.com/in/robert-smith-66240a129": {
+   "run": 65,
    "status": "skipped"
   },
   "linkedin.com/in/rohan-kamat-34baa22": {
@@ -4901,6 +4936,10 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/swetabh-ashish-10208715a": {
+   "run": 65,
+   "status": "skipped"
+  },
   "linkedin.com/in/tamil-bharathi-4b7b66133": {
    "run": 37,
    "status": "delivered",
@@ -5237,6 +5276,10 @@
    "run": 47,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/vinaya-lokhande-b243a116": {
+   "run": 65,
+   "status": "skipped"
   },
   "linkedin.com/in/vinayanand-krishnapuram-05738732": {
    "run": 26,
