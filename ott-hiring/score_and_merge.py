@@ -16,6 +16,7 @@ from datetime import date
 
 EXP_MIN, EXP_MAX = 2, 6
 OPEN_SIGNALS = ("Open to work", "Immediate joiner")
+OTT, BACKEND = "OTT", "Kafka / DB / API"
 
 
 def norm_url(url):
@@ -24,15 +25,23 @@ def norm_url(url):
 
 
 def score(c):
-    """0-100 fit score: OTT domain, analytics tools, experience band, availability."""
-    s = 30 if c.get("ott_domain", True) else 10
-    s += min(len(c.get("analytics_tools", [])), 3) * 10
+    """0-100 fit score for the candidate's track, plus experience band and availability.
+
+    OTT: OTT domain 30 (adjacent 10), 10 per analytics tool up to 30.
+    Kafka / DB / API: Kafka testing 30, database testing 15, Postman / REST API testing 15.
+    """
+    if c.get("track", OTT) == BACKEND:
+        skills = set(c.get("skills", []))
+        s = 30 * ("Kafka" in skills) + 15 * ("DB testing" in skills) + 15 * ("Postman API" in skills)
+    else:
+        s = 30 if c.get("ott_domain", True) else 10
+        s += min(len(c.get("analytics_tools", [])), 3) * 10
     exp = c.get("exp_years")
     if exp is None:
         s += 10
     elif EXP_MIN <= exp <= EXP_MAX:
         s += 20
-    s += 20 if c.get("availability") in OPEN_SIGNALS else 0
+    s += 20 if c.get("availability") in OPEN_SIGNALS else 10 if c.get("availability") == "Serving notice" else 0
     return s
 
 
@@ -48,6 +57,7 @@ def from_row(r):
         "company": r["company"], "city": r["city"], "exp_years": r["exp_years"],
         "availability": r["availability"], "analytics_tools": split(r["analytics_tools"]),
         "platforms": split(r["platforms"]), "ott_domain": r.get("ott_domain", True),
+        "track": r.get("track", OTT), "skills": split(r.get("skills", "")),
         "stage": r["stage"], "sourced_on": r["sourced_on"], "last_seen": r["last_seen"], "notes": r["notes"],
     }
 
@@ -62,7 +72,10 @@ def to_row(c):
         "company": c.get("company") or "Not stated",
         "city": c.get("city") or "Not stated",
         "exp_years": exp,
-        "exp_band": "Not stated" if exp is None else "2-3 yrs" if exp < 3.5 else "3.5-5 yrs" if exp <= 5 else "5-6 yrs",
+        "exp_band": "Not stated" if exp is None else "Under 2 yrs" if exp < 2 else "2-3 yrs" if exp < 3.5
+        else "3.5-5 yrs" if exp <= 5 else "5-6 yrs" if exp <= 6 else "Over 6 yrs",
+        "track": c.get("track", OTT),
+        "skills": "; ".join(c.get("skills", [])) or "None stated",
         "availability": c.get("availability") or "Not stated",
         "analytics_tools": "; ".join(c.get("analytics_tools", [])) or "None stated",
         "analytics_tool_count": len(c.get("analytics_tools", [])),
