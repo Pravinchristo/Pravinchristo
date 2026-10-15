@@ -1,6 +1,6 @@
 {
- "next_company": 300,
- "runs": 75,
+ "next_company": 304,
+ "runs": 76,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -103,6 +103,10 @@
   },
   "linkedin.com/in/abhishek-kumar-8357169": {
    "run": 22,
+   "status": "skipped"
+  },
+  "linkedin.com/in/abhishek-shinde-1a090b20": {
+   "run": 76,
    "status": "skipped"
   },
   "linkedin.com/in/abhishekbanerje": {
@@ -331,6 +335,10 @@
    "run": 35,
    "status": "skipped"
   },
+  "linkedin.com/in/amandeep-bansal-609b335": {
+   "run": 76,
+   "status": "skipped"
+  },
   "linkedin.com/in/amardeepbhatia": {
    "run": 6,
    "status": "delivered",
@@ -383,6 +391,10 @@
   },
   "linkedin.com/in/amith-subramanian-pallavoor-18ba814": {
    "run": 2,
+   "status": "skipped"
+  },
+  "linkedin.com/in/amitt-gpta": {
+   "run": 76,
    "status": "skipped"
   },
   "linkedin.com/in/amogh-varadpande-83135b12": {
@@ -942,6 +954,10 @@
    "run": 17,
    "status": "skipped"
   },
+  "linkedin.com/in/bansalanuj24": {
+   "run": 76,
+   "status": "skipped"
+  },
   "linkedin.com/in/basupayel": {
    "run": 60,
    "status": "skipped"
@@ -1412,6 +1428,10 @@
    "run": 36,
    "status": "skipped"
   },
+  "linkedin.com/in/dmenghani": {
+   "run": 76,
+   "status": "skipped"
+  },
   "linkedin.com/in/dougmacswan": {
    "run": 12,
    "status": "skipped"
@@ -1625,6 +1645,10 @@
    "run": 0,
    "status": "pre-campaign"
   },
+  "linkedin.com/in/gulshankmr": {
+   "run": 76,
+   "status": "skipped"
+  },
   "linkedin.com/in/guptaag": {
    "run": 6,
    "status": "delivered",
@@ -1725,6 +1749,10 @@
    "run": 66,
    "status": "skipped"
   },
+  "linkedin.com/in/harjeetchhabra": {
+   "run": 76,
+   "status": "skipped"
+  },
   "linkedin.com/in/harpriya-kapoor-1ba98225": {
    "run": 2,
    "status": "skipped"
@@ -1756,6 +1784,10 @@
    "run": 65,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/harshtiwari1": {
+   "run": 76,
+   "status": "skipped"
   },
   "linkedin.com/in/hem-pottapati-6a01ab10": {
    "run": 9,
@@ -2361,6 +2393,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/ksourav": {
+   "run": 76,
+   "status": "skipped"
+  },
   "linkedin.com/in/kt-nambi-110b44b": {
    "run": 17,
    "status": "skipped"
@@ -2714,6 +2750,10 @@
    "run": 8,
    "status": "skipped"
   },
+  "linkedin.com/in/mohammed-masood-0a65a7155": {
+   "run": 76,
+   "status": "skipped"
+  },
   "linkedin.com/in/mohammed-shabeer-gulam": {
    "run": 2,
    "status": "delivered",
@@ -2942,6 +2982,11 @@
   "linkedin.com/in/naveenss": {
    "run": 2,
    "status": "skipped"
+  },
+  "linkedin.com/in/navneeth-kowdle-6967335": {
+   "run": 76,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/navneetsinghpa": {
    "run": 36,
@@ -3538,6 +3583,10 @@
    "run": 50,
    "status": "skipped"
   },
+  "linkedin.com/in/prasitdash": {
+   "run": 76,
+   "status": "skipped"
+  },
   "linkedin.com/in/prataplata": {
    "run": 35,
    "status": "delivered",
@@ -3882,6 +3931,10 @@
   },
   "linkedin.com/in/rajkumar-n-619a5910": {
    "run": 31,
+   "status": "skipped"
+  },
+  "linkedin.com/in/rajkumar-vyawahare-1417104": {
+   "run": 76,
    "status": "skipped"
   },
   "linkedin.com/in/rajneesh-sales": {
@@ -4665,6 +4718,10 @@
   },
   "linkedin.com/in/sarunachalam": {
    "run": 10,
+   "status": "skipped"
+  },
+  "linkedin.com/in/sasikumar-p-62475213": {
+   "run": 76,
    "status": "skipped"
   },
   "linkedin.com/in/sasikumarhexaware": {
@@ -5515,6 +5572,10 @@
    "run": 41,
    "status": "skipped"
   },
+  "linkedin.com/in/sumit-gupta5796": {
+   "run": 76,
+   "status": "skipped"
+  },
   "linkedin.com/in/sumit-khanna-0728943": {
    "run": 59,
    "status": "skipped"
@@ -5632,6 +5693,10 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/suyash-kumar-58793ba1": {
+   "run": 76,
+   "status": "skipped"
+  },
   "linkedin.com/in/swaati-sood-0908561a": {
    "run": 43,
    "status": "delivered",
@@ -5656,6 +5721,11 @@
   },
   "linkedin.com/in/swati-panchadhar-5102a05": {
    "run": 6,
+   "status": "delivered",
+   "tier": "C"
+  },
+  "linkedin.com/in/swatijain2008": {
+   "run": 76,
    "status": "delivered",
    "tier": "C"
   },
