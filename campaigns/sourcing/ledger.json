@@ -1,6 +1,6 @@
 {
- "next_company": 284,
- "runs": 71,
+ "next_company": 288,
+ "runs": 72,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -240,6 +240,10 @@
    "run": 71,
    "status": "skipped"
   },
+  "linkedin.com/in/ajaynampally": {
+   "run": 72,
+   "status": "skipped"
+  },
   "linkedin.com/in/ajith-s-nair-08299316": {
    "run": 25,
    "status": "skipped"
@@ -376,6 +380,10 @@
    "run": 61,
    "status": "delivered",
    "tier": "B"
+  },
+  "linkedin.com/in/amruta-n-38030812a": {
+   "run": 72,
+   "status": "skipped"
   },
   "linkedin.com/in/amvys": {
    "run": 41,
@@ -536,6 +544,10 @@
   },
   "linkedin.com/in/anjani-kumar-keshri": {
    "run": 59,
+   "status": "skipped"
+  },
+  "linkedin.com/in/ankesh-vibhu-b5755282": {
+   "run": 72,
    "status": "skipped"
   },
   "linkedin.com/in/ankit-agrawal-17825767": {
@@ -990,6 +1002,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/binnywinson": {
+   "run": 72,
+   "status": "skipped"
+  },
   "linkedin.com/in/boopathy-raja-1314aba": {
    "run": 7,
    "status": "delivered",
@@ -1172,6 +1188,10 @@
   },
   "linkedin.com/in/dandapani-rudramoorthy-b12b3042": {
    "run": 57,
+   "status": "skipped"
+  },
+  "linkedin.com/in/danish-aman-b9ba4585": {
+   "run": 72,
    "status": "skipped"
   },
   "linkedin.com/in/dastageer-ansari-04411713a": {
@@ -1371,6 +1391,11 @@
   },
   "linkedin.com/in/erd-partner": {
    "run": 43,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/eswar-prasad-buraga-8138254": {
+   "run": 72,
    "status": "delivered",
    "tier": "B"
   },
@@ -1581,6 +1606,10 @@
    "run": 28,
    "status": "skipped"
   },
+  "linkedin.com/in/hariharan-venkatesan-2862108": {
+   "run": 72,
+   "status": "skipped"
+  },
   "linkedin.com/in/hariharaputhiran-balakrishnan": {
    "run": 69,
    "status": "skipped"
@@ -1598,8 +1627,16 @@
    "run": 67,
    "status": "skipped"
   },
+  "linkedin.com/in/harini-ravii": {
+   "run": 72,
+   "status": "skipped"
+  },
   "linkedin.com/in/harish-kumar-769a6550": {
    "run": 69,
+   "status": "skipped"
+  },
+  "linkedin.com/in/harish-kumar-krishnasamy": {
+   "run": 72,
    "status": "skipped"
   },
   "linkedin.com/in/harish-mattur-40bb8142": {
@@ -1978,6 +2015,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/karthi-thangavel-4285531b8": {
+   "run": 72,
+   "status": "skipped"
+  },
   "linkedin.com/in/karthic-pawar-5a048a11": {
    "run": 51,
    "status": "skipped"
@@ -2167,6 +2208,11 @@
   "linkedin.com/in/koushikc": {
    "run": 7,
    "status": "skipped"
+  },
+  "linkedin.com/in/kporacle": {
+   "run": 72,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/kranthi-kanaka-711aa6229": {
    "run": 62,
@@ -2727,6 +2773,11 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/nandha-chandrasekar": {
+   "run": 72,
+   "status": "delivered",
+   "tier": "B"
+  },
   "linkedin.com/in/nandhakumarpurushothaman": {
    "run": 3,
    "status": "skipped"
@@ -2964,6 +3015,10 @@
   },
   "linkedin.com/in/om-prakash-gurumurthy-207814177": {
    "run": 7,
+   "status": "skipped"
+  },
+  "linkedin.com/in/oviya-maheswaran-36007824a": {
+   "run": 72,
    "status": "skipped"
   },
   "linkedin.com/in/palanisamykarthik": {
@@ -3735,6 +3790,11 @@
   "linkedin.com/in/ram-krishnamurthi": {
    "run": 53,
    "status": "skipped"
+  },
+  "linkedin.com/in/ram-mandal-7008342b": {
+   "run": 72,
+   "status": "delivered",
+   "tier": "B"
   },
   "linkedin.com/in/ram-manishankar-ab694722": {
    "run": 11,
@@ -4960,6 +5020,10 @@
    "status": "delivered",
    "tier": "C"
   },
+  "linkedin.com/in/sivadhas-arumugam-26385923": {
+   "run": 72,
+   "status": "skipped"
+  },
   "linkedin.com/in/sivapalanisamy": {
    "run": 9,
    "status": "skipped"
@@ -5158,6 +5222,10 @@
    "status": "delivered",
    "tier": "B"
   },
+  "linkedin.com/in/srivathsankannan": {
+   "run": 72,
+   "status": "skipped"
+  },
   "linkedin.com/in/srividhya-subramanian-23503898": {
    "run": 5,
    "status": "skipped"
@@ -5226,6 +5294,10 @@
   },
   "linkedin.com/in/sudhirnambiar": {
    "run": 67,
+   "status": "skipped"
+  },
+  "linkedin.com/in/sudipto-roy-a943b168": {
+   "run": 72,
    "status": "skipped"
   },
   "linkedin.com/in/suhas-hegde-1303": {
