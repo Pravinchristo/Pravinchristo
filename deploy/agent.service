@@ -1,0 +1,20 @@
+# systemd unit for running the agent on a Linux server without Docker.
+# Install:
+#   sudo cp deploy/agent.service /etc/systemd/system/agent.service
+#   (edit User and WorkingDirectory below)
+#   sudo systemctl daemon-reload && sudo systemctl enable --now agent
+#   journalctl -u agent -f     # follow logs
+[Unit]
+Description=24/7 personal AI agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=pravin
+WorkingDirectory=/home/pravin/Pravinchristo
+ExecStart=/home/pravin/Pravinchristo/.venv/bin/python -m agent run
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
