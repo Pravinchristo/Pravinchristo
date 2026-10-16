@@ -1,6 +1,6 @@
 {
- "next_company": 348,
- "runs": 87,
+ "next_company": 352,
+ "runs": 88,
  "seen": {
   "linkedin.com/in/01anuj-joshi": {
    "run": 5,
@@ -680,6 +680,10 @@
   },
   "linkedin.com/in/anubhavtripathi": {
    "run": 69,
+   "status": "skipped"
+  },
+  "linkedin.com/in/anujagarwal87": {
+   "run": 88,
    "status": "skipped"
   },
   "linkedin.com/in/anup-c": {
@@ -1426,6 +1430,10 @@
    "run": 66,
    "status": "skipped"
   },
+  "linkedin.com/in/deepak-viswanathan-477123141": {
+   "run": 88,
+   "status": "skipped"
+  },
   "linkedin.com/in/deepakvijayaragavan": {
    "run": 18,
    "status": "delivered",
@@ -1820,6 +1828,10 @@
   "linkedin.com/in/gsrinisid": {
    "run": 0,
    "status": "pre-campaign"
+  },
+  "linkedin.com/in/guhaanindya": {
+   "run": 88,
+   "status": "skipped"
   },
   "linkedin.com/in/gulshankmr": {
    "run": 76,
@@ -2559,6 +2571,10 @@
   },
   "linkedin.com/in/kirananthony": {
    "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/kirankumar-gadde-53356682": {
+   "run": 88,
    "status": "skipped"
   },
   "linkedin.com/in/kiranvardi": {
@@ -3482,6 +3498,11 @@
   "linkedin.com/in/nitin-arora-20a4a6158": {
    "run": 15,
    "status": "skipped"
+  },
+  "linkedin.com/in/nitishbhardwaj9": {
+   "run": 88,
+   "status": "delivered",
+   "tier": "C"
   },
   "linkedin.com/in/nivedita-s-30337b2ab": {
    "run": 18,
@@ -4788,6 +4809,10 @@
    "run": 30,
    "status": "skipped"
   },
+  "linkedin.com/in/sachin-b-s-7b946bb8": {
+   "run": 88,
+   "status": "skipped"
+  },
   "linkedin.com/in/sachin-nayak-2159a62a": {
    "run": 49,
    "status": "skipped"
@@ -6056,6 +6081,10 @@
    "run": 5,
    "status": "skipped"
   },
+  "linkedin.com/in/subramanyam-kondaiahgari-47133065": {
+   "run": 88,
+   "status": "skipped"
+  },
   "linkedin.com/in/subrata-bhattacharya-a19b4a8": {
    "run": 38,
    "status": "skipped"
@@ -6543,6 +6572,10 @@
   },
   "linkedin.com/in/vasudevans777": {
    "run": 42,
+   "status": "skipped"
+  },
+  "linkedin.com/in/vavinash": {
+   "run": 88,
    "status": "skipped"
   },
   "linkedin.com/in/vedraj-mendon-b66895a": {
