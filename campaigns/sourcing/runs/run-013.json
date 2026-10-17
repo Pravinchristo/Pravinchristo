@@ -1,0 +1,30 @@
+{
+ "profiles": [
+  {"name": "Sai Kumar", "url": "https://www.linkedin.com/in/sai-kumar-93bbb051", "head": "Sr Strategic Account Executive, TestingXperts", "loc": "India (city unconfirmed)", "company": "TestingXperts", "years": 8, "tier": "B", "score": 60,
+   "strengths": ["Pure QE services seller at an Everest-rated QE specialist", "Actively selling QE into GCCs (posts on QE for GCCs, Jul 2026)", "8.5 yrs, at the start of the target range"], "gaps": ["City not confirmed (TestingXperts hubs: Chandigarh, Hyderabad)", "AE level"], "next": "Confirm city; strong QE fit"},
+  {"name": "Prem Selvaraj", "url": "https://linkedin.com/in/prem-selvaraj-7070154", "head": "VP Sales, Hexaware (ex Kyndryl, IBM, Calsoft VP Sales)", "loc": "Bengaluru (likely)", "company": "Hexaware Technologies", "years": 20, "tier": "B", "score": 58,
+   "strengths": ["Was VP Sales at Calsoft (Bangalore/Pune/US) and Head of India Sales at Mindteck", "Cloud sales at IBM and Kyndryl APAC; now at Hexaware, which is pushing a GCC 2.0 offer"], "gaps": ["20+ yrs", "Joined Hexaware in 2025"], "next": "Senior option"},
+  {"name": "Soham Ganguly", "url": "https://linkedin.com/in/sohamganguly", "head": "Sr Director Sales – Cloud/DevOps, Hexaware", "loc": "Unconfirmed (ex Bengaluru)", "company": "Hexaware Technologies", "years": 12, "tier": "B", "score": 56,
+   "strengths": ["Says hunting new logos is central to his role; sells Cloud, DevOps and automation services", "Has covered UK & Ireland, Central Europe and APJ; 12 yrs"], "gaps": ["May be based in Europe", "Infra/DevOps, not QE"], "next": "Confirm location"},
+  {"name": "Raghavendra Satwik", "url": "https://linkedin.com/in/satwikraghav", "head": "Client Partner (ex Sr Sales Director Hexaware UK, ex HCLTech)", "loc": "Unconfirmed", "company": "Hexaware / HCLTech", "years": null, "tier": "B", "score": 54,
+   "strengths": ["New-logo and portfolio growth; HCLTech area sales director who generated leads and closed new accounts"], "gaps": ["Was in Manchester to Jul 2025; current city unknown"], "next": "Check if back in India"},
+  {"name": "Pradeep Vijayan", "url": "https://in.linkedin.com/in/pradeepvijayan85", "head": "Strategic GCC Account Leader (SAP/enterprise software)", "loc": "India (city unconfirmed)", "company": "SAP ecosystem", "years": 16, "tier": "B", "score": 52,
+   "strengths": ["Manages strategic GCCs; consistent net-new logos (5 in US testing services, 3 in UAE)", "Has sold cybersecurity and application testing services to US clients"], "gaps": ["Mostly product (SAP/Oracle) sales", "City not visible"], "next": "Screen call"},
+  {"name": "Karthik Palanisamy", "url": "https://linkedin.com/in/palanisamykarthik", "head": "AVP Client Partner, Birlasoft (ex Wipro)", "loc": "Unconfirmed", "company": "Birlasoft", "years": null, "tier": "B", "score": 50,
+   "strengths": ["AVP Client Partner at Birlasoft; Wipro background"], "gaps": ["Profile thin; city and hunting record not visible"], "next": "Research before outreach"},
+  {"name": "Girish Deshpande", "url": "https://linkedin.com/in/girish-deshpande-0918841b", "head": "AVP – Business Development & Customer Engagement, Cybage", "loc": "Pune / US (unconfirmed)", "company": "Cybage Software", "years": 20, "tier": "C", "score": 44,
+   "strengths": ["Closes new client engagements in the Media & Advertising practice"], "gaps": ["Background in delivery; niche vertical"], "next": "Low priority"},
+  {"name": "Girish Agrawal", "url": "https://linkedin.com/in/agrawalgirish17", "head": "Country Lead – France (testing accounts), Capgemini", "loc": "Bengaluru", "company": "Capgemini", "years": 18, "tier": "C", "score": 42,
+   "strengths": ["Owns P&L for testing portfolio; some new-logo and RFP work"], "gaps": ["Delivery leader, not sales"], "next": "Referral source"},
+  {"name": "Kevin Pithalia", "url": "https://in.linkedin.com/in/kevinpithalia", "head": "Client Partner – GCCs, Recro", "loc": "Bengaluru", "company": "Recro", "years": 10, "tier": "C", "score": 42,
+   "strengths": ["Partners with fast-growing GCCs on talent, pods and managed services"], "gaps": ["Staffing-led selling"], "next": "Junior GCC option"},
+  {"name": "Pareekshit Satturwar", "url": "https://linkedin.com/in/pareekshit-satturwar-509707110", "head": "Business Development – ERP & PLM, KPIT", "loc": "Pune", "company": "KPIT", "years": 13, "tier": "C", "score": 40,
+   "strengths": ["13 yrs in BD at KPIT, Pune"], "gaps": ["ERP/PLM practice; specialist level"], "next": "Low priority"}
+ ],
+ "skipped": [
+  "https://www.linkedin.com/in/amit-prabhu-376b829", "https://linkedin.com/in/krudant", "https://in.linkedin.com/in/pratik-namagavali", "https://in.linkedin.com/in/lordvasudevay",
+  "https://linkedin.com/in/arjyadash", "https://linkedin.com/in/venkats311", "https://linkedin.com/in/prakash-gnanasekaran-5848923b", "https://linkedin.com/in/manpreet301285",
+  "https://linkedin.com/in/ravi--shekhar", "https://www.linkedin.com/in/nikhilsnarkhede", "https://linkedin.com/in/prathamesh-kulkarni-b0a83b4", "https://linkedin.com/in/vigneshprabagaran",
+  "https://linkedin.com/in/arnabsethi", "https://linkedin.com/in/joydipa-das-9a9b1511a", "https://linkedin.com/in/shazeeda-d"
+ ]
+}

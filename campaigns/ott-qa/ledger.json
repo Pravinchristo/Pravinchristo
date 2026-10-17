@@ -1,0 +1,153 @@
+{
+ "next_company": 3,
+ "runs": 1,
+ "seen": {
+  "linkedin.com/in/abhishek-sinha-605a777b": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/ankit-kumar-711558117": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/ashlesh-acharya-128553180": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/chethankumargv": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/devmm111": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/divya-devraj": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/gopika-m-85995a16b": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/hemakumar-amasa-927192236": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "A"
+  },
+  "linkedin.com/in/kamal-bhandari": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/karthik-h-s-6002a2189": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "A"
+  },
+  "linkedin.com/in/kevin-chander-r-0322311b5": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "A"
+  },
+  "linkedin.com/in/komal-m-s-34ba23242": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "A"
+  },
+  "linkedin.com/in/mohammad-toukeer-033bab206": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/nidhinrv": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/nikhil-krishna-marella-a64270b2": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/nirajsahu22": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/pavana-jyothi-malladi-332a2521b": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/pradarttana-panda-8431a3a2": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/pushpa-c-ab007a3b4": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/rajesh-rawlo": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/ranjithr0810": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "A"
+  },
+  "linkedin.com/in/ravi-teja-789b08121": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/rohini-govindarajan": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/sachin-linganayak-7231141a4": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "A"
+  },
+  "linkedin.com/in/sarang-hiwarkar-0b140910a": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/shahzad-alam-994a63371": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "C"
+  },
+  "linkedin.com/in/shruthi-d-06058160": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "A"
+  },
+  "linkedin.com/in/suddatta-muddegol": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "C"
+  },
+  "linkedin.com/in/suhas-ar-85097b58": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/ujjwalamohite": {
+   "run": 1,
+   "status": "skipped"
+  },
+  "linkedin.com/in/upendra-tomar": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "B"
+  },
+  "linkedin.com/in/vikas-8076mishra": {
+   "run": 1,
+   "status": "delivered",
+   "tier": "A"
+  }
+ }
+}

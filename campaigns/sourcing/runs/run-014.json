@@ -1,0 +1,28 @@
+{
+ "profiles": [
+  {"name": "Samir Pande", "url": "https://linkedin.com/in/samirpande", "head": "Head of GCC Business, Ascendion (ex HCLTech Sr Regional Sales Director)", "loc": "Bengaluru", "company": "Ascendion", "years": 13, "tier": "A", "score": 72,
+   "strengths": ["Leads GCC business, client acquisition and expansion at Ascendion", "At HCLTech: Account Director in Bengaluru focused on new customer acquisition, then Senior Director BD and Sr Regional Sales Director", "Cognizant BD background; a little over a decade in sales, so in range"], "gaps": ["Now a head-of-business title, may expect a step up", "Tenure in current role not visible"], "next": "Call now — closest match to the GCC hunter brief"},
+  {"name": "Bharath Ramesh", "url": "https://www.linkedin.com/in/bharath-ramesh-49277a8b", "head": "Director of Business Development, Ciklum (ex CES, Indium testing services)", "loc": "Chennai", "company": "Ciklum", "years": 18, "tier": "B", "score": 62,
+   "strengths": ["Has sold software testing services at CES and Indium", "Co-founded Flyers Soft and served as its CRO (US market)", "2.5 yrs in current BD director role"], "gaps": ["18 yrs", "Small-firm background"], "next": "Reach out; QE hunter"},
+  {"name": "Pradeep Ezhil", "url": "https://linkedin.com/in/pradeep-ezhil-56220024", "head": "BD Manager – Global Testing Services, CES (ex Indium BD Leader)", "loc": "Chennai", "company": "CES / TrackDfect", "years": 15, "tier": "B", "score": 60,
+   "strengths": ["Built an independent testing/QA services BD practice from scratch across US, Canada and India", "Led BD for Indium's testing business for 5 yrs"], "gaps": ["May now run his own QA firm (TrackDfect)", "More inside-sales and demand-gen than field closing"], "next": "Check current status"},
+  {"name": "Kapil Thakker", "url": "https://linkedin.com/in/kapilthakker", "head": "VP – India Sales, Ascendion (ex Collabera Digital)", "loc": "Bengaluru", "company": "Ascendion", "years": 19, "tier": "B", "score": 56,
+   "strengths": ["Runs India sales, which is GCC-heavy, from Bengaluru", "16 yrs of sales leadership at Collabera"], "gaps": ["Staffing-led background", "Senior"], "next": "Senior GCC option"},
+  {"name": "Pratham Abhyankar", "url": "https://linkedin.com/in/pratham-abhyankar-94247475", "head": "Client Partner / Business Development & GTM, Brillio (ex Cognizant BDM)", "loc": "Bengaluru", "company": "Brillio", "years": null, "tier": "B", "score": 56,
+   "strengths": ["4.5 yrs in Brillio BD and GTM; now a Client Partner", "Was a BDM at Cognizant, Bengaluru"], "gaps": ["Years probably under 10"], "next": "Reach out"},
+  {"name": "Ashraf Hossain", "url": "https://www.linkedin.com/in/ashrafhossain81", "head": "Managing Partner – BD APAC/ME/India, Altimetrik (ex VP Sales IMEA Coforge)", "loc": "Unconfirmed", "company": "Altimetrik", "years": 20, "tier": "B", "score": 56,
+   "strengths": ["Built new regional businesses from scratch to $25M+", "Has won several Partner of the Year awards"], "gaps": ["Senior; Salesforce/Mulesoft focus", "City not confirmed"], "next": "Senior option"},
+  {"name": "Harish Swaminathan", "url": "https://linkedin.com/in/harishswaminathan", "head": "Senior Manager – Business Development, Cognizant", "loc": "Chennai", "company": "Cognizant", "years": 18, "tier": "B", "score": 50,
+   "strengths": ["QA and test-process consultant who moved into BD; knows the domain deeply"], "gaps": ["Presales and bid support rather than closing"], "next": "Screen for closing record"},
+  {"name": "Karan S", "url": "https://in.linkedin.com/in/ksodan", "head": "Regional Head & Client Partner – Insurance (ex Brillio Account Director)", "loc": "India (unconfirmed)", "company": "—", "years": 20, "tier": "B", "score": 50,
+   "strengths": ["Has hunted new logos and farmed accounts; Brillio account director for global captives"], "gaps": ["Insurance focus", "City not visible"], "next": "Low priority"},
+  {"name": "Pankaj Shekhawat", "url": "https://linkedin.com/in/pankaj-shekhawat-6b23b3160", "head": "Senior Business Manager – GCC, Collabera", "loc": "Bengaluru", "company": "Collabera", "years": null, "tier": "C", "score": 46,
+   "strengths": ["Managed some of Collabera Digital's largest GCC accounts"], "gaps": ["Staffing sales"], "next": "Junior GCC option"},
+  {"name": "Richa Mishra", "url": "https://www.linkedin.com/in/richa-mishra-0915049a", "head": "Client Partner – US, Brillio (ex Wipro)", "loc": "Bengaluru (earlier)", "company": "Brillio", "years": 6, "tier": "C", "score": 42,
+   "strengths": ["Client Partner on US enterprise accounts"], "gaps": ["Only about 6 yrs"], "next": "Junior pipeline"}
+ ],
+ "skipped": [
+  "https://linkedin.com/in/prasath-parivallal-0b80bb32", "https://linkedin.com/in/sreenivasareddygali", "https://linkedin.com/in/ganeshram08",
+  "https://in.linkedin.com/in/veenagudi", "https://linkedin.com/in/dejohnrobin"
+ ]
+}

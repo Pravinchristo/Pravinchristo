@@ -1,0 +1,29 @@
+{
+ "profiles": [
+  {"name": "Balamurugan Rajamanikam", "url": "https://in.linkedin.com/in/balamuruganar", "head": "Director – US Sales, Indium", "loc": "Chennai", "company": "Indium", "years": 16, "tier": "B", "score": 66,
+   "strengths": ["US sales director selling QE/test automation, data, GenAI and app modernization", "16 yrs; new business plus enterprise account growth", "Chennai, near the range"], "gaps": ["Joined Jul 2026 (just moved)", "Telecom-heavy past (Verizon/AT&T)"], "next": "Keep warm; approach in 6 months"},
+  {"name": "Rajesh Neelakantan", "url": "https://linkedin.com/in/rajesh-neelakantan-8782311", "head": "Sr VP – Global Sales, Diksha Technologies", "loc": "Bengaluru", "company": "Diksha Technologies", "years": 22, "tier": "B", "score": 62,
+   "strengths": ["New-logo acquisition across NA, ANZ, APAC, ME; services include QA and DevOps", "Earlier acquired marquee enterprises worth $0.75-5M each", "Bengaluru; 4 yrs in the US"], "gaps": ["22 yrs (above range)", "Small firm"], "next": "Reach out; seasoned hunter"},
+  {"name": "Santosh JN", "url": "https://linkedin.com/in/santosh-jn-651bbb1bb", "head": "VP Sales – iXie Gaming, Indium (ex Sales Director, Relevantz)", "loc": "Chennai", "company": "Indium (iXie)", "years": null, "tier": "B", "score": 62,
+   "strengths": ["Direct-sales expert; sells game testing/QA and development services", "Earlier Sales Director at Relevantz, Chennai"], "gaps": ["Gaming niche", "Years not visible"], "next": "Reach out"},
+  {"name": "Jyothi KV", "url": "https://linkedin.com/in/jyothidasari", "head": "Ex Senior Director – Sales, Indium (ex LinkedIn Account Director)", "loc": "Chennai", "company": "Indium / LinkedIn", "years": null, "tier": "B", "score": 60,
+   "strengths": ["Senior Director Sales at Indium (2023-24); LinkedIn Talent Solutions account director", "Global account manager, enterprise sales, Chennai"], "gaps": ["Short Indium stint; current role unclear"], "next": "Check current status"},
+  {"name": "RK Saranya", "url": "https://www.linkedin.com/in/saranyasd", "head": "Senior Manager – IT Consulting Sales, Indium", "loc": "Chennai", "company": "Indium", "years": null, "tier": "B", "score": 58,
+   "strengths": ["Added 20+ new logos at HTC Global; Indium IT services sales since Mar 2026"], "gaps": ["Staff-augmentation background", "Joined Mar 2026"], "next": "Keep warm"},
+  {"name": "Arun Kumar Hariharan", "url": "https://www.linkedin.com/in/arun-kumar-hariharan-29357317", "head": "Business Development Manager, Indium (ex Changepond)", "loc": "Chennai", "company": "Indium", "years": 15, "tier": "B", "score": 58,
+   "strengths": ["15+ yrs BD; new business acquisition for the US market at Changepond", "Sells Indium digital assurance (uphoriX), Chennai"], "gaps": ["BDM level; presales-heavy"], "next": "Reach out"},
+  {"name": "Aamir Hussain", "url": "https://linkedin.com/in/aamirh9", "head": "Director – Enterprise Sales, TestMu AI (LambdaTest)", "loc": "Bengaluru", "company": "TestMu AI", "years": null, "tier": "B", "score": 54,
+   "strengths": ["Full quota every quarter; new-logo team for EU/APAC; testing infrastructure"], "gaps": ["SaaS product, not services"], "next": "Junior QE hunter option"},
+  {"name": "Sudharshan Sundar", "url": "https://linkedin.com/in/sudharshan-sundar-4418238", "head": "VP Pre-sales, Indium (ex Director BD – Healthcare)", "loc": "Chennai", "company": "Indium", "years": null, "tier": "C", "score": 48,
+   "strengths": ["Earlier BD director for US health insurers"], "gaps": ["Presales now"], "next": "Referral source"},
+  {"name": "Monica Paul", "url": "https://linkedin.com/in/monica-paul-038b2861", "head": "Business Development Manager, Qualitia Software", "loc": "Pune", "company": "Qualitia (test automation)", "years": null, "tier": "C", "score": 42,
+   "strengths": ["Test automation platform BD; partnerships incl. QualityKiosk"], "gaps": ["Marketing/communications heavy"], "next": "Junior pipeline"}
+ ],
+ "skipped": [
+  "https://linkedin.com/in/pradeep-h-n-31a1b050", "https://linkedin.com/in/yatinpwagh", "https://linkedin.com/in/apoorvajha", "https://linkedin.com/in/rohith2068",
+  "https://linkedin.com/in/snehalbash", "https://linkedin.com/in/varaghuramselvan", "https://linkedin.com/in/shivangi-sharma-bba36858", "https://www.linkedin.com/in/joeburns2",
+  "https://linkedin.com/in/prashant-kumar-79874b1a3", "https://linkedin.com/in/deal-closer-saurabh", "https://linkedin.com/in/rahul-bandam-664b0647", "https://linkedin.com/in/pavani-bollipalli-779a4a187",
+  "https://linkedin.com/in/sayan-kar-80788a9a", "https://linkedin.com/in/sarunachalam", "https://www.linkedin.com/in/ishan-roy-2053b957", "https://in.linkedin.com/in/manigandan-c-b5211710",
+  "https://www.linkedin.com/in/raj-kumar-k-s-1320a323", "https://in.linkedin.com/in/udit-w-bb4505168", "https://in.linkedin.com/in/ninad-berry"
+ ]
+}

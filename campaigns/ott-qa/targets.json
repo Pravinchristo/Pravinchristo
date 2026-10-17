@@ -1,0 +1,29 @@
+{
+ "role": "OTT Test Engineer (analytics validation)",
+ "years": [2, 6],
+ "locations": ["Bengaluru", "Chennai", "Hyderabad", "Pune", "Noida", "Mumbai", "India"],
+ "must": ["OTT / streaming / video-player testing", "analytics or tracking validation tools"],
+ "devices": ["Smart TV", "Android TV", "Fire TV", "Roku", "Apple TV", "Tizen", "webOS", "iOS", "Android", "Web"],
+ "tools": ["Adobe Analytics", "Google Analytics", "GA4", "Firebase", "Mixpanel", "Conviva", "NPAW/Youbora", "Mux", "Charles Proxy", "Fiddler", "Omniture", "Segment", "CleverTap", "MoEngage", "Amplitude", "Kibana", "Grafana", "SQL"],
+ "availability_signals": ["#OpenToWork", "open to work", "immediate joiner", "serving notice", "available immediately", "15 days notice"],
+ "companies": [
+  {"name": "JioHotstar", "kind": "ott"},
+  {"name": "Tata Elxsi", "kind": "media-qa"},
+  {"name": "Analytics angle: Adobe Analytics / GA4 / Charles Proxy", "kind": "angle"},
+  {"name": "ZEE5", "kind": "ott"},
+  {"name": "Accedo / Quickplay", "kind": "media-qa"},
+  {"name": "Availability angle: #OpenToWork OTT tester", "kind": "angle"},
+  {"name": "SonyLIV", "kind": "ott"},
+  {"name": "Amagi / Synamedia", "kind": "media-qa"},
+  {"name": "Analytics angle: Conviva / NPAW / Mux QoE", "kind": "angle"},
+  {"name": "Amazon Prime Video India", "kind": "ott"},
+  {"name": "Qualitest / Cigniti / TestingXperts", "kind": "media-qa"},
+  {"name": "Availability angle: immediate joiner streaming QA", "kind": "angle"},
+  {"name": "Tata Play / Airtel Xstream", "kind": "ott"},
+  {"name": "Robosoft / 24i / Kaltura", "kind": "media-qa"},
+  {"name": "Device angle: Smart TV / Roku / Fire TV tester", "kind": "angle"},
+  {"name": "MX Player / Sun NXT / Aha", "kind": "ott"},
+  {"name": "Applause / Globant / Sasken", "kind": "media-qa"},
+  {"name": "Analytics angle: Mixpanel / CleverTap / Firebase event QA", "kind": "angle"}
+ ]
+}

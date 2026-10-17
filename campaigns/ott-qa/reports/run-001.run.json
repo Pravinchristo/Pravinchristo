@@ -1,0 +1,17 @@
+{
+ "run": 1,
+ "at": "2026-10-12T09:40:46.000Z",
+ "targets": [
+  "JioHotstar",
+  "Tata Elxsi",
+  "Analytics angle: Adobe Analytics / GA4 / Charles Proxy"
+ ],
+ "new": 19,
+ "repeats": 0,
+ "screened": 13,
+ "tiers": {
+  "A": 8,
+  "B": 9,
+  "C": 2
+ }
+}

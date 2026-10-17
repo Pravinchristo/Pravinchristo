@@ -1,0 +1,231 @@
+<title>OTT QA Talent Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#f4f5f8; --panel:#ffffff; --ink:#141824; --muted:#5d6478; --line:#dfe2ea; --soft:#eceef4;
+  --accent:#d6245a; --accent-ink:#ffffff; --accent-soft:#fbe3ea;
+  --a:#0f8a5f; --a-soft:#dcf3ea; --b:#b7791f; --b-soft:#fbefd9; --c:#6b7280; --c-soft:#eceef2;
+  --imm:#0b6bcb; --imm-soft:#ddeefc; --open:#7c3aed; --open-soft:#eee5fd;
+  --bar1:#c0c0c0; --bar2:#c0c000; --bar3:#00c0c0; --bar4:#00c000; --bar5:#c000c0; --bar6:#c00000; --bar7:#0000c0;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d1017; --panel:#151a24; --ink:#e8ebf2; --muted:#98a0b3; --line:#262d3b; --soft:#1c2230;
+  --accent:#ff4f80; --accent-ink:#1a0a10; --accent-soft:#3a1622;
+  --a:#3fd39a; --a-soft:#123528; --b:#f2b74e; --b-soft:#3a2c12; --c:#a3aab8; --c-soft:#242a36;
+  --imm:#5aa9ff; --imm-soft:#13283f; --open:#b18cff; --open-soft:#2a1e44; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0d1017; --panel:#151a24; --ink:#e8ebf2; --muted:#98a0b3; --line:#262d3b; --soft:#1c2230;
+  --accent:#ff4f80; --accent-ink:#1a0a10; --accent-soft:#3a1622;
+  --a:#3fd39a; --a-soft:#123528; --b:#f2b74e; --b-soft:#3a2c12; --c:#a3aab8; --c-soft:#242a36;
+  --imm:#5aa9ff; --imm-soft:#13283f; --open:#b18cff; --open-soft:#2a1e44; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 "Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
+.bars{display:flex;height:6px}.bars i{flex:1}
+header{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;padding-block:22px 18px}
+h1{font:700 clamp(22px,4vw,30px)/1.15 Sora,system-ui,sans-serif;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1 .rec{display:inline-flex;align-items:center;gap:6px;font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.08em;color:var(--accent);vertical-align:middle;margin-left:10px}
+h1 .rec::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.brief{color:var(--muted);font-size:13.5px;max-width:62ch;margin:6px 0 0}
+.meta{font:12px/1.4 "JetBrains Mono",monospace;color:var(--muted);text-align:right}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.kpi{background:var(--panel);padding:14px 16px;cursor:pointer;border:0;text-align:left;color:inherit;font:inherit}
+.kpi:hover{background:var(--soft)}
+.kpi b{display:block;font:600 26px/1.1 "JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+.kpi span{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.kpi.on{box-shadow:inset 0 -3px 0 var(--accent)}
+@media (max-width:720px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-block:18px 12px}
+.filters select,.filters input{font:inherit;font-size:13.5px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);min-width:0}
+.filters input{flex:1 1 200px}
+.count{font:12px "JetBrains Mono",monospace;color:var(--muted);margin-left:auto}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.list{display:flex;flex-direction:column;gap:10px;min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:52px minmax(0,1fr);gap:4px 14px}
+.score{grid-row:span 3;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:8px;height:52px;font:600 18px/1 "JetBrains Mono",monospace}
+.score small{font-size:10px;letter-spacing:.06em;margin-top:3px}
+.tA{background:var(--a-soft);color:var(--a)}.tB{background:var(--b-soft);color:var(--b)}.tC{background:var(--c-soft);color:var(--c)}
+.top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+.name{font:600 16px/1.3 Sora,system-ui,sans-serif;color:var(--ink);text-decoration:none}
+.name:hover{color:var(--accent)}
+.sub{color:var(--muted);font-size:13px}
+.pill{font:600 11px/1 "Inter Tight",sans-serif;padding:4px 8px;border-radius:999px;white-space:nowrap}
+.p-imm{background:var(--imm-soft);color:var(--imm)}.p-open{background:var(--open-soft);color:var(--open)}.p-left{background:var(--soft);color:var(--ink)}
+.head{font-size:13.5px}
+.tools{display:flex;flex-wrap:wrap;gap:5px}
+.tools span{font:11.5px "JetBrains Mono",monospace;background:var(--soft);border:1px solid var(--line);padding:2px 7px;border-radius:5px}
+.why{grid-column:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 18px;font-size:13px;margin-top:6px}
+@media (max-width:560px){.why{grid-template-columns:minmax(0,1fr)}.card{grid-template-columns:44px minmax(0,1fr)}.score{height:44px}}
+.why ul{margin:0;padding-left:16px}.why h4{margin:0 0 2px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.foot{grid-column:2;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.foot .next{flex:1 1 220px;min-width:0}
+.st{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.st button{font:600 11.5px "Inter Tight",sans-serif;border:0;background:var(--panel);color:var(--muted);padding:5px 9px;cursor:pointer}
+.st button+button{border-left:1px solid var(--line)}
+.st button.on{background:var(--accent);color:var(--accent-ink)}
+.st button:disabled{cursor:default;opacity:.6}
+aside{display:flex;flex-direction:column;gap:16px;min-width:0}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.box h3{margin:0 0 10px;font:600 13px Sora,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em}
+.run{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 10px;padding-block:8px;border-top:1px solid var(--line);font-size:12.5px}
+.run:first-of-type{border-top:0}
+.run .n{font:600 13px "JetBrains Mono",monospace;color:var(--accent)}
+.run .t{color:var(--muted);grid-column:2/4}
+.run .x{font:12px "JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+.toolbar{display:flex;flex-direction:column;gap:6px}
+.tb{display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr) 22px;gap:8px;align-items:center;font-size:12px}
+.tb .bar{height:8px;background:var(--soft);border-radius:4px;overflow:hidden}.tb .bar i{display:block;height:100%;background:var(--accent)}
+.tb em{font:12px "JetBrains Mono",monospace;font-style:normal;text-align:right}
+.tb span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.empty{padding:30px;text-align:center;color:var(--muted);background:var(--panel);border:1px dashed var(--line);border-radius:10px}
+.note{font-size:12px;color:var(--muted)}
+</style>
+
+<div class="bars" aria-hidden="true"><i style="background:var(--bar1)"></i><i style="background:var(--bar2)"></i><i style="background:var(--bar3)"></i><i style="background:var(--bar4)"></i><i style="background:var(--bar5)"></i><i style="background:var(--bar6)"></i><i style="background:var(--bar7)"></i></div>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>OTT QA Talent Desk <span class="rec">DAILY SWEEP</span></h1>
+      <p class="brief">OTT Test Engineers, 2–6 years, who test streaming apps on Smart TV, Android TV, Fire TV, Roku, mobile and web, and who validate analytics events (Conviva, Mixpanel, Adobe Analytics, CleverTap, Charles Proxy). Open-to-work and immediate joiners rank first.</p>
+    </div>
+    <div class="meta" id="meta">Connecting…</div>
+  </header>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="filters">
+    <select id="fTier" aria-label="Tier"><option value="">All tiers</option><option>A</option><option>B</option><option>C</option></select>
+    <select id="fAvail" aria-label="Availability"><option value="">Any availability</option><option>Immediate joiner</option><option>Open to work</option><option>Recently left role</option><option>Not signalled</option></select>
+    <select id="fCity" aria-label="City"><option value="">All cities</option></select>
+    <select id="fTool" aria-label="Analytics tool"><option value="">Any tool</option></select>
+    <select id="fStatus" aria-label="Pipeline status"><option value="">Any status</option><option>New</option><option>Shortlisted</option><option>Contacted</option><option>Rejected</option></select>
+    <input id="fq" type="search" placeholder="Search name, company, skill…">
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="grid">
+    <div class="list" id="list"><div class="empty">Loading candidates…</div></div>
+    <aside>
+      <div class="box"><h3>Sweep log</h3><div id="runs"><p class="note">No runs yet.</p></div></div>
+      <div class="box"><h3>Analytics tools in pool</h3><div class="toolbar" id="toolbars"></div></div>
+      <p class="note">Status changes are shared with everyone who opens this desk. A new sweep is added each morning (09:45 IST), and a profile never appears twice.</p>
+    </aside>
+  </div>
+</div>
+
+<script>
+const S = { cands: [], runs: [], status: {}, kpi: "" };
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const STATUSES = ["New","Shortlisted","Contacted","Rejected"];
+let db = null;
+
+function stat(id){ return S.status[id]?.status || "New"; }
+
+function filtered(){
+  const t=$("fTier").value, a=$("fAvail").value, c=$("fCity").value, tool=$("fTool").value, st=$("fStatus").value, q=$("fq").value.trim().toLowerCase();
+  return S.cands.filter(x=>{
+    if(t && x.screen?.tier!==t) return false;
+    if(a && x.avail!==a) return false;
+    if(c && x.city!==c) return false;
+    if(tool && !(x.tools||[]).includes(tool)) return false;
+    if(st && stat(x.id)!==st) return false;
+    if(S.kpi==="avail" && !["Immediate joiner","Open to work"].includes(x.avail)) return false;
+    if(q && ![x.name,x.head,x.source,(x.tools||[]).join(" "),(x.screen?.strengths||[]).join(" ")].join(" ").toLowerCase().includes(q)) return false;
+    return true;
+  }).sort((p,q)=>{
+    const ra = v => v==="Immediate joiner"?0:v==="Open to work"?1:2;
+    return (q.screen?.score||0)-(p.screen?.score||0) || ra(p.avail)-ra(q.avail);
+  });
+}
+
+function renderKpis(){
+  const c=S.cands, n=t=>c.filter(x=>x.screen?.tier===t).length;
+  const imm=c.filter(x=>x.avail==="Immediate joiner").length, open=c.filter(x=>x.avail==="Open to work").length;
+  const short=c.filter(x=>stat(x.id)==="Shortlisted").length;
+  const k=[["all",c.length,"Profiles"],["A",n("A"),"Tier A"],["B",n("B"),"Tier B"],["imm",imm,"Immediate"],["open",open,"Open to work"],["short",short,"Shortlisted"]];
+  $("kpis").innerHTML=k.map(([key,v,l])=>`<button class="kpi${S.kpi===key?" on":""}" data-k="${key}"><b>${v}</b><span>${l}</span></button>`).join("");
+}
+
+function avPill(a){
+  if(a==="Immediate joiner") return '<span class="pill p-imm">Immediate joiner</span>';
+  if(a==="Open to work") return '<span class="pill p-open">Open to work</span>';
+  if(a==="Recently left role") return '<span class="pill p-left">Recently left role</span>';
+  return "";
+}
+
+function renderList(){
+  const rows=filtered();
+  $("count").textContent=`${rows.length} of ${S.cands.length}`;
+  if(!S.cands.length){ $("list").innerHTML='<div class="empty">No candidates yet. The first sweep will appear here.</div>'; return; }
+  if(!rows.length){ $("list").innerHTML='<div class="empty">No profiles match these filters.</div>'; return; }
+  $("list").innerHTML=rows.map(x=>{
+    const s=x.screen||{}, cur=stat(x.id);
+    return `<article class="card">
+      <div class="score t${esc(s.tier)}">${esc(s.score)}<small>TIER ${esc(s.tier)}</small></div>
+      <div class="top"><a class="name" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>
+        <span class="sub">${esc(x.city||x.loc)} · ${x.years!=null?esc(x.years)+" yrs":"yrs ?"}</span>${avPill(x.avail)}</div>
+      <div class="head">${esc(x.head)}</div>
+      <div class="tools">${(x.tools||[]).map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="why"><div><h4>Why</h4><ul>${(s.strengths||[]).map(v=>`<li>${esc(v)}</li>`).join("")}</ul></div>
+        <div><h4>Watch-outs</h4><ul>${(s.gaps||[]).map(v=>`<li>${esc(v)}</li>`).join("")}</ul></div></div>
+      <div class="foot"><span class="next">Next: ${esc(s.next)} · <span>${esc(x.source)}</span></span>
+        <span class="st" role="group" aria-label="Status">${STATUSES.map(v=>`<button data-id="${esc(x.id)}" data-s="${v}" class="${v===cur?"on":""}" ${db?"":"disabled"}>${v}</button>`).join("")}</span></div>
+    </article>`;
+  }).join("");
+}
+
+function renderSide(){
+  $("runs").innerHTML = S.runs.length ? S.runs.slice().sort((a,b)=>b.run-a.run).map(r=>`
+    <div class="run"><span class="n">#${String(r.run).padStart(3,"0")}</span><span>${esc((r.at||"").slice(0,10))}</span>
+      <span class="x">+${r.new} · A${r.tiers?.A??0}</span><span class="t">${esc((r.targets||[]).join(" · "))}</span></div>`).join("")
+    : '<p class="note">No runs yet.</p>';
+  const counts={}; S.cands.forEach(x=>(x.tools||[]).forEach(t=>counts[t]=(counts[t]||0)+1));
+  const top=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,10), max=top[0]?.[1]||1;
+  $("toolbars").innerHTML = top.map(([t,v])=>`<div class="tb"><span title="${esc(t)}">${esc(t)}</span><div class="bar"><i style="width:${v/max*100}%"></i></div><em>${v}</em></div>`).join("") || '<p class="note">No data yet.</p>';
+}
+
+function fillSelects(){
+  const keep=(id,vals)=>{ const el=$(id), v=el.value, first=el.options[0].outerHTML;
+    el.innerHTML=first+vals.map(x=>`<option>${esc(x)}</option>`).join(""); el.value=vals.includes(v)?v:""; };
+  keep("fCity",[...new Set(S.cands.map(x=>x.city||x.loc).filter(Boolean))].sort());
+  keep("fTool",[...new Set(S.cands.flatMap(x=>x.tools||[]))].sort());
+}
+
+function render(){ renderKpis(); renderList(); renderSide(); }
+
+document.addEventListener("input",e=>{ if(e.target.closest(".filters")) renderList(); });
+$("kpis").addEventListener("click",e=>{
+  const b=e.target.closest(".kpi"); if(!b) return; const k=b.dataset.k;
+  $("fTier").value=""; $("fAvail").value=""; $("fStatus").value=""; S.kpi="";
+  if(k==="A"||k==="B") $("fTier").value=k;
+  else if(k==="imm") $("fAvail").value="Immediate joiner";
+  else if(k==="open") $("fAvail").value="Open to work";
+  else if(k==="short") $("fStatus").value="Shortlisted";
+  S.kpi = k==="all" ? "" : k; render();
+});
+$("list").addEventListener("click",async e=>{
+  const b=e.target.closest(".st button"); if(!b||!db) return;
+  const id=b.dataset.id, s=b.dataset.s; if(stat(id)===s) return;
+  const prev=S.status[id]; S.status[id]={status:s}; render();
+  try{ await db.doc("status/"+id).set({status:s,at:new Date().toISOString()}); }
+  catch(err){ S.status[id]=prev; render(); $("meta").textContent="Status not saved: "+(err?.message||"write refused"); }
+});
+
+(async()=>{
+  try{ db = await window.claude?.use?.("db"); }catch{ db=null; }
+  if(!db){ $("meta").textContent="Live data unavailable in this view"; $("list").innerHTML='<div class="empty">Open this desk on claude.ai to see the candidate pool.</div>'; return; }
+  $("meta").textContent="Live";
+  db.collection("candidates").onSnapshot(snap=>{
+    S.cands=(snap.docs||snap).map(d=>({id:d.id,...(d.data?d.data():d)}));
+    fillSelects(); render();
+    const last=S.runs.map(r=>r.at).sort().pop();
+    $("meta").innerHTML=`${S.cands.length} profiles<br>${last?"last sweep "+esc(last.slice(0,16).replace("T"," "))+" UTC":""}`;
+  });
+  db.collection("runs").onSnapshot(snap=>{ S.runs=(snap.docs||snap).map(d=>(d.data?d.data():d)); renderSide();
+    const last=S.runs.map(r=>r.at).sort().pop(); if(last) $("meta").innerHTML=`${S.cands.length} profiles<br>last sweep ${esc(last.slice(0,16).replace("T"," "))} UTC`; });
+  db.collection("status").onSnapshot(snap=>{ S.status={}; (snap.docs||snap).forEach(d=>S.status[d.id]=(d.data?d.data():d)); render(); });
+})();
+</script>

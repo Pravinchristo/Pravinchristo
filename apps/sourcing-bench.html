@@ -1,0 +1,649 @@
+<title>Sourcing Bench</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a recruiting desk. Team rail on the left, one working column of gated steps (Brief → Huddle → Source → Screen → Engage). */
+:root{
+  --bg:#F2F4F1; --panel:#FFFFFF; --ink:#16211C; --muted:#5B6862; --line:#D9DFDA;
+  --accent:#0E6B5C; --accent-ink:#FFFFFF; --saffron:#B8740A;
+  --john:#3557A6; --maria:#8A3E78; --izel:#0E6B5C;
+  --good:#1F7A3D; --warn:#A86A00; --bad:#A63A2F; --chip:#E8ECE8; --code:#EEF2EE;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#101614; --panel:#18201D; --ink:#E6ECE8; --muted:#9AA8A1; --line:#2B3632;
+  --accent:#3FB59E; --accent-ink:#06120F; --saffron:#E3A33A;
+  --john:#8BA8F0; --maria:#D88CC4; --izel:#3FB59E;
+  --good:#5CC27D; --warn:#E3A33A; --bad:#E8796C; --chip:#222C28; --code:#1D2623; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101614; --panel:#18201D; --ink:#E6ECE8; --muted:#9AA8A1; --line:#2B3632;
+  --accent:#3FB59E; --accent-ink:#06120F; --saffron:#E3A33A;
+  --john:#8BA8F0; --maria:#D88CC4; --izel:#3FB59E;
+  --good:#5CC27D; --warn:#E3A33A; --bad:#E8796C; --chip:#222C28; --code:#1D2623; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px 48px}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(26px,4vw,36px);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:4px 0 0;max-width:60ch}
+.steps{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.steps li{font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.steps li.on{background:var(--accent);color:var(--accent-ink)}
+.steps li.done{color:var(--accent)}
+.grid{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;margin-top:20px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+aside.team{display:grid;gap:10px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+@media (max-width:860px){aside.team{position:static;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}}
+.rec{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:start}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-weight:700;color:var(--panel);font-size:17px}
+.rec h3{margin:0;font-family:var(--f-display);font-size:16px}
+.rec .role{font-size:12px;color:var(--muted)}
+.rec .st{grid-column:1/-1;font-size:13px;padding:6px 8px;border-radius:6px;background:var(--chip);min-height:32px}
+.mode{font-size:12px;color:var(--muted);padding:4px 2px}
+main{display:grid;gap:18px;min-width:0}
+section.step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;min-width:0}
+section.step.locked{opacity:.55}
+section.step h2{font-family:var(--f-display);font-size:21px;margin:0 0 2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.owner{font-family:var(--f-body);font-size:12px;font-weight:500;padding:2px 8px;border-radius:999px;color:var(--panel)}
+.hint{color:var(--muted);margin:0 0 14px;font-size:14px;max-width:70ch}
+.lockmsg{font-size:13px;color:var(--saffron);margin:0 0 10px}
+form.brief{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+label{display:grid;gap:4px;font-size:13px;font-weight:500;min-width:0}
+label small{font-weight:400;color:var(--muted)}
+input,textarea,select{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%;min-width:0}
+textarea{min-height:72px;resize:vertical}
+.full{grid-column:1/-1}
+input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:14px;font-weight:600;border-radius:8px;padding:9px 14px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+button:disabled{opacity:.5;cursor:not-allowed}
+button.small{padding:5px 10px;font-size:13px}
+.huddle{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.hcard{border:1px solid var(--line);border-top:4px solid var(--c);border-radius:10px;padding:12px;display:grid;gap:8px;min-width:0}
+.hcard h4{margin:0;font-family:var(--f-display);font-size:16px;color:var(--c)}
+.hcard p{margin:0;font-size:14px}
+.q{display:grid;gap:4px}
+.q span{font-size:13px;font-weight:500}
+.strings{display:grid;gap:10px}
+.sq{border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:8px;min-width:0}
+.sq .lbl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--john);font-weight:600}
+.sq code{font-family:var(--f-mono);font-size:13px;background:var(--code);padding:8px 10px;border-radius:6px;display:block;overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+.links{display:flex;flex-wrap:wrap;gap:6px}
+.links a{font-size:13px;font-weight:600;color:var(--john);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.links a:hover{border-color:var(--john)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;font-weight:600}
+.tier{display:inline-block;min-width:26px;text-align:center;font-weight:700;border-radius:6px;padding:2px 6px;color:var(--panel)}
+.tA{background:var(--good)}.tB{background:var(--accent)}.tC{background:var(--warn)}.tD{background:var(--bad)}
+.notes{font-size:13px;color:var(--muted)}
+.drafts{display:grid;gap:10px}
+.draft{border:1px solid var(--line);border-left:4px solid var(--izel);border-radius:8px;padding:10px 12px;display:grid;gap:6px;min-width:0}
+.draft h5{margin:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--izel)}
+.draft pre{margin:0;font-family:var(--f-body);font-size:14px;white-space:pre-wrap;word-break:break-word}
+.meta{font-size:12px;color:var(--muted)}
+.empty{padding:14px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);font-size:14px}
+.sub2{font-family:var(--f-display);font-size:16px;margin:16px 0 8px}
+.chans{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.chans label{display:flex;align-items:center;gap:6px;font-weight:500;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;cursor:pointer}
+.chans input{width:auto;margin:0}
+.found{display:grid;gap:10px}
+.fcard{border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:6px;min-width:0}
+.fcard .top{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between}
+.fcard a.nm{font-weight:600;color:var(--ink);text-decoration:none;word-break:break-word}
+.fcard a.nm:hover{text-decoration:underline}
+.ch{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--john);background:var(--chip);border-radius:999px;padding:2px 8px}
+.fcard p{margin:0;font-size:13px;color:var(--muted);white-space:pre-line;word-break:break-word}
+.fcard.sent{opacity:.6}
+.warnbox{font-size:13px;color:var(--saffron);margin:6px 0}
+.thinking::after{content:" …";animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.2}}
+@media (prefers-reduced-motion:reduce){.thinking::after{animation:none}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Sourcing Bench</h1>
+      <p class="sub">Three AI recruiters work your search. They read your brief and ask their questions first. Sourcing only starts after you approve.</p>
+    </div>
+    <ol class="steps" id="steps">
+      <li data-s="1">Brief</li><li data-s="2">Huddle</li><li data-s="3">Source</li><li data-s="4">Screen</li><li data-s="5">Engage</li>
+    </ol>
+  </header>
+
+  <div class="grid">
+    <aside class="team" aria-label="Recruiting team">
+      <div class="rec"><div class="av" style="background:var(--john)">J</div><div><h3>John</h3><div class="role">Sourcing strategist · search strings &amp; X-ray</div></div><div class="st" id="st-john">Waiting for your brief.</div></div>
+      <div class="rec"><div class="av" style="background:var(--maria)">M</div><div><h3>Maria</h3><div class="role">Screening lead · scores &amp; tiers profiles</div></div><div class="st" id="st-maria">Waiting for your brief.</div></div>
+      <div class="rec"><div class="av" style="background:var(--izel)">I</div><div><h3>Izel</h3><div class="role">Engagement lead · outreach drafts</div></div><div class="st" id="st-izel">Waiting for your brief.</div></div>
+      <div class="mode" id="mode">Connecting to Claude…</div>
+    </aside>
+
+    <main>
+      <!-- 1 BRIEF -->
+      <section class="step" id="s1">
+        <h2>1 · Your brief</h2>
+        <p class="hint">Everything the team does starts here. The form is filled in with the IGS Client Partner role. Edit it for any search.</p>
+        <form class="brief" id="briefForm">
+          <label>Role title<input id="b-role" required></label>
+          <label>Company<input id="b-company"></label>
+          <label>Target titles <small>comma separated</small><input id="b-titles"></label>
+          <label>Locations <small>comma separated</small><input id="b-locs"></label>
+          <label>Must-have skills / service lines<input id="b-skills"></label>
+          <label>Experience (years)<input id="b-exp" placeholder="8-18"></label>
+          <label>Target companies to source from<input id="b-targets"></label>
+          <label>Exclude <small>words to filter out</small><input id="b-excl"></label>
+          <label class="full">What good looks like<textarea id="b-notes"></textarea></label>
+          <div class="row full"><button class="primary" type="submit" id="briefBtn">Brief the team</button><span class="meta" id="briefMeta"></span></div>
+        </form>
+      </section>
+
+      <!-- 2 HUDDLE -->
+      <section class="step locked" id="s2">
+        <h2>2 · Team huddle</h2>
+        <p class="hint">Each recruiter plays back what they heard and asks what they still need. Answer what you can, then approve.</p>
+        <div id="huddle" class="huddle"><div class="empty full">The team's questions show up here once you send the brief.</div></div>
+        <div class="row" style="margin-top:12px"><button class="primary" id="approveBtn" disabled>Approve &amp; start sourcing</button><span class="meta" id="approveMeta"></span></div>
+      </section>
+
+      <!-- 3 SOURCE -->
+      <section class="step locked" id="s3">
+        <h2>3 · Sourcing <span class="owner" style="background:var(--john)">John</span></h2>
+        <p class="lockmsg" id="lock3">Locked until you approve the brief in the huddle.</p>
+        <p class="hint">John fetches real profiles across the web through your Exa connector. Send the ones you like to Maria. He also writes X-ray strings for Google, LinkedIn, GitHub, X and Octohunt that you can run in your own browser.</p>
+        <h3 class="sub2">Fetch profiles</h3>
+        <div class="chans" id="chans">
+          <label><input type="checkbox" id="ch-linkedin" checked> LinkedIn</label>
+          <label><input type="checkbox" id="ch-github"> GitHub</label>
+          <label><input type="checkbox" id="ch-x"> X / Twitter</label>
+          <label><input type="checkbox" id="ch-web" checked> Talks, blogs &amp; press</label>
+          <label style="border:0;padding:0">Per channel <select id="ch-n" style="width:auto"><option>5</option><option selected>10</option><option>20</option></select></label>
+        </div>
+        <div class="row"><button class="primary" id="fetchBtn" disabled>Fetch profiles</button><button id="screenAllBtn" disabled>Send all new to Maria</button><span class="meta" id="fetchMeta"></span></div>
+        <div class="warnbox" id="exaNote" hidden></div>
+        <div id="found" class="found" style="margin-top:12px"></div>
+        <h3 class="sub2">Search in your browser</h3>
+        <div class="row" style="margin-bottom:10px"><button id="regenBtn" class="small" disabled>Ask John for fresh strings</button></div>
+        <div id="strings" class="strings"></div>
+      </section>
+
+      <!-- 4 SCREEN -->
+      <section class="step locked" id="s4">
+        <h2>4 · Screening <span class="owner" style="background:var(--maria)">Maria</span></h2>
+        <p class="hint">Paste a profile's name, link and headline or About text. Maria scores it against your brief and puts it in a tier.</p>
+        <form class="brief" id="candForm">
+          <label>Name<input id="c-name" required></label>
+          <label>Profile URL<input id="c-url" type="url" placeholder="https://www.linkedin.com/in/…"></label>
+          <label>Current title &amp; company<input id="c-head" placeholder="Client Partner at …"></label>
+          <label>Location<input id="c-loc"></label>
+          <label class="full">Profile text <small>headline, About, experience: paste what you can see</small><textarea id="c-text"></textarea></label>
+          <div class="row full"><button class="primary" type="submit" id="candBtn" disabled>Ask Maria to screen</button><span class="meta" id="candMeta"></span></div>
+        </form>
+        <div class="tablewrap" style="margin-top:14px">
+          <table><thead><tr><th>Tier</th><th>Score</th><th>Candidate</th><th>Maria's read</th><th></th></tr></thead><tbody id="pipe"></tbody></table>
+        </div>
+      </section>
+
+      <!-- 5 ENGAGE -->
+      <section class="step locked" id="s5">
+        <h2>5 · Outreach <span class="owner" style="background:var(--izel)">Izel</span></h2>
+        <p class="hint">Pick a screened candidate. Izel writes a connection note, a first message and a follow-up. Send them yourself from LinkedIn.</p>
+        <div class="row"><select id="engSel" style="max-width:360px"><option value="">Choose a candidate</option></select><button class="primary" id="engBtn" disabled>Ask Izel to draft</button></div>
+        <div id="drafts" class="drafts" style="margin-top:12px"></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const DEFAULT_BRIEF = {
+    role: "Client Partner – Enterprise Sales & Account Growth",
+    company: "Intact Green Services (IGS)",
+    titles: "Client Partner, Account Director, Sales Director, Global Sales Manager, GCC Sales Lead, Business Development Director",
+    locs: "Bengaluru, Bangalore",
+    skills: "Quality Engineering, Test Automation, DevOps, Digital Engineering, Managed Services, AI-led QE",
+    exp: "8-18",
+    targets: "Cigniti, Qualitest, QualityKiosk, TestingXperts, Happiest Minds, LTIMindtree, Hexaware, Mphasis, Coforge, Zensar",
+    excl: "recruiter, talent acquisition, intern, SDR, BDR, staffing",
+    notes: "A hunter who has personally opened enterprise logos (Fortune 500, GCCs, SI ecosystems), can name the first executive contact, deal size and sales cycle, and builds pitch decks with pre-sales. Not a renewals-only account manager. US-market relationships are a plus.",
+  };
+  const F = ["role","company","titles","locs","skills","exp","targets","excl","notes"];
+  let state = { brief: null, huddle: null, answers: {}, approved: false, strings: null };
+  let candidates = [];
+  let sample = null, db = null;
+
+  const list = (s) => (s || "").split(",").map((x) => x.trim()).filter(Boolean);
+  const q = (s) => (/\s/.test(s) ? `"${s}"` : s);
+  const orGroup = (arr) => arr.length ? (arr.length === 1 ? q(arr[0]) : "(" + arr.map(q).join(" OR ") + ")") : "";
+  const setStatus = (who, text, busy) => { const el = $("st-" + who); el.textContent = text; el.classList.toggle("thinking", !!busy); };
+  const errCopy = (e) => ({ not_granted: "Claude isn't allowed on this page, so the built-in playbook is answering.", rate_limited: "Too many requests right now. Try again in a minute.", sampling_disabled: "Claude isn't available on this account, so the built-in playbook is answering." }[e && e.code] || "Claude didn't answer, so the built-in playbook is answering.");
+
+  // ---------- storage (db when available, else this browser) ----------
+  const LS = "sourcing-bench-v1";
+  function lsSave() { try { localStorage.setItem(LS, JSON.stringify({ state, candidates, found: typeof found === "undefined" ? [] : found })); } catch (_) {} }
+  function lsLoad() { try { return JSON.parse(localStorage.getItem(LS) || "null"); } catch (_) { return null; } }
+  async function saveState() { if (db) { try { await db.doc("desk/current").set(JSON.parse(JSON.stringify(state))); } catch (_) {} } lsSave(); }
+  async function saveCandidate(c) { if (db) { try { await db.doc("candidates/" + c.id).set(c); } catch (_) {} } lsSave(); }
+  async function deleteCandidate(id) { candidates = candidates.filter((c) => c.id !== id); if (db) { try { await db.doc("candidates/" + id).delete(); } catch (_) {} } lsSave(); renderPipe(); }
+
+  // ---------- built-in playbook (used when Claude is unavailable) ----------
+  function localHuddle(b) {
+    return {
+      john: { heard: `Sourcing ${b.role} for ${b.company} in ${list(b.locs).join(" / ") || "your locations"}, pulling from ${list(b.targets).slice(0, 3).join(", ") || "target companies"} and similar firms.`,
+        questions: ["Should I include candidates abroad who would relocate to India?", "Any companies we must not poach from (clients or partners)?", "Should Naukri and Google X-ray be used alongside LinkedIn?"] },
+      maria: { heard: `I'll screen for ${b.exp || "the stated"} years in enterprise services sales, proof of new logos they opened themselves, and fit with ${list(b.skills).slice(0, 3).join(", ")}.`,
+        questions: ["What minimum first-deal size counts as a real new logo (e.g. $250K TCV)?", "Is pure account management (renewals) a hard no, or a C-tier keep?", "Must they have sold into GCCs specifically?"] },
+      izel: { heard: `I'll write short, specific outreach that leads with the hunting angle and asks for one logo story, in your voice.`,
+        questions: ["Can I mention a compensation range or 'top of market'?", "Should messages come from you (Pravin) or the hiring leader?", "Formal or conversational tone?"] },
+    };
+  }
+  function localStrings(b, answers) {
+    const t = orGroup(list(b.titles)), s = orGroup(list(b.skills)), l = orGroup(list(b.locs)), c = orGroup(list(b.targets).slice(0, 8));
+    const ex = list(b.excl).map((x) => "-" + q(x)).join(" ");
+    const wantAbroad = /yes|abroad|relocat|global|us\b|usa/i.test(Object.values(answers || {}).join(" "));
+    const out = [
+      { label: "Core X-ray", query: `site:linkedin.com/in ${t} ${s} ${l} ${ex}`.trim() },
+      { label: "From target companies", query: `site:linkedin.com/in ${t} ${c} ${l}`.trim() },
+      { label: "Hunter signals", query: `site:linkedin.com/in ${t} ("new logo" OR "new business" OR "net new" OR hunter) ${s} ${l}`.trim() },
+      { label: "GCC sellers", query: `site:linkedin.com/in ${t} ("GCC" OR "global capability") ${s} ${l}`.trim() },
+      { label: "LinkedIn search box", query: `${t} AND ${s}`.trim(), linkedin: true },
+      { label: "X / Twitter X-ray", query: `(site:x.com OR site:twitter.com) ${t} ${s} ${l}`.trim() },
+      { label: "GitHub X-ray", query: `site:github.com ${s} ${l} -topics -repositories`.trim() },
+      { label: "GitHub & Octohunt", query: `${q(list(b.skills)[0] || "testing")} location:${(list(b.locs)[0] || "India").replace(/\s+/g, "")}`, github: true },
+    ];
+    if (wantAbroad) out.push({ label: "Abroad, open to India", query: `site:linkedin.com/in ${t} ${s} ("United States" OR Dubai OR Singapore OR London) (India OR Bengaluru)` });
+    return out;
+  }
+  function localScore(b, c) {
+    const txt = [c.head, c.loc, c.text].join(" ").toLowerCase();
+    let score = 0; const strengths = [], gaps = [];
+    const titleHit = list(b.titles).find((x) => txt.includes(x.toLowerCase()));
+    if (titleHit) { score += 20; strengths.push(`Title matches "${titleHit}"`); } else gaps.push("No target title found");
+    const skillHits = list(b.skills).filter((x) => txt.includes(x.toLowerCase()));
+    score += Math.min(25, skillHits.length * 7); skillHits.length ? strengths.push("Sells " + skillHits.join(", ")) : gaps.push("No matching service lines");
+    const hunter = ["new logo", "new business", "net new", "hunter", "acquired", "opened", "originated", "closed", "won"].filter((k) => txt.includes(k));
+    if (hunter.length) { score += Math.min(25, 10 + hunter.length * 5); strengths.push("Hunter language: " + hunter.join(", ")); } else gaps.push("No evidence of new-logo hunting");
+    if (list(b.locs).some((x) => txt.includes(x.toLowerCase()))) { score += 10; strengths.push("Location fits"); } else gaps.push("Location not confirmed");
+    const yrs = (txt.match(/(\d{1,2})\+?\s*(?:years|yrs)/) || [])[1];
+    const [lo, hi] = (b.exp || "").split("-").map(Number);
+    if (yrs) { const y = +yrs; if ((!lo || y >= lo) && (!hi || y <= hi + 2)) { score += 10; strengths.push(`${y} years`); } else gaps.push(`${y} years is outside ${b.exp}`); } else gaps.push("Years not stated");
+    if (list(b.targets).some((x) => txt.includes(x.toLowerCase()))) { score += 10; strengths.push("From a target company"); }
+    if (list(b.excl).some((x) => txt.includes(x.toLowerCase()))) { score -= 20; gaps.push("Matches an exclude word"); }
+    score = Math.max(0, Math.min(100, score));
+    const tier = score >= 70 ? "A" : score >= 50 ? "B" : score >= 30 ? "C" : "D";
+    const next = { A: "Reach out today", B: "Reach out; probe for logo stories", C: "Keep warm; ask for referrals", D: "Pass politely" }[tier];
+    return { score, tier, strengths, gaps, next };
+  }
+  function localDrafts(b, c) {
+    const first = (c.name || "there").split(" ")[0];
+    const where = c.head ? ` at ${c.head.split(/ at /i)[1] || c.head}` : "";
+    return {
+      connection: `Hi ${first}, I'm hiring a ${b.role.split("–")[0].trim()} at ${b.company} (${list(b.locs)[0] || "India"}). Your work${where} stood out. Open to connecting?`.slice(0, 300),
+      message: `Hi ${first}, thanks for connecting.\n\n${b.company} is hiring a ${b.role} to open new enterprise logos and grow them across ${list(b.skills).slice(0, 3).join(", ")}. You'd work directly with leadership and have a path to build the team.\n\nTo see if it fits, could you share one or two logos you opened yourself, your first executive contact there, and the starting deal size?\n\nIf it lines up, I'd like a 15-minute call this week.`,
+      followup: `Hi ${first}, following up on the ${b.role.split("–")[0].trim()} role. If the timing isn't right, I'd still welcome a referral to the strongest services hunter you know.`,
+    };
+  }
+
+  // ---------- Claude calls with fallback ----------
+  const briefText = (b) => F.map((k) => `${k}: ${b[k] || "-"}`).join("\n");
+  const answersText = () => Object.entries(state.answers || {}).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join("\n") || "(none given)";
+  async function ask(prompt, fallback, tier) {
+    if (!sample) return { data: fallback(), via: "playbook" };
+    try { const data = await sample.json(prompt, { modelTier: tier || "default" }); return { data, via: "claude" }; }
+    catch (e) { return { data: fallback(), via: "playbook", err: e }; }
+  }
+
+  // ---------- render ----------
+  function renderSteps() {
+    const done = { 1: !!state.brief, 2: state.approved, 3: state.approved && !!state.strings, 4: candidates.length > 0, 5: candidates.some((c) => c.drafts) };
+    const cur = !state.brief ? 1 : !state.approved ? 2 : !candidates.length ? 3 : !done[5] ? 4 : 5;
+    document.querySelectorAll("#steps li").forEach((li) => { const s = +li.dataset.s; li.className = s === cur ? "on" : done[s] ? "done" : ""; });
+    $("s2").classList.toggle("locked", !state.brief);
+    ["s3", "s4", "s5"].forEach((id) => $(id).classList.toggle("locked", !state.approved));
+    $("lock3").hidden = state.approved;
+    $("regenBtn").disabled = !state.approved;
+    $("candBtn").disabled = !state.approved;
+    $("engBtn").disabled = !state.approved || !$("engSel").value;
+    $("approveBtn").disabled = !state.huddle || state.approved;
+    $("approveMeta").textContent = state.approved ? "Approved. Sourcing is open." : "";
+  }
+  function renderHuddle() {
+    const box = $("huddle"); box.replaceChildren();
+    if (!state.huddle) { const d = document.createElement("div"); d.className = "empty"; d.textContent = "The team's questions show up here once you send the brief."; box.append(d); return; }
+    const who = [["john", "John", "var(--john)"], ["maria", "Maria", "var(--maria)"], ["izel", "Izel", "var(--izel)"]];
+    for (const [k, name, color] of who) {
+      const h = state.huddle[k] || { heard: "", questions: [] };
+      const card = document.createElement("div"); card.className = "hcard"; card.style.setProperty("--c", color);
+      const h4 = document.createElement("h4"); h4.textContent = name + " heard";
+      const p = document.createElement("p"); p.textContent = h.heard || "";
+      card.append(h4, p);
+      (h.questions || []).slice(0, 3).forEach((qq, i) => {
+        const key = `${name} Q${i + 1}: ${qq}`;
+        const wrap = document.createElement("label"); wrap.className = "q";
+        const sp = document.createElement("span"); sp.textContent = qq;
+        const inp = document.createElement("input"); inp.id = `ans-${k}-${i}`; inp.value = state.answers[key] || ""; inp.disabled = state.approved; inp.placeholder = "Your answer (optional)";
+        inp.addEventListener("change", () => { state.answers[key] = inp.value.trim(); saveState(); });
+        wrap.append(sp, inp); card.append(wrap);
+      });
+      box.append(card);
+    }
+  }
+  function renderStrings() {
+    const box = $("strings"); box.replaceChildren();
+    if (!state.approved) return;
+    if (!state.strings) { const d = document.createElement("div"); d.className = "empty"; d.textContent = "John is preparing searches."; box.append(d); return; }
+    for (const s of state.strings) {
+      const card = document.createElement("div"); card.className = "sq";
+      const lbl = document.createElement("div"); lbl.className = "lbl"; lbl.textContent = s.label;
+      const code = document.createElement("code"); code.textContent = s.query;
+      const links = document.createElement("div"); links.className = "links";
+      const enc = encodeURIComponent(s.query);
+      const targets = s.linkedin
+        ? [["LinkedIn people search", `https://www.linkedin.com/search/results/people/?keywords=${enc}`]]
+        : s.github
+        ? [["GitHub user search", `https://github.com/search?q=${enc}&type=users`], ["Octohunt", "https://octohunt.com/"]]
+        : [["Google", `https://www.google.com/search?q=${enc}`], ["Bing", `https://www.bing.com/search?q=${enc}`], ["DuckDuckGo", `https://duckduckgo.com/?q=${enc}`]];
+      for (const [t, href] of targets) { const a = document.createElement("a"); a.href = href; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Open in " + t; links.append(a); }
+      const copy = document.createElement("button"); copy.className = "small"; copy.type = "button"; copy.textContent = "Copy";
+      copy.addEventListener("click", () => copyText(s.query, copy));
+      links.append(copy);
+      card.append(lbl, code, links); box.append(card);
+    }
+  }
+  function renderPipe() {
+    const tb = $("pipe"); tb.replaceChildren();
+    const sorted = [...candidates].sort((a, b) => (b.screen?.score || 0) - (a.screen?.score || 0));
+    if (!sorted.length) { const tr = document.createElement("tr"); const td = document.createElement("td"); td.colSpan = 5; td.className = "notes"; td.textContent = "No candidates yet. Paste a profile above and Maria will screen it."; tr.append(td); tb.append(tr); }
+    for (const c of sorted) {
+      const tr = document.createElement("tr");
+      const t1 = document.createElement("td"); const tier = document.createElement("span"); tier.className = "tier t" + (c.screen?.tier || "D"); tier.textContent = c.screen?.tier || "–"; t1.append(tier);
+      const t2 = document.createElement("td"); t2.className = "num"; t2.textContent = c.screen?.score ?? "–";
+      const t3 = document.createElement("td");
+      const nm = c.url ? Object.assign(document.createElement("a"), { href: c.url, target: "_blank", rel: "noopener", textContent: c.name }) : Object.assign(document.createElement("strong"), { textContent: c.name });
+      nm.style.color = "var(--ink)"; nm.style.fontWeight = "600";
+      const hd = document.createElement("div"); hd.className = "notes"; hd.textContent = [c.head, c.loc].filter(Boolean).join(" · ");
+      t3.append(nm, hd);
+      const t4 = document.createElement("td"); t4.className = "notes";
+      const s = c.screen || {};
+      t4.textContent = [(s.strengths || []).length ? "+ " + s.strengths.join("; ") : "", (s.gaps || []).length ? "− " + s.gaps.join("; ") : "", s.next ? "Next: " + s.next : ""].filter(Boolean).join("\n");
+      t4.style.whiteSpace = "pre-line";
+      const t5 = document.createElement("td");
+      const del = document.createElement("button"); del.className = "small"; del.type = "button"; del.textContent = "Remove";
+      del.addEventListener("click", () => deleteCandidate(c.id));
+      t5.append(del);
+      tr.append(t1, t2, t3, t4, t5); tb.append(tr);
+    }
+    const sel = $("engSel"); const cur = sel.value; sel.replaceChildren(new Option("Choose a candidate", ""));
+    for (const c of sorted) sel.append(new Option(`${c.screen?.tier || "–"} · ${c.name}`, c.id));
+    sel.value = candidates.some((c) => c.id === cur) ? cur : "";
+    renderDrafts(); renderSteps();
+  }
+  function renderDrafts() {
+    const box = $("drafts"); box.replaceChildren();
+    const c = candidates.find((x) => x.id === $("engSel").value);
+    if (!c) { const d = document.createElement("div"); d.className = "empty"; d.textContent = candidates.length ? "Choose a candidate to see Izel's drafts." : "Screen a candidate first. Izel drafts outreach for anyone in the pipeline."; box.append(d); return; }
+    if (!c.drafts) { const d = document.createElement("div"); d.className = "empty"; d.textContent = `No drafts for ${c.name} yet. Ask Izel to draft.`; box.append(d); return; }
+    for (const [k, title] of [["connection", "Connection note (under 300 characters)"], ["message", "First message after they accept"], ["followup", "Follow-up after 3 days"]]) {
+      const d = document.createElement("div"); d.className = "draft";
+      const h = document.createElement("h5"); h.textContent = title;
+      const pre = document.createElement("pre"); pre.textContent = c.drafts[k] || "";
+      const row = document.createElement("div"); row.className = "row";
+      const b = document.createElement("button"); b.className = "small"; b.type = "button"; b.textContent = "Copy"; b.addEventListener("click", () => copyText(c.drafts[k] || "", b));
+      const m = document.createElement("span"); m.className = "meta"; m.textContent = `${(c.drafts[k] || "").length} characters`;
+      row.append(b, m); d.append(h, pre, row); box.append(d);
+    }
+  }
+  function copyText(text, btn) {
+    const done = () => { const o = btn.textContent; btn.textContent = "Copied"; setTimeout(() => (btn.textContent = o), 1200); };
+    try { navigator.clipboard.writeText(text).then(done, () => (btn.textContent = "Select and copy")); } catch (_) { btn.textContent = "Select and copy"; }
+  }
+  function fillBrief(b) { F.forEach((k) => ($("b-" + k).value = b[k] || "")); }
+  function readBrief() { const b = {}; F.forEach((k) => (b[k] = $("b-" + k).value.trim())); return b; }
+  function teamStatus() {
+    if (!state.brief) return ["john", "maria", "izel"].forEach((w) => setStatus(w, "Waiting for your brief."));
+    if (!state.approved) return ["john", "maria", "izel"].forEach((w) => setStatus(w, "Waiting for your answers and approval."));
+    setStatus("john", state.strings ? `${state.strings.length} searches ready.` : "Preparing searches.");
+    const a = candidates.filter((c) => c.screen?.tier === "A").length;
+    setStatus("maria", candidates.length ? `${candidates.length} screened · ${a} in tier A.` : "Ready to screen profiles.");
+    const d = candidates.filter((c) => c.drafts).length;
+    setStatus("izel", d ? `Drafts ready for ${d} candidate${d > 1 ? "s" : ""}.` : "Ready to draft outreach.");
+  }
+  function renderAll() { renderHuddle(); renderStrings(); renderFound(); renderPipe(); teamStatus(); renderSteps(); }
+
+  // ---------- actions ----------
+  $("briefForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const b = readBrief();
+    state = { brief: b, huddle: null, answers: {}, approved: false, strings: null };
+    renderAll();
+    $("briefBtn").disabled = true; $("briefMeta").textContent = "The team is reading your brief…";
+    ["john", "maria", "izel"].forEach((w) => setStatus(w, "Reading the brief", true));
+    const prompt = `You are a recruiting team of three: John (sourcing strategist), Maria (screening lead), Izel (engagement/outreach lead). A hiring manager gave this brief:\n\n${briefText(b)}\n\nEach recruiter plays back in one sentence what they heard (in their own role's terms) and asks the 3 most useful clarifying questions for THEIR part of the job before any sourcing starts. Reply with only JSON: {"john":{"heard":string,"questions":[string,string,string]},"maria":{...},"izel":{...}}`;
+    const r = await ask(prompt, () => localHuddle(b));
+    state.huddle = r.data && r.data.john ? r.data : localHuddle(b);
+    $("briefBtn").disabled = false; $("briefMeta").textContent = r.via === "claude" ? "Briefed. Answer the team's questions below." : (r.err ? errCopy(r.err) : "Briefed with the built-in playbook.");
+    await saveState(); renderAll();
+    $("s2").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  });
+
+  async function buildStrings(fresh) {
+    setStatus("john", "Building searches", true); $("regenBtn").disabled = true;
+    const b = state.brief;
+    const prompt = `You are John, a senior technical sourcer. Write ${fresh ? "6 NEW, different" : "6"} search strings for this brief. Cover several channels: Google X-ray for LinkedIn (site:linkedin.com/in), X/Twitter (site:x.com OR site:twitter.com) and GitHub (site:github.com); one plain Boolean for the LinkedIn search box (mark it linkedin:true); and one GitHub user-search query using GitHub qualifiers like location: (mark it github:true; it also opens Octohunt). Use OR groups for titles and keep strings short enough to return results (avoid ANDing many quoted titles). Respect the hiring manager's answers.\n\nBRIEF:\n${briefText(b)}\n\nANSWERS:\n${answersText()}\n\nReply with only a JSON array: [{"label": short name, "query": string, "linkedin": boolean, "github": boolean}]`;
+    const r = await ask(fresh ? prompt + `\n(variation ${Date.now() % 1000})` : prompt, () => localStrings(b, state.answers));
+    const arr = Array.isArray(r.data) ? r.data.filter((x) => x && x.query) : [];
+    state.strings = arr.length ? arr.map((x) => ({ label: String(x.label || "Search"), query: String(x.query), linkedin: !!x.linkedin, github: !!x.github })) : localStrings(b, state.answers);
+    await saveState(); renderAll();
+  }
+  $("approveBtn").addEventListener("click", async () => {
+    state.approved = true; await saveState(); renderAll();
+    await buildStrings(false);
+  });
+  $("regenBtn").addEventListener("click", () => buildStrings(true));
+
+  const newId = (p) => p + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  const MARIA_RULES = `You are Maria, a rigorous recruiting screener. Score candidates 0-100 against the brief and the hiring manager's answers. Weigh evidence of personally opening new enterprise logos most heavily; renewal-only account management scores low. Only use what the profile text says; do not assume.`;
+  const normScreen = (s, fb, via) => {
+    const ok = s && typeof s.score === "number";
+    const v = ok ? s : fb;
+    return { score: Math.round(v.score), tier: ["A", "B", "C", "D"].includes(v.tier) ? v.tier : fb.tier, strengths: (v.strengths || []).map(String).slice(0, 3), gaps: (v.gaps || []).map(String).slice(0, 3), next: String(v.next || ""), via: ok ? via : "playbook" };
+  };
+  const candBlock = (c, i) => `#${i} id=${c.id}\nName: ${c.name}\nTitle/company: ${c.head}\nLocation: ${c.loc}\nSource: ${c.source || "pasted"}\nProfile text:\n${(c.text || "").slice(0, 2500)}`;
+  // Screens a list of candidates in one Claude call (or with the playbook), saves them, returns the last error if any.
+  async function screenMany(list) {
+    const b = state.brief;
+    setStatus("maria", `Screening ${list.length} profile${list.length > 1 ? "s" : ""}`, true);
+    let lastErr = null;
+    for (let i = 0; i < list.length; i += 8) {
+      const chunk = list.slice(i, i + 8);
+      const prompt = `${MARIA_RULES}\n\nBRIEF:\n${briefText(b)}\n\nANSWERS:\n${answersText()}\n\nCANDIDATES:\n${chunk.map(candBlock).join("\n\n")}\n\nReply with only a JSON array, one object per candidate in the same order: [{"id": the candidate id, "score": number, "tier": "A"|"B"|"C"|"D", "strengths": [up to 3 short strings], "gaps": [up to 3 short strings], "next": "one short next step"}]`;
+      const r = await ask(prompt, () => chunk.map((c) => Object.assign({ id: c.id }, localScore(b, c))));
+      if (r.err) lastErr = r.err;
+      const arr = Array.isArray(r.data) ? r.data : [];
+      for (const c of chunk) {
+        const s = arr.find((x) => x && x.id === c.id) || arr[chunk.indexOf(c)];
+        c.screen = normScreen(s, localScore(b, c), r.via);
+        if (!candidates.some((x) => x.id === c.id)) candidates.push(c);
+        await saveCandidate(c);
+      }
+      renderAll();
+    }
+    return lastErr;
+  }
+
+  $("candForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const c = { id: newId("c"), name: $("c-name").value.trim(), url: $("c-url").value.trim(), head: $("c-head").value.trim(), loc: $("c-loc").value.trim(), text: $("c-text").value.trim().slice(0, 6000), source: "pasted", added: new Date().toISOString() };
+    if (!c.name) return;
+    $("candBtn").disabled = true; $("candMeta").textContent = `Maria is screening ${c.name}…`;
+    const err = await screenMany([c]);
+    $("candForm").reset(); $("candBtn").disabled = false; $("candMeta").textContent = `${c.name}: tier ${c.screen.tier}, score ${c.screen.score}${err ? ". " + errCopy(err) : ""}`;
+    renderAll();
+  });
+
+  // ---------- John: fetch real profiles through the Exa connector ----------
+  let mcp = null;
+  let found = [];
+  const EXA = "Exa";
+  const CHANNELS = {
+    linkedin: { label: "LinkedIn", build: (b) => ({ query: `category:people ${list(b.titles).slice(0, 3).join(" or ")} selling ${list(b.skills).slice(0, 3).join(", ")} services, based in ${list(b.locs)[0] || "India"}`, objective: `LinkedIn profiles (linkedin.com/in) of people currently in roles like ${list(b.titles).join(", ")} who sell ${list(b.skills).join(", ")}, located in ${list(b.locs).join(" or ")}. Rank first people with evidence of winning new enterprise clients. Exclude recruiters, job postings and company pages.` }) },
+    github: { label: "GitHub", build: (b) => ({ query: `GitHub user profile of a ${list(b.skills)[0] || "software"} professional based in ${list(b.locs)[0] || "India"}`, objective: `GitHub user profile pages (github.com/<username>) of people working in ${list(b.skills).join(", ")} located in ${list(b.locs).join(" or ")}. Exclude repositories, topics and organisation pages.` }) },
+    x: { label: "X / Twitter", build: (b) => ({ query: `X (Twitter) profile of a ${list(b.titles)[0] || "sales leader"} in ${list(b.skills)[0] || "IT services"} based in ${list(b.locs)[0] || "India"}`, objective: `Profile pages on x.com or twitter.com of individual people in roles like ${list(b.titles).join(", ")} in ${list(b.skills).join(", ")}, located in ${list(b.locs).join(" or ")}. Exclude company accounts and individual posts.` }) },
+    web: { label: "Talks, blogs & press", build: (b) => ({ query: `conference talk, podcast or article featuring a ${list(b.titles)[0] || "sales leader"} from an IT services firm on ${list(b.skills).slice(0, 2).join(" and ")} sales, ${list(b.locs)[0] || "India"}`, objective: `Pages that name a specific person who is a ${list(b.titles).join(" / ")} in ${list(b.skills).join(", ")} services, such as speaker bios, interviews, award lists and articles. Exclude job postings.` }) },
+  };
+  const urlKey = (u) => (u || "").toLowerCase().replace(/^https?:\/\/(www\.|[a-z]{2}\.)?/, "").replace(/[?#].*$/, "").replace(/\/$/, "");
+  const docId = (u) => "f" + Array.from(urlKey(u)).reduce((h, ch) => ((h * 31 + ch.charCodeAt(0)) >>> 0), 7).toString(36);
+  function parseExa(payload, channel) {
+    if (payload && Array.isArray(payload.results)) {
+      return payload.results.map((r) => toFound({ title: r.title, url: r.url, body: [r.text, ...(r.highlights || [])].filter(Boolean).join("\n") }, channel));
+    }
+    const text = typeof payload === "string" ? payload : payload && typeof payload.text === "string" ? payload.text : "";
+    return text.split(/\n-{3,}\n/).map((blk) => {
+      const title = (blk.match(/^Title:\s*(.+)$/m) || [])[1];
+      const url = (blk.match(/^URL:\s*(\S+)/m) || [])[1];
+      const hi = blk.split(/^Highlights:\s*$/m)[1] ?? blk.replace(/^(Title|URL|Published|Author):.*$/gm, "");
+      return title && url ? toFound({ title, url, body: hi }, channel) : null;
+    }).filter(Boolean);
+  }
+  function toFound({ title, url, body }, channel) {
+    const clean = (body || "").replace(/\n?\.\.\.\n?/g, "\n").replace(/\n{2,}/g, "\n").trim();
+    const lines = clean.split("\n").map((l) => l.trim()).filter(Boolean);
+    const loc = (clean.match(/^([A-Z][^\n]{2,70}\([A-Z]{2}\))\s*$/m) || [])[1] || "";
+    const current = lines.find((l) => /\(Current\)\s*$/.test(l));
+    const head = (current && current.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/\s*\(Current\)\s*$/, "")) || lines.find((l) => l !== loc && l.length > 15 && l.length < 170 && !/^#/.test(l)) || "";
+    const name = String(title).replace(/\s*[|·–-]\s*(LinkedIn|GitHub|X|Twitter).*$/i, "").trim();
+    return { id: docId(url), channel, name, url, head: head.replace(/^#+\s*/, ""), loc, text: clean.slice(0, 2500), status: "new", added: new Date().toISOString() };
+  }
+  const mcpCopy = (e) => ({
+    server_not_connected: "Exa isn't connected to your Claude account. Add it in claude.ai Settings → Connectors, then try again.",
+    needs_reauth: "Exa needs to be reconnected. Reconnect it in claude.ai Settings → Connectors.",
+    not_in_manifest: "Exa isn't allowed for this page. Allow it from the page's Permissions menu.",
+    selection_required: "You have more than one Exa connector. Choose one when Claude asks, then try again.",
+    blocked_by_policy: "Your organization blocks Exa for this page.",
+    server_unavailable: "Exa didn't respond. Try again in a minute.",
+    tool_error: "Exa reported a problem: " + ((e && e.message) || "no details"),
+  }[e && e.code] || "Couldn't reach Exa. Use the browser searches below instead.");
+  async function saveFound(f) { if (db) { try { await db.doc("sourced/" + f.id).set(f); } catch (_) {} } lsSave(); }
+
+  $("fetchBtn").addEventListener("click", async () => {
+    if (!mcp) return;
+    const picked = Object.keys(CHANNELS).filter((k) => $("ch-" + k).checked);
+    if (!picked.length) { $("fetchMeta").textContent = "Pick at least one channel."; return; }
+    const n = +$("ch-n").value || 10;
+    $("fetchBtn").disabled = true; $("exaNote").hidden = true;
+    const known = new Set([...found.map((f) => urlKey(f.url)), ...candidates.map((c) => urlKey(c.url))]);
+    let added = 0, lastErr = null;
+    for (const k of picked) {
+      setStatus("john", `Searching ${CHANNELS[k].label}`, true); $("fetchMeta").textContent = `Searching ${CHANNELS[k].label}…`;
+      const { query, objective } = CHANNELS[k].build(state.brief);
+      const extra = answersText() !== "(none given)" ? ` Hiring manager notes: ${answersText().slice(0, 600)}` : "";
+      try {
+        const res = await mcp.callTool(EXA, "web_search_exa", { query, objective: objective + extra, numResults: n });
+        for (const f of parseExa(res.payload ?? res.content?.find((x) => x.type === "text")?.text, k)) {
+          if (known.has(urlKey(f.url))) continue;
+          known.add(urlKey(f.url)); found.push(f); added++; await saveFound(f);
+        }
+        renderFound();
+      } catch (e) { lastErr = e; if (["server_not_connected", "needs_reauth", "not_in_manifest", "blocked_by_policy", "selection_required"].includes(e && e.code)) break; }
+    }
+    $("fetchBtn").disabled = false;
+    $("fetchMeta").textContent = `${added} new profile${added === 1 ? "" : "s"} found.`;
+    if (lastErr) { $("exaNote").textContent = mcpCopy(lastErr); $("exaNote").hidden = false; }
+    renderAll();
+  });
+
+  async function enrich(f, btn) {
+    btn.disabled = true; btn.textContent = "Reading…";
+    try {
+      const res = await mcp.callTool(EXA, "web_fetch_exa", { urls: [f.url], maxCharacters: 5000 });
+      const p = res.payload ?? res.content?.find((x) => x.type === "text")?.text;
+      const txt = typeof p === "string" ? p : JSON.stringify(p || "");
+      f.text = (txt.replace(/^(#\s.*|URL:.*)$/gm, "").trim() || f.text).slice(0, 5000); f.full = true;
+      await saveFound(f); renderFound();
+    } catch (e) { btn.disabled = false; btn.textContent = "Read full profile"; $("exaNote").textContent = mcpCopy(e); $("exaNote").hidden = false; }
+  }
+  async function sendToMaria(items) {
+    const list = items.map((f) => ({ id: "c" + f.id, name: f.name, url: f.url, head: f.head, loc: f.loc, text: f.text, source: CHANNELS[f.channel]?.label || f.channel, added: new Date().toISOString() }));
+    items.forEach((f) => (f.status = "sent"));
+    for (const f of items) await saveFound(f);
+    renderFound();
+    $("fetchMeta").textContent = `Maria is screening ${list.length} profile${list.length > 1 ? "s" : ""}…`;
+    const err = await screenMany(list);
+    $("fetchMeta").textContent = `Maria screened ${list.length}. See the pipeline in step 4.${err ? " " + errCopy(err) : ""}`;
+  }
+  $("screenAllBtn").addEventListener("click", () => { const fresh = found.filter((f) => f.status === "new"); if (fresh.length) sendToMaria(fresh); });
+
+  function renderFound() {
+    const box = $("found"); box.replaceChildren();
+    $("fetchBtn").disabled = !state.approved || !mcp;
+    const fresh = found.filter((f) => f.status === "new");
+    $("screenAllBtn").disabled = !state.approved || !fresh.length;
+    $("screenAllBtn").textContent = fresh.length ? `Send all ${fresh.length} new to Maria` : "Send all new to Maria";
+    if (!mcp) { const d = document.createElement("div"); d.className = "empty"; d.textContent = "Fetching profiles needs the Exa connector and this page open in Claude. Until then, use the browser searches below."; box.append(d); return; }
+    const shown = found.filter((f) => f.status !== "skipped");
+    if (!shown.length) { const d = document.createElement("div"); d.className = "empty"; d.textContent = state.approved ? "Pick channels and fetch. Profiles John finds show up here." : "Approve the brief first. Then John can fetch profiles."; box.append(d); return; }
+    for (const f of shown) {
+      const card = document.createElement("div"); card.className = "fcard" + (f.status === "sent" ? " sent" : "");
+      const top = document.createElement("div"); top.className = "top";
+      const a = Object.assign(document.createElement("a"), { className: "nm", href: f.url, target: "_blank", rel: "noopener", textContent: f.name });
+      const ch = Object.assign(document.createElement("span"), { className: "ch", textContent: CHANNELS[f.channel]?.label || f.channel });
+      top.append(a, ch);
+      const meta = Object.assign(document.createElement("div"), { className: "meta", textContent: [f.head, f.loc].filter(Boolean).join(" · ") });
+      const p = document.createElement("p"); p.textContent = f.text.slice(0, 420) + (f.text.length > 420 ? "…" : "");
+      const row = document.createElement("div"); row.className = "row";
+      if (f.status === "new") {
+        const send = Object.assign(document.createElement("button"), { className: "small primary", type: "button", textContent: "Send to Maria" });
+        send.addEventListener("click", () => sendToMaria([f]));
+        const more = Object.assign(document.createElement("button"), { className: "small", type: "button", textContent: f.full ? "Full profile read" : "Read full profile", disabled: !!f.full });
+        more.addEventListener("click", () => enrich(f, more));
+        const skip = Object.assign(document.createElement("button"), { className: "small", type: "button", textContent: "Skip" });
+        skip.addEventListener("click", async () => { f.status = "skipped"; await saveFound(f); renderFound(); });
+        row.append(send, more, skip);
+      } else row.append(Object.assign(document.createElement("span"), { className: "meta", textContent: "Sent to Maria" }));
+      card.append(top, meta, p, row); box.append(card);
+    }
+  }
+
+  $("engSel").addEventListener("change", () => { renderDrafts(); renderSteps(); });
+  $("engBtn").addEventListener("click", async () => {
+    const c = candidates.find((x) => x.id === $("engSel").value); if (!c) return;
+    $("engBtn").disabled = true; setStatus("izel", "Drafting for " + c.name, true);
+    const b = state.brief;
+    const prompt = `You are Izel, a recruiter who writes short, specific, human LinkedIn outreach. Write for this candidate using the brief, the hiring manager's answers, and Maria's screening. Mention one concrete thing from their profile. Ask for one logo story. No hype words, no emojis.\n\nBRIEF:\n${briefText(b)}\n\nANSWERS:\n${answersText()}\n\nCANDIDATE: ${c.name} | ${c.head} | ${c.loc}\nProfile: ${c.text.slice(0, 2500)}\nMaria: tier ${c.screen?.tier}; strengths ${(c.screen?.strengths || []).join("; ")}; gaps ${(c.screen?.gaps || []).join("; ")}\n\nReply with only JSON: {"connection": string under 300 characters, "message": string under 900 characters, "followup": string under 350 characters}`;
+    const r = await ask(prompt, () => localDrafts(b, c));
+    const d = r.data && r.data.connection ? r.data : localDrafts(b, c);
+    c.drafts = { connection: String(d.connection).slice(0, 300), message: String(d.message), followup: String(d.followup), via: r.via };
+    await saveCandidate(c); renderAll();
+  });
+
+  // ---------- boot ----------
+  fillBrief(DEFAULT_BRIEF);
+  const cached = lsLoad();
+  if (cached) { state = Object.assign(state, cached.state || {}); candidates = cached.candidates || []; found = cached.found || []; if (state.brief) fillBrief(state.brief); }
+  renderAll();
+
+  (async () => {
+    const c = window.claude;
+    if (!c || !c.use) { $("mode").textContent = "Offline mode: the built-in playbook answers and your work stays in this browser."; return; }
+    const [s, d, m] = await Promise.all([c.use("sample").catch(() => null), c.use("db").catch(() => null), c.use("mcp").catch(() => null)]);
+    sample = s; db = d; mcp = m;
+    $("mode").textContent = (sample ? "Claude powers the team." : "Claude isn't available here, so the built-in playbook answers.") + (mcp ? " John can fetch profiles through Exa." : " Profile fetching is off here.") + (db ? " Your pipeline is saved with this page." : " Your work stays in this browser.");
+    if (db) {
+      try { const snap = await db.doc("desk/current").get(); if (snap.exists) { state = Object.assign({ brief: null, huddle: null, answers: {}, approved: false, strings: null }, snap.data()); if (state.brief) fillBrief(state.brief); } } catch (_) {}
+      db.collection("candidates").onSnapshot((snap) => { candidates = snap.docs.map((x) => x.data()); lsSave(); renderAll(); }, () => {});
+      db.collection("sourced").onSnapshot((snap) => { found = snap.docs.map((x) => x.data()).sort((a, b) => (a.added < b.added ? -1 : 1)); lsSave(); renderFound(); }, () => {});
+    }
+    renderAll();
+  })();
+})();
+</script>

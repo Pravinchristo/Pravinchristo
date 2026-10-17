@@ -1,0 +1,36 @@
+{
+ "profiles": [
+  {"name": "Debashish R.", "url": "https://linkedin.com/in/debashish-r-3310446", "head": "Senior Client Partner, Persistent Systems", "loc": "Bengaluru", "company": "Persistent Systems", "years": 16, "tier": "B", "score": 66,
+   "strengths": ["Won new logos in BFSI, ISV and e-commerce, including global innovation centres (GCCs)", "Runs P&L for a flagship fintech account; digital product engineering deals for PE-backed SaaS firms", "100% Club award; has sold in the US, Canada, Australia and NZ"], "gaps": ["16 yrs, just above range", "Promoted Apr 2025"], "next": "Reach out"},
+  {"name": "Mayank Srivastava", "url": "https://linkedin.com/in/mayank-srivastava-7555556", "head": "Client Partner, Persistent Systems", "loc": "Bengaluru", "company": "Persistent Systems", "years": null, "tier": "B", "score": 64,
+   "strengths": ["Proven hunter: won the 'best hunting team' award; opened mid-market logos in Bangalore (McAfee, Synopsys, SanDisk, EY)", "3 yrs 5 mo in current role, a good time to approach"], "gaps": ["Earlier career in infrastructure and OEM sales", "Years not visible"], "next": "Reach out"},
+  {"name": "Satish Parasavedi", "url": "https://linkedin.com/in/sparasa", "head": "Client Partner, Persistent Systems", "loc": "Bengaluru", "company": "Persistent Systems", "years": null, "tier": "B", "score": 62,
+   "strengths": ["Won the 100% Club sales award two years running", "New-logo acquisition, bid management and deal-making in his skills", "4 yrs 8 mo in role"], "gaps": ["Telecom/IoT tilt", "Years not visible"], "next": "Reach out"},
+  {"name": "Ankit Sharma", "url": "https://linkedin.com/in/ankit-sharma-94b91316", "head": "Client Partner – Digital Engineering, Persistent Systems", "loc": "Bengaluru", "company": "Persistent Systems", "years": 14, "tier": "B", "score": 58,
+   "strengths": ["14 yrs; runs BD, account management and P&L for fintech clients", "C-level relationships; in range"], "gaps": ["Mostly farming", "Telecom VAS background"], "next": "Probe hunting record"},
+  {"name": "Rohin Kuruvilla", "url": "https://linkedin.com/in/rohingk", "head": "Director – Healthcare & Life Sciences, Zensar (ex Cognizant BD)", "loc": "Unconfirmed (ex Chennai)", "company": "Zensar Technologies", "years": null, "tier": "B", "score": 56,
+   "strengths": ["Made Cognizant the preferred vendor at a UK pharma's India GCC, then expanded the account", "Won new logos for the UK Life Sciences portfolio; grew an account from $105M to about $180M"], "gaps": ["City not confirmed", "Life sciences focus"], "next": "Confirm location"},
+  {"name": "Ami H.", "url": "https://linkedin.com/in/ami-hattangadi", "head": "Client Partner – Banking & Financial Services, Mphasis", "loc": "Pune", "company": "Mphasis", "years": null, "tier": "B", "score": 52,
+   "strengths": ["Client Partner for BFS in Pune, 2 yrs 4 mo", "Earlier BD and key accounts at Tech Mahindra"], "gaps": ["Executive search and talent background", "Years not visible"], "next": "Screen call"},
+  {"name": "Sourabh Waikar", "url": "https://linkedin.com/in/sourabhwaikar", "head": "Account Manager – BFS, Zensar", "loc": "Pune", "company": "Zensar Technologies", "years": 10, "tier": "B", "score": 50,
+   "strengths": ["10 yrs in new business development and presales; won new logos at his previous firm", "In range; Pune"], "gaps": ["Account-manager level", "Mostly SaaS products"], "next": "Junior hunter option"},
+  {"name": "Sanchit Krishna Srivastava", "url": "https://linkedin.com/in/sanchitkrishnasrivastava", "head": "Senior Client Partner, Persistent Systems", "loc": "Bengaluru", "company": "Persistent Systems", "years": null, "tier": "C", "score": 46,
+   "strengths": ["7 yrs as Client Partner: pipeline, bookings and cross-sell; IIM-A"], "gaps": ["Farmer; came from PMO and delivery"], "next": "Low priority"},
+  {"name": "Vinith Mahesh", "url": "https://linkedin.com/in/vinith-mahesh", "head": "Enterprise Account Executive – US, BrowserStack", "loc": "Chennai", "company": "BrowserStack", "years": null, "tier": "C", "score": 44,
+   "strengths": ["Hunts key logos in the US for a testing platform"], "gaps": ["SaaS product, not services; junior"], "next": "Junior pipeline"},
+  {"name": "Aurosish Mohapatra", "url": "https://linkedin.com/in/aurosish-mohapatra", "head": "Global Partner Operations Lead, Sonata Software", "loc": "Bengaluru", "company": "Sonata Software", "years": 23, "tier": "C", "score": 44,
+   "strengths": ["Was Account Director for Sonata's GCC customers in Bangalore; won new UK/Swiss logos"], "gaps": ["Now in alliances; 23 yrs"], "next": "Referral source"},
+  {"name": "Harshal Marathe", "url": "https://linkedin.com/in/harshal-marathe-2ba292137", "head": "Enterprise Account Executive, BrowserStack", "loc": "Bengaluru", "company": "BrowserStack", "years": null, "tier": "C", "score": 40,
+   "strengths": ["Sells test automation to Fortune 500 C-levels"], "gaps": ["SaaS product, not services"], "next": "Junior pipeline"},
+  {"name": "Varun Chadha", "url": "https://in.linkedin.com/in/varun-chadha-77485926", "head": "Senior Client Services Manager, Sonata Software (ex SAP, Oracle)", "loc": "Bengaluru", "company": "Sonata Software", "years": 11, "tier": "C", "score": 40,
+   "strengths": ["11 yrs in BD and key accounts"], "gaps": ["SAP product sales, not services hunting"], "next": "Low priority"}
+ ],
+ "skipped": [
+  "https://linkedin.com/in/sandeep-s-2899424", "https://linkedin.com/in/girish-belpu-5248007", "https://linkedin.com/in/veeresh-desaigoudar-896baa3", "https://linkedin.com/in/sharathgowda",
+  "https://www.linkedin.com/in/saigopalan", "https://linkedin.com/in/uday-eswaran", "https://linkedin.com/in/roshanshaju1408", "https://linkedin.com/in/ganesh-joharri-42b0ab200",
+  "https://linkedin.com/in/abhiagrawal1", "https://www.linkedin.com/in/dougmacswan", "https://linkedin.com/in/farzaanhabib", "https://linkedin.com/in/sudhir-yezhuvath-a736b85",
+  "https://linkedin.com/in/samratbiswas", "https://www.linkedin.com/in/shivangsharma24", "https://linkedin.com/in/aditya-masekar", "https://linkedin.com/in/manishgupta6",
+  "https://linkedin.com/in/upendra-kulkarni-a0337b3b", "https://linkedin.com/in/kumargaurav", "https://linkedin.com/in/shripadkhursale", "https://linkedin.com/in/avinash-avi-dakshini-9b56274",
+  "https://linkedin.com/in/shubhangi-rathore", "https://linkedin.com/in/sureshpandian-in", "https://linkedin.com/in/v20chan", "https://linkedin.com/in/satheeshkumarg-satheeshwn1"
+ ]
+}
