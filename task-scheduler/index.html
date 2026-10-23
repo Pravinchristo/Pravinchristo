@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Task Scheduler</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--tx:#1d2330;--mut:#667085;--bd:#e3e6ec;--crit:#c0392b;--high:#e67e22;--med:#2e86de;--low:#7f8c8d;--ok:#1e8e5a}
+@media(prefers-color-scheme:dark){:root{--bg:#14171d;--card:#1d222b;--tx:#e8ebf1;--mut:#9aa3b2;--bd:#2d3441}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,sans-serif;padding:16px;max-width:1100px;margin:auto}
+h1{font-size:20px}h2{font-size:15px;margin:0 0 8px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px;margin-bottom:12px}
+.kpi b{display:block;font-size:26px}.kpi span{color:var(--mut);font-size:12px}
+.bar{height:10px;background:var(--bd);border-radius:5px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ok)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select,textarea,button{font:inherit;padding:6px 8px;border:1px solid var(--bd);border-radius:6px;background:var(--card);color:var(--tx)}
+button{cursor:pointer}button.p{background:var(--med);color:#fff;border-color:var(--med)}
+table{width:100%;border-collapse:collapse}td,th{padding:6px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top}
+.tag{padding:1px 7px;border-radius:9px;color:#fff;font-size:12px}.Critical{background:var(--crit)}.High{background:var(--high)}.Medium{background:var(--med)}.Low{background:var(--low)}
+.over{color:var(--crit);font-weight:600}.warn{color:var(--high)}.mut{color:var(--mut)}
+.wk{display:flex;gap:6px;align-items:flex-end;height:90px}.wk div{flex:1;text-align:center;font-size:11px}.wk i{display:block;background:var(--med);border-radius:3px 3px 0 0}
+</style></head><body>
+<h1>Task Scheduler</h1>
+<p class="mut">Tasks are tracked locally in this browser only. Nothing here creates calendar events or sends reminders.</p>
+
+<div class="card"><h2>Availability (needed before scheduling)</h2><div class="row">
+Work from <input type="time" id="ws" value="09:00"> to <input type="time" id="we" value="18:00">
+Break (min) <input type="number" id="br" value="60" style="width:70px">
+Buffer % <input type="number" id="bf" value="20" style="width:70px">
+<button onclick="saveCfg()">Save</button><span id="cfgnote" class="mut"></span></div></div>
+
+<div class="grid" id="kpis"></div>
+<div class="card" style="margin-top:12px"><h2>Completion</h2><div class="bar"><i id="pbar"></i></div><span id="ptxt" class="mut"></span></div>
+
+<div class="card"><h2>Add task</h2><form id="f" class="row">
+<input name="title" placeholder="Title" required style="flex:2;min-width:160px">
+<input name="description" placeholder="Description" style="flex:3;min-width:160px">
+<select name="priority"><option>Critical</option><option>High</option><option selected>Medium</option><option>Low</option></select>
+<input type="date" name="deadline"><input type="number" name="mins" placeholder="Minutes" value="60" min="5" style="width:90px">
+<select name="category"><option>Recruitment</option><option>Sourcing</option><option>Market intelligence</option><option>Dashboards</option><option>AI agents</option><option>Learning</option><option>Meetings</option><option>Personal</option></select>
+<button class="p">Add</button></form></div>
+
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+<div class="card"><h2>Today's proposed schedule</h2><div id="today"></div></div>
+<div class="card"><h2>Upcoming deadlines</h2><div id="deadl"></div></div>
+<div class="card"><h2>Priority distribution</h2><div id="prio"></div></div>
+<div class="card"><h2>Weekly workload (hours)</h2><div class="wk" id="wk"></div><div id="wkn" class="mut"></div></div>
+</div>
+
+<div class="card"><h2>Conflicts &amp; workload</h2><div id="warn"></div></div>
+<div class="card"><div class="row"><h2 style="margin:0">All tasks</h2>
+<select id="fp" onchange="render()"><option value="">All priorities</option><option>Critical</option><option>High</option><option>Medium</option><option>Low</option></select>
+<select id="fs" onchange="render()"><option value="">All statuses</option><option>Pending</option><option>In progress</option><option>Completed</option></select></div>
+<table><thead><tr><th>Task</th><th>Priority</th><th>Due</th><th>Min</th><th>Status</th><th></th></tr></thead><tbody id="tb"></tbody></table></div>
+
+<script>
+const $=id=>document.getElementById(id),K='ts.tasks',C='ts.cfg',PW={Critical:4,High:3,Medium:2,Low:1};
+const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let tasks=ld(K,[]),cfg=ld(C,null);
+if(cfg){$('ws').value=cfg.ws;$('we').value=cfg.we;$('br').value=cfg.br;$('bf').value=cfg.bf}
+const iso=d=>d.toISOString().slice(0,10),today=()=>iso(new Date());
+const m=t=>{const[a,b]=t.split(':');return a*60+ +b};
+const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function saveCfg(){cfg={ws:$('ws').value,we:$('we').value,br:+$('br').value,bf:+$('bf').value};sv(C,cfg);$('cfgnote').textContent=' Saved.';render()}
+const overdue=t=>t.status!=='Completed'&&t.deadline&&t.deadline<today();
+const score=t=>PW[t.priority]*10+(t.deadline?Math.max(0,10-Math.floor((new Date(t.deadline)-new Date(today()))/864e5)):0);
+$('f').onsubmit=e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));
+ tasks.push({id:Date.now(),title:d.title,description:d.description,priority:d.priority,deadline:d.deadline,mins:+d.mins||60,category:d.category,status:'Pending'});
+ sv(K,tasks);e.target.reset();render()};
+function setStatus(id,s){const t=tasks.find(x=>x.id===id);if(s==='Completed'&&!confirm('Mark "'+t.title+'" as completed?'))return render();t.status=s;sv(K,tasks);render()}
+function del(id){if(confirm('Delete this task?')){tasks=tasks.filter(x=>x.id!==id);sv(K,tasks);render()}}
+function edit(id){const t=tasks.find(x=>x.id===id);const d=prompt('New deadline (YYYY-MM-DD)',t.deadline||'');if(d!==null){t.deadline=d;sv(K,tasks);render()}}
+function plan(){ // proposed schedule for today only; open tasks by score
+ if(!cfg)return null;const open=tasks.filter(t=>t.status!=='Completed').sort((a,b)=>score(b)-score(a));
+ const cap=(m(cfg.we)-m(cfg.ws)-cfg.br)*(1-cfg.bf/100);let used=0,cur=m(cfg.ws),brk=false,out=[],left=[];
+ for(const t of open){if(used+t.mins>cap){left.push(t);continue}
+  if(!brk&&cur>=m(cfg.ws)+240){out.push({brk:1,s:cur,e:cur+cfg.br});cur+=cfg.br;brk=true}
+  out.push({t,s:cur,e:cur+t.mins});cur+=t.mins;used+=t.mins}
+ return{out,left,cap,used}}
+const hm=x=>String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0');
+function render(){
+ const n=s=>tasks.filter(t=>t.status===s).length,od=tasks.filter(overdue).length,tot=tasks.length,pc=tot?Math.round(n('Completed')/tot*100):0;
+ $('kpis').innerHTML=[['Total',tot],['Pending',n('Pending')],['In progress',n('In progress')],['Completed',n('Completed')],['Overdue',od]].map(([a,b])=>`<div class="card kpi"><b class="${a==='Overdue'&&b?'over':''}">${b}</b><span>${a}</span></div>`).join('');
+ $('pbar').style.width=pc+'%';$('ptxt').textContent=pc+'% complete';
+ const p=plan();
+ $('today').innerHTML=!cfg?'<span class="warn">Save your working hours above first. No schedule is proposed without them.</span>':
+  !p.out.length?'<span class="mut">Nothing to schedule.</span>':'<span class="mut">Proposed only. Not on any calendar.</span><table>'+p.out.map(o=>o.brk?`<tr><td>${hm(o.s)}–${hm(o.e)}</td><td class="mut">Break</td></tr>`:`<tr><td>${hm(o.s)}–${hm(o.e)}</td><td>${esc(o.t.title)} <span class="tag ${o.t.priority}">${o.t.priority}</span></td></tr>`).join('')+'</table>';
+ const up=tasks.filter(t=>t.status!=='Completed'&&t.deadline).sort((a,b)=>a.deadline<b.deadline?-1:1).slice(0,6);
+ $('deadl').innerHTML=up.map(t=>`<div class="${overdue(t)?'over':''}">${t.deadline} · ${esc(t.title)}${overdue(t)?' (overdue)':''}</div>`).join('')||'<span class="mut">None</span>';
+ $('prio').innerHTML=['Critical','High','Medium','Low'].map(k=>{const c=tasks.filter(t=>t.priority===k).length;return `<div class="row"><span class="tag ${k}" style="width:70px;text-align:center">${k}</span><div class="bar" style="flex:1"><i style="width:${tot?c/tot*100:0}%;background:var(--${k==='Critical'?'crit':k==='High'?'high':k==='Medium'?'med':'low'})"></i></div>${c}</div>`}).join('');
+ const days=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i);return iso(d)});
+ const hrs=days.map(d=>tasks.filter(t=>t.status!=='Completed'&&t.deadline===d).reduce((s,t)=>s+t.mins,0)/60),mx=Math.max(1,...hrs);
+ $('wk').innerHTML=days.map((d,i)=>`<div><i style="height:${hrs[i]/mx*70}px"></i>${d.slice(5)}<br>${hrs[i].toFixed(1)}</div>`).join('');
+ $('wkn').textContent='Hours of work due on each day (by deadline).';
+ const w=[];if(od)w.push(`<div class="over">${od} overdue task(s). Reschedule or renegotiate.</div>`);
+ if(p&&p.left.length)w.push(`<div class="warn">${p.left.length} task(s) don't fit today (${(p.used/60).toFixed(1)}h of ${(p.cap/60).toFixed(1)}h usable): ${p.left.map(t=>esc(t.title)).join(', ')}</div>`);
+ if(cfg){const day=(m(cfg.we)-m(cfg.ws)-cfg.br)/60;days.forEach((d,i)=>{if(hrs[i]>day)w.push(`<div class="warn">${d}: ${hrs[i].toFixed(1)}h due but only ${day.toFixed(1)}h available. Deadline likely unrealistic.</div>`)})}
+ $('warn').innerHTML=w.join('')||'<span class="mut">No conflicts detected.</span>';
+ const fp=$('fp').value,fs=$('fs').value;
+ $('tb').innerHTML=tasks.filter(t=>(!fp||t.priority===fp)&&(!fs||t.status===fs)).sort((a,b)=>score(b)-score(a)).map(t=>`<tr><td>${esc(t.title)}<div class="mut">${esc(t.category)}${t.description?' · '+esc(t.description):''}</div></td><td><span class="tag ${t.priority}">${t.priority}</span></td><td class="${overdue(t)?'over':''}">${t.deadline||'—'}</td><td>${t.mins}</td>
+ <td><select onchange="setStatus(${t.id},this.value)">${['Pending','In progress','Completed'].map(s=>`<option ${s===t.status?'selected':''}>${s}</option>`).join('')}</select></td>
+ <td><button onclick="edit(${t.id})">Reschedule</button> <button onclick="del(${t.id})">✕</button></td></tr>`).join('')||'<tr><td colspan=6 class="mut">No tasks yet.</td></tr>'}
+render();
+</script></body></html>
