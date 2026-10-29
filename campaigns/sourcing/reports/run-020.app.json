@@ -1,0 +1,100 @@
+[
+ {
+  "id": "cfi17rjo",
+  "name": "Alex Hamilton",
+  "url": "https://linkedin.com/in/alex2016",
+  "head": "Client Partner, Aspire Systems",
+  "loc": "Chennai",
+  "text": "Client Partner, Aspire Systems",
+  "source": "Campaign run 20 · Aspire Systems",
+  "years": "~10 (est.)",
+  "added": "2026-10-11T02:39:08.000Z",
+  "screen": {
+   "score": 58,
+   "tier": "B",
+   "strengths": [
+    "Current Client Partner at Aspire, a QE and product-engineering firm",
+    "Has worked through Chennai's US-facing digital services firms: PreludeSys, TVS Next, Payoda"
+   ],
+   "gaps": [
+    "Total years and new-logo record not visible",
+    "Profile is light on numbers"
+   ],
+   "next": "Screen call: confirm his US hunting quota and QE deal mix",
+   "via": "campaign"
+  }
+ },
+ {
+  "id": "cf8wi4xm",
+  "name": "Koushik Ragavender",
+  "url": "https://linkedin.com/in/ragavenderkoushik",
+  "head": "Manager – Strategic Business Relations, Aspire Systems",
+  "loc": "Chennai",
+  "text": "Manager – Strategic Business Relations, Aspire Systems",
+  "source": "Campaign run 20 · Aspire Systems",
+  "years": "~12 (est.)",
+  "added": "2026-10-11T02:39:08.000Z",
+  "screen": {
+   "score": 55,
+   "tier": "B",
+   "strengths": [
+    "9+ yrs at Aspire selling testing, product engineering and ISV services",
+    "Earlier at Syntel; describes a hunting and new-business focus"
+   ],
+   "gaps": [
+    "Manager title despite his tenure",
+    "Unclear whether the role is hunter or farmer"
+   ],
+   "next": "Probe the new logos he has won and his deal sizes",
+   "via": "campaign"
+  }
+ },
+ {
+  "id": "cf1630tie",
+  "name": "Saravanan A",
+  "url": "https://linkedin.com/in/saravanan1810",
+  "head": "Client Partner, Aspire Systems (Testing, DevOps, Cloud)",
+  "loc": "Unknown (likely Chennai)",
+  "text": "Client Partner, Aspire Systems (Testing, DevOps, Cloud)",
+  "source": "Campaign run 20 · Aspire Systems",
+  "years": "Unknown",
+  "added": "2026-10-11T02:39:08.000Z",
+  "screen": {
+   "score": 50,
+   "tier": "B",
+   "strengths": [
+    "Client Partner who explicitly sells software engineering, testing and DevOps"
+   ],
+   "gaps": [
+    "Sparse profile: no city, years or wins shown"
+   ],
+   "next": "Confirm his location and experience before outreach",
+   "via": "campaign"
+  }
+ },
+ {
+  "id": "cf1d4kd2f",
+  "name": "Naveen Srinivasan",
+  "url": "https://linkedin.com/in/naveensrini",
+  "head": "Engagement Partner / Retail QA, Aspire Systems",
+  "loc": "Unknown (was in Portland, US)",
+  "text": "Engagement Partner / Retail QA, Aspire Systems",
+  "source": "Campaign run 20 · Aspire Systems",
+  "years": "~15",
+  "added": "2026-10-11T02:39:08.000Z",
+  "screen": {
+   "score": 40,
+   "tier": "C",
+   "strengths": [
+    "Deep in retail QA",
+    "Engagement partner for North American retail accounts"
+   ],
+   "gaps": [
+    "Delivery and presales rather than hunting",
+    "May be based in the US"
+   ],
+   "next": "Low priority",
+   "via": "campaign"
+  }
+ }
+]

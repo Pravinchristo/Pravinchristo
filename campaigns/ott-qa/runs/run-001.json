@@ -1,0 +1,542 @@
+{
+ "profiles": [
+  {
+   "name": "Vikas .",
+   "url": "https://linkedin.com/in/vikas-8076mishra",
+   "head": "Senior Software Test Engineer – OTT & Video Streaming (ex-Horizon Broadband)",
+   "loc": "Bengaluru",
+   "city": "Bengaluru",
+   "company": "Availability angle",
+   "years": 5,
+   "score": 90,
+   "tier": "A",
+   "avail": "Immediate joiner",
+   "tools": [
+    "Google Tag Manager",
+    "Conviva",
+    "CleverTap",
+    "Charles Proxy",
+    "Postman"
+   ],
+   "strengths": [
+    "Headline says Immediate Joiner",
+    "5+ yrs OTT: Android TV, Apple TV, Fire TV, web, mobile",
+    "Validated analytics events in GTM, Conviva, CleverTap"
+   ],
+   "gaps": [
+    "Role at Horizon ended Jun 2026, so confirm the gap"
+   ],
+   "next": "Call today: confirm notice is zero and expected CTC",
+   "notice": "Immediate"
+  },
+  {
+   "name": "HemaKumar amasa",
+   "url": "https://linkedin.com/in/hemakumar-amasa-927192236",
+   "head": "QA Automation Engineer · OTT & Media Testing · Playwright/Appium",
+   "loc": "Bengaluru",
+   "city": "Bengaluru",
+   "company": "Availability angle",
+   "years": 4.5,
+   "score": 90,
+   "tier": "A",
+   "avail": "Immediate joiner",
+   "tools": [
+    "Conviva",
+    "CleverTap",
+    "New Relic",
+    "Branch",
+    "Charles Proxy",
+    "Postman"
+   ],
+   "strengths": [
+    "Headline says Immediate Joiner, 4.5 yrs",
+    "OTT across mobile, Smart TV, web in India/US/UK/CA regions",
+    "Analytics plus privacy testing; Playwright automation"
+   ],
+   "gaps": [
+    "Current employer unclear (ex-Resillion)"
+   ],
+   "next": "Call today: confirm last working day",
+   "notice": "Immediate"
+  },
+  {
+   "name": "RANJITH R",
+   "url": "https://linkedin.com/in/ranjithr0810",
+   "head": "QA Engineer · OTT playback, DRM & analytics validation (JioHotstar, JioCinema, Lionsgate Play)",
+   "loc": "Bengaluru",
+   "city": "Bengaluru",
+   "company": "JioHotstar",
+   "years": 3.2,
+   "score": 88,
+   "tier": "A",
+   "avail": "Recently left role",
+   "tools": [
+    "Charles Proxy",
+    "Mux",
+    "Mixpanel",
+    "ADB",
+    "Postman"
+   ],
+   "strengths": [
+    "Tested JioHotstar/JioCinema on Tizen, webOS, Android TV, Fire TV, Apple TV, Roku",
+    "Correlates Charles/ADB logs with Mixpanel and Mux data",
+    "ABR, DRM, subtitle and ad-insertion coverage"
+   ],
+   "gaps": [
+    "Vendor role ended Jun 2026; availability not stated"
+   ],
+   "next": "InMail: ask whether open to a move",
+   "notice": null
+  },
+  {
+   "name": "Kevin Chander R",
+   "url": "https://linkedin.com/in/kevin-chander-r-0322311b5",
+   "head": "QA Engineer · OTT streaming, playback validation",
+   "loc": "Bengaluru",
+   "city": "Bengaluru",
+   "company": "Availability angle",
+   "years": 3.8,
+   "score": 82,
+   "tier": "A",
+   "avail": "Open to work",
+   "tools": [
+    "Mixpanel",
+    "ADB",
+    "Postman",
+    "TestRail"
+   ],
+   "strengths": [
+    "Says open to work and available immediately",
+    "OTT playback, DRM, ABR, subtitles, analytics verification",
+    "3.10 yrs, in range"
+   ],
+   "gaps": [
+    "Analytics depth limited to Mixpanel"
+   ],
+   "next": "Call: screen analytics event-validation depth",
+   "notice": "Immediate"
+  },
+  {
+   "name": "Sachin Linganayak",
+   "url": "https://linkedin.com/in/sachin-linganayak-7231141a4",
+   "head": "Streaming Analytics & QA Engineer · OTT (Voot, MeWatch)",
+   "loc": "India",
+   "city": "India",
+   "company": "Analytics angle",
+   "years": 5,
+   "score": 85,
+   "tier": "A",
+   "avail": "Not signalled",
+   "tools": [
+    "Conviva",
+    "New Relic",
+    "Mixpanel",
+    "CleverTap",
+    "Charles Proxy",
+    "Postman"
+   ],
+   "strengths": [
+    "Exact fit: streaming analytics on 15+ device types",
+    "Validated playback metrics in Conviva and New Relic",
+    "HLS/DASH, ABR, DRM, analytics payloads via Charles"
+   ],
+   "gaps": [
+    "City and availability not shown"
+   ],
+   "next": "InMail: pitch the analytics-heavy scope",
+   "notice": null
+  },
+  {
+   "name": "Shruthi D",
+   "url": "https://linkedin.com/in/shruthi-d-06058160",
+   "head": "OTT Platform QA & Analytics Specialist (ESPN app)",
+   "loc": "India",
+   "city": "India",
+   "company": "Analytics angle",
+   "years": null,
+   "score": 78,
+   "tier": "A",
+   "avail": "Not signalled",
+   "tools": [
+    "Adobe Analytics",
+    "Heartbeat",
+    "Kochava",
+    "Braze",
+    "Charles Proxy"
+   ],
+   "strengths": [
+    "Led analytics validation across Android, iOS, web, CTV",
+    "Adobe Analytics/Heartbeat is a rare skill",
+    "Ad insertion (CSAI/SSAI) coverage"
+   ],
+   "gaps": [
+    "Years not shown; may be above 6",
+    "City not shown"
+   ],
+   "next": "Check years before outreach",
+   "notice": null
+  },
+  {
+   "name": "Komal M S",
+   "url": "https://linkedin.com/in/komal-m-s-34ba23242",
+   "head": "QA Analytics · OTT streaming performance and ads validation (Zucitech)",
+   "loc": "Bengaluru",
+   "city": "Bengaluru",
+   "company": "Analytics angle",
+   "years": 3,
+   "score": 76,
+   "tier": "A",
+   "avail": "Not signalled",
+   "tools": [
+    "Conviva Touchstone",
+    "Charles Proxy",
+    "Proxyman",
+    "Databricks",
+    "Swagger"
+   ],
+   "strengths": [
+    "Streaming analytics for Disney+, Hulu, ESPN",
+    "Conviva Touchstone, Databricks, ad-tracer tools",
+    "Bengaluru, about 3 yrs"
+   ],
+   "gaps": [
+    "Not signalling a move"
+   ],
+   "next": "Passive: InMail with the role brief",
+   "notice": null
+  },
+  {
+   "name": "Karthik H S",
+   "url": "https://linkedin.com/in/karthik-h-s-6002a2189",
+   "head": "Associate Consultant · OTT analytics, ads and performance (GlobalLogic)",
+   "loc": "Bengaluru",
+   "city": "Bengaluru",
+   "company": "Analytics angle",
+   "years": 6,
+   "score": 72,
+   "tier": "A",
+   "avail": "Not signalled",
+   "tools": [
+    "Mixpanel",
+    "AppsFlyer",
+    "Firebase",
+    "Conviva",
+    "CleverTap"
+   ],
+   "strengths": [
+    "6+ yrs OTT, analytics validation is a core strength",
+    "Ads, A/B and subscription testing",
+    "ISTQB"
+   ],
+   "gaps": [
+    "At the 6-yr ceiling",
+    "Not signalling a move"
+   ],
+   "next": "Passive: approach if A-tier pipeline is thin",
+   "notice": null
+  },
+  {
+   "name": "Pavana Jyothi Malladi",
+   "url": "https://linkedin.com/in/pavana-jyothi-malladi-332a2521b",
+   "head": "OTT QA Engineer · mobile and TV streaming (CleverTap, Conviva, Mux)",
+   "loc": "India",
+   "city": "India",
+   "company": "Analytics angle",
+   "years": null,
+   "score": 68,
+   "tier": "B",
+   "avail": "Not signalled",
+   "tools": [
+    "CleverTap",
+    "Conviva",
+    "AppsFlyer",
+    "Mux",
+    "Kafka",
+    "Charles Proxy"
+   ],
+   "strengths": [
+    "Analytics tool stack matches the brief",
+    "Roku/BrightScript exposure"
+   ],
+   "gaps": [
+    "Years and city not shown",
+    "Thin experience detail"
+   ],
+   "next": "Check years and city first",
+   "notice": null
+  },
+  {
+   "name": "Divya D",
+   "url": "https://linkedin.com/in/divya-devraj",
+   "head": "Software Engineer · video and app analytics QA (ex-Conviva, Tata Elxsi)",
+   "loc": "Bengaluru",
+   "city": "Bengaluru",
+   "company": "Analytics angle",
+   "years": 7,
+   "score": 66,
+   "tier": "B",
+   "avail": "Open to work",
+   "tools": [
+    "Conviva",
+    "Charles Proxy",
+    "Firebase",
+    "New Relic",
+    "Docker"
+   ],
+   "strengths": [
+    "Posted #OpenToWork in Jul 2026",
+    "Conviva QoE and ad-metrics validation on Roku, Fire TV, Tizen, webOS"
+   ],
+   "gaps": [
+    "7+ yrs, above the 2–6 band",
+    "Will expect senior pay"
+   ],
+   "next": "Only if the band can stretch",
+   "notice": null
+  },
+  {
+   "name": "Mohammad Toukeer",
+   "url": "https://linkedin.com/in/mohammad-toukeer-033bab206",
+   "head": "Senior QA Engineer · OTT, STB, playback, DRM, analytics (Tata Elxsi)",
+   "loc": "India",
+   "city": "India",
+   "company": "Tata Elxsi",
+   "years": null,
+   "score": 64,
+   "tier": "B",
+   "avail": "Not signalled",
+   "tools": [
+    "Analytics (unnamed)",
+    "API testing"
+   ],
+   "strengths": [
+    "OTT, STB and OTA testing",
+    "Lists analytics and subscription validation"
+   ],
+   "gaps": [
+    "Years and tools not detailed"
+   ],
+   "next": "Check years and analytics tools",
+   "notice": null
+  },
+  {
+   "name": "Dev M M",
+   "url": "https://linkedin.com/in/devmm111",
+   "head": "Sr. QA Engineer · OTT, mobile and TV apps (JioHotstar Player QE via Moolya/LTM)",
+   "loc": "Bengaluru",
+   "city": "Bengaluru",
+   "company": "JioHotstar",
+   "years": 4.8,
+   "score": 62,
+   "tier": "B",
+   "avail": "Not signalled",
+   "tools": [
+    "Postman",
+    "JMeter",
+    "JIRA"
+   ],
+   "strengths": [
+    "JioHotstar Player QE: ICC World Cup and IPL live events",
+    "Tizen, webOS, tvOS, Android TV, consoles"
+   ],
+   "gaps": [
+    "No analytics tools listed"
+   ],
+   "next": "Ask about analytics event testing",
+   "notice": null
+  },
+  {
+   "name": "Kamal Bhandari",
+   "url": "https://linkedin.com/in/kamal-bhandari",
+   "head": "Senior QA Engineer · OTT web, mobile, Smart TV (Drishtinova Media)",
+   "loc": "Mohali",
+   "city": "Mohali",
+   "company": "Availability angle",
+   "years": 4,
+   "score": 60,
+   "tier": "B",
+   "avail": "Immediate joiner",
+   "tools": [
+    "Postman",
+    "Network proxy"
+   ],
+   "strengths": [
+    "Posted as immediate joiner (May 2026)",
+    "OTT playback, DRM, low-bandwidth testing"
+   ],
+   "gaps": [
+    "No analytics tools",
+    "Mohali, so relocation is needed"
+   ],
+   "next": "Ask about relocation and analytics",
+   "notice": "Immediate"
+  },
+  {
+   "name": "Niraj Sahu",
+   "url": "https://linkedin.com/in/nirajsahu22",
+   "head": "Senior Engineer · OTT QA, web, mobile, Smart TV (Tata Elxsi)",
+   "loc": "India",
+   "city": "India",
+   "company": "Tata Elxsi",
+   "years": 5,
+   "score": 58,
+   "tier": "B",
+   "avail": "Not signalled",
+   "tools": [
+    "Postman",
+    "Selenium",
+    "JIRA"
+   ],
+   "strengths": [
+    "5+ yrs OTT testing",
+    "Selenium/Python automation"
+   ],
+   "gaps": [
+    "No analytics tools"
+   ],
+   "next": "Keep as backup",
+   "notice": null
+  },
+  {
+   "name": "Upendra Tomar",
+   "url": "https://linkedin.com/in/upendra-tomar",
+   "head": "Senior Quality Engineer · OTT (JioCinema/Hotstar via IGS), FinTech",
+   "loc": "Bengaluru",
+   "city": "Bengaluru",
+   "company": "JioHotstar",
+   "years": 6,
+   "score": 55,
+   "tier": "B",
+   "avail": "Not signalled",
+   "tools": [
+    "Postman",
+    "Playwright"
+   ],
+   "strengths": [
+    "6+ yrs, OTT streaming on web, mobile, Smart TV"
+   ],
+   "gaps": [
+    "No analytics tools",
+    "Currently at IGS (the IGS campaign client), so check conflict"
+   ],
+   "next": "Hold: confirm no conflict with IGS",
+   "notice": null
+  },
+  {
+   "name": "Ashlesh Acharya",
+   "url": "https://linkedin.com/in/ashlesh-acharya-128553180",
+   "head": "QA Engineer · OTT API testing and automation (HT Media)",
+   "loc": "Thane",
+   "city": "Thane",
+   "company": "Availability angle",
+   "years": 2.5,
+   "score": 55,
+   "tier": "B",
+   "avail": "Immediate joiner",
+   "tools": [
+    "Postman",
+    "OpenSearch",
+    "MongoDB",
+    "Pytest"
+   ],
+   "strengths": [
+    "Headline says Immediate Joiner; open anywhere in India",
+    "2.5 yrs OTT, API automation built from scratch"
+   ],
+   "gaps": [
+    "Backend/API focus; no analytics tools or player testing"
+   ],
+   "next": "Backup for API-heavy openings",
+   "notice": "Immediate"
+  },
+  {
+   "name": "GOPIKA M",
+   "url": "https://linkedin.com/in/gopika-m-85995a16b",
+   "head": "Senior Engineer · OTT, STB and AV testing (Tata Elxsi)",
+   "loc": "India",
+   "city": "India",
+   "company": "Tata Elxsi",
+   "years": 4,
+   "score": 50,
+   "tier": "B",
+   "avail": "Not signalled",
+   "tools": [
+    "GStreamer",
+    "Jenkins"
+   ],
+   "strengths": [
+    "4 yrs OTT/STB, media playback validation"
+   ],
+   "gaps": [
+    "STB/RDK focus",
+    "No analytics tools"
+   ],
+   "next": "Keep as backup",
+   "notice": null
+  },
+  {
+   "name": "Suddatta Muddegol",
+   "url": "https://linkedin.com/in/suddatta-muddegol",
+   "head": "Senior Test Engineer · OTT apps on STB (Tata Elxsi)",
+   "loc": "Bengaluru",
+   "city": "Bengaluru",
+   "company": "Tata Elxsi",
+   "years": null,
+   "score": 48,
+   "tier": "C",
+   "avail": "Not signalled",
+   "tools": [
+    "Appium",
+    "ADB"
+   ],
+   "strengths": [
+    "Netflix, Prime Video, Hotstar on STB"
+   ],
+   "gaps": [
+    "No analytics tools; years unknown"
+   ],
+   "next": "Low priority",
+   "notice": null
+  },
+  {
+   "name": "Shahzad Alam",
+   "url": "https://linkedin.com/in/shahzad-alam-994a63371",
+   "head": "QA Engineer · OTT apps on Android TV and Fire TV (PlayboxTV)",
+   "loc": "Mumbai",
+   "city": "Mumbai",
+   "company": "Availability angle",
+   "years": 1.1,
+   "score": 45,
+   "tier": "C",
+   "avail": "Immediate joiner",
+   "tools": [
+    "JIRA"
+   ],
+   "strengths": [
+    "Headline says Immediate Joiner",
+    "Android TV and Fire TV testing"
+   ],
+   "gaps": [
+    "About 1 yr, below the 2-yr floor",
+    "No analytics tools"
+   ],
+   "next": "Only for a junior opening",
+   "notice": "Immediate"
+  }
+ ],
+ "skipped": [
+  "https://linkedin.com/in/abhishek-sinha-605a777b",
+  "https://linkedin.com/in/ravi-teja-789b08121",
+  "https://linkedin.com/in/pradarttana-panda-8431a3a2",
+  "https://linkedin.com/in/suhas-ar-85097b58",
+  "https://linkedin.com/in/chethankumargv",
+  "https://linkedin.com/in/rohini-govindarajan",
+  "https://linkedin.com/in/nidhinrv",
+  "https://linkedin.com/in/sarang-hiwarkar-0b140910a",
+  "https://linkedin.com/in/ankit-kumar-711558117",
+  "https://linkedin.com/in/rajesh-rawlo",
+  "https://linkedin.com/in/pushpa-c-ab007a3b4",
+  "https://linkedin.com/in/ujjwalamohite",
+  "https://linkedin.com/in/nikhil-krishna-marella-a64270b2"
+ ]
+}

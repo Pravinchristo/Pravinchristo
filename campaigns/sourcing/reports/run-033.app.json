@@ -1,0 +1,77 @@
+[
+ {
+  "id": "cf1mpqzhb",
+  "name": "Nihal A.",
+  "url": "https://linkedin.com/in/nihal-ahmed24",
+  "head": "Client Partner, Virtusa (Manufacturing & Retail)",
+  "loc": "Chennai",
+  "text": "Client Partner, Virtusa (Manufacturing & Retail)",
+  "source": "Campaign run 33 · Virtusa",
+  "years": "~10",
+  "added": "2026-10-12T04:39:25.000Z",
+  "screen": {
+   "score": 60,
+   "tier": "B",
+   "strengths": [
+    "Has done services business development across four firms: Bahwan CyberTek enterprise accounts, HCLTech BFSI BD, Movate and now Virtusa client partner",
+    "Sells to C-suite buyers; based in Chennai and fits the 8-15 year band"
+   ],
+   "gaps": [
+    "His Virtusa client partner role is recent, so his own new-logo results are not yet proven",
+    "No testing (QE) or GCC focus shown"
+   ],
+   "next": "Phone screen: the logos he won personally at HCLTech and Bahwan, and his US exposure",
+   "via": "campaign"
+  }
+ },
+ {
+  "id": "cfby1xvc",
+  "name": "Apoorva Shree M",
+  "url": "https://linkedin.com/in/apoorva-shree-m-072407192",
+  "head": "Manager - New Business & Client Engagement, Test Yantra",
+  "loc": "Bengaluru",
+  "text": "Manager - New Business & Client Engagement, Test Yantra",
+  "source": "Campaign run 33 · Test Yantra",
+  "years": "~7 (est.)",
+  "added": "2026-10-12T04:39:25.000Z",
+  "screen": {
+   "score": 54,
+   "tier": "B",
+   "strengths": [
+    "Sells testing as a service as a new-business hunter for India's largest testing services firm",
+    "Has anchored deals and runs a testing CoE-led solution approach"
+   ],
+   "gaps": [
+    "Probably under 8 years",
+    "Test Yantra's clients are mostly Indian and mid-market, so she lacks GCC or US enterprise experience"
+   ],
+   "next": "Strong QE fit; check total years and largest deal won",
+   "via": "campaign"
+  }
+ },
+ {
+  "id": "cf1rppfwc",
+  "name": "Ramachandran R",
+  "url": "https://linkedin.com/in/ramachandran-raghavan",
+  "head": "Strategic Sales Development Executive, Virtusa (ex-Account Manager BFS, Wipro)",
+  "loc": "Chennai",
+  "text": "Strategic Sales Development Executive, Virtusa (ex-Account Manager BFS, Wipro)",
+  "source": "Campaign run 33 · Virtusa",
+  "years": "~9",
+  "added": "2026-10-12T04:39:25.000Z",
+  "screen": {
+   "score": 50,
+   "tier": "B",
+   "strengths": [
+    "Was an account manager at Wipro for BFS, running the full sales cycle with CIO/CTO buyers",
+    "Did earlier BD at Virtusa with Fortune 100 banks in Canada and Europe"
+   ],
+   "gaps": [
+    "His current title is sales development, which is below a client partner",
+    "Background is BFSI only, with no testing (QE)"
+   ],
+   "next": "Find out whether he carries a quota and his biggest close at Wipro",
+   "via": "campaign"
+  }
+ }
+]

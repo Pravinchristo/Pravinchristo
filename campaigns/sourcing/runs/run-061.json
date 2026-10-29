@@ -1,0 +1,85 @@
+{
+ "profiles": [
+  {
+   "name": "Amol Bhaiya",
+   "url": "https://in.linkedin.com/in/amol-bhaiya",
+   "head": "Sales Capture Lead @ Accenture (ex-Capgemini BD, Onward Technologies)",
+   "loc": "Pune",
+   "company": "Accenture",
+   "years": 16,
+   "tier": "B",
+   "score": 58,
+   "strengths": [
+    "Sells to enterprise and captive (GCC) customers across Manufacturing, Auto, Life Sciences from Pune",
+    "Capgemini: hunted new customers in Industrial/Mining/Auto, worked >EUR20M strategic pursuits",
+    "Engineering + IT services background (Onward Technologies)"
+   ],
+   "gaps": [
+    "Likely at or above top of 8-15 yr band",
+    "Manufacturing/engineering focus \u2013 no QE/testing evidence"
+   ],
+   "next": "Call: confirm GCC new-logo record and openness to leave Accenture"
+  },
+  {
+   "name": "Anil Ronad",
+   "url": "https://linkedin.com/in/anil-ronad-34a17673",
+   "head": "Business Manager @ ALTEN India \u2013 Engineering & Digital Solutions Sales",
+   "loc": "Bengaluru",
+   "company": "ALTEN India",
+   "years": 8,
+   "tier": "C",
+   "score": 46,
+   "strengths": [
+    "Steady sales progression at ALTEN: BD Exec \u2192 Sr Business Specialist \u2192 Business Manager",
+    "US (Troy, MI) BD stint \u2013 end-to-end sales experience"
+   ],
+   "gaps": [
+    "Bottom of experience band",
+    "Engineering-services sell; no QE or GCC evidence"
+   ],
+   "next": "Low priority \u2013 check if ALTEN role includes new-logo hunting"
+  },
+  {
+   "name": "Rahul Vijay Patil",
+   "url": "https://linkedin.com/in/rahulvijaypatil190797",
+   "head": "Client Engagement Manager \u2013 Sales @ Quest Global (A&D)",
+   "loc": "Bengaluru",
+   "company": "Quest Global",
+   "years": 7,
+   "tier": "C",
+   "score": 40,
+   "strengths": [
+    "Account growth / new opportunity identification in Aerospace & Defense",
+    "Active in customer-facing events (Farnborough), MBA Sales & Marketing"
+   ],
+   "gaps": [
+    "Below 8-yr floor",
+    "Engineering services, not QE/digital"
+   ],
+   "next": "Hold \u2013 only if junior hunter pipeline needed"
+  },
+  {
+   "name": "Amit A",
+   "url": "https://in.linkedin.com/in/amitanand9",
+   "head": "AVP & Client Partner \u2013 Public Safety / Healthcare @ NEC Software Solutions",
+   "loc": "India (city unconfirmed)",
+   "company": "NEC Software Solutions",
+   "years": 18,
+   "tier": "C",
+   "score": 38,
+   "strengths": [
+    "Explicit GCC hunter: BOT model GCC setup, adding new GCC logos with P&L",
+    "Ex-Agilent captive vendor manager \u2013 knows GCC buyer side"
+   ],
+   "gaps": [
+    "City not shown \u2013 may be outside BLR/Pune/Chennai",
+    "Above experience band; ITSM/infra rather than QE"
+   ],
+   "next": "Verify location before outreach"
+  }
+ ],
+ "skipped": [
+  "https://linkedin.com/in/fauzia-farooqui",
+  "https://in.linkedin.com/in/sreenivasuluk"
+ ]
+}
