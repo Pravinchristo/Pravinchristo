@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talent Intelligence Desk</title>
+<style>
+:root{
+  --bg:#f6f7f9;--surface:#ffffff;--surface-2:#f0f2f5;--border:#e1e4e9;
+  --text:#14171c;--muted:#5d6672;--accent:#2f5bd3;--accent-soft:#e7edfc;
+  --a:#1f8a5b;--a-soft:#e3f4ec;--b:#2f5bd3;--b-soft:#e7edfc;--c:#b7791f;--c-soft:#fbf1e1;--out:#8a8f98;--out-soft:#eef0f2;
+  --hi:#c0392b;--hi-soft:#fbe9e7;--bar:#2f5bd3;--shadow:0 1px 2px rgba(16,24,40,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1115;--surface:#171a20;--surface-2:#1e222a;--border:#2a2f39;
+    --text:#e8eaee;--muted:#9aa3af;--accent:#7c9cff;--accent-soft:#1f2a47;
+    --a:#4cc38a;--a-soft:#16302a;--b:#7c9cff;--b-soft:#1f2a47;--c:#e0a84a;--c-soft:#352a17;--out:#8a8f98;--out-soft:#23262d;
+    --hi:#ff7a6b;--hi-soft:#3a1e1b;--bar:#7c9cff;--shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115;--surface:#171a20;--surface-2:#1e222a;--border:#2a2f39;
+  --text:#e8eaee;--muted:#9aa3af;--accent:#7c9cff;--accent-soft:#1f2a47;
+  --a:#4cc38a;--a-soft:#16302a;--b:#7c9cff;--b-soft:#1f2a47;--c:#e0a84a;--c-soft:#352a17;--out:#8a8f98;--out-soft:#23262d;
+  --hi:#ff7a6b;--hi-soft:#3a1e1b;--bar:#7c9cff;--shadow:none;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:20px 16px 60px}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}
+h1{font-size:22px;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:16px;margin:0 0 12px}
+h3{font-size:14px;margin:0 0 6px}
+.sub{color:var(--muted);font-size:13px}
+.btn{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--border);margin-bottom:18px;scrollbar-width:thin}
+nav.tabs button{border:0;background:none;color:var(--muted);font:inherit;font-weight:600;padding:10px 12px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent)}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:900px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow);min-width:0}
+.kpi .label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.kpi .val{font-size:26px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums}
+.kpi .note{color:var(--muted);font-size:12px}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:600;background:var(--surface-2);color:var(--muted);white-space:nowrap}
+.t-A{background:var(--a-soft);color:var(--a)}.t-B{background:var(--b-soft);color:var(--b)}.t-C{background:var(--c-soft);color:var(--c)}.t-Out{background:var(--out-soft);color:var(--out)}
+.s-high{background:var(--hi-soft);color:var(--hi)}.s-medium{background:var(--c-soft);color:var(--c)}.s-low{background:var(--a-soft);color:var(--a)}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:12px;padding:1px 7px;border-radius:6px;background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
+.bars .row{display:grid;grid-template-columns:minmax(90px,170px) 1fr 44px;gap:10px;align-items:center;margin:6px 0;font-size:13px}
+.bars .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bars .track{background:var(--surface-2);border-radius:6px;height:12px;overflow:hidden}
+.bars .fill{height:100%;background:var(--bar);border-radius:6px}
+.bars .num{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.meter{height:10px;border-radius:6px;background:linear-gradient(90deg,var(--a),var(--c),var(--hi));position:relative;margin:10px 0 4px}
+.meter i{position:absolute;top:-4px;width:4px;height:18px;border-radius:2px;background:var(--text)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap;cursor:default}
+th.sort{cursor:pointer}th.sort:hover{color:var(--text)}
+.tblwrap{overflow-x:auto}
+ul.clean{margin:0;padding-left:18px}ul.clean li{margin:3px 0}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+input[type=search],select{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:6px 10px;font:inherit;font-size:13px}
+input[type=search]{min-width:200px;flex:1}
+pre.q{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:10px;white-space:pre-wrap;word-break:break-word;font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin:8px 0}
+.muted{color:var(--muted)}.small{font-size:12px}
+.empty{color:var(--muted);padding:24px;text-align:center;border:1px dashed var(--border);border-radius:12px}
+.cand-name{font-weight:600}
+.stack{display:flex;flex-direction:column;gap:4px}
+.split{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.panel[hidden]{display:none}
+.msg{white-space:pre-wrap;background:var(--surface-2);border-radius:8px;padding:10px;font-size:13px}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:middle}
+details summary{cursor:pointer;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 id="role"></h1>
+      <div class="sub" id="metaLine"></div>
+    </div>
+    <div class="toolbar" style="margin:0">
+      <button class="btn" id="themeBtn" type="button">Theme</button>
+      <button class="btn" id="csvBtn" type="button">Export candidates CSV</button>
+    </div>
+  </header>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <main id="panels"></main>
+</div>
+
+<script id="strategy-data" type="application/json">__STRATEGY_JSON__</script>
+<script>
+(function(){
+"use strict";
+const D = JSON.parse(document.getElementById('strategy-data').textContent);
+const $ = (s, r=document) => r.querySelector(s);
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const arr = v => Array.isArray(v) ? v : [];
+const safeUrl = u => /^https?:\/\//i.test(u||'') ? u : '';
+const link = (u, t) => safeUrl(u) ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t||u)}</a>` : esc(t||'');
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+const KEY = 'tsi:' + (D.meta.role||'role') + ':' + (D.meta.generated||'');
+const STATUSES = ['New','Shortlisted','Contacted','Replied','Screening','Submitted','Interviewing','Offer','Hired','Not interested','Rejected'];
+let status = store.get(KEY + ':status', {});
+
+/* ---------- theme ---------- */
+const root = document.documentElement;
+const savedTheme = store.get('tsi:theme', null);
+if (savedTheme) root.setAttribute('data-theme', savedTheme);
+$('#themeBtn').onclick = () => {
+  const dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme') === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  const next = dark ? 'light' : 'dark'; root.setAttribute('data-theme', next); store.set('tsi:theme', next);
+};
+
+/* ---------- header ---------- */
+const M = D.meta, B = D.brief, MK = D.market || {}, C = arr(D.candidates);
+document.title = (M.role || 'Talent') + ' · Talent Intelligence';
+$('#role').textContent = M.role || 'Talent strategy';
+$('#metaLine').textContent = [M.client, arr(B.locations).join(' / '), B.years ? `${B.years[0]}–${B.years[1]} yrs` : '', 'Generated ' + (M.generated||'')].filter(Boolean).join(' · ');
+
+/* ---------- helpers ---------- */
+const tierOf = c => c.gates_passed === false ? 'Out' : (c.tier || 'Out');
+const tierPill = t => `<span class="pill t-${esc(t)}">${t === 'Out' ? 'Out' : 'Tier ' + esc(t)}</span>`;
+const scarcity = s => s ? `<span class="pill s-${esc(s)}">${esc(s)}</span>` : '';
+const bars = (rows, max) => {
+  if (!rows.length) return '<div class="empty">No data</div>';
+  max = max || Math.max(...rows.map(r => r[1]), 1);
+  return '<div class="bars">' + rows.map(([l, v, color]) => `<div class="row"><div class="lbl" title="${esc(l)}">${esc(l)}</div><div class="track"><div class="fill" style="width:${Math.max(2, v / max * 100)}%;${color ? 'background:' + color : ''}"></div></div><div class="num">${esc(v)}</div></div>`).join('') + '</div>';
+};
+const fmtMoney = (n, cur) => {
+  if (typeof n !== 'number') return esc(n ?? '');
+  if (cur === 'INR') { if (n >= 1e7) return '₹' + (n/1e7).toFixed(2).replace(/\.?0+$/,'') + ' Cr'; if (n >= 1e5) return '₹' + (n/1e5).toFixed(1).replace(/\.0$/,'') + ' L'; }
+  try { return new Intl.NumberFormat(undefined, {style:'currency', currency: cur || 'USD', maximumFractionDigits:0}).format(n); } catch(e) { return n.toLocaleString() + ' ' + (cur||''); }
+};
+const countBy = (xs, f) => xs.reduce((m, x) => { const k = f(x); if (k) m[k] = (m[k]||0) + 1; return m; }, {});
+const tags = xs => `<div class="tags">${arr(xs).map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div>`;
+const src = s => !s ? '' : (safeUrl(s) ? `<a class="small" href="${esc(s)}" target="_blank" rel="noopener">source</a>` : `<span class="small muted">${esc(s)}</span>`);
+
+/* ---------- tabs ---------- */
+const TABS = [
+  ['overview','Overview'],['skills','Skill Intelligence'],['market','Market'],['companies','Target Companies'],
+  ['pools','Talent Pools'],['searches','Search Strings'],['candidates','Candidates (' + C.length + ')'],['outreach','Outreach'],['plan','Plan & Rubric']
+];
+const nav = $('#tabs'), panels = $('#panels');
+TABS.forEach(([id, label]) => {
+  const b = document.createElement('button'); b.type = 'button'; b.role = 'tab'; b.textContent = label; b.dataset.tab = id;
+  b.onclick = () => show(id); nav.appendChild(b);
+  const p = document.createElement('section'); p.className = 'panel'; p.id = 'p-' + id; p.hidden = true; panels.appendChild(p);
+});
+function show(id){
+  nav.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === id));
+  panels.querySelectorAll('.panel').forEach(p => p.hidden = p.id !== 'p-' + id);
+  store.set('tsi:tab', id);
+}
+
+/* ---------- overview ---------- */
+(function(){
+  const tiers = countBy(C, tierOf);
+  const diff = Number(MK.difficulty) || 0;
+  const comp = MK.comp || {};
+  const top = C.filter(c => tierOf(c) !== 'Out').sort((a,b) => (b.score||0) - (a.score||0)).slice(0, 6);
+  const companiesT = countBy(arr(D.companies), c => c.tier);
+  $('#p-overview').innerHTML = `
+  <div class="grid g4">
+    <div class="card kpi"><div class="label">Hiring difficulty</div><div class="val">${diff ? diff + '/10' : '–'}</div><div class="meter"><i style="left:calc(${Math.min(100, Math.max(0, (diff-1)/9*100))}% - 2px)"></i></div><div class="note">${esc(MK.difficulty_reason || '')}</div></div>
+    <div class="card kpi"><div class="label">Comp band</div><div class="val" style="font-size:20px">${comp.low != null ? fmtMoney(comp.low, comp.currency) + ' – ' + fmtMoney(comp.high, comp.currency) : '–'}</div><div class="note">${esc([comp.basis, comp.confidence ? comp.confidence + ' confidence' : ''].filter(Boolean).join(' · '))} ${src(comp.source)}</div></div>
+    <div class="card kpi"><div class="label">Candidates found</div><div class="val">${C.length}</div><div class="note">A ${tiers.A||0} · B ${tiers.B||0} · C ${tiers.C||0} · Out ${tiers.Out||0}</div></div>
+    <div class="card kpi"><div class="label">Est. time to fill</div><div class="val">${MK.time_to_fill_days ? esc(MK.time_to_fill_days) + 'd' : '–'}</div><div class="note">Supply ${esc(MK.supply||'?')} · Demand ${esc(MK.demand||'?')}</div></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h2>The brief</h2><p style="margin-top:0">${esc(B.summary)}</p>
+      <div class="grid g2"><div><h3>Must-haves</h3><ul class="clean">${arr(B.must).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+      <div><h3>Nice-to-haves</h3><ul class="clean">${arr(B.nice).map(x=>`<li>${esc(x)}</li>`).join('') || '<li class="muted">–</li>'}</ul></div></div>
+      ${arr(B.dealbreakers).length ? `<h3 style="margin-top:10px">Deal-breakers</h3>${tags(B.dealbreakers)}` : ''}
+      ${arr(B.assumptions).length ? `<details style="margin-top:10px"><summary>Assumptions (${B.assumptions.length})</summary><ul class="clean small">${B.assumptions.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
+    </div>
+    <div class="card"><h2>Top candidates</h2>${top.length ? `<table><tbody>${top.map(c => `<tr><td>${tierPill(tierOf(c))}</td><td><div class="cand-name">${link(c.url, c.name)}</div><div class="small muted">${esc(c.headline||'')}</div></td><td class="small" style="text-align:right;font-variant-numeric:tabular-nums">${esc(c.score ?? '')}</td></tr>`).join('')}</tbody></table>` : '<div class="empty">No candidates yet. Use the Search Strings tab to start sourcing.</div>'}</div>
+  </div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card"><h2>Candidates by tier</h2>${bars(['A','B','C','Out'].map(t => [t === 'Out' ? 'Out' : 'Tier ' + t, tiers[t]||0, `var(--${t === 'Out' ? 'out' : t.toLowerCase()})`]).filter(r => r[1]))}</div>
+    <div class="card"><h2>Candidates by pool</h2>${bars(Object.entries(countBy(C, c => c.pool)).sort((a,b)=>b[1]-a[1]).slice(0,8))}</div>
+    <div class="card"><h2>Target companies by tier</h2>${bars(['T1','T2','T3'].map(t => [t, companiesT[t]||0]).filter(r=>r[1]))}</div>
+  </div>`;
+})();
+
+/* ---------- skills ---------- */
+(function(){
+  const S = arr(D.skills); const cats = ['core','adjacent','transferable','tool'];
+  const byCat = cats.map(cat => [cat, S.filter(s => (s.category||'').toLowerCase() === cat)]).filter(x => x[1].length);
+  const T = arr(D.titles);
+  $('#p-skills').innerHTML = `
+  <div class="grid g2">
+    <div class="card"><h2>Skill weight</h2>${bars(S.slice().sort((a,b)=>(b.weight||0)-(a.weight||0)).map(s => [s.name, s.weight||0]), 5)}
+      <div class="legend" style="margin-top:8px">Weight 1–5: how much each skill drives the search and the score</div></div>
+    <div class="card"><h2>Title variants</h2>${['exact','adjacent','stretch'].map(f => { const ts = T.filter(t => t.fit === f); return ts.length ? `<h3 style="text-transform:capitalize;margin-top:8px">${f}</h3>${tags(ts.map(t=>t.title))}` : ''; }).join('') || '<div class="empty">No titles</div>'}</div>
+  </div>
+  ${byCat.map(([cat, xs]) => `<div class="card" style="margin-top:14px"><h2 style="text-transform:capitalize">${cat} skills</h2><div class="tblwrap"><table><thead><tr><th>Skill</th><th>Weight</th><th>Scarcity</th><th>Synonyms / search variants</th><th>Why it matters</th></tr></thead><tbody>
+    ${xs.map(s => `<tr><td><b>${esc(s.name)}</b></td><td>${esc(s.weight ?? '')}</td><td>${scarcity(s.scarcity)}</td><td>${tags(s.synonyms)}</td><td class="small">${esc(s.why||'')}</td></tr>`).join('')}
+  </tbody></table></div></div>`).join('')}`;
+})();
+
+/* ---------- market ---------- */
+(function(){
+  const geo = arr(MK.geo), ins = arr(MK.insights);
+  $('#p-market').innerHTML = `
+  <div class="grid g3">
+    <div class="card kpi"><div class="label">Supply</div><div class="val" style="text-transform:capitalize">${esc(MK.supply||'–')}</div></div>
+    <div class="card kpi"><div class="label">Demand</div><div class="val" style="text-transform:capitalize">${esc(MK.demand||'–')}</div></div>
+    <div class="card kpi"><div class="label">Difficulty</div><div class="val">${esc(MK.difficulty ?? '–')}/10</div><div class="note">${esc(MK.difficulty_reason||'')}</div></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h2>Market insights</h2>${ins.length ? `<ul class="clean">${ins.map(i => `<li>${esc(i.text)} ${src(i.source)}</li>`).join('')}</ul>` : '<div class="empty">No insights</div>'}</div>
+    <div class="card"><h2>Competing for the same talent</h2>${tags(MK.competitors_hiring)}
+      ${MK.comp ? `<h3 style="margin-top:14px">Compensation</h3><p class="small" style="margin:0">${fmtMoney(MK.comp.low, MK.comp.currency)} – ${fmtMoney(MK.comp.high, MK.comp.currency)} ${esc(MK.comp.basis||'')} · ${esc(MK.comp.confidence||'')} confidence ${src(MK.comp.source)}</p>` : ''}</div>
+  </div>
+  <div class="card" style="margin-top:14px"><h2>Locations</h2>${geo.length ? `<div class="tblwrap"><table><thead><tr><th>Priority</th><th>Location</th><th>Supply</th><th>Comp note</th></tr></thead><tbody>${geo.slice().sort((a,b)=>(a.priority||9)-(b.priority||9)).map(g => `<tr><td>${esc(g.priority ?? '')}</td><td><b>${esc(g.location)}</b></td><td>${g.supply ? `<span class="pill s-${g.supply === 'low' ? 'high' : g.supply === 'high' ? 'low' : 'medium'}">${esc(g.supply)}</span>` : ''}</td><td class="small">${esc(g.comp_note||'')}</td></tr>`).join('')}</tbody></table></div>` : '<div class="empty">No location data</div>'}</div>`;
+})();
+
+/* ---------- companies ---------- */
+(function(){
+  const P = $('#p-companies'); const CO = arr(D.companies);
+  const types = [...new Set(CO.map(c => c.type).filter(Boolean))];
+  const candByCo = countBy(C, c => (c.company||'').toLowerCase());
+  P.innerHTML = `<div class="toolbar"><input type="search" id="coQ" placeholder="Search companies, titles, signals"><select id="coT"><option value="">All tiers</option><option>T1</option><option>T2</option><option>T3</option></select><select id="coY"><option value="">All types</option>${types.map(t=>`<option>${esc(t)}</option>`).join('')}</select><span class="small muted" id="coN"></span></div><div class="grid g3" id="coGrid"></div>`;
+  const draw = () => {
+    const q = $('#coQ').value.toLowerCase(), t = $('#coT').value, y = $('#coY').value;
+    const xs = CO.filter(c => (!t || c.tier === t) && (!y || c.type === y) && (!q || JSON.stringify(c).toLowerCase().includes(q)));
+    $('#coN').textContent = xs.length + ' of ' + CO.length;
+    $('#coGrid').innerHTML = xs.map(c => `<div class="card stack">
+      <div class="split"><h3 style="margin:0">${link(c.url, c.name)}</h3><span class="pill ${c.tier==='T1'?'t-A':c.tier==='T2'?'t-B':'t-C'}">${esc(c.tier||'')}</span></div>
+      <div class="small muted">${esc(c.type||'')}${c.est_pool ? ' · est. pool ' + esc(c.est_pool) : ''}${candByCo[(c.name||'').toLowerCase()] ? ' · ' + candByCo[(c.name||'').toLowerCase()] + ' candidates found' : ''}</div>
+      <div>${esc(c.why||'')}</div>
+      ${c.poach_signal ? `<div class="small"><span class="pill s-high">signal</span> ${esc(c.poach_signal)}</div>` : ''}
+      ${arr(c.titles_to_target).length ? `<div class="small muted">Titles there</div>${tags(c.titles_to_target)}` : ''}
+    </div>`).join('') || '<div class="empty">No companies match</div>';
+  };
+  ['coQ','coT','coY'].forEach(id => $('#'+id).addEventListener('input', draw)); draw();
+})();
+
+/* ---------- pools ---------- */
+(function(){
+  const PO = arr(D.pools).slice().sort((a,b)=>(a.priority||9)-(b.priority||9)); const CH = arr(D.channels);
+  const candByPool = countBy(C, c => c.pool);
+  $('#p-pools').innerHTML = `<div class="grid g2">${PO.map(p => `<div class="card stack">
+    <div class="split"><h3 style="margin:0">${esc(p.name)}</h3><span class="pill">P${esc(p.priority ?? '?')}</span></div>
+    <div>${esc(p.description||'')}</div>
+    <div class="small muted">Est. size <b style="color:var(--text)">${esc(p.est_size||'?')}</b> · accessibility ${esc(p.accessibility||'?')} · quality ${esc(p.quality||'?')} · ${candByPool[p.name]||0} candidates found</div>
+    ${tags(p.channels)}</div>`).join('') || '<div class="empty">No pools</div>'}</div>
+  ${CH.length ? `<div class="card" style="margin-top:14px"><h2>Channels & communities</h2><div class="tblwrap"><table><thead><tr><th>Channel</th><th>Why</th><th>Tactic</th></tr></thead><tbody>${CH.map(c => `<tr><td><b>${esc(c.name)}</b></td><td class="small">${esc(c.why||'')}</td><td class="small">${esc(c.tactic||'')}</td></tr>`).join('')}</tbody></table></div></div>` : ''}`;
+})();
+
+/* ---------- searches ---------- */
+(function(){
+  const S = arr(D.searches); const plats = [...new Set(S.map(s => s.platform))];
+  $('#p-searches').innerHTML = `<div class="toolbar"><select id="sP"><option value="">All platforms</option>${plats.map(p=>`<option>${esc(p)}</option>`).join('')}</select><span class="small muted">${S.length} search strings</span></div><div id="sList" class="grid g2"></div>`;
+  const draw = () => {
+    const p = $('#sP').value;
+    $('#sList').innerHTML = S.map((s, i) => [s, i]).filter(([s]) => !p || s.platform === p).map(([s, i]) => `<div class="card">
+      <div class="split"><h3 style="margin:0">${esc(s.label||s.platform)}</h3><button class="btn" type="button" data-copy="${i}">Copy</button></div>
+      <div class="small muted">${esc(s.platform)}${s.pool ? ' · ' + esc(s.pool) : ''}</div>
+      <pre class="q">${esc(s.query)}</pre>${s.notes ? `<div class="small muted">${esc(s.notes)}</div>` : ''}</div>`).join('') || '<div class="empty">No searches</div>';
+  };
+  $('#sP').addEventListener('input', draw); draw();
+  $('#sList').addEventListener('click', e => {
+    const b = e.target.closest('[data-copy]'); if (!b) return;
+    const txt = S[+b.dataset.copy].query;
+    const done = () => { b.textContent = 'Copied'; setTimeout(() => b.textContent = 'Copy', 1200); };
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, () => fallback(txt, done)); else fallback(txt, done);
+  });
+  function fallback(t, done){ const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch(e){} ta.remove(); }
+})();
+
+/* ---------- candidates ---------- */
+(function(){
+  const pools = [...new Set(C.map(c => c.pool).filter(Boolean))];
+  $('#p-candidates').innerHTML = `<div class="toolbar">
+    <input type="search" id="cQ" placeholder="Search name, company, skill, note">
+    <select id="cT"><option value="">All tiers</option><option value="A">Tier A</option><option value="B">Tier B</option><option value="C">Tier C</option><option value="Out">Out</option></select>
+    <select id="cP"><option value="">All pools</option>${pools.map(p=>`<option>${esc(p)}</option>`).join('')}</select>
+    <select id="cS"><option value="">Any status</option>${STATUSES.map(s=>`<option>${s}</option>`).join('')}</select>
+    <span class="small muted" id="cN"></span></div>
+    <div class="card" style="padding:0"><div class="tblwrap"><table id="cTbl"><thead><tr>
+      <th class="sort" data-k="tier">Tier</th><th class="sort" data-k="score">Score</th><th class="sort" data-k="name">Candidate</th><th class="sort" data-k="company">Company · location</th>
+      <th>Why</th><th>Gaps / verify</th><th class="sort" data-k="avail">Availability</th><th>Next step</th><th class="sort" data-k="status">Status</th></tr></thead><tbody></tbody></table></div></div>
+    <p class="small muted">Status is saved in this browser only. Evidence labels: confirmed = profile content seen, partial = search snippet only, unverified = needs checking.</p>`;
+  let sortK = 'score', sortDir = -1;
+  const tierRank = {A:3,B:2,C:1,Out:0};
+  const val = (c, k) => k === 'tier' ? tierRank[tierOf(c)] : k === 'status' ? (status[c.url] || 'New') : k === 'score' ? (c.score||0) : String(c[k]||'').toLowerCase();
+  const draw = () => {
+    const q = $('#cQ').value.toLowerCase(), t = $('#cT').value, p = $('#cP').value, s = $('#cS').value;
+    const xs = C.filter(c => (!t || tierOf(c) === t) && (!p || c.pool === p) && (!s || (status[c.url]||'New') === s) && (!q || JSON.stringify(c).toLowerCase().includes(q)))
+      .sort((a,b) => { const va = val(a, sortK), vb = val(b, sortK); return (va > vb ? 1 : va < vb ? -1 : 0) * sortDir || (b.score||0) - (a.score||0); });
+    $('#cN').textContent = xs.length + ' of ' + C.length;
+    $('#cTbl tbody').innerHTML = xs.map(c => `<tr>
+      <td>${tierPill(tierOf(c))}</td><td style="font-variant-numeric:tabular-nums"><b>${esc(c.score ?? '')}</b></td>
+      <td><div class="cand-name">${link(c.url, c.name)}</div><div class="small muted">${esc(c.headline||'')}</div>${arr(c.skills).length ? tags(c.skills.slice(0,6)) : ''}<div class="small muted">${c.source ? esc(c.source) + ' · ' : ''}<span class="pill">${esc(c.verified||'unverified')}</span></div></td>
+      <td class="small">${esc(c.company||'')}<br><span class="muted">${esc(c.location||'')}${c.years != null ? ' · ' + esc(c.years) + ' yrs' : ''}</span></td>
+      <td class="small"><ul class="clean">${arr(c.strengths).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></td>
+      <td class="small"><ul class="clean">${arr(c.gaps).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></td>
+      <td class="small">${esc(c.avail||'Not signalled')}</td>
+      <td class="small">${esc(c.next||'')}</td>
+      <td><select data-url="${esc(c.url)}">${STATUSES.map(st => `<option${(status[c.url]||'New') === st ? ' selected' : ''}>${st}</option>`).join('')}</select></td></tr>`).join('') || `<tr><td colspan="9"><div class="empty">${C.length ? 'No candidates match these filters' : 'No candidates were found in this run. The search strings are ready to use.'}</div></td></tr>`;
+  };
+  ['cQ','cT','cP','cS'].forEach(id => $('#'+id).addEventListener('input', draw));
+  $('#cTbl thead').addEventListener('click', e => { const th = e.target.closest('th.sort'); if (!th) return; const k = th.dataset.k; sortDir = sortK === k ? -sortDir : (k === 'name' || k === 'company' ? 1 : -1); sortK = k; draw(); });
+  $('#cTbl tbody').addEventListener('change', e => { const sel = e.target.closest('select[data-url]'); if (!sel) return; status[sel.dataset.url] = sel.value; store.set(KEY + ':status', status); });
+  draw();
+})();
+
+/* ---------- outreach ---------- */
+(function(){
+  const O = arr(D.outreach);
+  $('#p-outreach').innerHTML = `<div class="grid g2">${O.map(o => `<div class="card stack"><div class="split"><h3 style="margin:0">${esc(o.audience||'')}</h3><span class="pill">${esc(o.channel||'')}</span></div>${o.subject ? `<div class="small"><b>Subject:</b> ${esc(o.subject)}</div>` : ''}<div class="msg">${esc(o.message||'')}</div></div>`).join('') || '<div class="empty">No outreach templates</div>'}</div>`;
+})();
+
+/* ---------- plan & rubric ---------- */
+(function(){
+  const PL = arr(D.plan), R = D.rubric || {};
+  const tiers = R.tiers || {A:70,B:55,C:40};
+  $('#p-plan').innerHTML = `<div class="grid g3">${PL.map(p => `<div class="card"><h2>${esc(p.phase)}</h2><ul class="clean">${arr(p.actions).map(a=>`<li>${esc(a)}</li>`).join('')}</ul>${p.kpi ? `<p class="small muted" style="margin-bottom:0"><b>KPI:</b> ${esc(p.kpi)}</p>` : ''}</div>`).join('') || '<div class="empty">No plan</div>'}</div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h2>Screening gates</h2><p class="small muted" style="margin-top:0">Fail any one and the candidate is out</p><ul class="clean">${arr(R.gates).map(g=>`<li><b>${esc(g.id||'')}</b> ${esc(g.text)}</li>`).join('')}</ul>
+      <h3 style="margin-top:12px">Tiers</h3><div class="tags">${tierPill('A')} <span class="small">≥ ${esc(tiers.A)}</span> ${tierPill('B')} <span class="small">≥ ${esc(tiers.B)}</span> ${tierPill('C')} <span class="small">≥ ${esc(tiers.C)}</span></div>
+      ${R.screen_question ? `<h3 style="margin-top:12px">Screening question</h3><div class="msg">${esc(R.screen_question)}</div>` : ''}</div>
+    <div class="card"><h2>Scoring factors (100 pts)</h2><div class="tblwrap"><table><thead><tr><th>Factor</th><th>Pts</th><th>Full marks</th><th>Partial</th></tr></thead><tbody>${arr(R.factors).map(f=>`<tr><td><b>${esc(f.name)}</b></td><td>${esc(f.points)}</td><td class="small">${esc(f.full||'')}</td><td class="small">${esc(f.partial||'')}</td></tr>`).join('')}</tbody></table></div></div>
+  </div>`;
+})();
+
+/* ---------- CSV ---------- */
+$('#csvBtn').onclick = () => {
+  const cols = ['tier','score','name','url','headline','company','location','years','pool','avail','verified','status','strengths','gaps','next','source'];
+  const cell = v => { v = Array.isArray(v) ? v.join('; ') : (v ?? ''); v = String(v); if (/^[=+\-@]/.test(v)) v = "'" + v; return '"' + v.replace(/"/g, '""') + '"'; };
+  const rows = [cols.join(',')].concat(C.map(c => cols.map(k => cell(k === 'tier' ? tierOf(c) : k === 'status' ? (status[c.url]||'New') : c[k])).join(',')));
+  const blob = new Blob(['﻿' + rows.join('\r\n')], {type:'text/csv'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = (M.role||'candidates').replace(/[^a-z0-9]+/gi,'-').toLowerCase() + '-candidates.csv'; a.click();
+};
+
+const startTab = store.get('tsi:tab', 'overview');
+show(TABS.some(t => t[0] === startTab) ? startTab : 'overview');
+})();
+</script>
+</body>
+</html>

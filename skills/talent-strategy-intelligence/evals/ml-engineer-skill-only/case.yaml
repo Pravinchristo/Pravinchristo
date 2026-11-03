@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: ml-engineer-skill-only
+expected_outcome: |
+  Treats a skill-level request as a full strategy: decodes LLM/RAG production skills into adjacent skills and titles, US remote market difficulty and comp with sources, target companies including movement signals, non-obvious pools (OSS contributors to LangChain/LlamaIndex/vLLM, conference speakers), searches including GitHub, real candidates or an honest empty list, and a dashboard.

@@ -1,0 +1,7 @@
+---
+type: llm
+focus: trace
+weight: 1
+---
+
+The result matches this description: A complete strategy for a fintech QA Automation Lead in Chennai: skill map with synonyms and title variants, sourced market data (comp vs the 35–45 LPA budget), 15+ tiered target companies (Indian fintech/payments, talent factories, movement signals), talent pools, runnable LinkedIn/X-ray/Naukri/semantic searches, a gated 100-point rubric, real candidates with URLs (or an honest note that none were found), outreach, a plan, and a built dashboard.html plus candidates.csv.
