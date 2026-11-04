@@ -35,8 +35,9 @@ def _loc(req):
 
 def titles_for(req, lib):
     fam = lib["families"].get(req.get("job_family") or "", {})
-    t = [req["title"]] if req.get("title") else []
-    base = re.sub(r"(?i)\b(senior|sr\.?|lead|principal|staff|junior|jr\.?)\s+", "", req.get("title") or "").strip()
+    title = re.split(r"\s+[-–|/]\s+|\s*/\s*", req.get("title") or "")[0].strip()  # "Client Partner - GCC Sales / ..." -> "Client Partner"
+    t = [title] if title else []
+    base = re.sub(r"(?i)\b(senior|sr\.?|lead|principal|staff|junior|jr\.?)\s+", "", title).strip()
     if base and base not in t:
         t.append(base)
     return list(dict.fromkeys(t + fam.get("titles", []))), fam.get("alternate_designations", [])

@@ -68,7 +68,8 @@ def aliases(skill, lib):
     if not d:
         return [skill]
     out = []
-    for a in [skill] + d["aliases"]:
+    # the canonical name is a label; search only with listed aliases (e.g. "New Logo Hunting" and "Go" are not search terms)
+    for a in d["aliases"]:
         if a.lower() not in (o.lower() for o in out):
             out.append(a)
     return out

@@ -1124,6 +1124,212 @@
    "screening": [
     "How did you evaluate retrieval quality in a RAG system you shipped?"
    ]
+  },
+  "New Logo Hunting": {
+   "aliases": [
+    "new logo",
+    "new logos",
+    "new-logo",
+    "new client acquisition",
+    "new client hunting",
+    "new business",
+    "new accounts",
+    "hunter",
+    "hunting",
+    "net new",
+    "greenfield accounts",
+    "logo acquisition",
+    "new customer",
+    "new customers",
+    "new customer acquisition",
+    "client acquisition",
+    "net-new",
+    "new markets",
+    "new regions",
+    "new business development",
+    "cold calling"
+   ],
+   "expansions": [
+    "Net-new account acquisition",
+    "Outbound pipeline creation",
+    "Closing first contracts",
+    "Quota on new logos"
+   ],
+   "equivalents": [],
+   "related": [
+    "Account Mining",
+    "Sales Strategy"
+   ],
+   "dependencies": [],
+   "family": "sales",
+   "market_availability": "medium",
+   "screening": [
+    "Name two logos you opened yourself in the last three years: first deal size, sales cycle, and your role vs presales.",
+    "What share of your quota was new logos versus existing accounts?"
+   ]
+  },
+  "Client Partner": {
+   "aliases": [
+    "client partner",
+    "client partnering",
+    "account partner",
+    "client director",
+    "engagement director",
+    "account director",
+    "relationship manager",
+    "account management",
+    "sales & account management",
+    "sales and account management",
+    "strategic accounts",
+    "key accounts",
+    "client relationships",
+    "account manager"
+   ],
+   "expansions": [
+    "Strategic account ownership",
+    "Executive relationships",
+    "P&L accountability",
+    "Account planning"
+   ],
+   "equivalents": [
+    "Account Director",
+    "Engagement Manager"
+   ],
+   "related": [
+    "Account Mining"
+   ],
+   "dependencies": [],
+   "family": "sales",
+   "market_availability": "medium",
+   "screening": [
+    "Which accounts did you own as client partner, and how much did each grow under you?"
+   ]
+  },
+  "GCC Sales": {
+   "aliases": [
+    "gcc",
+    "global capability center",
+    "global capability centre",
+    "global capability centers",
+    "captive",
+    "gic",
+    "global in-house center",
+    "bot model",
+    "build-operate-transfer",
+    "build operate transfer",
+    "offshore development center",
+    "odc",
+    "gccs",
+    "gics",
+    "captives",
+    "global capability centres",
+    "gcc accounts",
+    "gcc business",
+    "gcc advisory",
+    "gcc setup",
+    "offshore centers",
+    "offshore centres"
+   ],
+   "expansions": [
+    "GCC setup / BOT deals",
+    "Captive transformation",
+    "GCC-as-a-service",
+    "Selling to GCC leaders"
+   ],
+   "equivalents": [],
+   "related": [
+    "International Sales",
+    "New Logo Hunting"
+   ],
+   "dependencies": [],
+   "family": "sales",
+   "market_availability": "low",
+   "screening": [
+    "Walk me through a GCC or BOT deal you closed: client, size, your role, and how long from first meeting to signature."
+   ]
+  },
+  "International Sales": {
+   "aliases": [
+    "international",
+    "global markets",
+    "north america",
+    "usa",
+    "us market",
+    "europe",
+    "emea",
+    "uk",
+    "apac",
+    "anz",
+    "middle east",
+    "global clients",
+    "overseas",
+    "us enterprises",
+    "us clients",
+    "us customers",
+    "us-based",
+    "u.s.",
+    "north american",
+    "nordic",
+    "european",
+    "uk market",
+    "me market",
+    "singapore",
+    "japan",
+    "germany",
+    "multi-region",
+    "global sales"
+   ],
+   "expansions": [
+    "US/Europe/APAC selling",
+    "Cross-border deals",
+    "Time-zone selling"
+   ],
+   "equivalents": [
+    "Domestic enterprise sales"
+   ],
+   "related": [
+    "GCC Sales"
+   ],
+   "dependencies": [],
+   "family": "sales",
+   "market_availability": "medium",
+   "screening": [
+    "Which markets have you carried a number in, and what was your largest deal in each?"
+   ]
+  },
+  "Sales Strategy": {
+   "aliases": [
+    "sales strategy",
+    "go-to-market",
+    "gtm",
+    "sales planning",
+    "territory planning",
+    "market entry",
+    "business plan",
+    "revenue strategy",
+    "pipeline strategy",
+    "market expansion",
+    "growth strategy",
+    "sales leadership",
+    "business growth strategy",
+    "account planning",
+    "gtm strategy"
+   ],
+   "expansions": [
+    "GTM planning",
+    "Territory and account segmentation",
+    "Pipeline and forecast design"
+   ],
+   "equivalents": [],
+   "related": [
+    "New Logo Hunting"
+   ],
+   "dependencies": [],
+   "family": "sales",
+   "market_availability": "medium",
+   "screening": [
+    "Describe a sales strategy or GTM plan you wrote and what it delivered in revenue."
+   ]
   }
  },
  "families": {
@@ -1563,6 +1769,74 @@
      "if_skill": null,
      "q": "Is GenAI/LLM experience mandatory or a plus?",
      "why": "Real shipped GenAI evidence is rare; mandatory makes the search much narrower."
+    }
+   ]
+  },
+  "sales": {
+   "label": "Enterprise / IT Services Sales",
+   "detect": [
+    "client partner",
+    "new logo",
+    "hunter",
+    "gcc",
+    "sales",
+    "business development",
+    "account director",
+    "go-to-market"
+   ],
+   "titles": [
+    "Client Partner",
+    "Senior Client Partner",
+    "Sales Director",
+    "Business Development Director"
+   ],
+   "alternate_designations": [
+    "Account Director",
+    "Engagement Director",
+    "Client Director",
+    "Head of Sales",
+    "VP Sales",
+    "AVP Sales",
+    "Director - New Business",
+    "GCC Sales Leader",
+    "Global Account Manager"
+   ],
+   "emerging": [
+    "GCC-as-a-service",
+    "AI services sales"
+   ],
+   "github": {
+    "languages": [],
+    "topics": []
+   },
+   "followups": [
+    {
+     "key": "fu_hunter",
+     "if_skill": "New Logo Hunting",
+     "q": "Must they have carried a pure new-logo quota, or is a hunt + farm (client partner) mix acceptable?",
+     "why": "Pure hunters and client partners are different pools; most client partners mostly farm.",
+     "on_yes": {
+      "skill": "New Logo Hunting",
+      "level": "hands_on"
+     }
+    },
+    {
+     "key": "fu_gcc",
+     "if_skill": "GCC Sales",
+     "q": "Is closing GCC/BOT deals mandatory, or is selling IT services to global enterprises enough?",
+     "why": "GCC deal closers are a small pool; general services sellers are many times more."
+    },
+    {
+     "key": "fu_markets",
+     "if_skill": null,
+     "q": "Which international markets matter most: US, UK/Europe, APAC, Middle East?",
+     "why": "It sets the X-Ray market terms and target companies."
+    },
+    {
+     "key": "fu_offering",
+     "if_skill": null,
+     "q": "What do they sell: IT/digital services, QE/testing, data/AI, or GCC setup services?",
+     "why": "Offering experience decides the target companies to poach from."
     }
    ]
   }

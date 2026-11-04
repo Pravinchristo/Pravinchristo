@@ -18,7 +18,7 @@ CUES = {
     "leadership": r"\b(led|lead(ing)?|managed|mentor(ed|ing)?|headed|team of \d+|guided a team|people manager)\b",
     "production": r"\b(production|prod\b|go-live|went live|deployed|deployment|live traffic|sla|on-call|in prod|released to)\b",
     "architecture": r"\b(architected|architecture|designed the|solution design|system design|designed and|high-level design|hld|lld|reference architecture)\b",
-    "hands_on": r"\b(implemented|developed|built|wrote|coded|created|automated|migrated|optimi[sz]ed|engineered|programmed|configured|integrated|tuned|refactored|debugged)\b",
+    "hands_on": r"\b(implemented|developed|built|wrote|coded|created|automated|migrated|optimi[sz]ed|engineered|programmed|configured|integrated|tuned|refactored|debugged|won|closed|signed|acquired|landed|opened|generated|grew|achieved|exceeded|sells|sold|selling|drove|drives|driving|owns|owned|ran|runs|pursued|helped|managed|built)\b",
     "project": r"\b(project|worked on|used|using|involved in|exposure|responsible for|participated|client)\b",
 }
 SENSITIVE = re.compile(r"(?i)^\W*(date of birth|dob|age|gender|sex|marital status|religion|caste|nationality|passport|father'?s name|spouse|photo)\b.*$", re.M)
@@ -165,8 +165,13 @@ def evaluate(req, cand, lib, today=None):
     rel = relevant_years(exp["roles"], mand or pref, lib)
     used = [s for s in mand if ev[s]["level"] and ev[s]["level"] != "mentioned"]
     need = req.get("exp_min") or 3
-    br["projects"] = w["projects"] * (0.6 * min(1, rel / need) + 0.4 * (len(used) / len(mand) if mand else 0))
-    notes["projects"] = f"{rel:g} relevant years in roles that use the required stack; {len(used)}/{len(mand)} mandatory skills used in projects."
+    share = len(used) / len(mand) if mand else 0
+    if exp["roles"]:
+        br["projects"] = w["projects"] * (0.6 * min(1, rel / need) + 0.4 * share)
+        notes["projects"] = f"{rel:g} relevant years in roles that use the required stack; {len(used)}/{len(mand)} mandatory skills used in projects."
+    else:  # no dated roles in the text (e.g. a profile summary): don't penalise missing dates, score on usage only
+        br["projects"] = w["projects"] * share
+        notes["projects"] = f"No dated roles in the source text; scored on usage only: {len(used)}/{len(mand)} mandatory skills shown in work context."
     # 3. hands-on
     core = mand + pref
     ho = [s for s in core if ev[s]["level"] and LEVELS.index(ev[s]["level"]) >= 2]
@@ -234,6 +239,11 @@ def evaluate(req, cand, lib, today=None):
     flags = []
     if crit_gaps:
         flags.append({"type": "critical_gap", "text": f"Missing or keyword-only evidence for critical skill(s): {', '.join(crit_gaps)}."})
+    if "GCC Sales" in mand and re.search(r"(?i)\bgcc", text):
+        gulf = re.search(r"(?i)\b(gulf|saudi|uae|dubai|qatar|kuwait|oman|bahrain|riyadh|abu dhabi|nordic)\b", text)
+        capability = re.search(r"(?i)global capability|captive|\bgic\b|offshore cent|gcc setup|gcc advisory|gcc accounts|gcc business|india gcc|gccs\b", text)
+        if gulf and not capability:
+            flags.append({"type": "gcc_ambiguous", "text": "\"GCC\" here may mean the Gulf region (Gulf/Middle East words nearby), not Global Capability Centers. Confirm on the call."})
     for s in level_gaps:
         need = req["intake"]["required_levels"][s].replace("_", "-")
         flags.append({"type": "level_gap", "text": f"{s}: recruiter requires {need} evidence; resume shows {ev[s]['level'] or 'none'}."})
@@ -257,10 +267,15 @@ def screening_questions(req, ev, lib, missing, weak):
     for s in (req.get("mandatory_skills") or []):
         e = ev.get(s, {})
         bank = lib["skills"].get(s, {}).get("screening", [])
+        sales = lib["skills"].get(s, {}).get("family") == "sales"
         if s in missing:
-            qs.append({"skill": s, "why": "No evidence in resume", "q": f"Have you used {s} in any project? What did you build with it, and when?"})
+            q = (f"Where have you done {s.lower()}? Give one example: client, deal size, your role, and the result." if sales
+                 else f"Have you used {s} in any project? What did you build with it, and when?")
+            qs.append({"skill": s, "why": "No evidence in resume", "q": q})
         elif s in weak:
-            qs.append({"skill": s, "why": "Listed but not shown in a project", "q": f"Your resume lists {s}. Walk me through one project where you used it hands-on: your part, the scale, the outcome."})
+            q = (f"Your profile mentions {s.lower()}. Walk me through one deal or account where you did it yourself: client, value, timeline, outcome." if sales
+                 else f"Your resume lists {s}. Walk me through one project where you used it hands-on: your part, the scale, the outcome.")
+            qs.append({"skill": s, "why": "Listed but not shown in a project", "q": q})
         elif bank:
             qs.append({"skill": s, "why": f"Verify {e.get('level')} depth", "q": bank[0]})
         if e.get("level") in ("architecture",) and len(bank) > 1:
