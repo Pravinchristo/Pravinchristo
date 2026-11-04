@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MARK &amp; JOE Command Centre</title>
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
 <style>
 :root{
   color-scheme: light;
@@ -54,8 +55,12 @@ nav.tabs button.on{color:var(--text);border-color:var(--accent);font-weight:600}
 .kpi .l{color:var(--text-2);font-size:12px}
 .muted{color:var(--muted)} .small{font-size:12px}
 .agent{display:flex;gap:12px;align-items:flex-start}
-.avatar{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;letter-spacing:.03em}
-.avatar.mark{background:var(--mark)} .avatar.joe{background:var(--joe)}
+.logo{flex:none;display:inline-block;vertical-align:middle}
+.logo.sys{border-radius:50%;background:var(--muted);color:#fff;display:inline-grid;place-items:center;font-size:10px;font-weight:700}
+.agent .logo{width:52px;height:52px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .pair{display:flex;gap:4px}
+.who{display:flex;align-items:center;gap:6px}
 .agent .role{color:var(--text-2);font-size:12px}
 .agent .stat{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px;font-size:12px;color:var(--text-2)}
 .agent .stat b{color:var(--text);font-variant-numeric:tabular-nums}
@@ -112,10 +117,31 @@ code,.code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12p
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo-mark" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="23" fill="var(--mark)"/>
+    <circle cx="24" cy="24" r="13" fill="none" stroke="#fff" stroke-width="2.5"/>
+    <path d="M24 5v8M24 35v8M5 24h8M35 24h8" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="24" cy="20.5" r="3.6" fill="#fff"/>
+    <path d="M17.2 31.5c.9-4.2 3.6-6.6 6.8-6.6s5.9 2.4 6.8 6.6" fill="#fff"/>
+  </symbol>
+  <symbol id="logo-joe" viewBox="0 0 48 48">
+    <rect x="1" y="1" width="46" height="46" rx="12" fill="var(--joe)"/>
+    <path d="M12 9h13l6 6v8.5" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M12 9v28h10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M16 17h8M16 22h6M16 27h4" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="30" cy="30" r="7.5" fill="var(--joe)" stroke="#fff" stroke-width="2.5"/>
+    <path d="M26.8 30.2l2.2 2.2 4.2-4.4" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M35.5 35.5l5 5" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+  </symbol>
+</svg>
 <header>
-  <div>
+  <div class="brand">
+    <div class="pair"><svg class="logo" width="30" height="30" aria-hidden="true"><use href="#logo-mark"/></svg><svg class="logo" width="30" height="30" aria-hidden="true"><use href="#logo-joe"/></svg></div>
+    <div>
     <h1>MARK &amp; JOE · Talent Acquisition Command Centre</h1>
     <div class="sub">Intelligent Mode · every number below comes from stored records</div>
+    </div>
   </div>
   <div class="spacer"></div>
   <select id="reqFilter" aria-label="Requirement"><option value="">All requirements</option></select>
@@ -169,7 +195,7 @@ code,.code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12p
 
     <div class="grid g2" style="margin-top:12px">
       <div class="card" id="addCard"><h2>4 · Add a sourced profile → JOE evaluates</h2><div class="empty">Unlocks after you approve the search plan.</div></div>
-      <div class="card" id="joeCard"><h2>JOE's evaluation</h2><div class="empty">Add a profile with resume text to see JOE's evidence-based score.</div></div>
+      <div class="card" id="joeCard"><h2 class="who"><svg class="logo" width="20" height="20" aria-hidden="true"><use href="#logo-joe"/></svg>JOE's evaluation</h2><div class="empty">Add a profile with resume text to see JOE's evidence-based score.</div></div>
     </div>
     <div class="grid g2" style="margin-top:12px">
       <div class="card" id="searchCard"><h2>Log a search run</h2><div class="empty">Unlocks after approval. A channel only counts as searched once a run is logged with evidence.</div></div>
@@ -240,8 +266,8 @@ code,.code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12p
   <!-- Agents -->
   <section data-tab="agents" class="hidden">
     <div class="grid g2">
-      <div class="card"><h2>MARK · search activity</h2><div id="markStats"></div></div>
-      <div class="card"><h2>JOE · evaluation activity</h2><div id="joeStats"></div></div>
+      <div class="card"><h2 class="who"><svg class="logo" width="20" height="20" aria-hidden="true"><use href="#logo-mark"/></svg>MARK · search activity</h2><div id="markStats"></div></div>
+      <div class="card"><h2 class="who"><svg class="logo" width="20" height="20" aria-hidden="true"><use href="#logo-joe"/></svg>JOE · evaluation activity</h2><div id="joeStats"></div></div>
     </div>
     <div class="card" style="margin-top:12px"><h2>Agent activity log</h2><div class="tablewrap" id="actLog"></div></div>
   </section>
@@ -283,6 +309,9 @@ async function api(path, body){
 }
 function toast(t){ const el=$("#toast"); el.textContent=t; el.style.display="block"; clearTimeout(el._t); el._t=setTimeout(()=>el.style.display="none", 3800); }
 function tip(el, text){ el.addEventListener("mousemove", e => { const t=$("#tip"); t.textContent=text; t.style.display="block"; t.style.left=Math.min(e.clientX+12, innerWidth-220)+"px"; t.style.top=(e.clientY+12)+"px"; }); el.addEventListener("mouseleave", () => $("#tip").style.display="none"); }
+const logo = (agent, size = 22) => agent === "MARK" || agent === "JOE"
+  ? `<svg class="logo" width="${size}" height="${size}" role="img" aria-label="${agent}"><use href="#logo-${agent.toLowerCase()}"/></svg>`
+  : `<span class="logo sys" style="width:${size}px;height:${size}px" aria-label="${esc(agent)}">${esc((agent||"?")[0].toUpperCase())}</span>`;
 const empty = t => `<div class="empty">${esc(t)}</div>`;
 const scoreDot = s => s==null ? '<span class="pill"><span class="dot st-none"></span>Not scored</span>' : s>=85 ? `<span class="pill"><span class="dot st-good"></span>${s} · High potential</span>` : s>=70 ? `<span class="pill"><span class="dot st-good"></span>${s} · Potential</span>` : s>=55 ? `<span class="pill"><span class="dot st-warn"></span>${s} · Secondary</span>` : `<span class="pill"><span class="dot st-crit"></span>${s} · Not recommended</span>`;
 const levelTxt = {mentioned:"keyword only", project:"used in project", hands_on:"hands-on", architecture:"architecture/design", production:"production", leadership:"leadership"};
@@ -327,10 +356,10 @@ function render(){
   // agents
   const cur = S.requirements.find(r => r.id === ($("#reqFilter").value || CUR));
   $("#agents").innerHTML = `
-    <div class="card agent"><div class="avatar mark">M</div><div><b>MARK</b> <span class="role">· Senior Talent Hunter</span>
+    <div class="card agent">${logo("MARK", 52)}<div><b>MARK</b> <span class="role">· Senior Talent Hunter</span>
       <div class="small muted">${cur ? "Working on " + esc(cur.title || cur.id) + " · " + esc(cur.status) : "Ready for a new JD"}</div>
       <div class="stat"><span><b>${a.MARK.profiles_sourced}</b> sourced</span><span><b>${a.MARK.companies_mapped}</b> companies mapped</span><span><b>${a.MARK.searches_logged}</b> searches logged</span><span><b>${a.MARK.refinements}</b> refinements</span></div></div></div>
-    <div class="card agent"><div class="avatar joe">J</div><div><b>JOE</b> <span class="role">· Senior Technical Recruiter</span>
+    <div class="card agent">${logo("JOE", 52)}<div><b>JOE</b> <span class="role">· Senior Technical Recruiter</span>
       <div class="small muted">Evidence over keywords · flags critical gaps even on high scores</div>
       <div class="stat"><span><b>${a.JOE.profiles_evaluated}</b> evaluated</span><span><b>${a.JOE.shortlisted}</b> shortlisted</span><span><b>${a.JOE.avg_score ?? "–"}</b> avg score</span><span><b>${a.JOE.challenges}</b> challenges raised</span></div></div></div>`;
   // requirement selectors
@@ -377,7 +406,7 @@ function render(){
   const M = a.MARK, J = a.JOE;
   $("#markStats").innerHTML = statTable([["Search plans proposed", M.plans],["Searches logged (with evidence)", M.searches_logged],["Channels actually used", M.channels_used],["Companies mapped", M.companies_mapped],["Profiles sourced", M.profiles_sourced],["Search refinements", M.refinements]]);
   $("#joeStats").innerHTML = statTable([["Profiles evaluated", J.profiles_evaluated],["Technical assessments", J.assessments],["Average match score", J.avg_score ?? "–"],["Shortlist decisions", J.shortlisted],["Challenges raised (MARK ↔ JOE)", J.challenges]]) + (J.rejection_reasons.length ? `<h3>Rejection reasons</h3>${statTable(J.rejection_reasons.map(r => [r.reason, r.count]))}` : "");
-  $("#actLog").innerHTML = a.log.length ? `<table><tr><th>When (UTC)</th><th>Agent</th><th>Action</th><th>Detail</th></tr>${a.log.map(l => `<tr><td class="small">${esc(l.at.replace("T"," ").slice(0,16))}</td><td><span class="avatar ${l.agent==="JOE"?"joe":l.agent==="MARK"?"mark":""}" style="width:22px;height:22px;font-size:10px;display:inline-grid;${l.agent!=="JOE"&&l.agent!=="MARK"?"background:var(--muted)":""}">${esc(l.agent[0])}</span> ${esc(l.agent)}</td><td>${esc(l.action.replaceAll("_"," "))}</td><td class="small">${esc(detailTxt(l.detail))}</td></tr>`).join("")}</table>` : empty("No agent activity yet.");
+  $("#actLog").innerHTML = a.log.length ? `<table><tr><th>When (UTC)</th><th>Agent</th><th>Action</th><th>Detail</th></tr>${a.log.map(l => `<tr><td class="small">${esc(l.at.replace("T"," ").slice(0,16))}</td><td><span class="who" style="white-space:nowrap">${logo(l.agent.split(":")[0].toUpperCase()==="RECRUITER" ? "Recruiter" : l.agent)} ${esc(l.agent)}</span></td><td>${esc(l.action.replaceAll("_"," "))}</td><td class="small">${esc(detailTxt(l.detail))}</td></tr>`).join("")}</table>` : empty("No agent activity yet.");
   // connectors
   $("#connTable").innerHTML = `<table><tr><th>Connector</th><th>Category</th><th>Status</th><th>Supported actions</th><th>Bulk sourcing</th><th>Evidence</th><th>Notes</th></tr>${S.connectors.map(c => `<tr><td><b>${esc(c.name)}</b></td><td>${esc(c.category)}</td><td>${connPill(c.status)}</td><td class="small">${esc((c.supported_actions||[]).join(", "))}</td><td>${c.bulk_sourcing ? "yes" : "no"}</td><td class="small">${esc(c.evidence||"–")}${c.verified_at ? `<div class="evi">${esc(c.verified_at.slice(0,10))}</div>` : ""}</td><td class="small">${esc(c.notes||"")}</td></tr>`).join("")}</table>`;
 }
@@ -416,9 +445,9 @@ async function openCandidate(row){
   d.innerHTML = `<div class="row" style="justify-content:space-between"><h2 style="margin:0">${esc(row.full_name)}</h2><button class="btn ghost" id="closeD">Close</button></div>
    <div class="small muted">${row.id} · ${esc(row.current_designation||"")} ${row.current_company?"at "+esc(row.current_company):""} · ${esc(row.location||"")}</div>
    <div class="row" style="margin:8px 0">${scoreDot(row.match_score)} <span class="pill">${esc(row.status)}</span> <span class="pill">${esc(row.availability)}</span></div>
-   ${e ? `<h3>JOE's breakdown (${e.total}/100)</h3><table>${Object.entries(e.breakdown).map(([k,b]) => `<tr><td>${esc(k.replace("_"," "))}</td><td class="num">${b.score}/${b.max}</td><td class="small">${esc(b.evidence)}</td></tr>`).join("")}</table>
+   ${e ? `<h3 class="who">${logo("JOE", 18)}JOE's breakdown (${e.total}/100)</h3><table>${Object.entries(e.breakdown).map(([k,b]) => `<tr><td>${esc(k.replace("_"," "))}</td><td class="num">${b.score}/${b.max}</td><td class="small">${esc(b.evidence)}</td></tr>`).join("")}</table>
    ${(e.flags||[]).length ? `<h3>Flags</h3>${e.flags.map(f => `<div class="warn ${f.type==="critical_gap"?"contradiction":""}">${esc(f.text)}</div>`).join("")}` : ""}
-   ${(e.challenges||[]).length ? `<h3>MARK ↔ JOE challenges</h3>${e.challenges.map(c => `<div class="warn">${esc(c.by)} → ${esc(c.to)}: ${esc(c.text)}</div>`).join("")}` : ""}
+   ${(e.challenges||[]).length ? `<h3>MARK ↔ JOE challenges</h3>${e.challenges.map(c => `<div class="warn who" style="align-items:flex-start">${logo(c.by, 18)}<span><b>${esc(c.by)} → ${esc(c.to)}:</b> ${esc(c.text)}</span></div>`).join("")}` : ""}
    <h3>Skill evidence</h3><table><tr><th>Skill</th><th>Strongest evidence</th><th>Confidence</th><th>Resume evidence</th></tr>${Object.entries(e.skill_evidence).map(([s,x]) => `<tr><td>${esc(s)}</td><td>${x.level ? esc(levelTxt[x.level]) : "<span class='muted'>none</span>"}</td><td>${esc(x.confidence)}</td><td class="small">${(x.evidence||[]).map(t => "“"+esc(t.text)+"”").join("<br>")}</td></tr>`).join("")}</table>
    <h3>Technical screening questions</h3><ol>${(e.screening_questions||[]).map(q => `<li>${esc(q.q)} <span class="muted small">(${esc(q.why)})</span></li>`).join("")}</ol>` : `<div class="empty">No evaluation yet (no resume text).</div>`}
    <h3>Recruiter actions</h3>
@@ -459,7 +488,7 @@ function renderReq(v){
   if (q && !(last && last.qkey === q.key)) log.push({mark: q.question, why: q.why, qkey: q.key});
   if (!q && !log.some(m => m.done)) log.push({mark: "I have what I need. Confirm the sourcing channels, then I'll propose the search plan.", done: true});
   if (q && !q.essential && v.ready_for_plan && !log.some(m => m.readyhint)) log.push({mark: "The essentials are covered. You can keep answering to sharpen the search, or go ahead and propose the plan now.", readyhint: true});
-  $("#chat").innerHTML = log.map(m => m.me ? `<div class="msg me">${esc(m.me)}</div>` : `<div class="msg"><div class="who" style="color:var(--mark)">MARK</div>${esc(m.mark)}${m.why ? `<div class="why">Why it matters: ${esc(m.why)}</div>` : ""}</div>`).join("");
+  $("#chat").innerHTML = log.map(m => m.me ? `<div class="msg me">${esc(m.me)}</div>` : `<div class="msg"><div class="who">${logo("MARK", 18)}<span style="color:var(--mark)">MARK</span></div>${esc(m.mark)}${m.why ? `<div class="why">Why it matters: ${esc(m.why)}</div>` : ""}</div>`).join("");
   $("#chat").scrollTop = 1e9;
   $("#answer").placeholder = q ? "Answer MARK (or type 'skip')" : "All questions answered";
   $("#warnings").innerHTML = v.warnings.map(w => `<div class="warn ${w.type}"><b>${w.type === "contradiction" ? "Contradiction" : "Market note"}:</b> ${esc(w.text)} <span class="muted">→ ${esc(w.suggest)}</span></div>`).join("");
@@ -557,11 +586,11 @@ function renderPlan(v){
 
 function showJoe(res){
   const e = res.evaluation;
-  if (!e) { $("#joeCard").innerHTML = `<h2>JOE's evaluation</h2>${empty("Stored. JOE needs resume text to evaluate.")}`; return; }
-  $("#joeCard").innerHTML = `<h2>JOE's evaluation</h2><div class="row">${scoreDot(e.total)}<b>${esc(e.recommendation)}</b></div>
+  if (!e) { $("#joeCard").innerHTML = `<h2 class="who">${logo("JOE", 20)}JOE's evaluation</h2>${empty("Stored. JOE needs resume text to evaluate.")}`; return; }
+  $("#joeCard").innerHTML = `<h2 class="who">${logo("JOE", 20)}JOE's evaluation</h2><div class="row">${scoreDot(e.total)}<b>${esc(e.recommendation)}</b></div>
     ${res.possible_duplicates && res.possible_duplicates.length ? `<div class="warn">Possible duplicate of ${esc(res.possible_duplicates.map(d=>d.id).join(", "))} (same name and company). Not merged automatically.</div>` : ""}
     ${e.flags.map(f => `<div class="warn ${f.type==="critical_gap"?"contradiction":""}">${esc(f.text)}</div>`).join("")}
-    ${e.challenges.map(c => `<div class="warn">${esc(c.by)} → ${esc(c.to)}: ${esc(c.text)}</div>`).join("")}
+    ${e.challenges.map(c => `<div class="warn who" style="align-items:flex-start">${logo(c.by, 18)}<span><b>${esc(c.by)} → ${esc(c.to)}:</b> ${esc(c.text)}</span></div>`).join("")}
     <table>${Object.entries(e.breakdown).map(([k,b]) => `<tr><td>${esc(k.replace("_"," "))}</td><td class="num">${b.score}/${b.max}</td><td class="small">${esc(b.evidence)}</td></tr>`).join("")}</table>
     <p class="small muted">${esc(e.ignored_fields)}</p>`;
 }

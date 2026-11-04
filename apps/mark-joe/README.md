@@ -4,8 +4,10 @@ Two recruiter agents that work as one team:
 
 | Agent | Role | What it does |
 |---|---|---|
-| **MARK** | Senior Talent Hunter | Reads the JD, asks only what's missing (Intelligent Mode), expands skills, maps target companies, writes every Boolean / X-Ray / GitHub string, plans channels, keeps channel memory, and refines the hunt from JOE's feedback. |
-| **JOE** | Senior Technical Recruiter | Scores each resume on a 100-point evidence model, separates keyword mentions from real project, hands-on, architecture, production and leadership evidence, flags critical gaps, duplicates and gaps, and writes the screening questions. |
+| <img src="web/mark.svg" width="40" alt="MARK logo: crosshair locked on a person"><br>**MARK** | Senior Talent Hunter | Reads the JD, asks only what's missing (Intelligent Mode), expands skills, maps target companies, writes every Boolean / X-Ray / GitHub string, plans channels, keeps channel memory, and refines the hunt from JOE's feedback. |
+| <img src="web/joe.svg" width="40" alt="JOE logo: resume under a magnifying glass with a check"><br>**JOE** | Senior Technical Recruiter | Scores each resume on a 100-point evidence model, separates keyword mentions from real project, hands-on, architecture, production and leadership evidence, flags critical gaps, duplicates and gaps, and writes the screening questions. |
+
+MARK's logo is a round blue badge with a crosshair locked on a person (the hunt). JOE's is a rounded violet square with a resume under a magnifying glass and a check (the evaluation). Shape and symbol differ as well as colour, so the two stay distinct for colour-blind users and in print. Both are in `web/` as standalone SVGs.
 
 The recruiter approves the plan, decides every submission and can correct any record. Every change goes to an audit trail.
 

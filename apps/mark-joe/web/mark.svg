@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="MARK, Senior Talent Hunter">
+  <title>MARK · Senior Talent Hunter</title>
+  <circle cx="24" cy="24" r="23" fill="#2a78d6"/>
+  <circle cx="24" cy="24" r="13" fill="none" stroke="#fff" stroke-width="2.5"/>
+  <path d="M24 5v8M24 35v8M5 24h8M35 24h8" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="24" cy="20.5" r="3.6" fill="#fff"/>
+  <path d="M17.2 31.5c.9-4.2 3.6-6.6 6.8-6.6s5.9 2.4 6.8 6.6" fill="#fff"/>
+</svg>

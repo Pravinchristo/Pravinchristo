@@ -75,6 +75,8 @@ class Handler(BaseHTTPRequestHandler):
         u = urlparse(self.path)
         if u.path in ("/", "/index.html"):
             return self._send(200, open(os.path.join(WEB, "index.html"), "rb").read(), "text/html; charset=utf-8")
+        if u.path in ("/mark.svg", "/joe.svg"):
+            return self._send(200, open(os.path.join(WEB, u.path[1:]), "rb").read(), "image/svg+xml")
         self._api("GET", u)
 
     def do_POST(self):

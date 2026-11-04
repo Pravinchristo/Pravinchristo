@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="JOE, Senior Technical Recruiter">
+  <title>JOE · Senior Technical Recruiter</title>
+  <rect x="1" y="1" width="46" height="46" rx="12" fill="#6250d6"/>
+  <path d="M12 9h13l6 6v8.5" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M12 9v28h10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M16 17h8M16 22h6M16 27h4" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="30" cy="30" r="7.5" fill="#6250d6" stroke="#fff" stroke-width="2.5"/>
+  <path d="M26.8 30.2l2.2 2.2 4.2-4.4" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M35.5 35.5l5 5" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+</svg>
