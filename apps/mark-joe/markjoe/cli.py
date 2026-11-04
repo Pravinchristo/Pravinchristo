@@ -39,7 +39,8 @@ def main(argv=None):
     a = sp.add_parser("ask"); a.add_argument("req")
     a = sp.add_parser("answer"); a.add_argument("req"); a.add_argument("text"); a.add_argument("--key")
     c = sp.add_parser("channels"); c.add_argument("action", choices=["list", "confirm", "add", "deactivate", "connect"]); c.add_argument("args", nargs="*")
-    c.add_argument("--family"); c.add_argument("--category", default="Custom"); c.add_argument("--methodology"); c.add_argument("--evidence")
+    c.add_argument("--family"); c.add_argument("--category", default="Custom"); c.add_argument("--methodology"); c.add_argument("--evidence"); c.add_argument("--url")
+    c.add_argument("--string-type", choices=["boolean", "xray", "github"])
     for n in ("plan", "refine", "shortlist", "show"):
         x = sp.add_parser(n); x.add_argument("req")
     x = sp.add_parser("approve"); x.add_argument("req"); x.add_argument("--by", required=True, help="recruiter name (approval is never given by an agent)")
@@ -75,7 +76,7 @@ def main(argv=None):
         return out(server.requirement_view(db, a.req))
     if a.cmd == "channels":
         if a.action == "list":
-            return out([{k: c[k] for k in ("id", "name", "category", "connected", "approved", "active", "memory_entries", "date_last_used")} for c in hunt.channel_memory(db, a.family)])
+            return out([{k: c[k] for k in ("id", "name", "url", "category", "connected", "approved", "active", "memory_entries", "date_last_used")} for c in hunt.channel_memory(db, a.family)])
         if a.action == "confirm":
             req = intake.get(db, a.args[0])
             ids = []
@@ -87,7 +88,7 @@ def main(argv=None):
             hunt.confirm_channels(db, req, ids)
             return out({"confirmed": a.args[1:]})
         if a.action == "add":
-            return out(service.upsert_channel(db, a.args[0], a.category, a.methodology))
+            return out(service.upsert_channel(db, a.args[0], a.category, a.methodology, url=a.url, string_type=a.string_type))
         ch = db.one("SELECT id FROM sourcing_channels WHERE lower(name)=lower(?)", (a.args[0],))
         if a.action == "deactivate":
             return out(service.set_channel_active(db, ch["id"], False))

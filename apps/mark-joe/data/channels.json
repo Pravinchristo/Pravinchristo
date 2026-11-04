@@ -1,22 +1,219 @@
 {
-  "_note": "Channel catalog. Every channel starts NOT connected. 'filters' lists what the platform's own interface is generally known to offer, and is a planning hint only: confirm it in your own account before relying on it. MARK never claims a search ran unless a search is logged with evidence.",
-  "channels": [
-    {"name": "LinkedIn Recruiter", "category": "Professional network (paid)", "methodology": "Recruiter search with title, skills, company and location facets; save searches and project pipelines.", "filters": ["Boolean keywords", "Current/past company", "Location", "Years of experience", "Open to Work (candidate-shared with recruiters)", "Spotlights"], "manual_only": true},
-    {"name": "LinkedIn", "category": "Professional network", "methodology": "Standard people search with Boolean keywords; Google X-Ray as a complement.", "filters": ["Boolean keywords", "Location", "Current company"], "manual_only": true},
-    {"name": "Naukri", "category": "Job board / resume database", "methodology": "Resdex keyword search with experience, CTC, notice period and location filters.", "filters": ["Keywords", "Experience", "CTC", "Notice period", "Location", "Active in last N days"], "manual_only": true},
-    {"name": "Instahyre", "category": "Job board", "methodology": "Candidate search by skills, experience and company; active seekers.", "filters": ["Skills", "Experience", "Company", "Notice period"], "manual_only": true},
-    {"name": "iimjobs", "category": "Job board (senior / management)", "methodology": "Senior and management search; often used for leadership roles.", "filters": ["Keywords", "Experience", "Location"], "manual_only": true},
-    {"name": "GitHub", "category": "Developer community", "methodology": "User search by language and location; repositories by topic; contributors to relevant repos. Evidence is code, not job history.", "filters": ["language:", "location:", "followers:", "repos:", "topic:"], "manual_only": false},
-    {"name": "Stack Overflow", "category": "Developer community", "methodology": "Top users by tag and location via X-Ray; evidence is answers, not employment.", "filters": ["Tag", "Location (profile text)"], "manual_only": true},
-    {"name": "Google X-Ray", "category": "Public web search", "methodology": "site: searches on public profile pages (linkedin.com/in, github.com, stackoverflow.com/users). Only shows public, indexed pages.", "filters": ["site:", "intitle:", "quotes", "OR", "minus"], "manual_only": false},
-    {"name": "Google Search", "category": "Public web search", "methodology": "Conference speakers, blog authors, meetup organisers, open-source maintainers.", "filters": ["Keywords"], "manual_only": false},
-    {"name": "Internal ATS", "category": "Internal database", "methodology": "Rediscover past applicants and silver medallists for the same skills.", "filters": ["Depends on ATS"], "manual_only": true},
-    {"name": "Employee referrals", "category": "Referral", "methodology": "Share the requirement with teams who worked with the target companies.", "filters": [], "manual_only": true},
-    {"name": "Common Room", "category": "Community intelligence", "methodology": "Community and signal data, where your workspace has it.", "filters": ["Depends on workspace"], "manual_only": true},
-    {"name": "Clay", "category": "Data enrichment", "methodology": "Enrichment and list building on records you already have, within your plan and terms.", "filters": ["Depends on plan"], "manual_only": true},
-    {"name": "Company career portals", "category": "Company research", "methodology": "Read target companies' job pages to see which teams use the stack and are hiring.", "filters": [], "manual_only": false},
-    {"name": "Professional communities", "category": "Community", "methodology": "Meetups, Slack/Discord groups, conference speaker lists.", "filters": [], "manual_only": true},
-    {"name": "Recruiter databases", "category": "Internal database", "methodology": "Your own spreadsheets and past campaign ledgers.", "filters": [], "manual_only": true},
-    {"name": "The Org", "category": "Org-chart data (connector)", "methodology": "People and role search by company and title through the connector, when connected in the session (max 25 results per search; uses credits).", "filters": ["Company", "Title", "Location"], "manual_only": false}
-  ]
+ "_note": "Channel catalog. Every channel starts NOT connected. 'filters' lists what the platform's own interface is generally known to offer, and is a planning hint only: confirm it in your own account before relying on it. MARK never claims a search ran unless a search is logged with evidence. 'approved': true marks channels the recruiter asked to be in every campaign's default selection. 'string_type' picks which of MARK's strings the plan hands to that channel (boolean, xray, github).",
+ "channels": [
+  {
+   "name": "LinkedIn Recruiter",
+   "category": "Professional network (paid)",
+   "methodology": "Recruiter search with title, skills, company and location facets; save searches and project pipelines.",
+   "filters": [
+    "Boolean keywords",
+    "Current/past company",
+    "Location",
+    "Years of experience",
+    "Open to Work (candidate-shared with recruiters)",
+    "Spotlights"
+   ],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "LinkedIn",
+   "category": "Professional network",
+   "methodology": "Standard people search with Boolean keywords; Google X-Ray as a complement.",
+   "filters": [
+    "Boolean keywords",
+    "Location",
+    "Current company"
+   ],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "Naukri",
+   "category": "Job board / resume database",
+   "methodology": "Resdex keyword search with experience, CTC, notice period and location filters.",
+   "filters": [
+    "Keywords",
+    "Experience",
+    "CTC",
+    "Notice period",
+    "Location",
+    "Active in last N days"
+   ],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "Instahyre",
+   "category": "Job board",
+   "methodology": "Candidate search by skills, experience and company; active seekers.",
+   "filters": [
+    "Skills",
+    "Experience",
+    "Company",
+    "Notice period"
+   ],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "iimjobs",
+   "category": "Job board (senior / management)",
+   "methodology": "Senior and management search; often used for leadership roles.",
+   "filters": [
+    "Keywords",
+    "Experience",
+    "Location"
+   ],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "GitHub",
+   "category": "Developer community",
+   "methodology": "User search by language and location; repositories by topic; contributors to relevant repos. Evidence is code, not job history.",
+   "filters": [
+    "language:",
+    "location:",
+    "followers:",
+    "repos:",
+    "topic:"
+   ],
+   "manual_only": false,
+   "string_type": "github"
+  },
+  {
+   "name": "Stack Overflow",
+   "category": "Developer community",
+   "methodology": "Top users by tag and location via X-Ray; evidence is answers, not employment.",
+   "filters": [
+    "Tag",
+    "Location (profile text)"
+   ],
+   "manual_only": true,
+   "string_type": "xray"
+  },
+  {
+   "name": "Google X-Ray",
+   "category": "Public web search",
+   "methodology": "site: searches on public profile pages (linkedin.com/in, github.com, stackoverflow.com/users). Only shows public, indexed pages.",
+   "filters": [
+    "site:",
+    "intitle:",
+    "quotes",
+    "OR",
+    "minus"
+   ],
+   "manual_only": false,
+   "string_type": "xray"
+  },
+  {
+   "name": "Google Search",
+   "category": "Public web search",
+   "methodology": "Conference speakers, blog authors, meetup organisers, open-source maintainers.",
+   "filters": [
+    "Keywords"
+   ],
+   "manual_only": false,
+   "string_type": "xray"
+  },
+  {
+   "name": "Internal ATS",
+   "category": "Internal database",
+   "methodology": "Rediscover past applicants and silver medallists for the same skills.",
+   "filters": [
+    "Depends on ATS"
+   ],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "Employee referrals",
+   "category": "Referral",
+   "methodology": "Share the requirement with teams who worked with the target companies.",
+   "filters": [],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "Common Room",
+   "category": "Community intelligence",
+   "methodology": "Community and signal data, where your workspace has it.",
+   "filters": [
+    "Depends on workspace"
+   ],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "Clay",
+   "category": "Data enrichment",
+   "methodology": "Enrichment and list building on records you already have, within your plan and terms.",
+   "filters": [
+    "Depends on plan"
+   ],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "Company career portals",
+   "category": "Company research",
+   "methodology": "Read target companies' job pages to see which teams use the stack and are hiring.",
+   "filters": [],
+   "manual_only": false,
+   "string_type": "boolean"
+  },
+  {
+   "name": "Professional communities",
+   "category": "Community",
+   "methodology": "Meetups, Slack/Discord groups, conference speaker lists.",
+   "filters": [],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "Recruiter databases",
+   "category": "Internal database",
+   "methodology": "Your own spreadsheets and past campaign ledgers.",
+   "filters": [],
+   "manual_only": true,
+   "string_type": "boolean"
+  },
+  {
+   "name": "The Org",
+   "category": "Org-chart data (connector)",
+   "methodology": "People and role search by company and title through the connector, when connected in the session (max 25 results per search; uses credits).",
+   "filters": [
+    "Company",
+    "Title",
+    "Location"
+   ],
+   "manual_only": false,
+   "string_type": "boolean"
+  },
+  {
+   "name": "OctoHunt",
+   "url": "https://octohunt.com/",
+   "category": "Developer sourcing portal",
+   "approved": true,
+   "string_type": "github",
+   "methodology": "Recruiter-chosen portal for finding developers. MARK hands it the GitHub-style query (language, location, skill topics). Features, limits and terms are unconfirmed until first use: record what the portal actually offers.",
+   "filters": [
+    "Confirm on first use"
+   ],
+   "manual_only": true
+  },
+  {
+   "name": "SourceGo",
+   "url": "https://sourcego.blogspot.com/",
+   "category": "Sourcing portal / X-Ray resources",
+   "approved": true,
+   "string_type": "xray",
+   "methodology": "Recruiter-chosen sourcing portal. MARK hands it the Google X-Ray strings (LinkedIn, Open to Work, GitHub, Stack Overflow, resume pages). Features are unconfirmed until first use: record what the portal actually offers.",
+   "filters": [
+    "Confirm on first use"
+   ],
+   "manual_only": true
+  }
+ ]
 }

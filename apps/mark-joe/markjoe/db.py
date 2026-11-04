@@ -57,7 +57,8 @@ CREATE TABLE IF NOT EXISTS sourcing_channels (
   id TEXT PRIMARY KEY, name TEXT UNIQUE, category TEXT, connected INTEGER DEFAULT 0,
   connection_evidence TEXT, connection_verified_at TEXT, access_permission TEXT DEFAULT 'not confirmed',
   methodology TEXT, filters TEXT, manual_only INTEGER DEFAULT 1, active INTEGER DEFAULT 1,
-  approved INTEGER DEFAULT 0, recruiter_feedback TEXT, date_added TEXT, date_last_used TEXT);
+  approved INTEGER DEFAULT 0, recruiter_feedback TEXT, date_added TEXT, date_last_used TEXT,
+  url TEXT, string_type TEXT DEFAULT 'boolean');
 
 CREATE TABLE IF NOT EXISTS channel_memory (
   id INTEGER PRIMARY KEY AUTOINCREMENT, channel_id TEXT, requirement_id TEXT, job_family TEXT,
@@ -166,7 +167,17 @@ class DB:
         self.conn.row_factory = sqlite3.Row
         self.conn.execute("PRAGMA foreign_keys = ON")
         self.conn.executescript(SCHEMA)
+        self._migrate()
         self.conn.commit()
+
+    def _migrate(self):
+        """Add columns introduced after a database was created. Never drops anything."""
+        added = {"sourcing_channels": [("url", "TEXT"), ("string_type", "TEXT DEFAULT 'boolean'")]}
+        for table, cols in added.items():
+            have = {r[1] for r in self.conn.execute(f"PRAGMA table_info({table})")}
+            for name, typ in cols:
+                if name not in have:
+                    self.conn.execute(f"ALTER TABLE {table} ADD COLUMN {name} {typ}")
 
     # ---------- helpers ----------
     @staticmethod
@@ -235,12 +246,18 @@ class DB:
         """Load catalogues the first time. Never overwrites or removes existing rows."""
         ch = json.load(open(os.path.join(DATA_DIR, "channels.json")))
         for c in ch["channels"]:
-            if not self.one("SELECT id FROM sourcing_channels WHERE name=?", (c["name"],)):
+            row = self.one("SELECT id, url, string_type FROM sourcing_channels WHERE name=?", (c["name"],))
+            if not row:
                 self.insert("sourcing_channels", {
                     "id": new_id("CH"), "name": c["name"], "category": c["category"], "connected": 0,
                     "access_permission": "not confirmed", "methodology": c["methodology"],
                     "filters": c["filters"], "manual_only": int(c.get("manual_only", True)),
-                    "active": 1, "approved": 0, "date_added": now()}, actor="system:seed")
+                    "active": 1, "approved": int(bool(c.get("approved"))), "date_added": now(),
+                    "url": c.get("url"), "string_type": c.get("string_type", "boolean")}, actor="system:seed")
+            elif row["url"] is None and c.get("url"):  # back-fill only empty fields; recruiter edits are kept
+                self.conn.execute("UPDATE sourcing_channels SET url=? WHERE id=?", (c["url"], row["id"]))
+            if row and c.get("string_type") and (row["string_type"] in (None, "boolean")) and c["string_type"] != "boolean":
+                self.conn.execute("UPDATE sourcing_channels SET string_type=? WHERE id=?", (c["string_type"], row["id"]))
         co = json.load(open(os.path.join(DATA_DIR, "companies.json")))
         for c in co["companies"]:
             n = norm_name(c["name"])

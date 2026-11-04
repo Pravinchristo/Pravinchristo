@@ -103,6 +103,9 @@ class HuntTests(unittest.TestCase):
         self.assertTrue(b["xray"]["linkedin"].startswith("site:linkedin.com/in"))
         self.assertTrue(b["company_specific"])
         self.assertTrue(b["github"]["user_search"])
+        for k in ("immediate_joiner", "open_to_work"):
+            self.assertNotIn('""', b[k])  # phrases quoted once, not twice
+        self.assertIn('"open to work"', b["open_to_work"])
         self.assertTrue(all(not s["connected"] for s in plan["channels"]))  # nothing claimed as connected
         mem = db.q("SELECT * FROM channel_memory WHERE requirement_id=?", (r["id"],))
         self.assertEqual(len(mem), 2)
@@ -223,6 +226,48 @@ class AnalyticsTests(unittest.TestCase):
         self.assertIn("Test Candidate Beta", z.read("xl/worksheets/sheet1.xml").decode())
         ref = hunt.refine(db, intake.get(db, r["id"]))
         self.assertEqual(ref["evaluated"], 2)
+
+
+class PortalTests(unittest.TestCase):
+    def test_recruiter_portals_seeded_and_preapproved(self):
+        db = fresh()
+        rows = {r["name"]: r for r in db.q("SELECT * FROM sourcing_channels WHERE name IN ('OctoHunt','SourceGo')")}
+        self.assertEqual(rows["OctoHunt"]["url"], "https://octohunt.com/")
+        self.assertEqual(rows["SourceGo"]["url"], "https://sourcego.blogspot.com/")
+        for r in rows.values():
+            self.assertEqual(r["approved"], 1)
+            self.assertEqual(r["connected"], 0)  # never claimed as connected
+
+    def test_plan_hands_each_portal_the_right_strings(self):
+        db = fresh()
+        r = intake.create_requirement(db, JD_DATA)
+        intake.answer(db, r["id"], "10")
+        ids = [c["id"] for c in db.q("SELECT id FROM sourcing_channels WHERE name IN ('OctoHunt','SourceGo')")]
+        hunt.confirm_channels(db, intake.get(db, r["id"]), ids)
+        steps = {s["channel"]: s for s in service.plan(db, r["id"])["channels"]}
+        self.assertIn("language:", steps["OctoHunt"]["string"])
+        self.assertIn("site:linkedin.com/in", steps["SourceGo"]["string"])
+        self.assertTrue(steps["OctoHunt"]["execution"].startswith("manual"))
+
+    def test_old_database_is_migrated_and_backfilled(self):
+        import sqlite3
+        import tempfile
+        path = os.path.join(tempfile.mkdtemp(), "old.db")
+        con = sqlite3.connect(path)
+        con.execute("CREATE TABLE sourcing_channels (id TEXT PRIMARY KEY, name TEXT UNIQUE, category TEXT, connected INTEGER DEFAULT 0, connection_evidence TEXT, connection_verified_at TEXT, access_permission TEXT, methodology TEXT, filters TEXT, manual_only INTEGER DEFAULT 1, active INTEGER DEFAULT 1, approved INTEGER DEFAULT 0, recruiter_feedback TEXT, date_added TEXT, date_last_used TEXT)")
+        con.execute("INSERT INTO sourcing_channels (id, name, category, approved) VALUES ('CH-1', 'GitHub', 'x', 1)")
+        con.commit(); con.close()
+        db = DB(path)
+        db.seed()
+        self.assertEqual(db.one("SELECT string_type FROM sourcing_channels WHERE id='CH-1'")["string_type"], "github")
+        self.assertTrue(db.one("SELECT id FROM sourcing_channels WHERE name='OctoHunt'"))
+
+    def test_custom_portal_with_url(self):
+        db = fresh()
+        c = service.upsert_channel(db, "My Portal", "Portal", url="https://example.org/", string_type="xray")
+        self.assertEqual((c["url"], c["string_type"]), ("https://example.org/", "xray"))
+        with self.assertRaises(ValueError):
+            service.upsert_channel(db, "Bad", string_type="scrape")
 
 
 if __name__ == "__main__":

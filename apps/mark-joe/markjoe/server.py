@@ -175,7 +175,8 @@ def route(db, m, p, qs, b):
         if m == "GET":
             return hunt.channel_memory(db, qs.get("family"))
         if m == "POST" and len(p) == 1:
-            return service.upsert_channel(db, b["name"].strip(), b.get("category") or "Custom", b.get("methodology"), b.get("filters"))
+            return service.upsert_channel(db, b["name"].strip(), b.get("category") or "Custom", b.get("methodology"), b.get("filters"),
+                                         url=b.get("url") or None, string_type=b.get("string_type") or None)
         if m == "POST" and len(p) == 2:
             if "active" in b:
                 service.set_channel_active(db, p[1], b["active"])

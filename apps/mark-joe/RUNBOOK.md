@@ -35,6 +35,8 @@ python3 -m markjoe.cli channels confirm REQ-XXXX "LinkedIn Recruiter" "Google X-
 python3 -m markjoe.cli channels add "<custom channel>" --category Community --methodology "..."
 ```
 
+**Recruiter portals.** OctoHunt (https://octohunt.com/) and SourceGo (https://sourcego.blogspot.com/) are pre-approved for every campaign. The plan gives OctoHunt the GitHub-style query and SourceGo the X-Ray strings. On 2026-11-04 neither domain resolved from the Claude cloud session (DNS failure), so a session cannot open them unless they are added to the environment's allowed network domains. Until then, hand Pravin the strings to run there, and log each run with `search log ... "OctoHunt"` / `"SourceGo"` and the evidence he gives. When you first see what a portal actually offers, record it with `channels add "OctoHunt" --methodology "..."`.
+
 ## 3. Plan, then wait for approval
 
 ```bash

@@ -161,15 +161,17 @@ def add_remark(db, requirement_id, candidate_id, remark, rating=None, actor="rec
                                      "rating": rating, "feedback": remark, "at": now()}, actor=actor, audit=False)
 
 
-def upsert_channel(db, name, category="Custom", methodology=None, filters=None, actor="recruiter"):
+def upsert_channel(db, name, category="Custom", methodology=None, filters=None, actor="recruiter", url=None, string_type=None):
+    if string_type and string_type not in ("boolean", "xray", "github"):
+        raise ValueError("string_type must be boolean, xray or github")
     c = db.one("SELECT * FROM sourcing_channels WHERE name=?", (name,))
     if c:
-        ch = {k: v for k, v in {"category": category, "methodology": methodology, "filters": filters}.items() if v}
+        ch = {k: v for k, v in {"category": category, "methodology": methodology, "filters": filters, "url": url, "string_type": string_type}.items() if v}
         return db.update_record("sourcing_channels", {"id": c["id"]}, ch, actor=actor) if ch else c
     cid = new_id("CH")
     db.insert("sourcing_channels", {"id": cid, "name": name, "category": category, "connected": 0, "access_permission": "not confirmed",
                                     "methodology": methodology, "filters": filters or [], "manual_only": 1, "active": 1, "approved": 0,
-                                    "date_added": now()}, actor=actor)
+                                    "date_added": now(), "url": url, "string_type": string_type or "boolean"}, actor=actor)
     return db.one("SELECT * FROM sourcing_channels WHERE id=?", (cid,))
 
 

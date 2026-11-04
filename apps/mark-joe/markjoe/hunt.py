@@ -12,6 +12,8 @@ NOT_JOBS = '-job -jobs -hiring -"we are hiring" -recruiter'
 
 
 def _q(term):
+    if term.startswith('"') and term.endswith('"'):
+        return term  # already a quoted phrase
     return f'"{term}"' if re.search(r"[\s./#+-]", term) else term
 
 
@@ -174,10 +176,13 @@ def build_plan(db, req):
     for c in chans:
         if not c:
             continue
-        string = {"Google X-Ray": b["xray"]["linkedin"], "GitHub": "; ".join(b["github"]["user_search"]),
-                  "Stack Overflow": b["xray"]["stackoverflow"], "Google Search": b["xray"]["speakers"]}.get(c["name"], b["narrow"])
+        kind = c.get("string_type") or "boolean"
+        string = {"Stack Overflow": b["xray"]["stackoverflow"], "Google Search": b["xray"]["speakers"]}.get(c["name"])
+        if string is None:
+            string = ("\n".join(b["github"]["user_search"] + b["github"]["topics"]) if kind == "github"
+                      else "\n".join(b["xray"].values()) if kind == "xray" else b["narrow"])
         how = "manual (recruiter runs it and logs results)" if (c["manual_only"] or not c["connected"]) else "connected (MARK can run it)"
-        steps.append({"channel": c["name"], "channel_id": c["id"], "execution": how, "connected": bool(c["connected"]),
+        steps.append({"channel": c["name"], "channel_id": c["id"], "url": c.get("url"), "string_type": kind, "execution": how, "connected": bool(c["connected"]),
                       "string": string, "filters_to_check": c["filters"],
                       "note": "Availability filters (Open to Work, notice period) depend on the platform and your account; record what you actually saw."})
     missing = [n for n, c in connectors.items() if c["category"] == "Candidate sourcing" and c["status"] != "connected"]
