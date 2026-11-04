@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MARK &amp; JOE Command Centre</title>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f6f6f4; --surface:#fcfcfb; --surface-2:#f0efec; --border:#e2e1dc;
+  --text:#0b0b0b; --text-2:#52514e; --muted:#7a7974;
+  --accent:#2a78d6; --accent-ink:#ffffff;
+  --mark:#2a78d6; --joe:#6250d6;
+  --s1:#184f95; --s2:#3987e5; --s3:#86b6ef;
+  --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --crit:#d03b3b;
+  --bar:#2a78d6;
+  --radius:10px; --shadow:0 1px 2px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#121211; --surface:#1a1a19; --surface-2:#232321; --border:#33332f;
+    --text:#f0efec; --text-2:#c3c2b7; --muted:#8f8e86;
+    --accent:#3987e5; --mark:#3987e5; --joe:#9085e9;
+    --s1:#9ec5f4; --s2:#3987e5; --s3:#184f95; --bar:#3987e5;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#121211; --surface:#1a1a19; --surface-2:#232321; --border:#33332f;
+  --text:#f0efec; --text-2:#c3c2b7; --muted:#8f8e86;
+  --accent:#3987e5; --mark:#3987e5; --joe:#9085e9;
+  --s1:#9ec5f4; --s2:#3987e5; --s3:#184f95; --bar:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:14px 20px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+header h1{font-size:16px;margin:0;font-weight:650;letter-spacing:.01em}
+header .sub{color:var(--muted);font-size:12px}
+header .spacer{flex:1}
+main{max-width:1320px;margin:0 auto;padding:16px 20px 60px}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;margin:14px 0;border-bottom:1px solid var(--border)}
+nav.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:8px 12px;color:var(--text-2);font:inherit;cursor:pointer;white-space:nowrap}
+nav.tabs button.on{color:var(--text);border-color:var(--accent);font-weight:600}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.kpis{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);min-width:0}
+.card h2{font-size:14px;margin:0 0 10px;font-weight:650}
+.card h3{font-size:13px;margin:14px 0 6px;color:var(--text-2);font-weight:600}
+.kpi .v{font-size:24px;font-weight:650;font-variant-numeric:tabular-nums}
+.kpi .l{color:var(--text-2);font-size:12px}
+.muted{color:var(--muted)} .small{font-size:12px}
+.agent{display:flex;gap:12px;align-items:flex-start}
+.avatar{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;letter-spacing:.03em}
+.avatar.mark{background:var(--mark)} .avatar.joe{background:var(--joe)}
+.agent .role{color:var(--text-2);font-size:12px}
+.agent .stat{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px;font-size:12px;color:var(--text-2)}
+.agent .stat b{color:var(--text);font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;border:1px solid var(--border);font-size:12px;white-space:nowrap;color:var(--text-2);background:var(--surface-2)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.st-good{background:var(--good)} .st-warn{background:var(--warn)} .st-serious{background:var(--serious)} .st-crit{background:var(--crit)} .st-none{background:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--text-2);font-weight:600;font-size:12px;position:sticky;top:0;background:var(--surface)}
+tr.click{cursor:pointer} tr.click:hover td{background:var(--surface-2)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tablewrap{overflow:auto;max-height:620px}
+input,select,textarea,button{font:inherit;color:var(--text)}
+input,select,textarea{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px 9px;min-width:0}
+textarea{width:100%;min-height:120px;resize:vertical}
+button.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer;font-weight:600}
+button.btn.ghost{background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
+button.btn:disabled{opacity:.5;cursor:not-allowed}
+button.link{background:none;border:0;color:var(--accent);cursor:pointer;padding:0}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.filters input,.filters select{width:150px}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.form label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--text-2)}
+.form .wide{grid-column:1/-1}
+.chat{display:flex;flex-direction:column;gap:8px;max-height:460px;overflow:auto;padding:4px}
+.msg{max-width:88%;padding:9px 12px;border-radius:12px;background:var(--surface-2);white-space:pre-wrap}
+.msg.me{align-self:flex-end;background:var(--accent);color:var(--accent-ink)}
+.msg .who{font-size:11px;font-weight:700;letter-spacing:.04em;margin-bottom:2px}
+.msg .why{font-size:12px;color:var(--text-2);margin-top:4px}
+.warn{border-left:3px solid var(--warn);padding:6px 10px;background:var(--surface-2);border-radius:6px;margin:6px 0}
+.warn.contradiction{border-color:var(--crit)}
+code,.code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+.code{display:block;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:8px 10px;white-space:pre-wrap;word-break:break-word}
+.bars{display:flex;flex-direction:column;gap:6px}
+.bar{display:grid;grid-template-columns:minmax(90px,170px) 1fr 44px;gap:8px;align-items:center;font-size:12px}
+.bar .lab{color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .track{height:14px;background:transparent;position:relative}
+.bar .fill{height:100%;background:var(--bar);border-radius:0 4px 4px 0;min-width:2px}
+.bar .val{text-align:right;font-variant-numeric:tabular-nums}
+.stack{display:flex;height:14px;gap:2px}
+.stack span{display:block;height:100%}
+.stack span:last-child{border-radius:0 4px 4px 0}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--text-2);margin:6px 0}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.empty{color:var(--muted);padding:18px;text-align:center;border:1px dashed var(--border);border-radius:8px}
+.drawer{position:fixed;inset:0 0 0 auto;width:min(720px,100%);background:var(--surface);border-left:1px solid var(--border);box-shadow:-4px 0 18px rgba(0,0,0,.12);overflow:auto;padding:18px;z-index:20;display:none}
+.drawer.open{display:block}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;display:none;z-index:30;max-width:90%}
+#tip{position:fixed;pointer-events:none;background:var(--text);color:var(--bg);padding:5px 8px;border-radius:6px;font-size:12px;display:none;z-index:40}
+.hidden{display:none!important}
+.evi{font-size:12px;color:var(--text-2);margin:2px 0 0}
+@media (max-width:640px){main{padding:12px 16px 60px} header{padding:12px 16px} .filters input,.filters select{width:calc(50% - 4px)}}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>MARK &amp; JOE · Talent Acquisition Command Centre</h1>
+    <div class="sub">Intelligent Mode · every number below comes from stored records</div>
+  </div>
+  <div class="spacer"></div>
+  <select id="reqFilter" aria-label="Requirement"><option value="">All requirements</option></select>
+  <button class="btn ghost" id="csvBtn">Export CSV</button>
+  <button class="btn ghost" id="xlsxBtn">Export Excel</button>
+  <button class="btn ghost" id="themeBtn" title="Toggle light/dark">Theme</button>
+</header>
+<main>
+  <section class="grid g2" id="agents"></section>
+  <nav class="tabs" id="tabs"></nav>
+
+  <!-- Overview -->
+  <section data-tab="overview">
+    <div class="grid kpis" id="kpis"></div>
+    <div class="grid g2" style="margin-top:12px">
+      <div class="card"><h2>Recruitment funnel</h2><div id="ovFunnel"></div></div>
+      <div class="card"><h2>Requirements</h2><div id="reqCards" class="grid"></div></div>
+    </div>
+  </section>
+
+  <!-- Campaign / Intelligent Mode -->
+  <section data-tab="campaign" class="hidden">
+    <div class="grid g2">
+      <div class="card">
+        <h2>1 · Give MARK the job description</h2>
+        <div class="row" style="margin-bottom:8px">
+          <select id="campReq"><option value="">New requirement…</option></select>
+        </div>
+        <div id="jdBox">
+          <textarea id="jd" placeholder="Paste the full JD here. MARK reads it first and only asks what is missing."></textarea>
+          <div class="row" style="margin-top:8px"><button class="btn" id="startBtn">Start Intelligent Mode</button></div>
+        </div>
+        <div id="chatBox" class="hidden">
+          <div class="chat" id="chat"></div>
+          <form id="answerForm" class="row" style="margin-top:8px">
+            <input id="answer" style="flex:1" placeholder="Answer MARK (or type 'skip')" autocomplete="off">
+            <button class="btn">Send</button>
+          </form>
+          <div id="warnings"></div>
+        </div>
+      </div>
+      <div class="card" id="reqSummary"><h2>Requirement understanding</h2><div class="empty">Start or pick a requirement.</div></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:12px">
+      <div class="card" id="channelCard"><h2>2 · Sourcing channels (memory)</h2><div class="empty">Available once a requirement exists.</div></div>
+      <div class="card" id="connCard"><h2>Plugin &amp; connector check</h2><div class="empty">Available once a requirement exists.</div></div>
+    </div>
+
+    <div class="card" style="margin-top:12px" id="planCard"><h2>3 · Search plan</h2><div class="empty">MARK proposes a plan when the essential questions are answered and channels are confirmed.</div></div>
+
+    <div class="grid g2" style="margin-top:12px">
+      <div class="card" id="addCard"><h2>4 · Add a sourced profile → JOE evaluates</h2><div class="empty">Unlocks after you approve the search plan.</div></div>
+      <div class="card" id="joeCard"><h2>JOE's evaluation</h2><div class="empty">Add a profile with resume text to see JOE's evidence-based score.</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:12px">
+      <div class="card" id="searchCard"><h2>Log a search run</h2><div class="empty">Unlocks after approval. A channel only counts as searched once a run is logged with evidence.</div></div>
+      <div class="card" id="refineCard"><h2>5 · MARK refines from JOE's feedback</h2><div class="empty">Needs at least one evaluation.</div></div>
+    </div>
+  </section>
+
+  <!-- Candidates -->
+  <section data-tab="candidates" class="hidden">
+    <div class="card">
+      <h2>Candidate sourcing dashboard</h2>
+      <div class="filters" id="candFilters">
+        <input data-f="title" placeholder="Job title">
+        <input data-f="skill" placeholder="Skill (exact)">
+        <input data-f="location" placeholder="Location">
+        <input data-f="company" placeholder="Current company">
+        <select data-f="channel"><option value="">Any channel</option></select>
+        <select data-f="status"><option value="">Any status</option></select>
+        <select data-f="availability"><option value="">Any availability</option><option>Immediate</option><option>Serving</option><option>Unknown</option></select>
+        <input data-f="min_exp" type="number" min="0" placeholder="Min exp">
+        <input data-f="max_exp" type="number" min="0" placeholder="Max exp">
+        <input data-f="max_notice" type="number" min="0" placeholder="Max notice (d)">
+        <input data-f="min_score" type="number" min="0" max="100" placeholder="Min score">
+        <button class="btn ghost" id="clearF">Clear</button>
+      </div>
+      <div class="tablewrap" id="candTable"></div>
+    </div>
+  </section>
+
+  <!-- Channels -->
+  <section data-tab="channels" class="hidden">
+    <div class="grid g2">
+      <div class="card"><h2>Relevant profiles by channel</h2><div id="chBars"></div><p class="small muted" id="bestCh"></p></div>
+      <div class="card"><h2>Channel conversion</h2><div class="tablewrap" id="chPerf"></div></div>
+    </div>
+    <div class="card" style="margin-top:12px"><h2>Sourcing Channel Intelligence Library</h2><div class="tablewrap" id="chLib"></div>
+      <h3>Add a custom channel</h3>
+      <form class="row" id="addChForm"><input name="name" placeholder="Channel name" required><input name="category" placeholder="Category"><input name="methodology" placeholder="Search methodology" style="flex:1"><button class="btn">Add</button></form>
+    </div>
+  </section>
+
+  <!-- Companies -->
+  <section data-tab="companies" class="hidden">
+    <div class="grid g2">
+      <div class="card"><h2>Candidate distribution by current company</h2><div id="coDist"></div></div>
+      <div class="card"><h2>Company priority mix</h2><div id="coPri"></div></div>
+    </div>
+    <div class="card" style="margin-top:12px"><h2>Company-wise talent map</h2><p class="small muted">Relevance = overlap between the company's known stack and the requirement's skills. Seed stacks are unverified until you confirm them.</p><div class="tablewrap" id="coTable"></div></div>
+  </section>
+
+  <!-- Skills -->
+  <section data-tab="skills" class="hidden">
+    <div class="grid g2">
+      <div class="card"><h2>Mandatory skill coverage</h2><div class="legend"><span><i style="background:var(--s1)"></i>Proven in projects</span><span><i style="background:var(--s2)"></i>Keyword only</span><span><i style="background:var(--s3)"></i>No evidence</span></div><div id="skMand"></div></div>
+      <div class="card"><h2>Secondary skill coverage</h2><div class="legend"><span><i style="background:var(--s1)"></i>Proven in projects</span><span><i style="background:var(--s2)"></i>Keyword only</span><span><i style="background:var(--s3)"></i>No evidence</span></div><div id="skPref"></div></div>
+      <div class="card"><h2>Candidate skill distribution (proven)</h2><div id="skDist"></div></div>
+      <div class="card"><h2>Skill gaps (missing mandatory)</h2><div id="skGaps"></div></div>
+      <div class="card"><h2>Skill combinations</h2><div id="skCombo"></div></div>
+      <div class="card"><h2>Alternative technology opportunities</h2><div id="skAlt"></div></div>
+    </div>
+  </section>
+
+  <!-- Funnel -->
+  <section data-tab="funnel" class="hidden">
+    <div class="card"><h2>Identified → Screened → Shortlisted → Submitted → L1 → L2 → Offered → Joined</h2><p class="small muted">Counts the furthest stage each candidate reached, from the status history.</p><div id="funnel"></div></div>
+  </section>
+
+  <!-- Agents -->
+  <section data-tab="agents" class="hidden">
+    <div class="grid g2">
+      <div class="card"><h2>MARK · search activity</h2><div id="markStats"></div></div>
+      <div class="card"><h2>JOE · evaluation activity</h2><div id="joeStats"></div></div>
+    </div>
+    <div class="card" style="margin-top:12px"><h2>Agent activity log</h2><div class="tablewrap" id="actLog"></div></div>
+  </section>
+
+  <!-- Connectors -->
+  <section data-tab="connectors" class="hidden">
+    <div class="card"><h2>Plugin and connector registry</h2>
+      <p class="small muted">Nothing is marked connected until a successful call is recorded as evidence. Bulk candidate sourcing is never assumed.</p>
+      <div class="tablewrap" id="connTable"></div>
+      <h3>Record a verification</h3>
+      <form class="form" id="connForm">
+        <label>Connector<input name="name" required placeholder="e.g. The Org"></label>
+        <label>Status<select name="status"><option value="connected">connected</option><option value="not_connected">not connected</option><option value="needs_auth">needs authorisation</option><option value="built_in">built in</option></select></label>
+        <label>Supported actions (comma-separated)<input name="actions"></label>
+        <label>Bulk sourcing?<select name="bulk"><option value="">no</option><option value="1">yes (verified)</option></select></label>
+        <label class="wide">Evidence (what call succeeded, when)<input name="evidence"></label>
+        <div><button class="btn">Save</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<aside class="drawer" id="drawer"></aside>
+<div class="toast" id="toast"></div>
+<div id="tip"></div>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const TOKEN = new URLSearchParams(location.search).get("token") || "";
+let S = null, CUR = null, TAB = "overview";
+const TABS = [["overview","Executive overview"],["campaign","Campaign · Intelligent Mode"],["candidates","Candidates"],["channels","Channels"],["companies","Company mapping"],["skills","Skill intelligence"],["funnel","Funnel"],["agents","Agent activity"],["connectors","Connectors"]];
+
+async function api(path, body){
+  const r = await fetch("/api/" + path, {method: body ? "POST" : "GET", headers: {"Content-Type":"application/json", "X-MarkJoe-Token": TOKEN}, body: body ? JSON.stringify(body) : undefined});
+  const j = await r.json().catch(() => ({error: r.statusText}));
+  if (!r.ok) throw new Error(j.error || r.statusText);
+  return j;
+}
+function toast(t){ const el=$("#toast"); el.textContent=t; el.style.display="block"; clearTimeout(el._t); el._t=setTimeout(()=>el.style.display="none", 3800); }
+function tip(el, text){ el.addEventListener("mousemove", e => { const t=$("#tip"); t.textContent=text; t.style.display="block"; t.style.left=Math.min(e.clientX+12, innerWidth-220)+"px"; t.style.top=(e.clientY+12)+"px"; }); el.addEventListener("mouseleave", () => $("#tip").style.display="none"); }
+const empty = t => `<div class="empty">${esc(t)}</div>`;
+const scoreDot = s => s==null ? '<span class="pill"><span class="dot st-none"></span>Not scored</span>' : s>=85 ? `<span class="pill"><span class="dot st-good"></span>${s} · High potential</span>` : s>=70 ? `<span class="pill"><span class="dot st-good"></span>${s} · Potential</span>` : s>=55 ? `<span class="pill"><span class="dot st-warn"></span>${s} · Secondary</span>` : `<span class="pill"><span class="dot st-crit"></span>${s} · Not recommended</span>`;
+const levelTxt = {mentioned:"keyword only", project:"used in project", hands_on:"hands-on", architecture:"architecture/design", production:"production", leadership:"leadership"};
+
+// ---------- theme ----------
+try { const t = localStorage.getItem("mj-theme"); if (t) document.documentElement.dataset.theme = t; } catch(e){}
+$("#themeBtn").onclick = () => { const d = document.documentElement; const dark = d.dataset.theme ? d.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches; d.dataset.theme = dark ? "light" : "dark"; try{localStorage.setItem("mj-theme", d.dataset.theme)}catch(e){} };
+
+// ---------- tabs ----------
+$("#tabs").innerHTML = TABS.map(([k,l]) => `<button data-k="${k}">${l}</button>`).join("");
+function showTab(k){ TAB=k; $$("#tabs button").forEach(b=>b.classList.toggle("on", b.dataset.k===k)); $$("section[data-tab]").forEach(s=>s.classList.toggle("hidden", s.dataset.tab!==k)); try{localStorage.setItem("mj-tab",k)}catch(e){} }
+$("#tabs").onclick = e => { if (e.target.dataset.k) showTab(e.target.dataset.k); };
+try { showTab(localStorage.getItem("mj-tab") || "overview"); } catch(e){ showTab("overview"); }
+
+// ---------- data ----------
+function filters(){
+  const f = {}; const r = $("#reqFilter").value; if (r) f.requirement = r;
+  $$("#candFilters [data-f]").forEach(el => { if (el.value) f[el.dataset.f] = el.value; });
+  return f;
+}
+const qs = f => Object.entries(f).map(([k,v]) => k+"="+encodeURIComponent(v)).join("&");
+async function load(){
+  S = await api("state?" + qs(filters()));
+  render();
+}
+$("#reqFilter").onchange = load;
+$$("#candFilters [data-f]").forEach(el => el.addEventListener(el.tagName==="SELECT" ? "change" : "input", debounce(load, 300)));
+$("#clearF").onclick = () => { $$("#candFilters [data-f]").forEach(el => el.value=""); load(); };
+function debounce(fn, ms){ let t; return (...a) => { clearTimeout(t); t=setTimeout(()=>fn(...a), ms); }; }
+$("#csvBtn").onclick = () => location.href = "/api/export.csv?" + qs({...filters(), ...(TOKEN?{token:TOKEN}:{})});
+$("#xlsxBtn").onclick = () => location.href = "/api/export.xlsx?" + qs({...filters(), ...(TOKEN?{token:TOKEN}:{})});
+
+function bars(el, rows, label, value, fmt = v => v, tipf){
+  if (!rows.length) { el.innerHTML = empty("No records yet."); return; }
+  const max = Math.max(1, ...rows.map(value));
+  el.innerHTML = `<div class="bars">${rows.map((r,i) => `<div class="bar" data-i="${i}"><div class="lab" title="${esc(label(r))}">${esc(label(r))}</div><div class="track"><div class="fill" style="width:${value(r)/max*100}%"></div></div><div class="val">${esc(fmt(value(r)))}</div></div>`).join("")}</div>`;
+  el.querySelectorAll(".bar").forEach(b => tip(b, tipf ? tipf(rows[b.dataset.i]) : `${label(rows[b.dataset.i])}: ${fmt(value(rows[b.dataset.i]))}`));
+}
+
+function render(){
+  const o = S.overview, a = S.agents;
+  // agents
+  const cur = S.requirements.find(r => r.id === ($("#reqFilter").value || CUR));
+  $("#agents").innerHTML = `
+    <div class="card agent"><div class="avatar mark">M</div><div><b>MARK</b> <span class="role">· Senior Talent Hunter</span>
+      <div class="small muted">${cur ? "Working on " + esc(cur.title || cur.id) + " · " + esc(cur.status) : "Ready for a new JD"}</div>
+      <div class="stat"><span><b>${a.MARK.profiles_sourced}</b> sourced</span><span><b>${a.MARK.companies_mapped}</b> companies mapped</span><span><b>${a.MARK.searches_logged}</b> searches logged</span><span><b>${a.MARK.refinements}</b> refinements</span></div></div></div>
+    <div class="card agent"><div class="avatar joe">J</div><div><b>JOE</b> <span class="role">· Senior Technical Recruiter</span>
+      <div class="small muted">Evidence over keywords · flags critical gaps even on high scores</div>
+      <div class="stat"><span><b>${a.JOE.profiles_evaluated}</b> evaluated</span><span><b>${a.JOE.shortlisted}</b> shortlisted</span><span><b>${a.JOE.avg_score ?? "–"}</b> avg score</span><span><b>${a.JOE.challenges}</b> challenges raised</span></div></div></div>`;
+  // requirement selectors
+  const opts = S.requirements.map(r => `<option value="${r.id}">${esc(r.title || "Untitled")} · ${r.id}</option>`).join("");
+  const keep = $("#reqFilter").value; $("#reqFilter").innerHTML = `<option value="">All requirements</option>` + opts; $("#reqFilter").value = keep;
+  const keep2 = $("#campReq").value; $("#campReq").innerHTML = `<option value="">New requirement…</option>` + opts; $("#campReq").value = keep2;
+  // kpis
+  const K = [["Active requirements",o.active_requirements],["Profiles sourced",o.profiles_sourced],["Profiles screened",o.profiles_screened],["Relevant (≥55)",o.relevant],["High potential (≥85)",o.high_potential],["Open to Work (evidenced)",o.open_to_work],["Immediate joiners (verified)",o.immediate_joiners],["Submitted",o.submitted],["Interviewed",o.interviewed],["Offers",o.offers],["Joined",o.joined]];
+  $("#kpis").innerHTML = K.map(([l,v]) => `<div class="card kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+  bars($("#ovFunnel"), S.funnel, r => r.stage.toUpperCase().replace("L1","L1 interview").replace("L2","L2 interview"), r => r.count);
+  $("#reqCards").innerHTML = S.requirements.length ? S.requirements.map(r => `
+    <div class="card" style="box-shadow:none"><div class="row" style="justify-content:space-between"><b>${esc(r.title || "Untitled")}</b>${statusPill(r.status)}</div>
+    <div class="small muted">${r.id} · ${fmtExp(r)} · ${esc(r.location || "location ?")} · ${esc(r.work_mode || "mode ?")} · ${r.notice_max_days!=null ? "≤"+r.notice_max_days+"d notice" : "notice ?"}${r.salary_budget ? " · "+esc(r.salary_budget) : ""}</div>
+    <div class="small" style="margin-top:4px"><b>Mandatory:</b> ${esc((r.mandatory_skills||[]).join(", ") || "–")}</div>
+    <div class="small"><b>Preferred:</b> ${esc((r.preferred_skills||[]).join(", ") || "–")}</div>
+    <div class="row" style="margin-top:6px"><button class="link" data-open="${r.id}">Open in campaign →</button></div></div>`).join("") : empty("No requirements yet. Open the Campaign tab and paste a JD.");
+  $$("[data-open]").forEach(b => b.onclick = () => { $("#campReq").value = b.dataset.open; openReq(b.dataset.open); showTab("campaign"); });
+  // candidates
+  const chSel = $('[data-f="channel"]'), ck = chSel.value; chSel.innerHTML = `<option value="">Any channel</option>` + S.channels.map(c => `<option>${esc(c.name)}</option>`).join(""); chSel.value = ck;
+  const stSel = $('[data-f="status"]'), sk = stSel.value; stSel.innerHTML = `<option value="">Any status</option>` + [...S.stages, "rejected","on_hold","withdrawn","not_interested"].map(s => `<option>${s}</option>`).join(""); stSel.value = sk;
+  renderCandidates();
+  // channels
+  const perf = S.channel_performance;
+  bars($("#chBars"), perf, r => r.channel, r => r.relevant, v => v, r => `${r.channel}: ${r.relevant} relevant of ${r.sourced} sourced (${r.relevance_rate}%)`);
+  $("#bestCh").textContent = S.best_channel ? `Best-performing channel so far: ${S.best_channel}.` : "Best channel is named once a channel has at least 3 sourced profiles.";
+  $("#chPerf").innerHTML = perf.length ? `<table><tr><th>Channel</th><th class="num">Sourced</th><th class="num">Relevant</th><th class="num">Shortlisted</th><th class="num">Interview %</th><th class="num">Offer %</th><th class="num">Join %</th><th class="num">Score</th></tr>${perf.map(r => `<tr><td>${esc(r.channel)}</td><td class="num">${r.sourced}</td><td class="num">${r.relevant}</td><td class="num">${r.shortlisted}</td><td class="num">${r.interview_rate}%</td><td class="num">${r.offer_rate}%</td><td class="num">${r.join_rate}%</td><td class="num">${r.score}</td></tr>`).join("")}</table>` : empty("No sourced profiles yet.");
+  $("#chLib").innerHTML = `<table><tr><th>Channel</th><th>Category</th><th>Connection</th><th>Approved</th><th class="num">Searches logged</th><th>Last used</th><th>Active</th><th></th></tr>${S.channels.map(c => `<tr><td><b>${esc(c.name)}</b><div class="evi">${esc(c.methodology||"")}</div></td><td>${esc(c.category)}</td><td>${c.connected ? `<span class="pill"><span class="dot st-good"></span>connected</span><div class="evi">${esc(c.connection_evidence||"")}</div>` : `<span class="pill"><span class="dot st-none"></span>not connected</span>`}</td><td>${c.approved ? "yes" : "–"}</td><td class="num">${c.logged_searches}</td><td>${esc((c.date_last_used||"").slice(0,10))}</td><td>${c.active ? "active" : "inactive"}</td><td><button class="link" data-chact="${c.id}" data-v="${c.active?0:1}">${c.active ? "Deactivate" : "Reactivate"}</button><br><button class="link" data-chconn="${c.id}" data-v="${c.connected?0:1}">${c.connected ? "Mark not connected" : "Confirm connection…"}</button></td></tr>`).join("")}</table>`;
+  $$("[data-chact]").forEach(b => b.onclick = async () => { await api("channels/"+b.dataset.chact, {active: b.dataset.v==="1"}); load(); });
+  $$("[data-chconn]").forEach(b => b.onclick = async () => { let ev = null; if (b.dataset.v==="1") { ev = prompt("How did you confirm this channel is connected and searchable from here?"); if (!ev) return; } try { await api("channels/"+b.dataset.chconn, {connected: b.dataset.v==="1", evidence: ev}); load(); } catch(e){ toast(e.message); } });
+  // companies
+  bars($("#coDist"), S.company_distribution, r => r.company, r => r.count);
+  const pri = ["P1","P2","P3"].map(p => ({p, n: S.companies.filter(c => c.priority===p).length}));
+  bars($("#coPri"), S.companies.length ? pri : [], r => r.p + (r.p==="P1"?" · hunt first":r.p==="P2"?" · second wave":" · opportunistic"), r => r.n);
+  $("#coTable").innerHTML = S.companies.length ? `<table><tr><th>Company</th><th>Type</th><th>Priority</th><th class="num">Relevance</th><th>Matched skills</th><th>Relevant designations</th><th class="num">Candidates</th><th>Source</th><th>Research date</th></tr>${S.companies.map(c => `<tr><td><b>${esc(c.name)}</b></td><td>${esc(c.category)}</td><td>${c.priority}</td><td class="num">${c.relevance}</td><td>${esc((c.matched_skills||[]).join(", "))}</td><td class="small">${esc((c.relevant_titles||[]).slice(0,4).join(", "))}</td><td class="num">${c.candidates}</td><td class="small">${c.verified ? "verified" : esc(c.source)}</td><td>${esc(c.research_date||"")}</td></tr>`).join("")}</table>` : empty("No company map yet. MARK builds it when proposing a search plan.");
+  // skills
+  stacks($("#skMand"), S.skills.mandatory); stacks($("#skPref"), S.skills.secondary);
+  bars($("#skDist"), S.skills.distribution, r => r.skill, r => r.count);
+  bars($("#skGaps"), S.skills.gaps, r => r.skill, r => r.count, v=>v, r => `${r.count} candidate(s) show no evidence of ${r.skill}`);
+  $("#skCombo").innerHTML = S.skills.combinations.length ? `<table><tr><th>Proven mandatory combination</th><th class="num">Candidates</th></tr>${S.skills.combinations.map(c => `<tr><td>${esc(c.combo)}</td><td class="num">${c.count}</td></tr>`).join("")}</table>` : empty("Appears when candidates prove 2+ mandatory skills.");
+  $("#skAlt").innerHTML = S.skills.alternatives.length ? `<table><tr><th>Transferable skill</th><th>Instead of</th><th class="num">Candidates with it</th></tr>${S.skills.alternatives.map(c => `<tr><td>${esc(c.skill)}</td><td>${esc(c.instead_of)}</td><td class="num">${c.candidates_with_it}</td></tr>`).join("")}</table>` : empty("No requirement selected or no equivalents in the library.");
+  // funnel
+  bars($("#funnel"), S.funnel, r => r.stage, r => r.count, v => v, r => `${r.count} reached ${r.stage}`);
+  // agents
+  const M = a.MARK, J = a.JOE;
+  $("#markStats").innerHTML = statTable([["Search plans proposed", M.plans],["Searches logged (with evidence)", M.searches_logged],["Channels actually used", M.channels_used],["Companies mapped", M.companies_mapped],["Profiles sourced", M.profiles_sourced],["Search refinements", M.refinements]]);
+  $("#joeStats").innerHTML = statTable([["Profiles evaluated", J.profiles_evaluated],["Technical assessments", J.assessments],["Average match score", J.avg_score ?? "–"],["Shortlist decisions", J.shortlisted],["Challenges raised (MARK ↔ JOE)", J.challenges]]) + (J.rejection_reasons.length ? `<h3>Rejection reasons</h3>${statTable(J.rejection_reasons.map(r => [r.reason, r.count]))}` : "");
+  $("#actLog").innerHTML = a.log.length ? `<table><tr><th>When (UTC)</th><th>Agent</th><th>Action</th><th>Detail</th></tr>${a.log.map(l => `<tr><td class="small">${esc(l.at.replace("T"," ").slice(0,16))}</td><td><span class="avatar ${l.agent==="JOE"?"joe":l.agent==="MARK"?"mark":""}" style="width:22px;height:22px;font-size:10px;display:inline-grid;${l.agent!=="JOE"&&l.agent!=="MARK"?"background:var(--muted)":""}">${esc(l.agent[0])}</span> ${esc(l.agent)}</td><td>${esc(l.action.replaceAll("_"," "))}</td><td class="small">${esc(detailTxt(l.detail))}</td></tr>`).join("")}</table>` : empty("No agent activity yet.");
+  // connectors
+  $("#connTable").innerHTML = `<table><tr><th>Connector</th><th>Category</th><th>Status</th><th>Supported actions</th><th>Bulk sourcing</th><th>Evidence</th><th>Notes</th></tr>${S.connectors.map(c => `<tr><td><b>${esc(c.name)}</b></td><td>${esc(c.category)}</td><td>${connPill(c.status)}</td><td class="small">${esc((c.supported_actions||[]).join(", "))}</td><td>${c.bulk_sourcing ? "yes" : "no"}</td><td class="small">${esc(c.evidence||"–")}${c.verified_at ? `<div class="evi">${esc(c.verified_at.slice(0,10))}</div>` : ""}</td><td class="small">${esc(c.notes||"")}</td></tr>`).join("")}</table>`;
+}
+const statTable = rows => `<table>${rows.map(([k,v]) => `<tr><td>${esc(k)}</td><td class="num"><b>${esc(v)}</b></td></tr>`).join("")}</table>`;
+const fmtExp = r => r.exp_min!=null ? `${r.exp_min}${r.exp_max!=null ? "–"+r.exp_max : "+"} yrs` : "exp ?";
+const statusPill = s => `<span class="pill"><span class="dot ${({hunting:"st-good",evaluating:"st-good",shortlisted:"st-good",plan_pending:"st-warn",intake:"st-warn",on_hold:"st-serious",closed:"st-none"})[s]||"st-none"}"></span>${esc((s||"").replace("_"," "))}</span>`;
+const connPill = s => `<span class="pill"><span class="dot ${s==="connected"||s==="built_in"?"st-good":s==="needs_auth"?"st-warn":"st-none"}"></span>${esc(s.replace("_"," "))}</span>`;
+function detailTxt(d){ if(!d) return ""; if (d.text) return d.text; return Object.entries(d).filter(([k,v]) => v!=null && v!=="" && !(Array.isArray(v)&&!v.length)).map(([k,v]) => `${k.replaceAll("_"," ")}: ${Array.isArray(v) ? v.map(x => typeof x==="object" ? (x.name||x.id||JSON.stringify(x)) : x).join(", ") : typeof v==="object" ? JSON.stringify(v) : v}`).join(" · ").slice(0,260); }
+function stacks(el, rows){
+  if (!rows.length) { el.innerHTML = empty("No skills defined, or no candidates yet."); return; }
+  const tot = r => Math.max(1, r.proven + r.keyword_only + r.missing);
+  el.innerHTML = `<div class="bars">${rows.map((r,i) => `<div class="bar" data-i="${i}"><div class="lab">${esc(r.skill)}</div><div class="stack">${r.proven?`<span style="width:${r.proven/tot(r)*100}%;background:var(--s1)"></span>`:""}${r.keyword_only?`<span style="width:${r.keyword_only/tot(r)*100}%;background:var(--s2)"></span>`:""}${r.missing?`<span style="width:${r.missing/tot(r)*100}%;background:var(--s3)"></span>`:""}</div><div class="val">${r.proven_pct}%</div></div>`).join("")}</div>`;
+  el.querySelectorAll(".bar").forEach(b => { const r = rows[b.dataset.i]; tip(b, `${r.skill}: ${r.proven} proven · ${r.keyword_only} keyword only · ${r.missing} no evidence`); });
+}
+
+function renderCandidates(){
+  const c = S.candidates;
+  $("#candTable").innerHTML = c.length ? `<table><tr><th>Candidate</th><th>Company / designation</th><th class="num">Exp</th><th class="num">Relevant</th><th>Location</th><th>Skills (evidence)</th><th>Notice / availability</th><th>Links</th><th>Source</th><th>Match</th><th>JOE's assessment</th><th>Status</th><th>Remarks</th></tr>${c.map((r,i) => `
+    <tr class="click" data-i="${i}"><td><b>${esc(r.full_name)}</b><div class="evi">${r.id} · ${esc(r.requirement_title||"")}</div></td>
+    <td>${esc(r.current_company||"–")}<div class="evi">${esc(r.current_designation||"")}</div></td>
+    <td class="num">${r.total_exp_years ?? "–"}</td><td class="num">${r.relevant_exp_years ?? "–"}</td><td>${esc(r.location||"–")}</td>
+    <td class="small">${r.skills.filter(s=>s.level!=="mentioned").slice(0,6).map(s=>esc(s.skill)).join(", ") || "<span class='muted'>keywords only</span>"}</td>
+    <td class="small">${esc(r.availability)}${r.open_to_work==="yes"?"<div class='evi'>Open to Work (evidenced)</div>":r.open_to_work==="claimed"?"<div class='evi'>Open to Work claimed, unverified</div>":""}</td>
+    <td class="small">${r.linkedin_url?`<a href="${esc(r.linkedin_url)}" target="_blank" rel="noopener noreferrer">LinkedIn</a>`:""} ${r.resume_link?`<a href="${esc(r.resume_link)}" target="_blank" rel="noopener noreferrer">Resume</a>`:""} ${!r.linkedin_url && r.source_url?`<a href="${esc(r.source_url)}" target="_blank" rel="noopener noreferrer">Source</a>`:""}</td>
+    <td class="small">${esc(r.source_channel||"–")}</td><td>${scoreDot(r.match_score)}</td>
+    <td class="small">${esc((r.joe_assessment||{}).recommendation||"–")}${((r.joe_assessment||{}).critical_gaps||[]).length ? `<div class="evi"><span class="dot st-crit"></span> Critical gap: ${esc(r.joe_assessment.critical_gaps.join(", "))}</div>` : ""}</td>
+    <td>${esc(r.status)}</td><td class="small">${esc(r.recruiter_remarks||"")}</td></tr>`).join("")}</table>` : empty("No candidate records match. Profiles appear here only after MARK (or you) add sourced profiles.");
+  $$("#candTable tr.click").forEach(tr => tr.onclick = () => openCandidate(S.candidates[tr.dataset.i]));
+}
+
+async function openCandidate(row){
+  const v = await api("candidates/" + row.id);
+  const e = v.evaluations.find(x => x.requirement_id === row.requirement_id) || v.evaluations[0];
+  const d = $("#drawer");
+  const stages = [...S.stages, "rejected","on_hold","withdrawn","not_interested"];
+  d.innerHTML = `<div class="row" style="justify-content:space-between"><h2 style="margin:0">${esc(row.full_name)}</h2><button class="btn ghost" id="closeD">Close</button></div>
+   <div class="small muted">${row.id} · ${esc(row.current_designation||"")} ${row.current_company?"at "+esc(row.current_company):""} · ${esc(row.location||"")}</div>
+   <div class="row" style="margin:8px 0">${scoreDot(row.match_score)} <span class="pill">${esc(row.status)}</span> <span class="pill">${esc(row.availability)}</span></div>
+   ${e ? `<h3>JOE's breakdown (${e.total}/100)</h3><table>${Object.entries(e.breakdown).map(([k,b]) => `<tr><td>${esc(k.replace("_"," "))}</td><td class="num">${b.score}/${b.max}</td><td class="small">${esc(b.evidence)}</td></tr>`).join("")}</table>
+   ${(e.flags||[]).length ? `<h3>Flags</h3>${e.flags.map(f => `<div class="warn ${f.type==="critical_gap"?"contradiction":""}">${esc(f.text)}</div>`).join("")}` : ""}
+   ${(e.challenges||[]).length ? `<h3>MARK ↔ JOE challenges</h3>${e.challenges.map(c => `<div class="warn">${esc(c.by)} → ${esc(c.to)}: ${esc(c.text)}</div>`).join("")}` : ""}
+   <h3>Skill evidence</h3><table><tr><th>Skill</th><th>Strongest evidence</th><th>Confidence</th><th>Resume evidence</th></tr>${Object.entries(e.skill_evidence).map(([s,x]) => `<tr><td>${esc(s)}</td><td>${x.level ? esc(levelTxt[x.level]) : "<span class='muted'>none</span>"}</td><td>${esc(x.confidence)}</td><td class="small">${(x.evidence||[]).map(t => "“"+esc(t.text)+"”").join("<br>")}</td></tr>`).join("")}</table>
+   <h3>Technical screening questions</h3><ol>${(e.screening_questions||[]).map(q => `<li>${esc(q.q)} <span class="muted small">(${esc(q.why)})</span></li>`).join("")}</ol>` : `<div class="empty">No evaluation yet (no resume text).</div>`}
+   <h3>Recruiter actions</h3>
+   <div class="row"><select id="newSt">${stages.map(s => `<option ${s===row.status?"selected":""}>${s}</option>`).join("")}</select><input id="stNote" placeholder="Note" style="flex:1"><button class="btn" id="saveSt">Update status</button></div>
+   <p class="small muted">Only you can move a candidate to submitted, interviews, offer or joined. Agents never submit profiles.</p>
+   <div class="row"><input id="remark" placeholder="Recruiter remark / feedback" style="flex:1" value="${esc(row.recruiter_remarks||"")}"><select id="rating"><option value="">Rating</option>${[1,2,3,4,5].map(n=>`<option>${n}</option>`).join("")}</select><button class="btn ghost" id="saveRm">Save remark</button></div>
+   <h3>Correct the record</h3>
+   <form class="form" id="editC">${[["current_company","Current company"],["current_designation","Designation"],["location","Location"],["total_exp_years","Total exp (yrs)"],["notice_period_days","Notice (days)"],["availability_evidence","Availability evidence (makes it verified)"],["linkedin_url","LinkedIn URL"],["resume_link","Resume link"]].map(([k,l]) => `<label>${l}<input name="${k}" value="${esc(v.candidate[k]??"")}"></label>`).join("")}<label>Notice status<select name="notice_status">${["unknown","immediate","serving","notice"].map(s=>`<option ${v.candidate.notice_status===s?"selected":""}>${s}</option>`).join("")}</select></label><div><button class="btn ghost">Save changes</button></div></form>
+   <h3>Projects / roles found</h3>${v.projects.length ? `<table>${v.projects.map(p => `<tr><td class="small">${esc(p.start)} → ${esc(p.end)}</td><td class="small">${esc(p.title)}<div class="evi">${esc((p.technologies||[]).join(", "))}</div></td></tr>`).join("")}</table>` : empty("No dated roles found in the resume.")}
+   <h3>Status history</h3><table>${v.history.map(h => `<tr><td class="small">${esc(h.at.slice(0,16).replace("T"," "))}</td><td>${esc(h.from_status||"–")} → <b>${esc(h.to_status)}</b></td><td class="small">${esc(h.changed_by)}${h.note?" · "+esc(h.note):""}</td></tr>`).join("")}</table>
+   <h3>Audit trail</h3>${v.audit.length ? `<table>${v.audit.map(a => `<tr><td class="small">${esc(a.at.slice(0,16).replace("T"," "))}</td><td class="small">${esc(a.actor)} · ${esc(a.action)}</td><td class="small code">${esc((a.after||"").slice(0,200))}</td></tr>`).join("")}</table>` : ""}`;
+  d.classList.add("open");
+  $("#closeD").onclick = () => d.classList.remove("open");
+  $("#saveSt").onclick = async () => { try { await api("pipeline", {requirement_id: row.requirement_id, candidate_id: row.id, status: $("#newSt").value, note: $("#stNote").value}); toast("Status updated"); await load(); d.classList.remove("open"); } catch(e){ toast(e.message); } };
+  $("#saveRm").onclick = async () => { await api("remarks", {requirement_id: row.requirement_id, candidate_id: row.id, remark: $("#remark").value, rating: $("#rating").value ? +$("#rating").value : null}); toast("Remark saved"); load(); };
+  $("#editC").onsubmit = async ev => { ev.preventDefault(); const f = Object.fromEntries(new FormData(ev.target)); for (const k of ["total_exp_years","notice_period_days"]) f[k] = f[k]==="" ? null : +f[k]; await api("candidates/"+row.id, f); await api("candidates/"+row.id+"/evaluate", {requirement_id: row.requirement_id}); toast("Record corrected and re-evaluated"); await load(); d.classList.remove("open"); };
+}
+
+// ---------- campaign ----------
+$("#campReq").onchange = () => { const v = $("#campReq").value; if (v) openReq(v); else { CUR = null; $("#jdBox").classList.remove("hidden"); $("#chatBox").classList.add("hidden"); resetCampaignCards(); } };
+$("#startBtn").onclick = async () => { const jd = $("#jd").value.trim(); if (!jd) return toast("Paste a JD first."); try { const v = await api("requirements", {jd_text: jd}); CUR = v.requirement.id; await load(); $("#campReq").value = CUR; renderReq(v); } catch(e){ toast(e.message); } };
+$("#answerForm").onsubmit = async ev => { ev.preventDefault(); const a = $("#answer").value.trim(); if (!a) return; const key = (CURV && CURV.next_question || {}).key; try { const v = await api(`requirements/${CUR}/answer`, {answer: a, key}); pushChat(CUR, {me: a}); if (v.info && v.info.note) pushChat(CUR, {mark: v.info.note}); if (v.info && v.info.error) pushChat(CUR, {mark: v.info.error}); $("#answer").value = ""; renderReq(v); load(); } catch(e){ toast(e.message); } };
+let CURV = null; const CHATS = {};
+function pushChat(id, m){ (CHATS[id] = CHATS[id] || []).push(m); }
+async function openReq(id){ CUR = id; const v = await api("requirements/" + id); renderReq(v); }
+function resetCampaignCards(){ ["#reqSummary","#channelCard","#connCard","#planCard","#addCard","#joeCard","#searchCard","#refineCard"].forEach(s => { const h = $(s+" h2").outerHTML; $(s).innerHTML = h + empty("Start or pick a requirement."); }); }
+
+function renderReq(v){
+  CURV = v; const r = v.requirement;
+  $("#jdBox").classList.add("hidden"); $("#chatBox").classList.remove("hidden");
+  const log = CHATS[r.id] = CHATS[r.id] || [];
+  if (!log.length) {
+    const got = r.intake.from_jd || [];
+    log.push({mark: `I've read the JD${r.job_family ? " and placed it in " + (v.skill_intelligence.family_label || r.job_family) : ""}. Already clear from the JD: ${got.filter(k=>!k.startsWith("_")).map(k=>k.replaceAll("_"," ")).join(", ") || "very little"}. I'll only ask what's missing, one question at a time.`});
+  }
+  const q = v.next_question;
+  const last = log[log.length-1];
+  if (q && !(last && last.qkey === q.key)) log.push({mark: q.question, why: q.why, qkey: q.key});
+  if (!q && !log.some(m => m.done)) log.push({mark: "I have what I need. Confirm the sourcing channels, then I'll propose the search plan.", done: true});
+  if (q && !q.essential && v.ready_for_plan && !log.some(m => m.readyhint)) log.push({mark: "The essentials are covered. You can keep answering to sharpen the search, or go ahead and propose the plan now.", readyhint: true});
+  $("#chat").innerHTML = log.map(m => m.me ? `<div class="msg me">${esc(m.me)}</div>` : `<div class="msg"><div class="who" style="color:var(--mark)">MARK</div>${esc(m.mark)}${m.why ? `<div class="why">Why it matters: ${esc(m.why)}</div>` : ""}</div>`).join("");
+  $("#chat").scrollTop = 1e9;
+  $("#answer").placeholder = q ? "Answer MARK (or type 'skip')" : "All questions answered";
+  $("#warnings").innerHTML = v.warnings.map(w => `<div class="warn ${w.type}"><b>${w.type === "contradiction" ? "Contradiction" : "Market note"}:</b> ${esc(w.text)} <span class="muted">→ ${esc(w.suggest)}</span></div>`).join("");
+  // summary
+  const si = v.skill_intelligence;
+  $("#reqSummary").innerHTML = `<h2>Requirement understanding ${statusPill(r.status)}</h2>
+    <table>${[["Title", r.title],["Job family", si.family_label],["Experience", fmtExp(r)],["Location", r.location],["Work mode", r.work_mode],["Notice (max)", r.notice_max_days!=null ? r.notice_max_days+" days" : null],["Immediate joiners", r.immediate_joiner_pref],["Open to Work", r.open_to_work_pref],["Salary budget", r.salary_budget],["Domain", r.domain],["Education", r.education],["Profiles needed", r.profiles_required],["Target companies", (r.target_companies||[]).join(", ")],["Excluded companies", (r.excluded_companies||[]).join(", ")]].map(([k,x]) => `<tr><td class="muted">${k}</td><td>${x ? esc(x) : "<span class='muted'>not yet known</span>"}</td></tr>`).join("")}</table>
+    <h3>Skill groups</h3>
+    <div class="small"><b>Mandatory (critical):</b> ${esc((r.mandatory_skills||[]).join(", ")||"–")}</div>
+    <div class="small"><b>Preferred:</b> ${esc((r.preferred_skills||[]).join(", ")||"–")}</div>
+    <div class="small"><b>Transferable (accepted alternatives):</b> ${esc((r.transferable_skills||[]).join(", ")||"–")}</div>
+    ${Object.keys((r.intake||{}).required_levels||{}).length ? `<div class="small"><b>Required evidence level:</b> ${esc(Object.entries(r.intake.required_levels).map(([s,l])=>s+" → "+l.replace("_","-")).join(", "))}</div>` : ""}
+    <h3>Skill intelligence</h3>
+    ${si.mandatory.map(m => `<div class="small"><b>${esc(m.skill)}</b> <span class="muted">(${esc(m.market_availability)} availability, heuristic)</span>: ${esc(m.expansions.join(", ") || "not in library yet")}</div>`).join("")}
+    <div class="small" style="margin-top:4px"><b>Related (not mandatory):</b> ${esc(si.related.map(x=>x.skill).join(", ") || "–")}</div>
+    <div class="small"><b>Alternate designations:</b> ${esc(si.alternate_designations.join(", ") || "–")}</div>
+    <div class="small"><b>Emerging:</b> ${esc(si.emerging.join(", ") || "–")}</div>
+    ${(r.intake.notes||[]).length ? `<h3>Changes from your answers</h3>${r.intake.notes.map(n => `<div class="small">• ${esc(n)}</div>`).join("")}` : ""}`;
+  // channels
+  const chosen = new Set(r.intake.channels || []);
+  $("#channelCard").innerHTML = `<h2>2 · Sourcing channels (memory)</h2>
+    <p class="small muted">Saved channels you approved before are listed first. Pick every channel for this campaign; new picks are saved to memory. None is "connected" until you confirm it.</p>
+    <div class="tablewrap" style="max-height:360px"><table><tr><th></th><th>Channel</th><th>Status</th><th>Memory</th></tr>${v.channel_memory.filter(c => c.active).map(c => `<tr><td><input type="checkbox" class="chpick" value="${c.id}" ${chosen.has(c.id) || (!chosen.size && c.approved) ? "checked" : ""}></td><td><b>${esc(c.name)}</b><div class="evi">${esc(c.category)}</div></td><td>${c.connected ? '<span class="pill"><span class="dot st-good"></span>connected</span>' : '<span class="pill"><span class="dot st-none"></span>manual / not connected</span>'}${c.approved ? ' <span class="pill">saved</span>' : ""}</td><td class="small">${c.memory_entries ? c.memory_entries + " past strategies" + (c.family_memory.length ? `, ${c.family_memory.length} for this job family` : "") : "–"}</td></tr>`).join("")}</table></div>
+    <div class="row" style="margin-top:8px"><button class="btn" id="saveCh">Confirm channels</button><button class="btn ghost" id="planBtn" ${v.ready_for_plan && chosen.size ? "" : "disabled"}>Propose search plan</button></div>
+    ${!v.ready_for_plan ? `<p class="small muted">MARK still needs: ${esc(v.pending.filter(p=>p.essential).map(p=>p.key.replaceAll("_"," ")).join(", "))}.</p>` : ""}`;
+  $("#saveCh").onclick = async () => { const ids = $$(".chpick:checked").map(x => x.value); if (!ids.length) return toast("Pick at least one channel."); renderReq(await api(`requirements/${r.id}/channels`, {channel_ids: ids})); toast("Channels saved to memory"); load(); };
+  $("#planBtn").onclick = async () => { try { renderReq(await api(`requirements/${r.id}/plan`, {})); toast("MARK proposed a search plan"); load(); } catch(e){ toast(e.message); } };
+  // connectors
+  $("#connCard").innerHTML = `<h2>Plugin &amp; connector check</h2><table><tr><th>Integration</th><th>Status</th><th>Can do</th></tr>${v.connectors.filter(c => c.category==="Candidate sourcing" || c.category==="Analytics").map(c => `<tr><td>${esc(c.name)}</td><td>${connPill(c.status)}</td><td class="small">${esc((c.supported_actions||[]).join(", "))}${c.bulk_sourcing ? "" : " · no bulk sourcing"}</td></tr>`).join("")}</table><p class="small muted">Not connected = MARK writes the strings and you run them, then log the run. Record verified connectors in the Connectors tab.</p>`;
+  // plan
+  renderPlan(v);
+  // add profile / search log / refine
+  const live = ["hunting","evaluating","shortlisted"].includes(r.status);
+  const chans = v.channel_memory.filter(c => (r.intake.channels||[]).includes(c.id));
+  if (live) {
+    $("#addCard").innerHTML = `<h2>4 · Add a sourced profile → JOE evaluates</h2>
+      <p class="small muted">Add only real profiles you or MARK actually found. Name and a source are required. Leave unknowns blank; nothing is guessed.</p>
+      <form class="form" id="addForm">
+        <label>Full name *<input name="full_name" required></label>
+        <label>Source channel *<select name="source_channel">${chans.map(c => `<option>${esc(c.name)}</option>`).join("")}</select></label>
+        <label>Source / profile URL<input name="source_url" placeholder="where you found them"></label>
+        <label>LinkedIn URL<input name="linkedin_url"></label>
+        <label>GitHub URL<input name="github_url"></label>
+        <label>Resume link<input name="resume_link"></label>
+        <label>Current company<input name="current_company"></label>
+        <label>Current designation<input name="current_designation"></label>
+        <label>Location<input name="location"></label>
+        <label>Notice period (days)<input name="notice_period_days" type="number" min="0"></label>
+        <label>Notice status<select name="notice_status"><option>unknown</option><option>immediate</option><option>serving</option><option>notice</option></select></label>
+        <label>Availability evidence<input name="availability_evidence" placeholder="e.g. confirmed on call 4 Nov"></label>
+        <label>Open to Work<select name="open_to_work"><option>unknown</option><option>yes</option><option>no</option></select></label>
+        <label>Open to Work evidence<input name="open_to_work_evidence" placeholder="e.g. green banner seen on profile"></label>
+        <label class="wide">Resume text (paste) — JOE needs this to evaluate<textarea name="resume_text"></textarea></label>
+        <div><button class="btn">Submit to JOE</button></div>
+      </form>`;
+    $("#addForm").onsubmit = async ev => { ev.preventDefault(); const f = Object.fromEntries(new FormData(ev.target)); Object.keys(f).forEach(k => { if (f[k]==="") delete f[k]; }); if (f.notice_period_days) f.notice_period_days = +f.notice_period_days; try { const res = await api("candidates", {requirement_id: r.id, profile: f}); if (res.duplicate) { toast(`Duplicate: already stored as ${res.candidate_id} (matched on ${res.matched_on}).`); } else { ev.target.reset(); showJoe(res); } load(); } catch(e){ toast(e.message); } };
+    $("#searchCard").innerHTML = `<h2>Log a search run</h2><p class="small muted">Record searches that actually ran, with evidence. This is what "channel used" counts.</p>
+      <form class="form" id="searchForm"><label>Channel<select name="channel_id">${chans.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select></label><label>Results seen<input name="results_count" type="number" min="0" value="0"></label><label class="wide">Query used<input name="query"></label><label class="wide">Evidence *<input name="evidence" required placeholder="results URL, export file, or what you saw"></label><div><button class="btn ghost">Log run</button></div></form>`;
+    $("#searchForm").onsubmit = async ev => { ev.preventDefault(); const f = Object.fromEntries(new FormData(ev.target)); try { await api("searches", {requirement_id: r.id, ...f}); ev.target.reset(); toast("Search run logged"); load(); } catch(e){ toast(e.message); } };
+    $("#refineCard").innerHTML = `<h2>5 · MARK refines from JOE's feedback</h2><div class="row"><button class="btn ghost" id="refBtn">Ask MARK to refine</button><button class="btn ghost" id="slBtn">Final shortlist</button></div><div id="refOut" style="margin-top:8px"></div>`;
+    $("#refBtn").onclick = async () => { const x = await api(`requirements/${r.id}/refine`, {}); $("#refOut").innerHTML = x.refinements.length ? x.refinements.map(f => `<div class="warn"><b>${esc(f.text)}</b><br>${esc(f.action)}</div>`).join("") : empty(x.note || "No refinements suggested yet."); load(); };
+    $("#slBtn").onclick = async () => { const x = await api(`requirements/${r.id}/shortlist`, {}); $("#refOut").innerHTML = x.shortlist.length ? `<table><tr><th>Candidate</th><th>Score</th><th>Status</th></tr>${x.shortlist.map(c => `<tr><td>${esc(c.full_name)}<div class="evi">${esc(c.current_company||"")}</div></td><td>${scoreDot(c.match_score)}</td><td>${esc(c.status)}</td></tr>`).join("")}</table><p class="small muted">Shortlisted by both agents with no critical gaps. Submitting to the client is your decision.</p>` : empty("No candidate passes both agents yet."); load(); };
+  }
+}
+
+function renderPlan(v){
+  const p = v.plan, r = v.requirement;
+  if (!p) return;
+  const P = p.payload, B = P.booleans;
+  const copy = (label, s) => s ? `<h3>${esc(label)} <button class="link small" data-copy="${esc(s)}">copy</button></h3><span class="code">${esc(s)}</span>` : "";
+  $("#planCard").innerHTML = `<h2>3 · Search plan v${p.version} <span class="pill">${esc(p.status)}</span></h2>
+    ${P.warnings.length ? P.warnings.map(w => `<div class="warn ${w.type}">${esc(w.text)} <span class="muted">→ ${esc(w.suggest)}</span></div>`).join("") : ""}
+    <div class="grid g2">
+      <div>
+        ${copy("Broad Boolean", B.broad)}${copy("Narrow Boolean", B.narrow)}${copy("Skill-based Boolean", B.skill_based)}${copy("Designation-based Boolean", B.designation_based)}
+        ${copy("Immediate joiner Boolean", B.immediate_joiner)}${copy("Open to Work Boolean", B.open_to_work)}${copy("Alternative skill search", B.alternative_skill)}
+      </div>
+      <div>
+        ${Object.entries(B.xray).map(([k,s]) => copy("Google X-Ray · " + k.replaceAll("_"," "), s)).join("")}
+        <h3>GitHub strategy</h3><span class="code">${esc(B.github.user_search.join("\n"))}\n${esc(B.github.topics.join("\n"))}</span><p class="small muted">${esc(B.github.method)}</p>
+      </div>
+    </div>
+    <h3>Company-specific Booleans</h3>${Object.entries(B.company_specific).map(([c,s]) => `<div class="small"><b>${esc(c)}</b> <button class="link small" data-copy="${esc(s)}">copy</button></div>`).join("") || empty("No target companies.")}
+    <h3>Target companies (top ${P.target_companies.length})</h3>
+    <table><tr><th>Company</th><th>Type</th><th>Priority</th><th class="num">Relevance</th><th>Matched skills</th></tr>${P.target_companies.map(c => `<tr><td>${esc(c.name)}${c.verified ? "" : " <span class='muted small'>(unverified stack)</span>"}</td><td>${esc(c.category)}</td><td>${c.priority}</td><td class="num">${c.relevance}</td><td class="small">${esc(c.matched_skills.join(", "))}</td></tr>`).join("")}</table>
+    <h3>Channel-by-channel sourcing plan</h3>
+    <table><tr><th>Channel</th><th>How it runs</th><th>Filters to check in your account</th></tr>${P.channels.map(c => `<tr><td><b>${esc(c.channel)}</b></td><td class="small">${esc(c.execution)}</td><td class="small">${esc((c.filters_to_check||[]).join(", "))}</td></tr>`).join("")}</table>
+    ${P.connector_gaps.length ? `<p class="small muted">Not connected (manual or recommend connecting): ${esc(P.connector_gaps.join(", "))}.</p>` : ""}
+    <p class="small muted">Assumptions: ${esc(P.assumptions.join(" "))}</p>
+    ${p.status === "proposed" ? `<div class="row"><button class="btn" id="approveBtn">Approve plan and start the campaign</button><button class="btn ghost" id="replanBtn">Rebuild plan</button></div>` : `<p class="small">Approved ${esc((p.decided_at||"").slice(0,16).replace("T"," "))} UTC.</p>`}`;
+  $$("[data-copy]").forEach(b => b.onclick = () => { navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy).then(() => toast("Copied"), () => toast("Copy blocked by browser")); });
+  if ($("#approveBtn")) $("#approveBtn").onclick = async () => { if (!confirm("Approve this plan? MARK will start the campaign on the confirmed channels.")) return; renderReq(await api(`requirements/${r.id}/approve`, {})); toast("Plan approved. Campaign is live."); load(); };
+  if ($("#replanBtn")) $("#replanBtn").onclick = async () => { renderReq(await api(`requirements/${r.id}/plan`, {})); load(); };
+}
+
+function showJoe(res){
+  const e = res.evaluation;
+  if (!e) { $("#joeCard").innerHTML = `<h2>JOE's evaluation</h2>${empty("Stored. JOE needs resume text to evaluate.")}`; return; }
+  $("#joeCard").innerHTML = `<h2>JOE's evaluation</h2><div class="row">${scoreDot(e.total)}<b>${esc(e.recommendation)}</b></div>
+    ${res.possible_duplicates && res.possible_duplicates.length ? `<div class="warn">Possible duplicate of ${esc(res.possible_duplicates.map(d=>d.id).join(", "))} (same name and company). Not merged automatically.</div>` : ""}
+    ${e.flags.map(f => `<div class="warn ${f.type==="critical_gap"?"contradiction":""}">${esc(f.text)}</div>`).join("")}
+    ${e.challenges.map(c => `<div class="warn">${esc(c.by)} → ${esc(c.to)}: ${esc(c.text)}</div>`).join("")}
+    <table>${Object.entries(e.breakdown).map(([k,b]) => `<tr><td>${esc(k.replace("_"," "))}</td><td class="num">${b.score}/${b.max}</td><td class="small">${esc(b.evidence)}</td></tr>`).join("")}</table>
+    <p class="small muted">${esc(e.ignored_fields)}</p>`;
+}
+
+load().catch(e => toast(e.message));
+</script>
+</body>
+</html>

@@ -1,0 +1,1570 @@
+{
+ "_note": "Skill Intelligence Library seed. 'market_availability' is MARK's planning heuristic, not measured market data; it is overwritten by observed coverage once campaigns record candidates. Edit freely; new skills can also be added at runtime and are stored in the database.",
+ "skills": {
+  "Spark": {
+   "aliases": [
+    "Apache Spark",
+    "Spark",
+    "PySpark",
+    "Spark SQL",
+    "Scala Spark"
+   ],
+   "expansions": [
+    "Apache Spark",
+    "PySpark",
+    "Spark SQL",
+    "Spark optimization",
+    "Distributed processing"
+   ],
+   "equivalents": [
+    "Apache Flink",
+    "Apache Beam",
+    "Hadoop MapReduce"
+   ],
+   "related": [
+    "Databricks",
+    "Hadoop",
+    "Hive",
+    "Scala",
+    "Python"
+   ],
+   "dependencies": [
+    "Python",
+    "SQL"
+   ],
+   "family": "data_engineering",
+   "market_availability": "high",
+   "screening": [
+    "How did you tune a slow Spark job: partitioning, shuffle, broadcast joins, caching?",
+    "Explain narrow vs wide transformations and how they affect stages."
+   ]
+  },
+  "Databricks": {
+   "aliases": [
+    "Databricks",
+    "Delta Lake",
+    "Unity Catalog",
+    "Databricks Workflows",
+    "Databricks SQL",
+    "Lakehouse"
+   ],
+   "expansions": [
+    "Delta Lake",
+    "Unity Catalog",
+    "Databricks Workflows",
+    "Databricks SQL",
+    "Lakehouse Architecture"
+   ],
+   "equivalents": [
+    "AWS EMR",
+    "Azure Synapse Spark",
+    "Google Dataproc",
+    "Cloudera"
+   ],
+   "related": [
+    "Spark",
+    "Delta Lake",
+    "MLflow",
+    "Azure Data Factory"
+   ],
+   "dependencies": [
+    "Spark"
+   ],
+   "family": "data_engineering",
+   "market_availability": "medium",
+   "screening": [
+    "How did you structure bronze/silver/gold layers in Delta Lake, and how did you handle schema evolution?",
+    "What did you govern with Unity Catalog, and how were permissions organised?"
+   ]
+  },
+  "Kafka": {
+   "aliases": [
+    "Kafka",
+    "Apache Kafka",
+    "Kafka Connect",
+    "Kafka Streams",
+    "Confluent"
+   ],
+   "expansions": [
+    "Kafka producers and consumers",
+    "Kafka Connect",
+    "Kafka Streams",
+    "Event-driven architecture"
+   ],
+   "equivalents": [
+    "AWS Kinesis",
+    "Azure Event Hubs",
+    "Google Pub/Sub",
+    "Apache Pulsar",
+    "RabbitMQ"
+   ],
+   "related": [
+    "Stream Processing",
+    "Spark",
+    "Flink",
+    "Schema Registry"
+   ],
+   "dependencies": [],
+   "family": "data_engineering",
+   "market_availability": "medium",
+   "screening": [
+    "How did you size partitions and handle consumer lag in production?",
+    "How did you achieve idempotent or exactly-once delivery end to end?"
+   ]
+  },
+  "Stream Processing": {
+   "aliases": [
+    "Stream Processing",
+    "Structured Streaming",
+    "Real-time streaming",
+    "real-time ingestion",
+    "Spark Streaming",
+    "Flink",
+    "streaming pipeline"
+   ],
+   "expansions": [
+    "Structured Streaming",
+    "Real-time ingestion",
+    "Windowing",
+    "Checkpointing",
+    "Exactly-once processing concepts"
+   ],
+   "equivalents": [
+    "Apache Flink",
+    "Kafka Streams",
+    "AWS Kinesis Data Analytics"
+   ],
+   "related": [
+    "Kafka",
+    "Spark"
+   ],
+   "dependencies": [
+    "Kafka"
+   ],
+   "family": "data_engineering",
+   "market_availability": "low",
+   "screening": [
+    "How did you handle late-arriving data and watermarks?",
+    "Describe a checkpoint failure you recovered from."
+   ]
+  },
+  "Snowflake": {
+   "aliases": [
+    "Snowflake",
+    "Snowpipe",
+    "Snowpark",
+    "SnowSQL"
+   ],
+   "expansions": [
+    "Snowflake SQL",
+    "Warehousing",
+    "Query optimization",
+    "Data modelling",
+    "Snowpipe"
+   ],
+   "equivalents": [
+    "Amazon Redshift",
+    "Google BigQuery",
+    "Azure Synapse",
+    "Teradata"
+   ],
+   "related": [
+    "dbt",
+    "SQL",
+    "Data Modelling"
+   ],
+   "dependencies": [
+    "SQL"
+   ],
+   "family": "data_engineering",
+   "market_availability": "medium",
+   "screening": [
+    "How did you control Snowflake credit spend: warehouse sizing, clustering, result caching?",
+    "How did you load continuously with Snowpipe and handle failures?"
+   ]
+  },
+  "Python": {
+   "aliases": [
+    "Python",
+    "Python3",
+    "PySpark",
+    "Pandas"
+   ],
+   "expansions": [
+    "Data engineering frameworks",
+    "API integrations",
+    "Automation",
+    "PySpark"
+   ],
+   "equivalents": [
+    "Scala",
+    "Java"
+   ],
+   "related": [
+    "Pandas",
+    "FastAPI",
+    "Django",
+    "Flask",
+    "Pytest"
+   ],
+   "dependencies": [],
+   "family": "general",
+   "market_availability": "high",
+   "screening": [
+    "Walk through a Python module you wrote that runs in production: structure, tests, packaging.",
+    "How do you handle memory with large datasets in Python?"
+   ]
+  },
+  "SQL": {
+   "aliases": [
+    "SQL",
+    "T-SQL",
+    "PL/SQL",
+    "PostgreSQL",
+    "MySQL",
+    "stored procedures"
+   ],
+   "expansions": [
+    "Advanced SQL",
+    "Query optimization",
+    "Stored procedures",
+    "Data transformation"
+   ],
+   "equivalents": [],
+   "related": [
+    "Data Modelling",
+    "Snowflake",
+    "dbt"
+   ],
+   "dependencies": [],
+   "family": "general",
+   "market_availability": "high",
+   "screening": [
+    "Write a query for the top 3 per group: which window function and why?",
+    "How did you read an execution plan to fix a slow query?"
+   ]
+  },
+  "Airflow": {
+   "aliases": [
+    "Airflow",
+    "Apache Airflow",
+    "MWAA",
+    "Cloud Composer"
+   ],
+   "expansions": [
+    "DAG design",
+    "Operators and sensors",
+    "Backfills",
+    "Scheduling"
+   ],
+   "equivalents": [
+    "Azure Data Factory",
+    "Prefect",
+    "Dagster",
+    "AWS Step Functions"
+   ],
+   "related": [
+    "Python",
+    "dbt"
+   ],
+   "dependencies": [
+    "Python"
+   ],
+   "family": "data_engineering",
+   "market_availability": "high",
+   "screening": [
+    "How did you design idempotent DAGs and run backfills safely?"
+   ]
+  },
+  "dbt": {
+   "aliases": [
+    "dbt",
+    "data build tool"
+   ],
+   "expansions": [
+    "dbt models",
+    "dbt tests",
+    "Incremental models",
+    "Macros"
+   ],
+   "equivalents": [
+    "Dataform",
+    "Matillion"
+   ],
+   "related": [
+    "Snowflake",
+    "SQL",
+    "BigQuery"
+   ],
+   "dependencies": [
+    "SQL"
+   ],
+   "family": "data_engineering",
+   "market_availability": "medium",
+   "screening": [
+    "How did you structure dbt models and tests across environments?"
+   ]
+  },
+  "Data Modelling": {
+   "aliases": [
+    "Data Modelling",
+    "Data Modeling",
+    "Dimensional modelling",
+    "Star schema",
+    "Data Vault"
+   ],
+   "expansions": [
+    "Dimensional modelling",
+    "Star and snowflake schema",
+    "Slowly changing dimensions",
+    "Data Vault"
+   ],
+   "equivalents": [],
+   "related": [
+    "SQL",
+    "Snowflake"
+   ],
+   "dependencies": [
+    "SQL"
+   ],
+   "family": "data_engineering",
+   "market_availability": "medium",
+   "screening": [
+    "How did you implement SCD Type 2, and how did it perform at volume?"
+   ]
+  },
+  "AWS": {
+   "aliases": [
+    "AWS",
+    "Amazon Web Services",
+    "EC2",
+    "S3",
+    "Lambda",
+    "EKS",
+    "Glue",
+    "EMR"
+   ],
+   "expansions": [
+    "EC2",
+    "S3",
+    "IAM",
+    "VPC",
+    "Lambda",
+    "EKS",
+    "Glue"
+   ],
+   "equivalents": [
+    "Azure",
+    "GCP"
+   ],
+   "related": [
+    "Terraform",
+    "Kubernetes",
+    "CloudFormation"
+   ],
+   "dependencies": [],
+   "family": "cloud",
+   "market_availability": "high",
+   "screening": [
+    "Design a multi-AZ VPC: subnets, routing, NAT, security groups.",
+    "How did you manage IAM least privilege at scale?"
+   ]
+  },
+  "Azure": {
+   "aliases": [
+    "Azure",
+    "Microsoft Azure",
+    "AKS",
+    "Azure Data Factory",
+    "ADF",
+    "Azure DevOps",
+    "Synapse"
+   ],
+   "expansions": [
+    "AKS",
+    "Azure Data Factory",
+    "Azure Functions",
+    "Azure DevOps",
+    "Entra ID"
+   ],
+   "equivalents": [
+    "AWS",
+    "GCP"
+   ],
+   "related": [
+    "Terraform",
+    "Databricks"
+   ],
+   "dependencies": [],
+   "family": "cloud",
+   "market_availability": "high",
+   "screening": [
+    "How did you set up landing zones and networking in Azure?"
+   ]
+  },
+  "GCP": {
+   "aliases": [
+    "GCP",
+    "Google Cloud",
+    "BigQuery",
+    "GKE",
+    "Dataflow",
+    "Cloud Composer"
+   ],
+   "expansions": [
+    "GKE",
+    "BigQuery",
+    "Dataflow",
+    "Pub/Sub",
+    "Cloud Run"
+   ],
+   "equivalents": [
+    "AWS",
+    "Azure"
+   ],
+   "related": [
+    "Terraform",
+    "Kubernetes"
+   ],
+   "dependencies": [],
+   "family": "cloud",
+   "market_availability": "medium",
+   "screening": [
+    "How did you organise GCP projects, folders and IAM?"
+   ]
+  },
+  "Kubernetes": {
+   "aliases": [
+    "Kubernetes",
+    "K8s",
+    "EKS",
+    "AKS",
+    "GKE",
+    "OpenShift",
+    "Helm"
+   ],
+   "expansions": [
+    "Deployments and services",
+    "Helm charts",
+    "Ingress",
+    "Autoscaling",
+    "Operators"
+   ],
+   "equivalents": [
+    "OpenShift",
+    "ECS",
+    "Nomad"
+   ],
+   "related": [
+    "Docker",
+    "Helm",
+    "ArgoCD",
+    "Prometheus"
+   ],
+   "dependencies": [
+    "Docker"
+   ],
+   "family": "devops",
+   "market_availability": "medium",
+   "screening": [
+    "Describe a production Kubernetes incident you debugged: what was the root cause?",
+    "How did you manage cluster upgrades without downtime?"
+   ]
+  },
+  "Docker": {
+   "aliases": [
+    "Docker",
+    "Containers",
+    "containerization",
+    "Dockerfile"
+   ],
+   "expansions": [
+    "Multi-stage builds",
+    "Image hardening",
+    "Container registries"
+   ],
+   "equivalents": [
+    "Podman",
+    "containerd"
+   ],
+   "related": [
+    "Kubernetes"
+   ],
+   "dependencies": [],
+   "family": "devops",
+   "market_availability": "high",
+   "screening": [
+    "How did you reduce image size and scan images for vulnerabilities?"
+   ]
+  },
+  "Terraform": {
+   "aliases": [
+    "Terraform",
+    "Terragrunt",
+    "HCL",
+    "OpenTofu"
+   ],
+   "expansions": [
+    "Modules",
+    "Remote state",
+    "Workspaces",
+    "Policy as code"
+   ],
+   "equivalents": [
+    "Pulumi",
+    "CloudFormation",
+    "ARM/Bicep",
+    "Ansible"
+   ],
+   "related": [
+    "AWS",
+    "Azure",
+    "GCP"
+   ],
+   "dependencies": [],
+   "family": "devops",
+   "market_availability": "medium",
+   "screening": [
+    "How did you structure Terraform modules and state across environments?",
+    "How did you handle drift and state locking?"
+   ]
+  },
+  "CI/CD": {
+   "aliases": [
+    "CI/CD",
+    "Jenkins",
+    "GitHub Actions",
+    "GitLab CI",
+    "Azure Pipelines",
+    "ArgoCD",
+    "continuous integration",
+    "continuous delivery"
+   ],
+   "expansions": [
+    "Pipeline design",
+    "Build and release automation",
+    "GitOps",
+    "Artifact management"
+   ],
+   "equivalents": [],
+   "related": [
+    "Docker",
+    "Kubernetes"
+   ],
+   "dependencies": [],
+   "family": "devops",
+   "market_availability": "high",
+   "screening": [
+    "Walk through a pipeline you owned end to end: stages, gates, rollback.",
+    "Did you design the CI/CD architecture or use an existing one?"
+   ]
+  },
+  "Prometheus": {
+   "aliases": [
+    "Prometheus",
+    "Grafana",
+    "Datadog",
+    "observability",
+    "ELK",
+    "New Relic"
+   ],
+   "expansions": [
+    "Metrics",
+    "Alerting",
+    "Dashboards",
+    "SLOs"
+   ],
+   "equivalents": [
+    "Datadog",
+    "New Relic",
+    "Dynatrace"
+   ],
+   "related": [
+    "Kubernetes"
+   ],
+   "dependencies": [],
+   "family": "devops",
+   "market_availability": "medium",
+   "screening": [
+    "How did you define SLOs and alert on them without alert fatigue?"
+   ]
+  },
+  "Selenium": {
+   "aliases": [
+    "Selenium",
+    "Selenium WebDriver",
+    "WebDriver",
+    "Selenium Grid"
+   ],
+   "expansions": [
+    "WebDriver",
+    "Page Object Model",
+    "Selenium Grid",
+    "Cross-browser testing"
+   ],
+   "equivalents": [
+    "Playwright",
+    "Cypress",
+    "WebdriverIO"
+   ],
+   "related": [
+    "TestNG",
+    "Pytest",
+    "Java",
+    "Python"
+   ],
+   "dependencies": [],
+   "family": "sdet",
+   "market_availability": "high",
+   "screening": [
+    "How did you handle flaky tests and synchronisation in Selenium?"
+   ]
+  },
+  "Playwright": {
+   "aliases": [
+    "Playwright"
+   ],
+   "expansions": [
+    "Auto-waiting",
+    "Fixtures",
+    "Tracing",
+    "Parallel execution"
+   ],
+   "equivalents": [
+    "Cypress",
+    "Selenium",
+    "WebdriverIO"
+   ],
+   "related": [
+    "TypeScript",
+    "Python"
+   ],
+   "dependencies": [],
+   "family": "sdet",
+   "market_availability": "medium",
+   "screening": [
+    "Why did your team pick Playwright, and how did you structure fixtures?"
+   ]
+  },
+  "Cypress": {
+   "aliases": [
+    "Cypress"
+   ],
+   "expansions": [
+    "Custom commands",
+    "Network stubbing",
+    "Component testing"
+   ],
+   "equivalents": [
+    "Playwright",
+    "Selenium"
+   ],
+   "related": [
+    "JavaScript",
+    "TypeScript"
+   ],
+   "dependencies": [],
+   "family": "sdet",
+   "market_availability": "medium",
+   "screening": [
+    "How did you stub network calls in Cypress, and where did that hide real defects?"
+   ]
+  },
+  "Test Automation Framework": {
+   "aliases": [
+    "automation framework",
+    "test framework",
+    "framework development",
+    "hybrid framework",
+    "BDD framework",
+    "Cucumber",
+    "TestNG",
+    "Pytest"
+   ],
+   "expansions": [
+    "Framework architecture",
+    "Reporting",
+    "Data-driven testing",
+    "BDD",
+    "Parallel execution"
+   ],
+   "equivalents": [],
+   "related": [
+    "Selenium",
+    "Playwright",
+    "Pytest",
+    "TestNG"
+   ],
+   "dependencies": [],
+   "family": "sdet",
+   "market_availability": "medium",
+   "screening": [
+    "Did you build the framework from scratch or extend one? Draw its layers.",
+    "How did you integrate it into CI and report results?"
+   ]
+  },
+  "API Testing": {
+   "aliases": [
+    "API testing",
+    "REST Assured",
+    "RestAssured",
+    "Postman",
+    "Karate",
+    "API automation"
+   ],
+   "expansions": [
+    "REST Assured",
+    "Postman/Newman",
+    "Contract testing",
+    "Schema validation"
+   ],
+   "equivalents": [
+    "Karate",
+    "Pact"
+   ],
+   "related": [
+    "Java",
+    "Python"
+   ],
+   "dependencies": [],
+   "family": "sdet",
+   "market_availability": "high",
+   "screening": [
+    "How did you chain API calls and manage test data for API suites?"
+   ]
+  },
+  "Performance Testing": {
+   "aliases": [
+    "JMeter",
+    "LoadRunner",
+    "Gatling",
+    "k6",
+    "performance testing",
+    "load testing"
+   ],
+   "expansions": [
+    "Load modelling",
+    "Bottleneck analysis",
+    "APM correlation"
+   ],
+   "equivalents": [],
+   "related": [],
+   "dependencies": [],
+   "family": "sdet",
+   "market_availability": "medium",
+   "screening": [
+    "How did you build a workload model, and what bottleneck did you find?"
+   ]
+  },
+  "AI-assisted Testing": {
+   "aliases": [
+    "AI testing",
+    "AI-assisted automation",
+    "self-healing",
+    "LLM testing",
+    "GenAI testing",
+    "Copilot"
+   ],
+   "expansions": [
+    "Self-healing locators",
+    "LLM-generated tests",
+    "Evaluating AI systems"
+   ],
+   "equivalents": [],
+   "related": [
+    "Playwright",
+    "Python"
+   ],
+   "dependencies": [],
+   "family": "sdet",
+   "market_availability": "low",
+   "screening": [
+    "Where did AI-generated tests help, and how did you review their quality?"
+   ]
+  },
+  "Java": {
+   "aliases": [
+    "Java",
+    "J2EE",
+    "Java 8",
+    "Java 11",
+    "Java 17"
+   ],
+   "expansions": [
+    "Core Java",
+    "Collections",
+    "Concurrency",
+    "JVM tuning"
+   ],
+   "equivalents": [
+    "Kotlin",
+    "C#"
+   ],
+   "related": [
+    "Spring Boot",
+    "Microservices"
+   ],
+   "dependencies": [],
+   "family": "backend",
+   "market_availability": "high",
+   "screening": [
+    "Explain a concurrency bug you fixed in Java.",
+    "How did you diagnose a memory leak in the JVM?"
+   ]
+  },
+  "Spring Boot": {
+   "aliases": [
+    "Spring Boot",
+    "Spring",
+    "Spring Cloud",
+    "Spring MVC"
+   ],
+   "expansions": [
+    "REST APIs",
+    "Spring Data",
+    "Spring Security",
+    "Spring Cloud"
+   ],
+   "equivalents": [
+    "Quarkus",
+    "Micronaut",
+    "Node.js/NestJS"
+   ],
+   "related": [
+    "Java",
+    "Microservices",
+    "Kafka"
+   ],
+   "dependencies": [
+    "Java"
+   ],
+   "family": "backend",
+   "market_availability": "high",
+   "screening": [
+    "How did you handle distributed transactions across Spring Boot services?"
+   ]
+  },
+  "Microservices": {
+   "aliases": [
+    "Microservices",
+    "microservice architecture",
+    "distributed systems",
+    "service mesh"
+   ],
+   "expansions": [
+    "Service decomposition",
+    "API gateway",
+    "Circuit breakers",
+    "Saga pattern"
+   ],
+   "equivalents": [],
+   "related": [
+    "Kubernetes",
+    "Kafka",
+    "Spring Boot"
+   ],
+   "dependencies": [],
+   "family": "backend",
+   "market_availability": "high",
+   "screening": [
+    "How did you decide service boundaries, and what would you split differently today?"
+   ]
+  },
+  "Node.js": {
+   "aliases": [
+    "Node.js",
+    "NodeJS",
+    "Express",
+    "NestJS"
+   ],
+   "expansions": [
+    "Express/NestJS",
+    "Event loop",
+    "Async patterns"
+   ],
+   "equivalents": [
+    "Python FastAPI",
+    "Go",
+    "Spring Boot"
+   ],
+   "related": [
+    "TypeScript",
+    "JavaScript"
+   ],
+   "dependencies": [
+    "JavaScript"
+   ],
+   "family": "backend",
+   "market_availability": "high",
+   "screening": [
+    "How did you find and fix event-loop blocking in Node.js?"
+   ]
+  },
+  "Go": {
+   "aliases": [
+    "Golang",
+    "Go lang"
+   ],
+   "expansions": [
+    "Goroutines",
+    "Channels",
+    "gRPC"
+   ],
+   "equivalents": [
+    "Rust",
+    "Java"
+   ],
+   "related": [
+    "Kubernetes",
+    "Microservices"
+   ],
+   "dependencies": [],
+   "family": "backend",
+   "market_availability": "low",
+   "screening": [
+    "How did you avoid goroutine leaks in a long-running service?"
+   ]
+  },
+  "React": {
+   "aliases": [
+    "React",
+    "React.js",
+    "ReactJS",
+    "Next.js",
+    "Redux"
+   ],
+   "expansions": [
+    "Hooks",
+    "State management",
+    "Next.js",
+    "Performance optimisation"
+   ],
+   "equivalents": [
+    "Angular",
+    "Vue.js",
+    "Svelte"
+   ],
+   "related": [
+    "TypeScript",
+    "JavaScript"
+   ],
+   "dependencies": [
+    "JavaScript"
+   ],
+   "family": "frontend",
+   "market_availability": "high",
+   "screening": [
+    "How did you find and fix unnecessary re-renders in a large React app?"
+   ]
+  },
+  "Angular": {
+   "aliases": [
+    "Angular",
+    "AngularJS",
+    "RxJS"
+   ],
+   "expansions": [
+    "RxJS",
+    "NgRx",
+    "Change detection"
+   ],
+   "equivalents": [
+    "React",
+    "Vue.js"
+   ],
+   "related": [
+    "TypeScript"
+   ],
+   "dependencies": [
+    "TypeScript"
+   ],
+   "family": "frontend",
+   "market_availability": "high",
+   "screening": [
+    "How did you structure state with NgRx, or why did you avoid it?"
+   ]
+  },
+  "TypeScript": {
+   "aliases": [
+    "TypeScript",
+    "TS"
+   ],
+   "expansions": [
+    "Generics",
+    "Type narrowing",
+    "Strict mode"
+   ],
+   "equivalents": [
+    "JavaScript"
+   ],
+   "related": [
+    "React",
+    "Angular",
+    "Node.js"
+   ],
+   "dependencies": [
+    "JavaScript"
+   ],
+   "family": "frontend",
+   "market_availability": "high",
+   "screening": [
+    "Show a generic type you wrote that removed real bugs."
+   ]
+  },
+  "JavaScript": {
+   "aliases": [
+    "JavaScript",
+    "ES6",
+    "JS"
+   ],
+   "expansions": [
+    "ES6+",
+    "Async/await",
+    "DOM"
+   ],
+   "equivalents": [
+    "TypeScript"
+   ],
+   "related": [
+    "React",
+    "Node.js"
+   ],
+   "dependencies": [],
+   "family": "frontend",
+   "market_availability": "high",
+   "screening": [
+    "Explain closures and the event loop with an example from your work."
+   ]
+  },
+  "Machine Learning": {
+   "aliases": [
+    "Machine Learning",
+    "ML",
+    "scikit-learn",
+    "XGBoost",
+    "predictive modelling"
+   ],
+   "expansions": [
+    "Feature engineering",
+    "Model evaluation",
+    "Model deployment"
+   ],
+   "equivalents": [],
+   "related": [
+    "Python",
+    "MLOps",
+    "Deep Learning"
+   ],
+   "dependencies": [
+    "Python"
+   ],
+   "family": "data_science",
+   "market_availability": "medium",
+   "screening": [
+    "How did you validate a model before production, and how did you monitor drift?"
+   ]
+  },
+  "MLOps": {
+   "aliases": [
+    "MLOps",
+    "MLflow",
+    "Kubeflow",
+    "SageMaker",
+    "Vertex AI",
+    "model deployment"
+   ],
+   "expansions": [
+    "Model registry",
+    "Feature store",
+    "Model serving",
+    "Monitoring"
+   ],
+   "equivalents": [],
+   "related": [
+    "Machine Learning",
+    "Kubernetes",
+    "Databricks"
+   ],
+   "dependencies": [
+    "Machine Learning"
+   ],
+   "family": "data_science",
+   "market_availability": "low",
+   "screening": [
+    "Walk through your model release pipeline from training to serving."
+   ]
+  },
+  "GenAI": {
+   "aliases": [
+    "GenAI",
+    "Generative AI",
+    "LLM",
+    "LLMs",
+    "RAG",
+    "LangChain",
+    "prompt engineering",
+    "vector database"
+   ],
+   "expansions": [
+    "RAG",
+    "Embeddings and vector stores",
+    "LLM evaluation",
+    "Agents and tool use"
+   ],
+   "equivalents": [],
+   "related": [
+    "Python",
+    "Machine Learning"
+   ],
+   "dependencies": [
+    "Python"
+   ],
+   "family": "data_science",
+   "market_availability": "low",
+   "screening": [
+    "How did you evaluate retrieval quality in a RAG system you shipped?"
+   ]
+  }
+ },
+ "families": {
+  "data_engineering": {
+   "label": "Data Engineering",
+   "detect": [
+    "data engineer",
+    "spark",
+    "databricks",
+    "etl",
+    "data pipeline",
+    "snowflake",
+    "kafka",
+    "lakehouse",
+    "airflow"
+   ],
+   "titles": [
+    "Data Engineer",
+    "Senior Data Engineer",
+    "Big Data Engineer",
+    "Lead Data Engineer"
+   ],
+   "alternate_designations": [
+    "Spark Developer",
+    "ETL Developer",
+    "Data Platform Engineer",
+    "Analytics Engineer",
+    "Big Data Developer",
+    "Databricks Engineer",
+    "Data Architect",
+    "Cloud Data Engineer"
+   ],
+   "emerging": [
+    "Apache Iceberg",
+    "Unity Catalog",
+    "Data contracts",
+    "Lakehouse federation"
+   ],
+   "github": {
+    "languages": [
+     "Python",
+     "Scala"
+    ],
+    "topics": [
+     "spark",
+     "pyspark",
+     "databricks",
+     "kafka",
+     "data-engineering",
+     "delta-lake"
+    ]
+   },
+   "followups": [
+    {
+     "key": "fu_databricks",
+     "if_skill": "Databricks",
+     "q": "Is Databricks mandatory, or can Spark developers from other platforms (EMR, Synapse, Dataproc) be considered?",
+     "why": "Databricks-only search cuts the Spark pool sharply; most Spark engineers can pick up Databricks quickly.",
+     "on_yes": {
+      "skill": "Databricks",
+      "level": "hands_on"
+     }
+    },
+    {
+     "key": "fu_snowflake",
+     "if_skill": "Snowflake",
+     "q": "Is hands-on Snowflake experience compulsory, or is Redshift/BigQuery acceptable?",
+     "why": "Warehouse skills transfer; making Snowflake optional widens the pool.",
+     "on_yes": {
+      "skill": "Snowflake",
+      "level": "hands_on"
+     }
+    },
+    {
+     "key": "fu_kafka",
+     "if_skill": "Kafka",
+     "q": "Is production Kafka streaming experience mandatory, or is batch-only acceptable with streaming exposure?",
+     "why": "Production streaming is a much smaller pool than batch Spark.",
+     "on_no": "keep",
+     "on_yes": {
+      "skill": "Kafka",
+      "level": "production"
+     }
+    },
+    {
+     "key": "fu_cloud",
+     "if_skill": null,
+     "q": "Is AWS required, or are Azure or GCP acceptable?",
+     "why": "Cloud lock-in changes the target companies and the Boolean strings."
+    },
+    {
+     "key": "fu_arch",
+     "if_skill": null,
+     "q": "Should architecture and design experience be prioritised over hands-on coding?",
+     "why": "It changes the scoring weights and the target designations (Architect vs Senior Engineer)."
+    },
+    {
+     "key": "fu_company_type",
+     "if_skill": null,
+     "q": "Can candidates from product companies and GCCs be considered, or only IT services?",
+     "why": "It decides which company tiers MARK maps first."
+    }
+   ]
+  },
+  "sdet": {
+   "label": "SDET / QA Automation",
+   "detect": [
+    "sdet",
+    "qa automation",
+    "test automation",
+    "automation tester",
+    "quality engineer",
+    "selenium",
+    "playwright",
+    "cypress",
+    "qa engineer"
+   ],
+   "titles": [
+    "SDET",
+    "QA Automation Engineer",
+    "Senior SDET",
+    "Automation Test Engineer"
+   ],
+   "alternate_designations": [
+    "Software Engineer in Test",
+    "Test Automation Engineer",
+    "Quality Engineer",
+    "QA Engineer",
+    "Automation Architect",
+    "Test Lead",
+    "Senior Test Engineer"
+   ],
+   "emerging": [
+    "AI-assisted Testing",
+    "Playwright",
+    "Contract testing"
+   ],
+   "github": {
+    "languages": [
+     "Java",
+     "Python",
+     "TypeScript"
+    ],
+    "topics": [
+     "selenium",
+     "playwright",
+     "test-automation",
+     "cypress",
+     "rest-assured"
+    ]
+   },
+   "followups": [
+    {
+     "key": "fu_framework",
+     "if_skill": null,
+     "q": "Is building an automation framework from scratch mandatory, or is maintaining an existing one enough?",
+     "why": "Framework builders are a small group; maintainers are many times more."
+    },
+    {
+     "key": "fu_language",
+     "if_skill": null,
+     "q": "Which programming language is compulsory: Java, Python, JavaScript/TypeScript or C#?",
+     "why": "Language is the strongest filter in SDET Booleans."
+    },
+    {
+     "key": "fu_api",
+     "if_skill": null,
+     "q": "Is API testing mandatory?",
+     "why": "Many UI automation engineers have little API automation."
+    },
+    {
+     "key": "fu_tool",
+     "if_skill": null,
+     "q": "Is Playwright or Cypress preferred over Selenium, or will any modern UI tool do?",
+     "why": "Playwright-only is a much smaller pool than Selenium."
+    },
+    {
+     "key": "fu_ai",
+     "if_skill": null,
+     "q": "Is AI-assisted automation experience required, or just a plus?",
+     "why": "Very few profiles show real evidence of it yet."
+    }
+   ]
+  },
+  "devops": {
+   "label": "DevOps / SRE / Platform",
+   "detect": [
+    "devops",
+    "sre",
+    "site reliability",
+    "platform engineer",
+    "kubernetes",
+    "terraform",
+    "ci/cd",
+    "cloud engineer"
+   ],
+   "titles": [
+    "DevOps Engineer",
+    "Senior DevOps Engineer",
+    "Site Reliability Engineer",
+    "Platform Engineer"
+   ],
+   "alternate_designations": [
+    "Cloud Engineer",
+    "Infrastructure Engineer",
+    "Build and Release Engineer",
+    "Cloud Infrastructure Engineer",
+    "DevSecOps Engineer",
+    "Kubernetes Engineer",
+    "Cloud Architect"
+   ],
+   "emerging": [
+    "Platform engineering",
+    "GitOps",
+    "FinOps",
+    "eBPF"
+   ],
+   "github": {
+    "languages": [
+     "HCL",
+     "Go",
+     "Shell",
+     "Python"
+    ],
+    "topics": [
+     "terraform",
+     "kubernetes",
+     "helm",
+     "devops",
+     "gitops"
+    ]
+   },
+   "followups": [
+    {
+     "key": "fu_cloud",
+     "if_skill": null,
+     "q": "Which cloud platform is mandatory: AWS, Azure or GCP? Is a second cloud acceptable instead?",
+     "why": "Cloud decides target companies and Booleans."
+    },
+    {
+     "key": "fu_k8s",
+     "if_skill": "Kubernetes",
+     "q": "Is production Kubernetes experience required, or is hands-on with managed clusters (EKS/AKS/GKE) in non-prod enough?",
+     "why": "Production cluster owners are a far smaller pool.",
+     "on_no": "keep",
+     "on_yes": {
+      "skill": "Kubernetes",
+      "level": "production"
+     }
+    },
+    {
+     "key": "fu_terraform",
+     "if_skill": null,
+     "q": "Is Terraform compulsory, or are CloudFormation, Bicep or Pulumi acceptable?",
+     "why": "IaC tools transfer; insisting on one narrows the pool."
+    },
+    {
+     "key": "fu_cicd",
+     "if_skill": null,
+     "q": "Is ownership of CI/CD architecture necessary, or is pipeline maintenance enough?",
+     "why": "It separates senior platform owners from pipeline operators."
+    }
+   ]
+  },
+  "backend": {
+   "label": "Backend Engineering",
+   "detect": [
+    "backend",
+    "back-end",
+    "java developer",
+    "spring boot",
+    "microservices",
+    "node.js",
+    "golang",
+    "api developer",
+    "python developer"
+   ],
+   "titles": [
+    "Backend Engineer",
+    "Senior Software Engineer",
+    "Java Developer",
+    "Backend Developer"
+   ],
+   "alternate_designations": [
+    "Software Engineer",
+    "Server-side Engineer",
+    "API Engineer",
+    "Platform Engineer",
+    "Technical Lead",
+    "Member of Technical Staff",
+    "SDE 2",
+    "SDE 3"
+   ],
+   "emerging": [
+    "Event-driven architecture",
+    "gRPC",
+    "Rust"
+   ],
+   "github": {
+    "languages": [
+     "Java",
+     "Go",
+     "Python",
+     "TypeScript"
+    ],
+    "topics": [
+     "spring-boot",
+     "microservices",
+     "grpc"
+    ]
+   },
+   "followups": [
+    {
+     "key": "fu_lang",
+     "if_skill": null,
+     "q": "Is the language strict, or can strong engineers in another backend language be considered?",
+     "why": "Language-agnostic product teams widen the pool a lot."
+    },
+    {
+     "key": "fu_scale",
+     "if_skill": null,
+     "q": "Is experience with high-scale distributed systems mandatory? Roughly what scale?",
+     "why": "It steers MARK towards product companies over services firms."
+    },
+    {
+     "key": "fu_arch",
+     "if_skill": null,
+     "q": "Should architecture and design experience be prioritised over hands-on coding?",
+     "why": "It changes scoring weights and designations."
+    }
+   ]
+  },
+  "frontend": {
+   "label": "Frontend Engineering",
+   "detect": [
+    "frontend",
+    "front-end",
+    "react",
+    "angular",
+    "ui developer",
+    "vue"
+   ],
+   "titles": [
+    "Frontend Engineer",
+    "React Developer",
+    "UI Developer",
+    "Senior Frontend Engineer"
+   ],
+   "alternate_designations": [
+    "UI Engineer",
+    "Web Developer",
+    "JavaScript Developer",
+    "Angular Developer",
+    "UI Architect"
+   ],
+   "emerging": [
+    "Micro-frontends",
+    "Server components"
+   ],
+   "github": {
+    "languages": [
+     "TypeScript",
+     "JavaScript"
+    ],
+    "topics": [
+     "react",
+     "nextjs",
+     "angular"
+    ]
+   },
+   "followups": [
+    {
+     "key": "fu_framework",
+     "if_skill": null,
+     "q": "Is the framework strict (React vs Angular), or are strong engineers in either acceptable?",
+     "why": "Framework-agnostic search roughly doubles the pool."
+    },
+    {
+     "key": "fu_design",
+     "if_skill": null,
+     "q": "Is design-system or accessibility experience required?",
+     "why": "It changes the Boolean and the target companies."
+    }
+   ]
+  },
+  "data_science": {
+   "label": "Data Science / ML / GenAI",
+   "detect": [
+    "data scientist",
+    "machine learning",
+    "ml engineer",
+    "genai",
+    "llm",
+    "mlops",
+    "ai engineer"
+   ],
+   "titles": [
+    "Data Scientist",
+    "Machine Learning Engineer",
+    "AI Engineer",
+    "Senior Data Scientist"
+   ],
+   "alternate_designations": [
+    "Applied Scientist",
+    "ML Engineer",
+    "GenAI Engineer",
+    "NLP Engineer",
+    "MLOps Engineer",
+    "Research Engineer"
+   ],
+   "emerging": [
+    "Agents and tool use",
+    "LLM evaluation",
+    "Fine-tuning"
+   ],
+   "github": {
+    "languages": [
+     "Python",
+     "Jupyter Notebook"
+    ],
+    "topics": [
+     "machine-learning",
+     "llm",
+     "rag",
+     "mlops"
+    ]
+   },
+   "followups": [
+    {
+     "key": "fu_prod",
+     "if_skill": null,
+     "q": "Is shipping models to production mandatory, or is research and modelling enough?",
+     "why": "Production ML engineers and research data scientists are different pools."
+    },
+    {
+     "key": "fu_genai",
+     "if_skill": null,
+     "q": "Is GenAI/LLM experience mandatory or a plus?",
+     "why": "Real shipped GenAI evidence is rare; mandatory makes the search much narrower."
+    }
+   ]
+  }
+ }
+}
