@@ -136,6 +136,10 @@ def _loc_match(req_loc, cand_loc, work_mode, resume):
     cl = cand_loc.lower().replace("bangalore", "bengaluru").replace("gurgaon", "gurugram")
     if not rl or any(r in cl for r in rl):
         return 1.0, f"Location {cand_loc} matches."
+    from .intake import CITIES
+    india = {c.lower() for c in CITIES[:CITIES.index("London")]} | {"india", "bengaluru", "gurugram"}
+    if "india" in rl and any(c in cl for c in india):
+        return 1.0, f"{cand_loc} is in India; requirement is India-wide."
     if re.search(r"(?i)open to relocat|willing to relocat|ready to relocat", resume or ""):
         return 0.6, f"In {cand_loc}; resume says open to relocate."
     return 0.2, f"In {cand_loc}; requirement is {req_loc}."
@@ -234,6 +238,8 @@ def evaluate(req, cand, lib, today=None):
         rec = "Shortlist"
     elif total >= 55:
         rec = "Keep in secondary pipeline"
+    elif not exp["roles"]:
+        rec = "Hold: thin source (no dated roles). Verify on a call before deciding."
     else:
         rec = "Reject"
     flags = []

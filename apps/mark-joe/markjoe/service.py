@@ -109,6 +109,9 @@ def run_evaluation(db, requirement_id, candidate_id, claims=None):
         set_status(db, requirement_id, candidate_id, "screened", actor="JOE", note="JOE evaluated the resume")
         if res["total"] >= 70 and not res["critical_gaps"]:
             set_status(db, requirement_id, candidate_id, "shortlisted", actor="JOE", note=res["recommendation"])
+        elif res["total"] < 55 and not res["roles_found"]:
+            # the source was a short summary with no dated roles: too little evidence to reject
+            set_status(db, requirement_id, candidate_id, "on_hold", actor="JOE", note="Thin source (no dated roles): verify on a call before deciding")
         elif res["total"] < 55:
             set_status(db, requirement_id, candidate_id, "rejected", actor="JOE", note="Below 55: not recommended")
     db.log("JOE", "profile_evaluated", {"candidate": candidate_id, "score": res["total"], "classification": res["classification"],

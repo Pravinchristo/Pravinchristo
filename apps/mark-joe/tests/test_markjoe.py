@@ -201,6 +201,22 @@ class JoeTests(unittest.TestCase):
         self.assertEqual(db.one("SELECT availability_verified FROM candidates WHERE id=?", (cid,))["availability_verified"], 1)
 
 
+class LocationTests(unittest.TestCase):
+    def test_country_level_requirement_matches_city(self):
+        self.assertEqual(evaluate._loc_match("India", "Pune", None, "")[0], 1.0)
+        self.assertLess(evaluate._loc_match("Pune", "Chennai", None, "")[0], 1.0)
+
+
+class ThinSourceTests(unittest.TestCase):
+    def test_thin_summary_goes_on_hold_not_rejected(self):
+        db = fresh()
+        r = live_requirement(db)
+        res = service.add_candidate(db, r["id"], {"full_name": "Test Thin", "source_url": "https://example.com/t", "source_channel": "Naukri",
+                                                  "resume_text": "Data engineer. Skills: Spark, Kafka."})
+        st = db.one("SELECT status FROM pipeline WHERE candidate_id=?", (res["candidate_id"],))["status"]
+        self.assertEqual(st, "on_hold")
+
+
 class AnalyticsTests(unittest.TestCase):
     def test_empty_database_has_no_invented_numbers(self):
         s = analytics.state(fresh())
