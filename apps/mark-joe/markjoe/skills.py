@@ -33,7 +33,8 @@ def add_skill(db, name, aliases=None, equivalents=None, related=None, family="ge
 def _pattern(alias):
     a = re.escape(alias.lower())
     # word-ish boundaries that tolerate symbols such as C#, CI/CD, Node.js
-    return re.compile(r"(?<![a-z0-9])" + a + r"(?![a-z0-9])")
+    # a trailing "s"/"es" is allowed so "frameworks" matches "framework" and "AI agents" matches "AI agent"
+    return re.compile(r"(?<![a-z0-9])" + a + r"(?:e?s)?(?![a-z0-9])")
 
 
 def canonical(name, lib):

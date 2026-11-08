@@ -1330,6 +1330,146 @@
    "screening": [
     "Describe a sales strategy or GTM plan you wrote and what it delivered in revenue."
    ]
+  },
+  "Python, JavaScript or TypeScript": {
+   "aliases": [
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "Pytest",
+    "Node.js",
+    "Python3",
+    "JS",
+    "NodeJS",
+    "Jest",
+    "Mocha"
+   ],
+   "expansions": [
+    "Any one of Python, JavaScript or TypeScript for automation"
+   ],
+   "equivalents": [],
+   "related": [
+    "Playwright",
+    "Pytest"
+   ],
+   "dependencies": [],
+   "family": "sdet",
+   "market_availability": "high",
+   "screening": [
+    "Which of Python, JavaScript or TypeScript do you write tests in daily? Walk through one test suite you built."
+   ]
+  },
+  "LLM": {
+   "aliases": [
+    "LLM",
+    "LLMs",
+    "GenAI",
+    "Generative AI",
+    "large language model",
+    "large language models",
+    "GPT",
+    "GPT-4",
+    "OpenAI",
+    "ChatGPT",
+    "Claude",
+    "Gemini",
+    "Llama",
+    "prompt engineering",
+    "LLM evaluation",
+    "LLM testing",
+    "hallucination"
+   ],
+   "expansions": [
+    "Testing LLM outputs",
+    "Prompt regression suites",
+    "Hallucination and safety checks",
+    "LLM-as-judge evaluation"
+   ],
+   "equivalents": [],
+   "related": [
+    "RAG",
+    "AI Agents"
+   ],
+   "dependencies": [],
+   "family": "sdet",
+   "market_availability": "low",
+   "screening": [
+    "How did you test an LLM feature whose output changes run to run? What did you assert on?",
+    "How did you detect and measure hallucinations?"
+   ]
+  },
+  "RAG": {
+   "aliases": [
+    "RAG",
+    "retrieval-augmented generation",
+    "retrieval augmented generation",
+    "vector database",
+    "vector DB",
+    "vector store",
+    "embeddings",
+    "Pinecone",
+    "FAISS",
+    "ChromaDB",
+    "Weaviate",
+    "LlamaIndex",
+    "semantic search",
+    "Ragas"
+   ],
+   "expansions": [
+    "Retrieval quality testing",
+    "Groundedness / faithfulness checks",
+    "Chunking and embedding validation",
+    "RAG evaluation (Ragas, DeepEval)"
+   ],
+   "equivalents": [],
+   "related": [
+    "LLM"
+   ],
+   "dependencies": [
+    "LLM"
+   ],
+   "family": "sdet",
+   "market_availability": "low",
+   "screening": [
+    "How did you test the retrieval step separately from the generated answer?",
+    "Which RAG metrics did you track (faithfulness, context recall) and with what tool?"
+   ]
+  },
+  "AI Agents": {
+   "aliases": [
+    "AI agent",
+    "AI agents",
+    "agentic",
+    "agentic AI",
+    "autonomous agents",
+    "multi-agent",
+    "LangChain",
+    "LangGraph",
+    "CrewAI",
+    "AutoGen",
+    "MCP",
+    "tool calling",
+    "function calling",
+    "agent testing"
+   ],
+   "expansions": [
+    "Testing agent tool calls and plans",
+    "Multi-step / multi-agent workflow testing",
+    "Agent evaluation and guardrails"
+   ],
+   "equivalents": [],
+   "related": [
+    "LLM",
+    "RAG"
+   ],
+   "dependencies": [
+    "LLM"
+   ],
+   "family": "sdet",
+   "market_availability": "low",
+   "screening": [
+    "How did you test an agent that calls tools? How did you make those tests repeatable?"
+   ]
   }
  },
  "families": {
@@ -1445,13 +1585,20 @@
     "selenium",
     "playwright",
     "cypress",
-    "qa engineer"
+    "qa engineer",
+    "llm testing",
+    "rag",
+    "ai agents",
+    "genai qa"
    ],
    "titles": [
     "SDET",
     "QA Automation Engineer",
     "Senior SDET",
-    "Automation Test Engineer"
+    "Automation Test Engineer",
+    "Senior QA Engineer",
+    "QA Engineer - GenAI",
+    "AI QA Engineer"
    ],
    "alternate_designations": [
     "Software Engineer in Test",
@@ -1465,7 +1612,10 @@
    "emerging": [
     "AI-assisted Testing",
     "Playwright",
-    "Contract testing"
+    "Contract testing",
+    "LLM",
+    "RAG",
+    "AI Agents"
    ],
    "github": {
     "languages": [
@@ -1511,6 +1661,12 @@
      "if_skill": null,
      "q": "Is AI-assisted automation experience required, or just a plus?",
      "why": "Very few profiles show real evidence of it yet."
+    },
+    {
+     "key": "fu_llm",
+     "if_skill": null,
+     "q": "Must the candidate have tested LLM / RAG / agent systems (evaluation, hallucination, guardrails), or is using AI tools inside QA work enough?",
+     "why": "People who test AI systems are a far smaller pool than people who use Copilot to write tests."
     }
    ]
   },

@@ -288,3 +288,20 @@ class PortalTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EvidenceParsingTests(unittest.TestCase):
+    def test_plural_matches_singular_alias(self):
+        lib = sk.library()
+        found = sk.find_skills("Built test automation frameworks for AI agents and RAG pipelines", lib)
+        for s in ("Test Automation Framework", "AI Agents", "RAG"):
+            self.assertIn(s, found)
+
+    def test_education_dates_are_not_work_experience(self):
+        import datetime
+        text = ("Total Experience: 7 years and 5 months\n\n## Experience\n\n### SDET - Acme\n\nJun 2019 - Present\n\n"
+                "Built Pytest suites.\n\n## Education\n\n### MCA at BMS College\n\n2016 - 2019 (3 years)\n")
+        exp = evaluate.experience(text, datetime.date(2026, 11, 8))
+        self.assertEqual(len(exp["roles"]), 1)
+        self.assertAlmostEqual(exp["total_years"], 7.4, delta=0.1)
+        self.assertAlmostEqual(exp["listed_years"], 7.4, delta=0.1)

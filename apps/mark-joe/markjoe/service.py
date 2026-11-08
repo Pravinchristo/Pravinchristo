@@ -105,6 +105,16 @@ def run_evaluation(db, requirement_id, candidate_id, claims=None):
     db.conn.execute("UPDATE pipeline SET match_score=?, classification=?, joe_assessment=?, updated_at=? WHERE requirement_id=? AND candidate_id=?",
                     (res["total"], res["classification"], db._enc("joe_assessment", summary), now(), requirement_id, candidate_id))
     db.conn.commit()
+    last = db.one("SELECT changed_by FROM candidate_status_history WHERE requirement_id=? AND candidate_id=? ORDER BY id DESC LIMIT 1",
+                  (requirement_id, candidate_id))
+    # JOE may re-route its own screening decisions after a re-evaluation; a recruiter's decision is never overridden
+    rerun = bool(p and last and last["changed_by"] == "JOE" and p["status"] in ("screened", "shortlisted", "on_hold", "rejected"))
+    if rerun:
+        target = ("shortlisted" if res["total"] >= 70 and not res["critical_gaps"] else
+                  "on_hold" if res["total"] < 55 and not res["roles_found"] else
+                  "rejected" if res["total"] < 55 else "screened")
+        if target != p["status"]:
+            set_status(db, requirement_id, candidate_id, target, actor="JOE", note=f"Re-evaluated: {res['total']:g}")
     if p and p["status"] == "identified":
         set_status(db, requirement_id, candidate_id, "screened", actor="JOE", note="JOE evaluated the resume")
         if res["total"] >= 70 and not res["critical_gaps"]:

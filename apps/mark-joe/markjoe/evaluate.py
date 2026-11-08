@@ -37,12 +37,22 @@ def _ym(m, n, today):
     return int(y) * 12 + month - 1
 
 
+SECTION = re.compile(r"(?im)^[ \t]*(?:#{1,3}[ \t]*)?(experience|work experience|professional experience|employment(?: history)?|work history|"
+                     r"education|academics?|academic background|educational qualifications?|qualifications?|certifications?|"
+                     r"licenses(?: & | and )certifications|courses|projects|skills|about|summary|profile)[ \t]*:?[ \t]*$")
+
+
 def parse_roles(text, today=None):
     """Find date ranges and the text block that follows each one (a role or project)."""
     today = today or datetime.date.today()
     tnow = today.year * 12 + today.month - 1
     found = []
+    heads = [(h.start(), bool(re.match(r"(?i)educ|academ|qualif|certif|licen|course", h.group(1))))
+             for h in SECTION.finditer(text)]
     for m in RANGE.finditer(text):
+        sec = [edu for pos, edu in heads if pos <= m.start()]
+        if sec and sec[-1]:  # dates under Education / Certifications are not work experience
+            continue
         s = _ym(m, 1, today)
         e = tnow if m.group("present") else _ym(m, 2, today)
         if s is None or e is None or e < s or e > tnow + 1:
@@ -76,8 +86,12 @@ def experience(text, today=None):
         if s2 - e1 - 1 >= 6:
             gaps.append({"months": s2 - e1 - 1, "from": f"{(e1 + 1) // 12}-{(e1 + 1) % 12 + 1:02d}", "to": f"{(s2 - 1) // 12}-{(s2 - 1) % 12 + 1:02d}"})
     stated = re.search(r"(?i)(\d+(?:\.\d+)?)\s*\+?\s*(?:years|yrs)\s+(?:of\s+)?(?:total\s+|overall\s+|professional\s+|it\s+)?experience", text)
+    # "Total Experience: 7 years and 5 months" is the source's own sum of the full dated history (profile exports
+    # carry it); it beats our own sum when the text we hold is a truncated copy of that history
+    m = re.search(r"(?i)total experience\s*[:\-]\s*(\d+)\s*(?:years?|yrs)(?:\s*(?:and\s*)?(\d+)\s*months?)?", text)
+    listed = round(int(m.group(1)) + int(m.group(2) or 0) / 12, 1) if m else None
     return {"roles": roles, "total_years": round(total, 1) if total is not None else None,
-            "stated_years": float(stated.group(1)) if stated else None, "gaps": gaps}
+            "stated_years": float(stated.group(1)) if stated else None, "listed_years": listed, "gaps": gaps}
 
 
 def _sentences(text):
@@ -187,7 +201,7 @@ def evaluate(req, cand, lib, today=None):
     br["architecture"] = w["architecture"] * (1.0 if len(arch) >= 2 else 0.6 if arch else 0.3 if arch_any else 0)
     notes["architecture"] = f"Design/architecture evidence on: {', '.join(arch)}." if arch else ("General design wording, not tied to required skills." if arch_any else "No architecture evidence.")
     # 5. experience alignment
-    yrs = exp["total_years"] if exp["total_years"] is not None else cand.get("total_exp_years") or exp["stated_years"]
+    yrs = exp["listed_years"] or (exp["total_years"] if exp["total_years"] is not None else cand.get("total_exp_years") or exp["stated_years"])
     mn, mx = req.get("exp_min"), req.get("exp_max")
     if yrs is None:
         br["experience"], notes["experience"] = 0, "Total experience could not be calculated."
